@@ -3,6 +3,9 @@ package eu.driver.adapter.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+
+import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
 
 public class CISAdapter {
@@ -11,6 +14,8 @@ public class CISAdapter {
 	private ConfigurationProducer configurationProducer;
 	
 	private Map<String, GenericRecordProducer> producerMap;
+	
+	private Logger logger = CISLogger.logger(CISAdapter.class);
 
 	public CISAdapter() {
 		producerMap = new HashMap<>();
@@ -18,6 +23,7 @@ public class CISAdapter {
 		configurationProducer = new ConfigurationProducer();
 		startHeartbeats();
 		configurationProducer.sendConfiguration();
+		logger.info("CISAdapter initialized");
 	}
 
 	private void startHeartbeats() {
@@ -31,6 +37,7 @@ public class CISAdapter {
 		if(producer == null) {
 			producer = createProducer(topic);
 			producerMap.put(topic, producer);
+			logger.info("New producer created for topic: " + topic);
 		}
 		return producer;
 	}

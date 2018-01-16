@@ -5,7 +5,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import eu.driver.adapter.properties.ProducerProperties;
+import org.slf4j.Logger;
+
+import eu.driver.adapter.logger.CISLogger;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.core.HeartbeatKey;
 
@@ -20,9 +22,10 @@ import eu.driver.model.core.HeartbeatKey;
  */
 public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat> {
 
-	private static final String HEARTBEAT_TOPIC = "heartbeat";
+	private static final String HEARTBEAT_TOPIC = "connect-status-heartbeat";
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
+	private static Logger logger = CISLogger.logger(HeartbeatProducer.class);
 
 	public HeartbeatProducer() {
 		super(HEARTBEAT_TOPIC);
@@ -38,6 +41,7 @@ public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat>
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 		HeartbeatTask task = new HeartbeatTask(this);
 		taskReference = heartbeatScheduler.scheduleAtFixedRate(task, 0, intervalInMilliseconds, TimeUnit.MILLISECONDS);
+		logger.info("Started periodic heartbeats every " + intervalInMilliseconds + " milliseconds");
 	}
 
 	/**
@@ -49,14 +53,14 @@ public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat>
 		if (taskReference != null) {
 			taskReference.cancel(false);
 			taskReference = null;
+			logger.info("Stopped periodic heartbeats");
 		}
 	}
 
 	@Override
 	protected HeartbeatKey createKey() {
 		HeartbeatKey key = new HeartbeatKey();
-		ProducerProperties props = ProducerProperties.getInstance();
-		key.setId(props.getProperty(ProducerProperties.CLIENT_ID));
+		key.setId(getClientId());
 		return key;
 	}
 

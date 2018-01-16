@@ -15,7 +15,6 @@ public abstract class KafkaProperties extends Properties {
 
 	private static final long serialVersionUID = 7448007850457739782L;
 	
-	public static final String CLIENT_ID = CommonClientConfigs.CLIENT_ID_CONFIG;
 	public static final String BOOTSTRAP_SERVERS = CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG;
 
 	protected KafkaProperties() {
@@ -24,7 +23,6 @@ public abstract class KafkaProperties extends Properties {
 	}
 
 	private void setDefaults() {
-		setProperty(CLIENT_ID, "default_java_adapter");
 		setProperty(BOOTSTRAP_SERVERS, "broker:3501");
 	}
 

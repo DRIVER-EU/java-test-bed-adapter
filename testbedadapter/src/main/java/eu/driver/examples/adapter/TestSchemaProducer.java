@@ -1,27 +1,21 @@
 package eu.driver.examples.adapter;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.apache.avro.Schema;
-import org.apache.avro.Schema.Field;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
-import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericDatumReader;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.DatumWriter;
-import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
 import eu.driver.model.cap.Alert;
 import ly.stealth.xmlavro.DatumBuilder;
 import ly.stealth.xmlavro.simple.Avro2XmlConverter;
-import ly.stealth.xmlavro.simple.Converter;
 
 public class TestSchemaProducer {
 
@@ -66,6 +60,8 @@ public class TestSchemaProducer {
 			alert = alertDataFileReader.next(alert);
 			System.out.println(alert);
 		}
+		
+		alertDataFileReader.close();
 
 		Avro2XmlConverter.avroToXml(new File("avrotest.avro"), new File("testcap.xml"), schema);
 

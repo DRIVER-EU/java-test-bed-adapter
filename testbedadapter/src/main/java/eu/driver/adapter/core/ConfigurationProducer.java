@@ -3,7 +3,9 @@ package eu.driver.adapter.core;
 import java.util.List;
 
 import org.apache.kafka.clients.CommonClientConfigs;
+import org.slf4j.Logger;
 
+import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.model.core.Configuration;
@@ -18,7 +20,9 @@ import eu.driver.model.core.ConfigurationKey;
  */
 public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Configuration> {
 
-	private static final String CONFIGURATION_TOPIC = "configuration";
+	private static final String CONFIGURATION_TOPIC = "connect-status-configuration";
+	
+	private static final Logger logger = CISLogger.logger(ConfigurationProducer.class);
 
 	public ConfigurationProducer() {
 		super(CONFIGURATION_TOPIC);
@@ -26,8 +30,7 @@ public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Co
 	
 	protected ConfigurationKey createKey() {
 		ConfigurationKey key = new ConfigurationKey();
-		ProducerProperties props = ProducerProperties.getInstance();
-		key.setId(props.getProperty(ProducerProperties.CLIENT_ID));
+		key.setId(getClientId());
 		return key;
 	}
 	
@@ -41,8 +44,7 @@ public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Co
 		
 		Configuration configMessage = new Configuration();
 
-		String clientId = producerProps.getProperty(ProducerProperties.CLIENT_ID);
-		configMessage.setClientId(clientId);
+		configMessage.setClientId(clientProps.getProperty(ClientProperties.CLIENT_ID));
 
 		String schemaRegistryUrl = producerProps.getProperty(ProducerProperties.SCHEMA_REGISTRY_URL);
 		configMessage.setSchemaRegistry(schemaRegistryUrl);
@@ -64,6 +66,6 @@ public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Co
 //		configMessage.setLogging(logSettings);
 		
 		send(configMessage);
-		System.out.println("Sent configuration message: " + configMessage); // TODO: replace with logging
+		logger.debug("Sent configuration message: " + configMessage);
 	}
 }

@@ -23,7 +23,7 @@ public class SimpleCapExample {
 		DatumBuilder datumBuilder = new DatumBuilder(schema, "alert");
 		GenericRecord datum = datumBuilder.createDatum(new File(xmlFile));
 		
-		GenericRecordProducer producer = adapter.getProducer("test-cap");
+		GenericRecordProducer producer = adapter.getProducer("cap");
 		producer.send(datum);
 	}
 }

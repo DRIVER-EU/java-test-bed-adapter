@@ -29,6 +29,8 @@ public class ClientProperties extends Properties {
 	 * Comma separated list of Produced Topics
 	 */
 	public static final String PRODUCED_TOPICS = "produced.topics";
+	
+	public static final String CLIENT_ID = "client.id";
 
 	private static ClientProperties instance;
 
@@ -52,6 +54,7 @@ public class ClientProperties extends Properties {
 		setProperty(HEARTBEAT_INTERVAL, "" + 5000);
 		setProperty(CONSUMED_TOPICS, "");
 		setProperty(PRODUCED_TOPICS, "heartbeat,configuration"); // TODO: add own logging topic
+		setProperty(CLIENT_ID, "default_java_adapter");
 	}
 	
 	/**

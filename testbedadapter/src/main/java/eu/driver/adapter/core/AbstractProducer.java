@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.errors.SerializationException;
 
+import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 
 public abstract class AbstractProducer<Key extends IndexedRecord, Message extends IndexedRecord> {
@@ -21,6 +22,10 @@ public abstract class AbstractProducer<Key extends IndexedRecord, Message extend
 	
 	public String getTopic() {
 		return topic;
+	}
+	
+	public String getClientId() {
+		return ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 	}
 	
 	public void send(Message message) {

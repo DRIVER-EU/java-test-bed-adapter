@@ -440,7 +440,6 @@ public class LogSettings extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public LogSettings build() {
       try {
         LogSettings record = new LogSettings();
