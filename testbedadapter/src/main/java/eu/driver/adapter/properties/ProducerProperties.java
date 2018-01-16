@@ -15,7 +15,6 @@ public class ProducerProperties extends KafkaProperties {
 	private static final long serialVersionUID = -7988826780301880736L;
 
 	// Configuration Keys for Kafka Producers
-	public static final String SCHEMA_REGISTRY_URL = "schema.registry.url";
 	public static final String KEY_SERIALIZER = ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG;
 	public static final String VALUE_SERIALIZER = ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
 	public static final String COMPRESSION_TYPE = ProducerConfig.COMPRESSION_TYPE_CONFIG;
@@ -40,7 +39,6 @@ public class ProducerProperties extends KafkaProperties {
 	}
 
 	private void setDefaults() {
-		setProperty(SCHEMA_REGISTRY_URL, "http://schema_registry:3502");
 		setProperty(KEY_SERIALIZER, "io.confluent.kafka.serializers.KafkaAvroSerializer");
 		setProperty(VALUE_SERIALIZER, "io.confluent.kafka.serializers.KafkaAvroSerializer");
 		setProperty(COMPRESSION_TYPE, "none");

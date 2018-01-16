@@ -1,11 +1,9 @@
-package eu.driver.adapter.core;
+package eu.driver.adapter.core.producer;
 
 import java.util.List;
 
 import org.apache.kafka.clients.CommonClientConfigs;
-import org.slf4j.Logger;
 
-import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.model.core.Configuration;
@@ -22,8 +20,6 @@ public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Co
 
 	private static final String CONFIGURATION_TOPIC = "connect-status-configuration";
 	
-	private static final Logger logger = CISLogger.logger(ConfigurationProducer.class);
-
 	public ConfigurationProducer() {
 		super(CONFIGURATION_TOPIC);
 	}

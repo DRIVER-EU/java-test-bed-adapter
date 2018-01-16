@@ -16,6 +16,7 @@ public abstract class KafkaProperties extends Properties {
 	private static final long serialVersionUID = 7448007850457739782L;
 	
 	public static final String BOOTSTRAP_SERVERS = CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG;
+	public static final String SCHEMA_REGISTRY_URL = "schema.registry.url";
 
 	protected KafkaProperties() {
 		super();
@@ -23,6 +24,7 @@ public abstract class KafkaProperties extends Properties {
 	}
 
 	private void setDefaults() {
+		setProperty(SCHEMA_REGISTRY_URL, "http://schema_registry:3502");
 		setProperty(BOOTSTRAP_SERVERS, "broker:3501");
 	}
 

@@ -1,6 +1,6 @@
 package eu.driver.adapter.cap;
 
-import eu.driver.adapter.core.AbstractProducer;
+import eu.driver.adapter.core.producer.AbstractProducer;
 import eu.driver.model.cap.Alert;
 import eu.driver.model.cap.CapKey;
 

@@ -7,7 +7,7 @@ import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
 
-import eu.driver.adapter.core.LogProducer;
+import eu.driver.adapter.core.producer.LogProducer;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;

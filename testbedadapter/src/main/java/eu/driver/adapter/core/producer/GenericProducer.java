@@ -1,12 +1,12 @@
-package eu.driver.adapter.core;
+package eu.driver.adapter.core.producer;
 
 import org.apache.avro.generic.GenericRecord;
 
 import eu.driver.model.core.GenericKey;
 
-public class GenericRecordProducer extends AbstractProducer<GenericKey, GenericRecord> {
+public class GenericProducer extends AbstractProducer<GenericKey, GenericRecord> {
 
-	public GenericRecordProducer(String targetTopic) {
+	public GenericProducer(String targetTopic) {
 		super(targetTopic);
 	}
 	

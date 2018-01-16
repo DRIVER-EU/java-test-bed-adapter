@@ -1,13 +1,10 @@
-package eu.driver.adapter.core;
+package eu.driver.adapter.core.producer;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-
-import eu.driver.adapter.logger.CISLogger;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.core.HeartbeatKey;
 
@@ -25,7 +22,6 @@ public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat>
 	private static final String HEARTBEAT_TOPIC = "connect-status-heartbeat";
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
-	private static Logger logger = CISLogger.logger(HeartbeatProducer.class);
 
 	public HeartbeatProducer() {
 		super(HEARTBEAT_TOPIC);
@@ -62,6 +58,11 @@ public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat>
 		HeartbeatKey key = new HeartbeatKey();
 		key.setId(getClientId());
 		return key;
+	}
+	
+	public void send(Heartbeat heartbeat) {
+		super.send(heartbeat);
+		logger.debug("Sent heartbeat: " + heartbeat);
 	}
 
 }

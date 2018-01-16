@@ -38,7 +38,7 @@ public class ConsumerProperties extends KafkaProperties {
 	}
 
 	private void setDefaults() {
-		setProperty(GROUP_ID, "default-cis-java-adapter");
+		setProperty(GROUP_ID, "default_java_adapter_group");
 		setProperty(KEY_DESERIALIZER, "io.confluent.kafka.serializers.KafkaAvroDeserializer");
 		setProperty(VALUE_DESERIALIZER, "io.confluent.kafka.serializers.KafkaAvroDeserializer");
 	}

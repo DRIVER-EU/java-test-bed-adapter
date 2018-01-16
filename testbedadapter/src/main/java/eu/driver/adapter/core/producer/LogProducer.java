@@ -1,4 +1,4 @@
-package eu.driver.adapter.core;
+package eu.driver.adapter.core.producer;
 
 import eu.driver.model.core.Log;
 import eu.driver.model.core.LogKey;
