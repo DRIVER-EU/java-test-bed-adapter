@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
+import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.core.HeartbeatKey;
 
@@ -22,12 +23,11 @@ import eu.driver.model.core.HeartbeatKey;
  */
 public class HeartbeatProducer extends AbstractProducer {
 
-	private static final String HEARTBEAT_TOPIC = "connect-status-heartbeat";
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
 
 	public HeartbeatProducer(Producer<IndexedRecord, IndexedRecord> producer) {
-		super(producer, HEARTBEAT_TOPIC);
+		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.HEARTBEAT_TOPIC));
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 	}
 

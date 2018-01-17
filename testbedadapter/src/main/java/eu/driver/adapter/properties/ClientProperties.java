@@ -1,8 +1,13 @@
 package eu.driver.adapter.properties;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Properties object that contains test-bed specific properties that are not
@@ -30,7 +35,15 @@ public class ClientProperties extends Properties {
 	 */
 	public static final String PRODUCED_TOPICS = "produced.topics";
 	
+	public static final String HEARTBEAT_TOPIC = "heartbeat.topic";
+	
+	public static final String CONFIGURATION_TOPIC = "configuration.topic";
+	
+	public static final String LOG_TOPIC = "log.topic";
+	
 	public static final String CLIENT_ID = "client.id";
+	
+	private static final Logger logger = LoggerFactory.getLogger(ClientProperties.class);
 
 	private static ClientProperties instance;
 
@@ -48,6 +61,17 @@ public class ClientProperties extends Properties {
 	private ClientProperties() {
 		super();
 		setDefaults();
+		loadConfigFile();
+	}
+	
+	private void loadConfigFile() {
+		try {
+			FileInputStream fis = new FileInputStream("config/client.properties");
+			load(fis);
+			fis.close();
+		} catch (IOException e) {
+			logger.error("Could not read Client Properties file client.properties in config folder");
+		}
 	}
 
 	private void setDefaults() {
@@ -55,6 +79,9 @@ public class ClientProperties extends Properties {
 		setProperty(CONSUMED_TOPICS, "");
 		setProperty(PRODUCED_TOPICS, "heartbeat,configuration"); // TODO: add own logging topic
 		setProperty(CLIENT_ID, "default_java_adapter");
+		setProperty(HEARTBEAT_TOPIC, "connect-status-heartbeat");
+		setProperty(CONFIGURATION_TOPIC, "connect-status-configuration");
+		setProperty(LOG_TOPIC, "connect-status-log");
 	}
 	
 	/**

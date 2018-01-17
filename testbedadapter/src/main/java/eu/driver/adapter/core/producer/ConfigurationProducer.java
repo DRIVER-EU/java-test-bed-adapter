@@ -1,5 +1,6 @@
 package eu.driver.adapter.core.producer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.avro.generic.IndexedRecord;
@@ -10,6 +11,7 @@ import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.model.core.Configuration;
 import eu.driver.model.core.ConfigurationKey;
+import eu.driver.model.core.OffsetFetchRequest;
 
 /**
  * Producer for the CIS Adapter Core Configuration messages. The configuration
@@ -20,11 +22,8 @@ import eu.driver.model.core.ConfigurationKey;
  */
 public class ConfigurationProducer extends AbstractProducer {
 
-	// TODO: get this from config ?
-	private static final String CONFIGURATION_TOPIC = "connect-status-configuration";
-	
 	public ConfigurationProducer(Producer<IndexedRecord, IndexedRecord> producer) {
-		super(producer, CONFIGURATION_TOPIC);
+		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.CONFIGURATION_TOPIC));
 	}
 	
 	protected ConfigurationKey createKey() {
@@ -55,7 +54,13 @@ public class ConfigurationProducer extends AbstractProducer {
 		configMessage.setHeartbeatInterval(heartbeatInterval);
 		
 		List<CharSequence> consumedTopics = clientProps.getConsumedTopics();
-		configMessage.setConsume(consumedTopics);
+		List<OffsetFetchRequest> fetchRequests = new ArrayList<>();
+		for(CharSequence topic : consumedTopics) {
+			OffsetFetchRequest fr = new OffsetFetchRequest();
+			fr.setTopic(topic);
+			fetchRequests.add(fr);
+		}
+		configMessage.setConsume(fetchRequests);
 		
 		List<CharSequence> producedTopics = clientProps.getProducedTopics();
 		configMessage.setProduce(producedTopics);

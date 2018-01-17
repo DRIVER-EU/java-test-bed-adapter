@@ -1,6 +1,11 @@
 package eu.driver.adapter.properties;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Properties object that contains extends the standard Kafka properties with
@@ -17,6 +22,8 @@ public class ConsumerProperties extends KafkaProperties {
 	public static final String GROUP_ID = ConsumerConfig.GROUP_ID_CONFIG;
 	public static final String KEY_DESERIALIZER = ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG;
 	public static final String VALUE_DESERIALIZER = ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ConsumerProperties.class);
 
 	private static ConsumerProperties instance;
 
@@ -35,6 +42,17 @@ public class ConsumerProperties extends KafkaProperties {
 	private ConsumerProperties() {
 		super();
 		setDefaults();
+		loadConfigFile();
+	}
+	
+	private void loadConfigFile() {
+		try {
+			FileInputStream fis = new FileInputStream("config/consumer.properties");
+			load(fis);
+			fis.close();
+		} catch (IOException e) {
+			logger.error("Could not read Consumer Properties file consumer.properties in config folder");
+		}
 	}
 
 	private void setDefaults() {

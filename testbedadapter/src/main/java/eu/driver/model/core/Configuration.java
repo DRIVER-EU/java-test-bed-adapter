@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Configuration message, mainly for inspecting what a client is producing and consuming. */
 @org.apache.avro.specific.AvroGenerated
 public class Configuration extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -9075329872674887967L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"autoRegisterSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"If true, register schema's on startup automatically\",\"default\":null},{\"name\":\"schemaFolder\",\"type\":[\"null\",\"string\"],\"doc\":\"Location of the schema's\",\"default\":null},{\"name\":\"fetchAllVersions\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema versions, or only the last one\",\"default\":null},{\"name\":\"fetchAllSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema's, or only the ones defined in the configuration at startup\",\"default\":null},{\"name\":\"heartbeatInterval\",\"type\":[\"null\",\"int\"],\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":null},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
+  private static final long serialVersionUID = 5477320282354842034L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"autoRegisterSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"If true, register schema's on startup automatically\",\"default\":null},{\"name\":\"schemaFolder\",\"type\":[\"null\",\"string\"],\"doc\":\"Location of the schema's\",\"default\":null},{\"name\":\"fetchAllVersions\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema versions, or only the last one\",\"default\":null},{\"name\":\"fetchAllSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema's, or only the ones defined in the configuration at startup\",\"default\":null},{\"name\":\"heartbeatInterval\",\"type\":[\"null\",\"int\"],\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":null},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OffsetFetchRequest\",\"fields\":[{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"offset\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"partition\",\"type\":[\"null\",\"int\"],\"default\":null}]}}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -69,7 +69,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
   /** Time in msec how often you send out a heartbeat. Default 5000 */
   @Deprecated public java.lang.Integer heartbeatInterval;
   /** Topics you are consuming */
-  @Deprecated public java.util.List<java.lang.CharSequence> consume;
+  @Deprecated public java.util.List<eu.driver.model.core.OffsetFetchRequest> consume;
   /** Topics you are producing */
   @Deprecated public java.util.List<java.lang.CharSequence> produce;
   /** Logging details, may be replaced by an enum */
@@ -96,7 +96,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
    * @param produce Topics you are producing
    * @param logging Logging details, may be replaced by an enum
    */
-  public Configuration(java.lang.CharSequence clientId, java.lang.CharSequence kafkaHost, java.lang.CharSequence schemaRegistry, java.lang.Boolean autoRegisterSchemas, java.lang.CharSequence schemaFolder, java.lang.Boolean fetchAllVersions, java.lang.Boolean fetchAllSchemas, java.lang.Integer heartbeatInterval, java.util.List<java.lang.CharSequence> consume, java.util.List<java.lang.CharSequence> produce, eu.driver.model.core.LogSettings logging) {
+  public Configuration(java.lang.CharSequence clientId, java.lang.CharSequence kafkaHost, java.lang.CharSequence schemaRegistry, java.lang.Boolean autoRegisterSchemas, java.lang.CharSequence schemaFolder, java.lang.Boolean fetchAllVersions, java.lang.Boolean fetchAllSchemas, java.lang.Integer heartbeatInterval, java.util.List<eu.driver.model.core.OffsetFetchRequest> consume, java.util.List<java.lang.CharSequence> produce, eu.driver.model.core.LogSettings logging) {
     this.clientId = clientId;
     this.kafkaHost = kafkaHost;
     this.schemaRegistry = schemaRegistry;
@@ -141,7 +141,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     case 5: fetchAllVersions = (java.lang.Boolean)value$; break;
     case 6: fetchAllSchemas = (java.lang.Boolean)value$; break;
     case 7: heartbeatInterval = (java.lang.Integer)value$; break;
-    case 8: consume = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 8: consume = (java.util.List<eu.driver.model.core.OffsetFetchRequest>)value$; break;
     case 9: produce = (java.util.List<java.lang.CharSequence>)value$; break;
     case 10: logging = (eu.driver.model.core.LogSettings)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -288,7 +288,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'consume' field.
    * @return Topics you are consuming
    */
-  public java.util.List<java.lang.CharSequence> getConsume() {
+  public java.util.List<eu.driver.model.core.OffsetFetchRequest> getConsume() {
     return consume;
   }
 
@@ -297,7 +297,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
    * Topics you are consuming
    * @param value the value to set.
    */
-  public void setConsume(java.util.List<java.lang.CharSequence> value) {
+  public void setConsume(java.util.List<eu.driver.model.core.OffsetFetchRequest> value) {
     this.consume = value;
   }
 
@@ -384,7 +384,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     /** Time in msec how often you send out a heartbeat. Default 5000 */
     private java.lang.Integer heartbeatInterval;
     /** Topics you are consuming */
-    private java.util.List<java.lang.CharSequence> consume;
+    private java.util.List<eu.driver.model.core.OffsetFetchRequest> consume;
     /** Topics you are producing */
     private java.util.List<java.lang.CharSequence> produce;
     /** Logging details, may be replaced by an enum */
@@ -853,7 +853,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * Topics you are consuming
       * @return The value.
       */
-    public java.util.List<java.lang.CharSequence> getConsume() {
+    public java.util.List<eu.driver.model.core.OffsetFetchRequest> getConsume() {
       return consume;
     }
 
@@ -863,7 +863,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'consume'.
       * @return This builder.
       */
-    public eu.driver.model.core.Configuration.Builder setConsume(java.util.List<java.lang.CharSequence> value) {
+    public eu.driver.model.core.Configuration.Builder setConsume(java.util.List<eu.driver.model.core.OffsetFetchRequest> value) {
       validate(fields()[8], value);
       this.consume = value;
       fieldSetFlags()[8] = true;
@@ -1028,7 +1028,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
         record.fetchAllVersions = fieldSetFlags()[5] ? this.fetchAllVersions : (java.lang.Boolean) defaultValue(fields()[5]);
         record.fetchAllSchemas = fieldSetFlags()[6] ? this.fetchAllSchemas : (java.lang.Boolean) defaultValue(fields()[6]);
         record.heartbeatInterval = fieldSetFlags()[7] ? this.heartbeatInterval : (java.lang.Integer) defaultValue(fields()[7]);
-        record.consume = fieldSetFlags()[8] ? this.consume : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[8]);
+        record.consume = fieldSetFlags()[8] ? this.consume : (java.util.List<eu.driver.model.core.OffsetFetchRequest>) defaultValue(fields()[8]);
         record.produce = fieldSetFlags()[9] ? this.produce : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[9]);
         if (loggingBuilder != null) {
           record.logging = this.loggingBuilder.build();

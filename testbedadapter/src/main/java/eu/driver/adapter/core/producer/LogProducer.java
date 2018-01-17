@@ -3,6 +3,7 @@ package eu.driver.adapter.core.producer;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
+import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.model.core.LogKey;
 
 /**
@@ -14,10 +15,8 @@ import eu.driver.model.core.LogKey;
  */
 public class LogProducer extends AbstractProducer {
 
-	private static final String LOGGING_TOPIC = "connect-status-log";
-
 	public LogProducer(Producer<IndexedRecord, IndexedRecord> producer) {
-		super(producer, LOGGING_TOPIC);
+		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.LOG_TOPIC));
 	}
 	
 	protected LogKey createKey() {
