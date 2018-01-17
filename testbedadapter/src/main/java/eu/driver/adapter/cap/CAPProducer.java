@@ -1,13 +1,15 @@
 package eu.driver.adapter.cap;
 
+import org.apache.avro.generic.IndexedRecord;
+import org.apache.kafka.clients.producer.Producer;
+
 import eu.driver.adapter.core.producer.AbstractProducer;
-import eu.driver.model.cap.Alert;
 import eu.driver.model.cap.CapKey;
 
-public class CAPProducer extends AbstractProducer<CapKey, Alert> {
+public class CAPProducer extends AbstractProducer {
 
-	public CAPProducer(String topic) {
-		super(topic);
+	public CAPProducer(Producer<IndexedRecord, IndexedRecord> producer, String topic) {
+		super(producer, topic);
 	}
 
 	@Override

@@ -5,6 +5,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.avro.generic.IndexedRecord;
+import org.apache.kafka.clients.producer.Producer;
+
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.core.HeartbeatKey;
 
@@ -17,14 +20,15 @@ import eu.driver.model.core.HeartbeatKey;
  * @author hameetepa
  *
  */
-public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat> {
+public class HeartbeatProducer extends AbstractProducer {
 
 	private static final String HEARTBEAT_TOPIC = "connect-status-heartbeat";
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
 
-	public HeartbeatProducer() {
-		super(HEARTBEAT_TOPIC);
+	public HeartbeatProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+		super(producer, HEARTBEAT_TOPIC);
+		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 	}
 
 	/**
@@ -34,7 +38,6 @@ public class HeartbeatProducer extends AbstractProducer<HeartbeatKey, Heartbeat>
 	 * @param intervalInMilliseconds number of milliseconds between heartbeats
 	 */
 	public void startHeartbeats(int intervalInMilliseconds) {
-		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 		HeartbeatTask task = new HeartbeatTask(this);
 		taskReference = heartbeatScheduler.scheduleAtFixedRate(task, 0, intervalInMilliseconds, TimeUnit.MILLISECONDS);
 		logger.info("Started periodic heartbeats every " + intervalInMilliseconds + " milliseconds");

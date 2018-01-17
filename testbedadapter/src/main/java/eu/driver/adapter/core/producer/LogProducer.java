@@ -1,6 +1,8 @@
 package eu.driver.adapter.core.producer;
 
-import eu.driver.model.core.Log;
+import org.apache.avro.generic.IndexedRecord;
+import org.apache.kafka.clients.producer.Producer;
+
 import eu.driver.model.core.LogKey;
 
 /**
@@ -10,12 +12,12 @@ import eu.driver.model.core.LogKey;
  * 
  * @author hameetepa
  */
-public class LogProducer extends AbstractProducer<LogKey, Log> {
+public class LogProducer extends AbstractProducer {
 
 	private static final String LOGGING_TOPIC = "connect-status-log";
 
-	public LogProducer() {
-		super(LOGGING_TOPIC);
+	public LogProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+		super(producer, LOGGING_TOPIC);
 	}
 	
 	protected LogKey createKey() {

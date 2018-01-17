@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Resource extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 3426430860898034462L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"resourceDesc\",\"type\":\"string\"},{\"name\":\"size\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"uri\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO, anyURI\",\"default\":\"null\"},{\"name\":\"deferUri\",\"type\":[\"null\",\"string\"],\"default\":\"null\"},{\"name\":\"digest\",\"type\":[\"null\",\"string\"],\"default\":\"null\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"resourceDesc\",\"type\":\"string\"},{\"name\":\"size\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"uri\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO, anyURI\",\"default\":null},{\"name\":\"deferUri\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"digest\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();

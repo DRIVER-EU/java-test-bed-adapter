@@ -3,10 +3,9 @@ package eu.driver.adapter.core.consumer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.avro.generic.IndexedRecord;
+import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 
@@ -16,8 +15,8 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Message extend
 	
 	private Collection<IAvroReceiver<Message>> receivers;
 
-	public CallbackConsumer(String targetTopic) {
-		super(targetTopic);
+	public CallbackConsumer(Consumer<Key, Message> consumer, String topic) {
+		super(consumer, topic);
 		receivers = Collections.synchronizedCollection(new ArrayList<>());
 	}
 

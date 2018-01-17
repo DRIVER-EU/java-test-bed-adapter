@@ -1,13 +1,12 @@
 package eu.driver.adapter.core.consumer;
 
 import org.apache.avro.generic.GenericRecord;
+import org.apache.kafka.clients.consumer.Consumer;
 
-import eu.driver.model.core.GenericKey;
+public class GenericPollableConsumer extends PollableConsumer<GenericRecord, GenericRecord>{
 
-public class GenericPollableConsumer extends PollableConsumer<GenericKey, GenericRecord> {
-
-	public GenericPollableConsumer(String targetTopic) {
-		super(targetTopic);
+	public GenericPollableConsumer(Consumer<GenericRecord, GenericRecord> consumer, String topic) {
+		super(consumer, topic);
 	}
 
 }

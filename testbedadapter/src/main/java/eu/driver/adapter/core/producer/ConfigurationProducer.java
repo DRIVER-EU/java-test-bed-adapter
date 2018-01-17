@@ -2,7 +2,9 @@ package eu.driver.adapter.core.producer;
 
 import java.util.List;
 
+import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.producer.Producer;
 
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
@@ -16,12 +18,13 @@ import eu.driver.model.core.ConfigurationKey;
  * 
  * @author hameetepa
  */
-public class ConfigurationProducer extends AbstractProducer<ConfigurationKey, Configuration> {
+public class ConfigurationProducer extends AbstractProducer {
 
+	// TODO: get this from config ?
 	private static final String CONFIGURATION_TOPIC = "connect-status-configuration";
 	
-	public ConfigurationProducer() {
-		super(CONFIGURATION_TOPIC);
+	public ConfigurationProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+		super(producer, CONFIGURATION_TOPIC);
 	}
 	
 	protected ConfigurationKey createKey() {

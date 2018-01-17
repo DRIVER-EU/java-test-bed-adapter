@@ -1,13 +1,12 @@
 package eu.driver.adapter.core.consumer;
 
 import org.apache.avro.generic.GenericRecord;
+import org.apache.kafka.clients.consumer.Consumer;
 
-import eu.driver.model.core.GenericKey;
+public class GenericCallbackConsumer extends CallbackConsumer<GenericRecord, GenericRecord> {
 
-public class GenericCallbackConsumer extends CallbackConsumer<GenericKey, GenericRecord> {
-
-	public GenericCallbackConsumer(String targetTopic) {
-		super(targetTopic);
+	public GenericCallbackConsumer(Consumer<GenericRecord, GenericRecord> consumer, String topic) {
+		super(consumer, topic);
 	}
 
 }

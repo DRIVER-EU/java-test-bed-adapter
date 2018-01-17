@@ -1,5 +1,8 @@
 package eu.driver.adapter.logger;
 
+import org.apache.avro.generic.IndexedRecord;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.EventConstants;
@@ -9,6 +12,7 @@ import org.slf4j.helpers.MessageFormatter;
 
 import eu.driver.adapter.core.producer.LogProducer;
 import eu.driver.adapter.properties.ClientProperties;
+import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Log;
@@ -17,7 +21,6 @@ public final class CISLogger extends MarkerIgnoringBase {
 
 	private static final long serialVersionUID = 4267880126821228370L;
 	private final Logger logger;
-	private final LogProducer producer;
 	private final String clientId;
 	private final ITimestampProvider timestampProvider;
 
@@ -27,16 +30,35 @@ public final class CISLogger extends MarkerIgnoringBase {
 	protected static final int LOG_LEVEL_WARN = EventConstants.WARN_INT;
 	protected static final int LOG_LEVEL_ERROR = EventConstants.ERROR_INT;
 
+	/**
+	 * Kafka Log Producer that is shared by all Logger instances
+	 */
+	private static LogProducer producer;
+
 	public static Logger logger(Class<?> clazz) {
 		return new CISLogger(clazz);
 	}
 
 	public CISLogger(Class<?> clazz) {
 		logger = LoggerFactory.getLogger(clazz);
-		producer = new LogProducer();
 		clientId = ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 		name = clazz.getName();
 		timestampProvider = new ISO8601TimestampProvider();
+		if (isLoggingEnabled()) {
+			lazyInitializeProducer();
+		}
+	}
+
+	private boolean isLoggingEnabled() {
+		return isErrorEnabled() || isWarnEnabled() || isInfoEnabled() || isDebugEnabled() || isTraceEnabled();
+	}
+
+	private static void lazyInitializeProducer() {
+		if (producer == null) {
+			Producer<IndexedRecord, IndexedRecord> kafkaProducer = new KafkaProducer<>(
+					ProducerProperties.getInstance());
+			producer = new LogProducer(kafkaProducer);
+		}
 	}
 
 	private Log createLog(String message) {
