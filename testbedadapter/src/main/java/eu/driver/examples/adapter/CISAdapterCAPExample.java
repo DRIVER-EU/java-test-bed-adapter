@@ -5,11 +5,9 @@ import java.io.IOException;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.generic.IndexedRecord;
 
 import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.core.producer.GenericProducer;
-import eu.driver.api.IAvroReceiver;
 import ly.stealth.xmlavro.DatumBuilder;
 
 public class CISAdapterCAPExample {
@@ -37,7 +35,7 @@ public class CISAdapterCAPExample {
 	private static GenericRecord generateAvroCapFromXML() throws IOException {
 		// TODO: read XML from String and InputStream as well
 		String avscFile = TestSchemaProducer.class.getResource("/avro/other/cap/cap-value.avsc").getPath();
-		String xmlFile = TestSchemaProducer.class.getResource("/data/examples/cap/earthquake.xml").getPath();
+		String xmlFile = TestSchemaProducer.class.getResource("/data/examples/cap/homelandsec.xml").getPath();
 
 		Schema schema = new Schema.Parser().parse(new File(avscFile));
 		DatumBuilder datumBuilder = new DatumBuilder(schema, "alert");
