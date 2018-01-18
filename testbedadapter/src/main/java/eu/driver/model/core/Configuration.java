@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Configuration message, mainly for inspecting what a client is producing and consuming. */
 @org.apache.avro.specific.AvroGenerated
 public class Configuration extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5477320282354842034L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"autoRegisterSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"If true, register schema's on startup automatically\",\"default\":null},{\"name\":\"schemaFolder\",\"type\":[\"null\",\"string\"],\"doc\":\"Location of the schema's\",\"default\":null},{\"name\":\"fetchAllVersions\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema versions, or only the last one\",\"default\":null},{\"name\":\"fetchAllSchemas\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Fetch all schema's, or only the ones defined in the configuration at startup\",\"default\":null},{\"name\":\"heartbeatInterval\",\"type\":[\"null\",\"int\"],\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":null},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OffsetFetchRequest\",\"fields\":[{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"offset\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"partition\",\"type\":[\"null\",\"int\"],\"default\":null}]}}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
+  private static final long serialVersionUID = 2562302679384508610L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"heartbeatInterval\",\"type\":[\"null\",\"int\"],\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":null},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OffsetFetchRequest\",\"fields\":[{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"offset\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"partition\",\"type\":[\"null\",\"int\"],\"default\":null}]}}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -58,14 +58,6 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
   @Deprecated public java.lang.CharSequence kafkaHost;
   /** URI of the schema registry */
   @Deprecated public java.lang.CharSequence schemaRegistry;
-  /** If true, register schema's on startup automatically */
-  @Deprecated public java.lang.Boolean autoRegisterSchemas;
-  /** Location of the schema's */
-  @Deprecated public java.lang.CharSequence schemaFolder;
-  /** Fetch all schema versions, or only the last one */
-  @Deprecated public java.lang.Boolean fetchAllVersions;
-  /** Fetch all schema's, or only the ones defined in the configuration at startup */
-  @Deprecated public java.lang.Boolean fetchAllSchemas;
   /** Time in msec how often you send out a heartbeat. Default 5000 */
   @Deprecated public java.lang.Integer heartbeatInterval;
   /** Topics you are consuming */
@@ -87,23 +79,15 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
    * @param clientId ID of the client
    * @param kafkaHost URI of the Kafka broker
    * @param schemaRegistry URI of the schema registry
-   * @param autoRegisterSchemas If true, register schema's on startup automatically
-   * @param schemaFolder Location of the schema's
-   * @param fetchAllVersions Fetch all schema versions, or only the last one
-   * @param fetchAllSchemas Fetch all schema's, or only the ones defined in the configuration at startup
    * @param heartbeatInterval Time in msec how often you send out a heartbeat. Default 5000
    * @param consume Topics you are consuming
    * @param produce Topics you are producing
    * @param logging Logging details, may be replaced by an enum
    */
-  public Configuration(java.lang.CharSequence clientId, java.lang.CharSequence kafkaHost, java.lang.CharSequence schemaRegistry, java.lang.Boolean autoRegisterSchemas, java.lang.CharSequence schemaFolder, java.lang.Boolean fetchAllVersions, java.lang.Boolean fetchAllSchemas, java.lang.Integer heartbeatInterval, java.util.List<eu.driver.model.core.OffsetFetchRequest> consume, java.util.List<java.lang.CharSequence> produce, eu.driver.model.core.LogSettings logging) {
+  public Configuration(java.lang.CharSequence clientId, java.lang.CharSequence kafkaHost, java.lang.CharSequence schemaRegistry, java.lang.Integer heartbeatInterval, java.util.List<eu.driver.model.core.OffsetFetchRequest> consume, java.util.List<java.lang.CharSequence> produce, eu.driver.model.core.LogSettings logging) {
     this.clientId = clientId;
     this.kafkaHost = kafkaHost;
     this.schemaRegistry = schemaRegistry;
-    this.autoRegisterSchemas = autoRegisterSchemas;
-    this.schemaFolder = schemaFolder;
-    this.fetchAllVersions = fetchAllVersions;
-    this.fetchAllSchemas = fetchAllSchemas;
     this.heartbeatInterval = heartbeatInterval;
     this.consume = consume;
     this.produce = produce;
@@ -117,14 +101,10 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     case 0: return clientId;
     case 1: return kafkaHost;
     case 2: return schemaRegistry;
-    case 3: return autoRegisterSchemas;
-    case 4: return schemaFolder;
-    case 5: return fetchAllVersions;
-    case 6: return fetchAllSchemas;
-    case 7: return heartbeatInterval;
-    case 8: return consume;
-    case 9: return produce;
-    case 10: return logging;
+    case 3: return heartbeatInterval;
+    case 4: return consume;
+    case 5: return produce;
+    case 6: return logging;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -136,14 +116,10 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     case 0: clientId = (java.lang.CharSequence)value$; break;
     case 1: kafkaHost = (java.lang.CharSequence)value$; break;
     case 2: schemaRegistry = (java.lang.CharSequence)value$; break;
-    case 3: autoRegisterSchemas = (java.lang.Boolean)value$; break;
-    case 4: schemaFolder = (java.lang.CharSequence)value$; break;
-    case 5: fetchAllVersions = (java.lang.Boolean)value$; break;
-    case 6: fetchAllSchemas = (java.lang.Boolean)value$; break;
-    case 7: heartbeatInterval = (java.lang.Integer)value$; break;
-    case 8: consume = (java.util.List<eu.driver.model.core.OffsetFetchRequest>)value$; break;
-    case 9: produce = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 10: logging = (eu.driver.model.core.LogSettings)value$; break;
+    case 3: heartbeatInterval = (java.lang.Integer)value$; break;
+    case 4: consume = (java.util.List<eu.driver.model.core.OffsetFetchRequest>)value$; break;
+    case 5: produce = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 6: logging = (eu.driver.model.core.LogSettings)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -197,74 +173,6 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
    */
   public void setSchemaRegistry(java.lang.CharSequence value) {
     this.schemaRegistry = value;
-  }
-
-  /**
-   * Gets the value of the 'autoRegisterSchemas' field.
-   * @return If true, register schema's on startup automatically
-   */
-  public java.lang.Boolean getAutoRegisterSchemas() {
-    return autoRegisterSchemas;
-  }
-
-  /**
-   * Sets the value of the 'autoRegisterSchemas' field.
-   * If true, register schema's on startup automatically
-   * @param value the value to set.
-   */
-  public void setAutoRegisterSchemas(java.lang.Boolean value) {
-    this.autoRegisterSchemas = value;
-  }
-
-  /**
-   * Gets the value of the 'schemaFolder' field.
-   * @return Location of the schema's
-   */
-  public java.lang.CharSequence getSchemaFolder() {
-    return schemaFolder;
-  }
-
-  /**
-   * Sets the value of the 'schemaFolder' field.
-   * Location of the schema's
-   * @param value the value to set.
-   */
-  public void setSchemaFolder(java.lang.CharSequence value) {
-    this.schemaFolder = value;
-  }
-
-  /**
-   * Gets the value of the 'fetchAllVersions' field.
-   * @return Fetch all schema versions, or only the last one
-   */
-  public java.lang.Boolean getFetchAllVersions() {
-    return fetchAllVersions;
-  }
-
-  /**
-   * Sets the value of the 'fetchAllVersions' field.
-   * Fetch all schema versions, or only the last one
-   * @param value the value to set.
-   */
-  public void setFetchAllVersions(java.lang.Boolean value) {
-    this.fetchAllVersions = value;
-  }
-
-  /**
-   * Gets the value of the 'fetchAllSchemas' field.
-   * @return Fetch all schema's, or only the ones defined in the configuration at startup
-   */
-  public java.lang.Boolean getFetchAllSchemas() {
-    return fetchAllSchemas;
-  }
-
-  /**
-   * Sets the value of the 'fetchAllSchemas' field.
-   * Fetch all schema's, or only the ones defined in the configuration at startup
-   * @param value the value to set.
-   */
-  public void setFetchAllSchemas(java.lang.Boolean value) {
-    this.fetchAllSchemas = value;
   }
 
   /**
@@ -373,14 +281,6 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     private java.lang.CharSequence kafkaHost;
     /** URI of the schema registry */
     private java.lang.CharSequence schemaRegistry;
-    /** If true, register schema's on startup automatically */
-    private java.lang.Boolean autoRegisterSchemas;
-    /** Location of the schema's */
-    private java.lang.CharSequence schemaFolder;
-    /** Fetch all schema versions, or only the last one */
-    private java.lang.Boolean fetchAllVersions;
-    /** Fetch all schema's, or only the ones defined in the configuration at startup */
-    private java.lang.Boolean fetchAllSchemas;
     /** Time in msec how often you send out a heartbeat. Default 5000 */
     private java.lang.Integer heartbeatInterval;
     /** Topics you are consuming */
@@ -414,37 +314,21 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
         this.schemaRegistry = data().deepCopy(fields()[2].schema(), other.schemaRegistry);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.autoRegisterSchemas)) {
-        this.autoRegisterSchemas = data().deepCopy(fields()[3].schema(), other.autoRegisterSchemas);
+      if (isValidValue(fields()[3], other.heartbeatInterval)) {
+        this.heartbeatInterval = data().deepCopy(fields()[3].schema(), other.heartbeatInterval);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.schemaFolder)) {
-        this.schemaFolder = data().deepCopy(fields()[4].schema(), other.schemaFolder);
+      if (isValidValue(fields()[4], other.consume)) {
+        this.consume = data().deepCopy(fields()[4].schema(), other.consume);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.fetchAllVersions)) {
-        this.fetchAllVersions = data().deepCopy(fields()[5].schema(), other.fetchAllVersions);
+      if (isValidValue(fields()[5], other.produce)) {
+        this.produce = data().deepCopy(fields()[5].schema(), other.produce);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.fetchAllSchemas)) {
-        this.fetchAllSchemas = data().deepCopy(fields()[6].schema(), other.fetchAllSchemas);
+      if (isValidValue(fields()[6], other.logging)) {
+        this.logging = data().deepCopy(fields()[6].schema(), other.logging);
         fieldSetFlags()[6] = true;
-      }
-      if (isValidValue(fields()[7], other.heartbeatInterval)) {
-        this.heartbeatInterval = data().deepCopy(fields()[7].schema(), other.heartbeatInterval);
-        fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.consume)) {
-        this.consume = data().deepCopy(fields()[8].schema(), other.consume);
-        fieldSetFlags()[8] = true;
-      }
-      if (isValidValue(fields()[9], other.produce)) {
-        this.produce = data().deepCopy(fields()[9].schema(), other.produce);
-        fieldSetFlags()[9] = true;
-      }
-      if (isValidValue(fields()[10], other.logging)) {
-        this.logging = data().deepCopy(fields()[10].schema(), other.logging);
-        fieldSetFlags()[10] = true;
       }
       if (other.hasLoggingBuilder()) {
         this.loggingBuilder = eu.driver.model.core.LogSettings.newBuilder(other.getLoggingBuilder());
@@ -469,37 +353,21 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
         this.schemaRegistry = data().deepCopy(fields()[2].schema(), other.schemaRegistry);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.autoRegisterSchemas)) {
-        this.autoRegisterSchemas = data().deepCopy(fields()[3].schema(), other.autoRegisterSchemas);
+      if (isValidValue(fields()[3], other.heartbeatInterval)) {
+        this.heartbeatInterval = data().deepCopy(fields()[3].schema(), other.heartbeatInterval);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.schemaFolder)) {
-        this.schemaFolder = data().deepCopy(fields()[4].schema(), other.schemaFolder);
+      if (isValidValue(fields()[4], other.consume)) {
+        this.consume = data().deepCopy(fields()[4].schema(), other.consume);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.fetchAllVersions)) {
-        this.fetchAllVersions = data().deepCopy(fields()[5].schema(), other.fetchAllVersions);
+      if (isValidValue(fields()[5], other.produce)) {
+        this.produce = data().deepCopy(fields()[5].schema(), other.produce);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.fetchAllSchemas)) {
-        this.fetchAllSchemas = data().deepCopy(fields()[6].schema(), other.fetchAllSchemas);
+      if (isValidValue(fields()[6], other.logging)) {
+        this.logging = data().deepCopy(fields()[6].schema(), other.logging);
         fieldSetFlags()[6] = true;
-      }
-      if (isValidValue(fields()[7], other.heartbeatInterval)) {
-        this.heartbeatInterval = data().deepCopy(fields()[7].schema(), other.heartbeatInterval);
-        fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.consume)) {
-        this.consume = data().deepCopy(fields()[8].schema(), other.consume);
-        fieldSetFlags()[8] = true;
-      }
-      if (isValidValue(fields()[9], other.produce)) {
-        this.produce = data().deepCopy(fields()[9].schema(), other.produce);
-        fieldSetFlags()[9] = true;
-      }
-      if (isValidValue(fields()[10], other.logging)) {
-        this.logging = data().deepCopy(fields()[10].schema(), other.logging);
-        fieldSetFlags()[10] = true;
       }
       this.loggingBuilder = null;
     }
@@ -634,178 +502,6 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     }
 
     /**
-      * Gets the value of the 'autoRegisterSchemas' field.
-      * If true, register schema's on startup automatically
-      * @return The value.
-      */
-    public java.lang.Boolean getAutoRegisterSchemas() {
-      return autoRegisterSchemas;
-    }
-
-    /**
-      * Sets the value of the 'autoRegisterSchemas' field.
-      * If true, register schema's on startup automatically
-      * @param value The value of 'autoRegisterSchemas'.
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder setAutoRegisterSchemas(java.lang.Boolean value) {
-      validate(fields()[3], value);
-      this.autoRegisterSchemas = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'autoRegisterSchemas' field has been set.
-      * If true, register schema's on startup automatically
-      * @return True if the 'autoRegisterSchemas' field has been set, false otherwise.
-      */
-    public boolean hasAutoRegisterSchemas() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'autoRegisterSchemas' field.
-      * If true, register schema's on startup automatically
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder clearAutoRegisterSchemas() {
-      autoRegisterSchemas = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'schemaFolder' field.
-      * Location of the schema's
-      * @return The value.
-      */
-    public java.lang.CharSequence getSchemaFolder() {
-      return schemaFolder;
-    }
-
-    /**
-      * Sets the value of the 'schemaFolder' field.
-      * Location of the schema's
-      * @param value The value of 'schemaFolder'.
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder setSchemaFolder(java.lang.CharSequence value) {
-      validate(fields()[4], value);
-      this.schemaFolder = value;
-      fieldSetFlags()[4] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'schemaFolder' field has been set.
-      * Location of the schema's
-      * @return True if the 'schemaFolder' field has been set, false otherwise.
-      */
-    public boolean hasSchemaFolder() {
-      return fieldSetFlags()[4];
-    }
-
-
-    /**
-      * Clears the value of the 'schemaFolder' field.
-      * Location of the schema's
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder clearSchemaFolder() {
-      schemaFolder = null;
-      fieldSetFlags()[4] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'fetchAllVersions' field.
-      * Fetch all schema versions, or only the last one
-      * @return The value.
-      */
-    public java.lang.Boolean getFetchAllVersions() {
-      return fetchAllVersions;
-    }
-
-    /**
-      * Sets the value of the 'fetchAllVersions' field.
-      * Fetch all schema versions, or only the last one
-      * @param value The value of 'fetchAllVersions'.
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder setFetchAllVersions(java.lang.Boolean value) {
-      validate(fields()[5], value);
-      this.fetchAllVersions = value;
-      fieldSetFlags()[5] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'fetchAllVersions' field has been set.
-      * Fetch all schema versions, or only the last one
-      * @return True if the 'fetchAllVersions' field has been set, false otherwise.
-      */
-    public boolean hasFetchAllVersions() {
-      return fieldSetFlags()[5];
-    }
-
-
-    /**
-      * Clears the value of the 'fetchAllVersions' field.
-      * Fetch all schema versions, or only the last one
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder clearFetchAllVersions() {
-      fetchAllVersions = null;
-      fieldSetFlags()[5] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'fetchAllSchemas' field.
-      * Fetch all schema's, or only the ones defined in the configuration at startup
-      * @return The value.
-      */
-    public java.lang.Boolean getFetchAllSchemas() {
-      return fetchAllSchemas;
-    }
-
-    /**
-      * Sets the value of the 'fetchAllSchemas' field.
-      * Fetch all schema's, or only the ones defined in the configuration at startup
-      * @param value The value of 'fetchAllSchemas'.
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder setFetchAllSchemas(java.lang.Boolean value) {
-      validate(fields()[6], value);
-      this.fetchAllSchemas = value;
-      fieldSetFlags()[6] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'fetchAllSchemas' field has been set.
-      * Fetch all schema's, or only the ones defined in the configuration at startup
-      * @return True if the 'fetchAllSchemas' field has been set, false otherwise.
-      */
-    public boolean hasFetchAllSchemas() {
-      return fieldSetFlags()[6];
-    }
-
-
-    /**
-      * Clears the value of the 'fetchAllSchemas' field.
-      * Fetch all schema's, or only the ones defined in the configuration at startup
-      * @return This builder.
-      */
-    public eu.driver.model.core.Configuration.Builder clearFetchAllSchemas() {
-      fetchAllSchemas = null;
-      fieldSetFlags()[6] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'heartbeatInterval' field.
       * Time in msec how often you send out a heartbeat. Default 5000
       * @return The value.
@@ -821,9 +517,9 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public eu.driver.model.core.Configuration.Builder setHeartbeatInterval(java.lang.Integer value) {
-      validate(fields()[7], value);
+      validate(fields()[3], value);
       this.heartbeatInterval = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -833,7 +529,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return True if the 'heartbeatInterval' field has been set, false otherwise.
       */
     public boolean hasHeartbeatInterval() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[3];
     }
 
 
@@ -844,7 +540,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       */
     public eu.driver.model.core.Configuration.Builder clearHeartbeatInterval() {
       heartbeatInterval = null;
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -864,9 +560,9 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public eu.driver.model.core.Configuration.Builder setConsume(java.util.List<eu.driver.model.core.OffsetFetchRequest> value) {
-      validate(fields()[8], value);
+      validate(fields()[4], value);
       this.consume = value;
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -876,7 +572,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return True if the 'consume' field has been set, false otherwise.
       */
     public boolean hasConsume() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[4];
     }
 
 
@@ -887,7 +583,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       */
     public eu.driver.model.core.Configuration.Builder clearConsume() {
       consume = null;
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -907,9 +603,9 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public eu.driver.model.core.Configuration.Builder setProduce(java.util.List<java.lang.CharSequence> value) {
-      validate(fields()[9], value);
+      validate(fields()[5], value);
       this.produce = value;
-      fieldSetFlags()[9] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -919,7 +615,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return True if the 'produce' field has been set, false otherwise.
       */
     public boolean hasProduce() {
-      return fieldSetFlags()[9];
+      return fieldSetFlags()[5];
     }
 
 
@@ -930,7 +626,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       */
     public eu.driver.model.core.Configuration.Builder clearProduce() {
       produce = null;
-      fieldSetFlags()[9] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -950,10 +646,10 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public eu.driver.model.core.Configuration.Builder setLogging(eu.driver.model.core.LogSettings value) {
-      validate(fields()[10], value);
+      validate(fields()[6], value);
       this.loggingBuilder = null;
       this.logging = value;
-      fieldSetFlags()[10] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -963,7 +659,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return True if the 'logging' field has been set, false otherwise.
       */
     public boolean hasLogging() {
-      return fieldSetFlags()[10];
+      return fieldSetFlags()[6];
     }
 
     /**
@@ -1011,7 +707,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     public eu.driver.model.core.Configuration.Builder clearLogging() {
       logging = null;
       loggingBuilder = null;
-      fieldSetFlags()[10] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -1023,17 +719,13 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
         record.clientId = fieldSetFlags()[0] ? this.clientId : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.kafkaHost = fieldSetFlags()[1] ? this.kafkaHost : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.schemaRegistry = fieldSetFlags()[2] ? this.schemaRegistry : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.autoRegisterSchemas = fieldSetFlags()[3] ? this.autoRegisterSchemas : (java.lang.Boolean) defaultValue(fields()[3]);
-        record.schemaFolder = fieldSetFlags()[4] ? this.schemaFolder : (java.lang.CharSequence) defaultValue(fields()[4]);
-        record.fetchAllVersions = fieldSetFlags()[5] ? this.fetchAllVersions : (java.lang.Boolean) defaultValue(fields()[5]);
-        record.fetchAllSchemas = fieldSetFlags()[6] ? this.fetchAllSchemas : (java.lang.Boolean) defaultValue(fields()[6]);
-        record.heartbeatInterval = fieldSetFlags()[7] ? this.heartbeatInterval : (java.lang.Integer) defaultValue(fields()[7]);
-        record.consume = fieldSetFlags()[8] ? this.consume : (java.util.List<eu.driver.model.core.OffsetFetchRequest>) defaultValue(fields()[8]);
-        record.produce = fieldSetFlags()[9] ? this.produce : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[9]);
+        record.heartbeatInterval = fieldSetFlags()[3] ? this.heartbeatInterval : (java.lang.Integer) defaultValue(fields()[3]);
+        record.consume = fieldSetFlags()[4] ? this.consume : (java.util.List<eu.driver.model.core.OffsetFetchRequest>) defaultValue(fields()[4]);
+        record.produce = fieldSetFlags()[5] ? this.produce : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[5]);
         if (loggingBuilder != null) {
           record.logging = this.loggingBuilder.build();
         } else {
-          record.logging = fieldSetFlags()[10] ? this.logging : (eu.driver.model.core.LogSettings) defaultValue(fields()[10]);
+          record.logging = fieldSetFlags()[6] ? this.logging : (eu.driver.model.core.LogSettings) defaultValue(fields()[6]);
         }
         return record;
       } catch (java.lang.Exception e) {
