@@ -24,7 +24,7 @@ public class TestSchemaProducer {
 		String xmlFile = TestSchemaProducer.class.getResource("/data/examples/cap/amber.xml").getPath();
 
 		Schema schema = new Schema.Parser().parse(new File(avscFile));
-		DatumBuilder datumBuilder = new DatumBuilder(schema, "alert");
+		DatumBuilder datumBuilder = new DatumBuilder(schema);
 		Object datum = datumBuilder.createDatum(new File(xmlFile));
 
 		GenericRecord writeAlert = (GenericRecord) datum;

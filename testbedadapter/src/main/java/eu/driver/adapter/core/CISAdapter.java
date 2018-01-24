@@ -11,7 +11,6 @@ import org.apache.kafka.clients.producer.Producer;
 import org.slf4j.Logger;
 
 import eu.driver.adapter.core.consumer.GenericCallbackConsumer;
-import eu.driver.adapter.core.consumer.GenericPollableConsumer;
 import eu.driver.adapter.core.producer.ConfigurationProducer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
@@ -32,14 +31,12 @@ public class CISAdapter {
 	private ConfigurationProducer configurationProducer;
 	
 	private Map<String, GenericProducer> producerMap;
-	private Map<String, GenericPollableConsumer> pollableConsumerMap;
 	private Map<String, GenericCallbackConsumer> callbackConsumerMap;
 	
 	private Logger logger = CISLogger.logger(CISAdapter.class);
 
 	public CISAdapter() {
 		producerMap = new HashMap<>();
-		pollableConsumerMap = new HashMap<>();
 		callbackConsumerMap = new HashMap<>();
 		initializeProducers();
 		startHeartbeats();
@@ -51,7 +48,7 @@ public class CISAdapter {
 	 * Initializes the core producers used by the CIS Adapter
 	 */
 	private void initializeProducers() {
-		// actual Kafka producer used by all specific producers 
+		// actual Kafka producer used by all generic producers s
 		sharedAvroProducer = new KafkaProducer<IndexedRecord, IndexedRecord>(ProducerProperties.getInstance());
 		// producer that generates periodic heartbeats
 		heartbeatProducer = new HeartbeatProducer(sharedAvroProducer);
@@ -71,26 +68,6 @@ public class CISAdapter {
 		ClientProperties props = ClientProperties.getInstance();
 		int heartbeatInterval = Integer.parseInt(props.getProperty(ClientProperties.HEARTBEAT_INTERVAL));
 		heartbeatProducer.startHeartbeats(heartbeatInterval);
-	}
-	
-	public GenericPollableConsumer getPollableConsumer(String topic) {
-		// TODO: add removing consumer
-		GenericPollableConsumer consumer = pollableConsumerMap.get(topic);
-		if(consumer == null) {
-			consumer = createPollableConsumer(topic);
-			pollableConsumerMap.put(topic, consumer);
-			logger.info("New Generic Pollable Consumer created for topic: " + topic);
-		}
-		return consumer;
-	}
-	
-	private GenericPollableConsumer createPollableConsumer(String topic) {
-		GenericPollableConsumer consumer = new GenericPollableConsumer(createKafkaConsumer(), topic);
-		ClientProperties.getInstance().addConsumedTopic(topic);
-		configurationProducer.sendConfiguration();
-		Thread t = new Thread(consumer); // TODO: maintain this and clean up thread
-		t.start();
-		return consumer;
 	}
 	
 	public void addAvroReceiver(String topic, IAvroReceiver<GenericRecord> receiver) {
