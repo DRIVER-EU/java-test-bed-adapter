@@ -4,7 +4,7 @@ import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
 import eu.driver.adapter.properties.ClientProperties;
-import eu.driver.model.core.LogKey;
+import eu.driver.model.edxl.EDXLDistribution;
 
 /**
  * Producer for sending Log messages to the Common Information Space (CIS). The configuration
@@ -18,10 +18,10 @@ public class LogProducer extends AbstractProducer {
 	public LogProducer(Producer<IndexedRecord, IndexedRecord> producer) {
 		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.LOG_TOPIC));
 	}
-	
-	protected LogKey createKey() {
-		LogKey key = new LogKey();
-		key.setId(getClientId());
-		return key;
+
+	@Override
+	protected EDXLDistribution setEDXLDEValues(EDXLDistribution standardKey) {
+		return standardKey;
 	}
+
 }

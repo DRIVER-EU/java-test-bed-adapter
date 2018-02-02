@@ -10,7 +10,9 @@ import org.apache.kafka.clients.producer.Producer;
 
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.model.core.Heartbeat;
-import eu.driver.model.core.HeartbeatKey;
+import eu.driver.model.edxl.DistributionKind;
+import eu.driver.model.edxl.DistributionStatus;
+import eu.driver.model.edxl.EDXLDistribution;
 
 /**
  * Producer for the CIS Adapter Core Heartbeat messages. The heartbeat topic and
@@ -55,17 +57,17 @@ public class HeartbeatProducer extends AbstractProducer {
 			logger.info("Stopped periodic heartbeats");
 		}
 	}
-
-	@Override
-	protected HeartbeatKey createKey() {
-		HeartbeatKey key = new HeartbeatKey();
-		key.setId(getClientId());
-		return key;
-	}
 	
 	public void send(Heartbeat heartbeat) {
 		super.send(heartbeat);
 		logger.debug("Sent heartbeat: " + heartbeat);
+	}
+
+	@Override
+	protected EDXLDistribution setEDXLDEValues(EDXLDistribution standardKey) {
+		standardKey.setDistributionKind(DistributionKind.Report);
+		standardKey.setDistributionStatus(DistributionStatus.System);
+		return standardKey;
 	}
 
 }

@@ -4,7 +4,7 @@ import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
 import eu.driver.adapter.core.producer.AbstractProducer;
-import eu.driver.model.cap.CapKey;
+import eu.driver.model.edxl.EDXLDistribution;
 
 public class CAPProducer extends AbstractProducer {
 
@@ -13,10 +13,8 @@ public class CAPProducer extends AbstractProducer {
 	}
 
 	@Override
-	protected CapKey createKey() {
-		CapKey key = new CapKey();
-		key.setId(getClientId());
-		return key;
+	protected EDXLDistribution setEDXLDEValues(EDXLDistribution standardKey) {
+		return standardKey;
 	}
 
 }

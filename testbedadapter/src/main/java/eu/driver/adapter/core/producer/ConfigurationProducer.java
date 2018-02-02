@@ -10,8 +10,8 @@ import org.apache.kafka.clients.producer.Producer;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.model.core.Configuration;
-import eu.driver.model.core.ConfigurationKey;
 import eu.driver.model.core.OffsetFetchRequest;
+import eu.driver.model.edxl.EDXLDistribution;
 
 /**
  * Producer for the CIS Adapter Core Configuration messages. The configuration
@@ -24,12 +24,6 @@ public class ConfigurationProducer extends AbstractProducer {
 
 	public ConfigurationProducer(Producer<IndexedRecord, IndexedRecord> producer) {
 		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.CONFIGURATION_TOPIC));
-	}
-	
-	protected ConfigurationKey createKey() {
-		ConfigurationKey key = new ConfigurationKey();
-		key.setId(getClientId());
-		return key;
 	}
 	
 	/**
@@ -71,5 +65,10 @@ public class ConfigurationProducer extends AbstractProducer {
 		
 		send(configMessage);
 		logger.debug("Sent configuration message: " + configMessage);
+	}
+
+	@Override
+	protected EDXLDistribution setEDXLDEValues(EDXLDistribution standardKey) {
+		return standardKey;
 	}
 }
