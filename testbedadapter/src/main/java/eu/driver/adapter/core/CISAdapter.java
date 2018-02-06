@@ -57,8 +57,8 @@ public class CISAdapter {
 		// TODO: initialize producers for configured topics to consume/produce 
 	}
 	
-	private KafkaConsumer<GenericRecord, GenericRecord> createKafkaConsumer() {
-		return new KafkaConsumer<GenericRecord, GenericRecord>(ConsumerProperties.getInstance());
+	private KafkaConsumer<IndexedRecord, IndexedRecord> createKafkaConsumer() {
+		return new KafkaConsumer<IndexedRecord, IndexedRecord>(ConsumerProperties.getInstance());
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class CISAdapter {
 		heartbeatProducer.startHeartbeats(heartbeatInterval);
 	}
 	
-	public void addAvroReceiver(String topic, IAvroReceiver<GenericRecord> receiver) {
+	public void addAvroReceiver(String topic, IAvroReceiver receiver) {
 		// TODO: add removing receiver
 		GenericCallbackConsumer consumer = callbackConsumerMap.get(topic);
 		if(consumer == null) {

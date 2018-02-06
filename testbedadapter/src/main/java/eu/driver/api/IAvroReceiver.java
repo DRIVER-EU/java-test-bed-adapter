@@ -2,7 +2,7 @@ package eu.driver.api;
 
 import org.apache.avro.generic.IndexedRecord;
 
-public interface IAvroReceiver<Message extends IndexedRecord> {
+public interface IAvroReceiver {
 	
 	/**
 	 * Receives a message of type Message from the CIS Adapter.
