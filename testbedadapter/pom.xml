@@ -26,6 +26,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kafka.version>1.0.0</kafka.version>
 		<kafka.scala.version>2.10</kafka.scala.version>
+		<testbed.avro.schema.version>0.0.1</testbed.avro.schema.version>
 		<confluent.version>4.0.0</confluent.version>
 		<avro.version>1.8.2</avro.version>
 		<slf4j.version>1.7.25</slf4j.version>
@@ -34,6 +35,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>driver.eu</groupId>
+			<artifactId>java-adaptor-avro-schemas</artifactId>
+			<version>${testbed.avro.schema.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>ly.stealth</groupId>
 			<artifactId>xml-avro</artifactId>
@@ -162,6 +168,25 @@
 										<goals>
 											<goal>testCompile</goal>
 											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.avro
+										</groupId>
+										<artifactId>
+											avro-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.8.2,)
+										</versionRange>
+										<goals>
+											<goal>schema</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
