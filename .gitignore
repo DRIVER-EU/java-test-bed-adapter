@@ -35,3 +35,7 @@ hs_err_pid*
 /validation-service/.project
 /xml-json-to-avro-mapper/.classpath
 /xml-json-to-avro-mapper/.project
+/java-adaptor-avro-schemas/target/classes/META-INF/MANIFEST.MF
+/java-adaptor-avro-schemas/target/classes/META-INF/maven/driver.eu/java-adaptor-avro-schemas/pom.properties
+/java-adaptor-avro-schemas/target/classes/META-INF/maven/driver.eu/java-adaptor-avro-schemas/pom.xml
+/java-adaptor-avro-schemas/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst

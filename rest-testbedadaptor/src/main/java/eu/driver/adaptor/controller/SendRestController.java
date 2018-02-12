@@ -11,6 +11,10 @@ import io.swagger.annotations.ApiResponses;
 
 
 
+
+
+
+import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +27,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import eu.driver.adapter.core.CISAdapter;
+import eu.driver.adapter.core.producer.GenericProducer;
+import eu.driver.adaptor.mapper.cap.XMLToAVROMapper;
+import eu.driver.examples.adapter.PrintingAvroReceiver;
+
 @RestController
 public class SendRestController implements ResourceProcessor<RepositoryLinksResource> {
 
 	private Logger log = Logger.getLogger(this.getClass());
+	private XMLToAVROMapper avroMapper = new XMLToAVROMapper();
+	private CISAdapter adapter = new CISAdapter();
  
 	@Override
 	public RepositoryLinksResource process(RepositoryLinksResource resource) {
@@ -35,7 +46,8 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 	}
 	
 	public SendRestController() {
-		
+		this.adapter.addAvroReceiver("cap", new PrintingAvroReceiver());
+		this.adapter.addAvroReceiver("connect-status-heartbeat", new PrintingAvroReceiver());
 	}
 	
 	@ApiOperation(value = "sendXMLMessage", nickname = "sendXMLMessage")
@@ -57,7 +69,25 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 		log.debug(xmlMsg);
 		
 		Response response = new Response();
-
+		GenericRecord avroRecord = null;
+		GenericProducer producer = null;
+		// check message type
+		if (type.equalsIgnoreCase("CAP")) {
+			log.info("Processing CAP message.");
+			avroRecord = avroMapper.convertCapToAvro(xmlMsg, true);
+			producer = this.adapter.getProducer("cap");
+			
+		} else if (type.equalsIgnoreCase("MLP")) {
+			log.info("Processing MLP message.");
+			
+		} else if (type.equalsIgnoreCase("EMSI")) {
+			log.info("Processing EMSI message.");
+			
+		}
+		
+		if (avroRecord != null && producer != null) {
+			producer.send(avroRecord);
+		}
 		
 		log.info("sendXMLMessage -->");
 	    return new ResponseEntity<Response>(response, HttpStatus.OK);
