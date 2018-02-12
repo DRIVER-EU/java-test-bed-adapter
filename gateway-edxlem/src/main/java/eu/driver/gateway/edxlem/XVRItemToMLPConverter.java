@@ -15,18 +15,18 @@ import eu.driver.model.mlp.Pos;
 import eu.driver.model.mlp.SlRep;
 import eu.driver.position.PositionParser;
 
-public class AmbulanceToEDXLRMConverter implements IAvroReceiver<Item> {
+public class XVRItemToMLPConverter implements IAvroReceiver<Item> {
 	
 	private GenericProducer outputProducer;
 	
-	public AmbulanceToEDXLRMConverter(GenericProducer producer) {
+	public XVRItemToMLPConverter(GenericProducer producer) {
 		outputProducer = producer;
 	}
 
 	@Override
 	public void receiveMessage(Item message) {
 		SlRep locationReport = itemToStandardLocationReport(message);
-		System.out.println(locationReport);
+		System.out.println("Converted to MLP: " + locationReport);
 	}
 	
 	private SlRep itemToStandardLocationReport(Item item) {

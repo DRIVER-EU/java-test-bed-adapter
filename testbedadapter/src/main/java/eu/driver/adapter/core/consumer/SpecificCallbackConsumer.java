@@ -8,5 +8,5 @@ public class SpecificCallbackConsumer<Key extends IndexedRecord, Value extends I
 	public SpecificCallbackConsumer(Consumer<Key, Value> consumer, String topic) {
 		super(consumer, topic);
 	}
-
+	
 }
