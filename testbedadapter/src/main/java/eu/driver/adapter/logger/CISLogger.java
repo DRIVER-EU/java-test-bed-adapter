@@ -16,6 +16,7 @@ import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Log;
+import eu.driver.model.edxl.EDXLDistribution;
 
 public final class CISLogger extends MarkerIgnoringBase {
 
@@ -55,7 +56,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 
 	private static void lazyInitializeProducer() {
 		if (producer == null) {
-			Producer<IndexedRecord, IndexedRecord> kafkaProducer = new KafkaProducer<>(
+			Producer<EDXLDistribution, IndexedRecord> kafkaProducer = new KafkaProducer<>(
 					ProducerProperties.getInstance());
 			producer = new LogProducer(kafkaProducer);
 		}

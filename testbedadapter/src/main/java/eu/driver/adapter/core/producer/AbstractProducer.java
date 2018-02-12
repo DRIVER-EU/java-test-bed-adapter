@@ -14,15 +14,16 @@ import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.model.edxl.DistributionKind;
 import eu.driver.model.edxl.DistributionStatus;
 import eu.driver.model.edxl.EDXLDistribution;
+import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 
-public abstract class AbstractProducer {
+public abstract class AbstractProducer<Key extends IndexedRecord, Value extends IndexedRecord> {
 	
 	private final String topic;
-	private final Producer<IndexedRecord, IndexedRecord> producer;
+	private final Producer<Key, Value> producer;
 	private static final AtomicInteger counter = new AtomicInteger();
 	protected static final Logger logger = CISLogger.logger(AbstractConsumer.class);
 
-	public AbstractProducer(Producer<IndexedRecord, IndexedRecord> producer, String topic) {
+	public AbstractProducer(Producer<Key, Value> producer, String topic) {
 		this.producer = producer;
 		this.topic = topic;
 	}
@@ -39,10 +40,10 @@ public abstract class AbstractProducer {
 		return ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 	}
 	
-	public void send(IndexedRecord message) {
+	public void send(Value message) {
 		try {
-			IndexedRecord key = createKey();
-			ProducerRecord<IndexedRecord, IndexedRecord> record = new ProducerRecord<>(topic, key, message);
+			Key key = createKey();
+			ProducerRecord<Key, Value> record = new ProducerRecord<>(topic, key, message);
 			producer.send(record);
 		} catch (SerializationException ex) {
 			// TODO: proper logging
@@ -51,17 +52,8 @@ public abstract class AbstractProducer {
 		}
 	}
 	
-	public EDXLDistribution createKey() {
-		EDXLDistribution key = new EDXLDistribution();
-		key.setDateTimeSent(System.currentTimeMillis());
-		key.setDateTimeExpires(Long.MAX_VALUE);
-		key.setDistributionID(getClientId() + "-" + getMessageNumber());
-		key.setSenderID(getClientId());
-		key.setDistributionKind(DistributionKind.Unknown);
-		key.setDistributionStatus(DistributionStatus.Unknown);
-		key = setEDXLDEValues(key);
-		return key;
-	}
+	
+	public abstract Key createKey();
 	
 	/**
 	 * This function must be implemented to override values in the EDXL-DE based key

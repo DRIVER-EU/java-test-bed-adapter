@@ -5,9 +5,9 @@ import org.apache.kafka.clients.producer.Producer;
 
 import eu.driver.model.edxl.EDXLDistribution;
 
-public class GenericProducer extends AbstractProducer {
+public class GenericProducer extends AbstractEDXLDEProducer {
 
-	public GenericProducer(Producer<IndexedRecord, IndexedRecord> producer, String targetTopic) {
+	public GenericProducer(Producer<EDXLDistribution, IndexedRecord> producer, String targetTopic) {
 		super(producer, targetTopic);
 	}
 

@@ -7,13 +7,13 @@ import org.slf4j.Logger;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
 
-public abstract class AbstractConsumer implements Runnable {
+public abstract class AbstractConsumer<Key extends IndexedRecord, Value extends IndexedRecord> implements Runnable {
 
 	private final String topic;
-	protected final Consumer<IndexedRecord, IndexedRecord> consumer;
+	protected final Consumer<Key, Value> consumer;
 	protected static final Logger logger = CISLogger.logger(AbstractConsumer.class);
 
-	public AbstractConsumer(Consumer<IndexedRecord, IndexedRecord> consumer, String topic) {
+	public AbstractConsumer(Consumer<Key, Value> consumer, String topic) {
 		this.consumer = consumer;
 		this.topic = topic;
 	}

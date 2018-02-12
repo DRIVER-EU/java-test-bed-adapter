@@ -7,12 +7,14 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.common.errors.SerializationException;
 
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.edxl.DistributionKind;
 import eu.driver.model.edxl.DistributionStatus;
 import eu.driver.model.edxl.EDXLDistribution;
+import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 
 /**
  * Producer for the CIS Adapter Core Heartbeat messages. The heartbeat topic and
@@ -23,12 +25,12 @@ import eu.driver.model.edxl.EDXLDistribution;
  * @author hameetepa
  *
  */
-public class HeartbeatProducer extends AbstractProducer {
+public class HeartbeatProducer extends AbstractEDXLDEProducer {
 
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
 
-	public HeartbeatProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
 		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.HEARTBEAT_TOPIC));
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 	}
@@ -59,8 +61,12 @@ public class HeartbeatProducer extends AbstractProducer {
 	}
 	
 	public void send(Heartbeat heartbeat) {
-		super.send(heartbeat);
+		try { 
+			super.send(heartbeat);
 		logger.debug("Sent heartbeat: " + heartbeat);
+		} catch (Exception serEx) {
+			logger.error("Could not send heartbeat, because could not register Heartbeat Schema. Is the local schema different from the schema in the registry?");
+		}
 	}
 
 	@Override

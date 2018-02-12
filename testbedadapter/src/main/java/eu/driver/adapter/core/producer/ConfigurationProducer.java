@@ -20,9 +20,9 @@ import eu.driver.model.edxl.EDXLDistribution;
  * 
  * @author hameetepa
  */
-public class ConfigurationProducer extends AbstractProducer {
+public class ConfigurationProducer extends AbstractEDXLDEProducer {
 
-	public ConfigurationProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+	public ConfigurationProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
 		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.CONFIGURATION_TOPIC));
 	}
 	

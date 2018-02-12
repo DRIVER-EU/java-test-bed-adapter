@@ -2,6 +2,7 @@ package eu.driver.examples.adapter;
 
 import org.apache.avro.generic.IndexedRecord;
 
+import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAvroReceiver;
 
 /**
@@ -9,7 +10,7 @@ import eu.driver.api.IAvroReceiver;
  * @author Pieter
  *
  */
-public class PrintingAvroReceiver implements IAvroReceiver {
+public class PrintingAvroReceiver extends GenericAvroReceiver {
 
 	@Override
 	public void receiveMessage(IndexedRecord message) {

@@ -3,12 +3,13 @@ package eu.driver.adapter.cap;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
+import eu.driver.adapter.core.producer.AbstractEDXLDEProducer;
 import eu.driver.adapter.core.producer.AbstractProducer;
 import eu.driver.model.edxl.EDXLDistribution;
 
-public class CAPProducer extends AbstractProducer {
+public class CAPProducer extends AbstractEDXLDEProducer {
 
-	public CAPProducer(Producer<IndexedRecord, IndexedRecord> producer, String topic) {
+	public CAPProducer(Producer<EDXLDistribution, IndexedRecord> producer, String topic) {
 		super(producer, topic);
 	}
 

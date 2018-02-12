@@ -13,9 +13,9 @@ import eu.driver.model.edxl.EDXLDistribution;
  * 
  * @author hameetepa
  */
-public class LogProducer extends AbstractProducer {
+public class LogProducer extends AbstractEDXLDEProducer {
 
-	public LogProducer(Producer<IndexedRecord, IndexedRecord> producer) {
+	public LogProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
 		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.LOG_TOPIC));
 	}
 

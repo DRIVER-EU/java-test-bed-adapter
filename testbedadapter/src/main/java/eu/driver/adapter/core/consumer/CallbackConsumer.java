@@ -11,11 +11,11 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 
 import eu.driver.api.IAvroReceiver;
 
-public abstract class CallbackConsumer extends AbstractConsumer {
+public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends IndexedRecord> extends AbstractConsumer<Key, Value> {
 	
-	private Collection<IAvroReceiver> receivers;
+	private Collection<IAvroReceiver<Value>> receivers;
 
-	public CallbackConsumer(Consumer<IndexedRecord, IndexedRecord> consumer, String topic) {
+	public CallbackConsumer(Consumer<Key, Value> consumer, String topic) {
 		super(consumer, topic);
 		receivers = Collections.synchronizedCollection(new ArrayList<>());
 	}
@@ -25,19 +25,19 @@ public abstract class CallbackConsumer extends AbstractConsumer {
 		consumer.subscribe(Collections.singletonList(getTopic()));
 		logger.debug("Callback Consumer thread started for topic: " + getTopic());
 		while (true) {
-			ConsumerRecords<IndexedRecord, IndexedRecord> records = consumer.poll(1000);
-			for (ConsumerRecord<IndexedRecord, IndexedRecord> record : records) {
-				IndexedRecord message = record.value();
+			ConsumerRecords<Key, Value> records = consumer.poll(1000);
+			for (ConsumerRecord<Key, Value> record : records) {
+				Value message = record.value();
 				sendMessageToReceivers(message);
 			}
 		}
 	}
 	
-	public void addReceiver(IAvroReceiver receiver) {
+	public void addReceiver(IAvroReceiver<Value> receiver) {
 		receivers.add(receiver);
 	}
 	
-	private void sendMessageToReceivers(IndexedRecord message) {
+	private void sendMessageToReceivers(Value message) {
 		receivers.forEach(r -> r.receiveMessage(message));
 	}
 
