@@ -23,8 +23,6 @@ public class CISAdapterCAPExample {
 		// Create a general purpose producer for sending an Avro GenericRecord
 		GenericProducer producer = adapter.getProducer("cap");
 		
-		
-		
 		// Generate a CAP Avro message from an XML source
 		GenericRecord capAvro = generateAvroCapFromXML();
 		// Use the producer to send a CAP message. This will be received and printed via

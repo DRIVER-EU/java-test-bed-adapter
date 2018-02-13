@@ -5,10 +5,10 @@
  */
 package eu.driver.model.mlp;
 
-import org.apache.avro.specific.SpecificData;
-import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
@@ -51,7 +51,7 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
     return DECODER.decode(b);
   }
 
-  @Deprecated public eu.driver.model.mlp.Coord coord;
+  @Deprecated public Coord coord;
   @Deprecated public java.lang.CharSequence attr_gid;
   @Deprecated public java.lang.CharSequence attr_srsName;
 

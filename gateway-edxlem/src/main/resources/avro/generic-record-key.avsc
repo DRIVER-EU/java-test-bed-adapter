@@ -1,8 +1,8 @@
 {
   "type": "record",
-  "name": "HeartbeatKey",
+  "name": "GenericKey",
   "namespace": "eu.driver.model.core",
-  "doc": "Key of a Heartbeat message",
+  "doc": "Key of a Generic Record",
   "fields": [{
   	"name": "id",
   	"type": "string",

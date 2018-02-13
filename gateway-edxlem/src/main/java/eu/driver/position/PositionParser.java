@@ -21,50 +21,9 @@ public class PositionParser {
 		int degrees = (int) Math.floor(londeg);
 		int minutes = (int) Math.floor((londeg - degrees) / (1 / 60.0));
 		double seconds = ((londeg - degrees - (minutes * (1 / 60.0))) / (1 / 3600.0));
-		DecimalFormat df = new DecimalFormat("##.##");
-		df.setMinimumFractionDigits(2);
-		df.setMaximumFractionDigits(2);
-		df.setMinimumIntegerDigits(2);
-		df.setMaximumIntegerDigits(2);
-
-		DecimalFormatSymbols symbols = df.getDecimalFormatSymbols();
-		symbols.setDecimalSeparator('.');
-		df.setDecimalFormatSymbols(symbols);
-
-		if (df.format(seconds).equals(df.format(60.00))) {
-			seconds = 0.0;
-			minutes = minutes + 1;
-		}
-		if (minutes == 60) {
-			minutes = 0;
-			degrees = degrees + 1;
-		}
-
-		// Convert values to strings
-		String degrees2 = String.format("%03d", degrees);
-		String minutes2 = String.format("%02d", minutes);
-		String seconds2 = df.format(seconds);
-
-		return degrees2 + PositionParser.SYMBOL_DEGREES + minutes2 + PositionParser.SYMBOL_MINUTES + seconds2
-				+ eastOrWest;
-	}
-
-	public static String convertLatRadToDMS(double latitude_rad) {
-		double latdeg = Math.toDegrees(latitude_rad);
-
-		char northOrSouth = PositionParser.SYMBOL_NORTH;
-		if (latdeg < 0) {
-			northOrSouth = PositionParser.SYMBOL_SOUTH;
-			latdeg = -latdeg;
-		}
-
-		// Calculate degrees, minutes and seconds
-		int degrees = (int) Math.floor(latdeg);
-		int minutes = (int) Math.floor((latdeg - degrees) / (1 / 60.0));
-		double seconds = ((latdeg - degrees - (minutes * (1 / 60.0))) / (1 / 3600.0));
-		DecimalFormat df = new DecimalFormat("##.##");
-		df.setMinimumFractionDigits(2);
-		df.setMaximumFractionDigits(2);
+		DecimalFormat df = new DecimalFormat("##.###");
+		df.setMinimumFractionDigits(3);
+		df.setMaximumFractionDigits(3);
 		df.setMinimumIntegerDigits(2);
 		df.setMaximumIntegerDigits(2);
 
@@ -86,7 +45,48 @@ public class PositionParser {
 		String minutes2 = String.format("%02d", minutes);
 		String seconds2 = df.format(seconds);
 
-		return degrees2 + PositionParser.SYMBOL_DEGREES + minutes2 + PositionParser.SYMBOL_MINUTES + seconds2
+		return degrees2 + ' ' + minutes2 + ' ' + seconds2
+				+ eastOrWest;
+	}
+
+	public static String convertLatRadToDMS(double latitude_rad) {
+		double latdeg = Math.toDegrees(latitude_rad);
+
+		char northOrSouth = PositionParser.SYMBOL_NORTH;
+		if (latdeg < 0) {
+			northOrSouth = PositionParser.SYMBOL_SOUTH;
+			latdeg = -latdeg;
+		}
+
+		// Calculate degrees, minutes and seconds
+		int degrees = (int) Math.floor(latdeg);
+		int minutes = (int) Math.floor((latdeg - degrees) / (1 / 60.0));
+		double seconds = ((latdeg - degrees - (minutes * (1 / 60.0))) / (1 / 3600.0));
+		DecimalFormat df = new DecimalFormat("##.###");
+		df.setMinimumFractionDigits(3);
+		df.setMaximumFractionDigits(3);
+		df.setMinimumIntegerDigits(2);
+		df.setMaximumIntegerDigits(2);
+
+		DecimalFormatSymbols symbols = df.getDecimalFormatSymbols();
+		symbols.setDecimalSeparator('.');
+		df.setDecimalFormatSymbols(symbols);
+
+		if (df.format(seconds).equals(df.format(60.00))) {
+			seconds = 0.0;
+			minutes = minutes + 1;
+		}
+		if (minutes == 60) {
+			minutes = 0;
+			degrees = degrees + 1;
+		}
+
+		// Convert values to strings
+		String degrees2 = String.format("%02d", degrees);
+		String minutes2 = String.format("%02d", minutes);
+		String seconds2 = df.format(seconds);
+
+		return degrees2 + ' ' + minutes2 + ' ' + seconds2
 				+ northOrSouth;
 	}
 

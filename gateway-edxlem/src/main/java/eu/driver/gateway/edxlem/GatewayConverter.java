@@ -1,12 +1,10 @@
 package eu.driver.gateway.edxlem;
 
-import org.apache.avro.generic.IndexedRecord;
 import org.slf4j.Logger;
 
 import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.logger.CISLogger;
-import eu.driver.api.GenericAvroReceiver;
 
 public class GatewayConverter {
 	
@@ -21,14 +19,14 @@ public class GatewayConverter {
 	
 	public GatewayConverter() {
 		adapter = new CISAdapter();
-//		GenericProducer producer = adapter.getProducer("css-demo-mlp");
-//		XVRItemToMLPConverter xvrToMLPConverter = new XVRItemToMLPConverter(producer);
-//		adapter.addSpecificReceiver("css-demo", xvrToMLPConverter);
-		adapter.addAvroReceiver("css-demo", new GenericAvroReceiver() {
-			@Override
-			public void receiveMessage(IndexedRecord message) {
-				System.out.println("MSG RECEIVED: " + message);
-			}
-		});
+		GenericProducer producer = adapter.getProducer("css-demo-geojson2");
+		XVRItemToGeoJSONConverter xvrToMLPConverter = new XVRItemToGeoJSONConverter(producer);
+		adapter.addSpecificReceiver("css-demo", xvrToMLPConverter);
+//		adapter.addAvroReceiver("css-demo", new GenericAvroReceiver() {
+//			@Override
+//			public void receiveMessage(IndexedRecord message) {
+//				System.out.println("MSG RECEIVED: " + message);
+//			}
+//		});
 	}
 }

@@ -13,6 +13,7 @@ import eu.driver.model.mlp.Pd;
 import eu.driver.model.mlp.Point;
 import eu.driver.model.mlp.Pos;
 import eu.driver.model.mlp.SlRep;
+import eu.driver.model.mlp.Time;
 import eu.driver.position.PositionParser;
 
 public class XVRItemToMLPConverter implements IAvroReceiver<Item> {
@@ -42,7 +43,7 @@ public class XVRItemToMLPConverter implements IAvroReceiver<Item> {
 		double lonRads = Math.toRadians(item.getLocation().getLongitude());
 		String latDMS = PositionParser.convertLatRadToDMS(latRads);
 		String lonDMS = PositionParser.convertLonRadToDMS(lonRads);
-		pdBuilder.setAltAltAcc(new Alt(altitude));
+		pdBuilder.setAlt(new Alt(altitude));
 		
 		Point p = new Point();
 		Coord c = new Coord();
@@ -57,7 +58,9 @@ public class XVRItemToMLPConverter implements IAvroReceiver<Item> {
 		int speed = (int) Math.round(item.getVelocity().getMagnitude());
 		pdBuilder.setSpeed(speed);
 		
-		posBuilder.setPdPoserr(pdBuilder.build());
+		pdBuilder.setTime(new Time(System.currentTimeMillis(), "0000"));
+		
+		posBuilder.setPd(pdBuilder.build());
 		
 		builder.setPos(posBuilder.build());
 		return builder.build();

@@ -12,7 +12,7 @@
       "name": "sender",
       "type": "string"
     },
-    {
+    
       "name": "sent",
       "type": "string",
       "doc": "TODO xs:dateTime Used pattern"

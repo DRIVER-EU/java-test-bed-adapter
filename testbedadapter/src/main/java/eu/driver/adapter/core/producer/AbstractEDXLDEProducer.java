@@ -17,7 +17,7 @@ public abstract class AbstractEDXLDEProducer extends AbstractProducer<EDXLDistri
 	public EDXLDistribution createKey() {
 		EDXLDistribution key = new EDXLDistribution();
 		key.setDateTimeSent(System.currentTimeMillis());
-		key.setDateTimeExpires(Long.MAX_VALUE);
+		key.setDateTimeExpires(System.currentTimeMillis());
 		key.setDistributionID(getClientId() + "-" + getMessageNumber());
 		key.setSenderID(getClientId());
 		key.setDistributionKind(DistributionKind.Unknown);

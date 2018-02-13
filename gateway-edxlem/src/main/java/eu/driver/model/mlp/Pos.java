@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Pos extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4945161268158577666L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Pos\",\"namespace\":\"eu.driver.model.mlp\",\"fields\":[{\"name\":\"msid\",\"type\":{\"type\":\"record\",\"name\":\"Msid\",\"fields\":[{\"name\":\"msid\",\"type\":\"string\"},{\"name\":\"attr_type\",\"type\":{\"type\":\"enum\",\"name\":\"AttrType\",\"symbols\":[\"MSISDN\",\"IMSI\",\"IMEI\",\"MIN\",\"MDN\",\"EME_MSID\",\"ASID\",\"OPE_ID\",\"IPV4\",\"IPV6\",\"SESSID\"]}},{\"name\":\"attr_enc\",\"type\":{\"type\":\"enum\",\"name\":\"AttrEnc\",\"symbols\":[\"ASC\",\"CRP\"]},\"namespace\":\"eu.driver.model.mlp\"}]}},{\"name\":\"pd_poserr\",\"type\":[{\"type\":\"record\",\"name\":\"Pd\",\"fields\":[{\"name\":\"time\",\"type\":{\"type\":\"record\",\"name\":\"Time\",\"fields\":[{\"name\":\"time\",\"type\":\"long\",\"doc\":\"UTC Timestamp in milliseconds. Original MLP uses String: yyyyMMddhhmmss\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"attr_utc_off\",\"type\":\"string\",\"doc\":\"Specifies the UTC [UTC] offset in hours and minutes. Positive values indicate time zones east of Greenwich.\",\"default\":\"0000\"}]}},{\"name\":\"shape\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"fields\":[{\"name\":\"coord\",\"type\":{\"type\":\"record\",\"name\":\"Coord\",\"fields\":[{\"name\":\"X\",\"type\":\"string\",\"doc\":\"The first coordinate in a coordinate system (30 27 45.3N)\"},{\"name\":\"Y\",\"type\":[\"null\",\"string\"],\"doc\":\"Second ordinate in a coordinate.system (45 25 52.9E). This is optional if it is a linear coordinate system.\",\"default\":null},{\"name\":\"Z\",\"type\":[\"null\",\"string\"],\"doc\":\"Third ordinate in a coordinate system which has at least three ordinates.\",\"default\":null}]}},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"LineString\",\"fields\":[{\"name\":\"coord\",\"type\":{\"type\":\"array\",\"items\":\"Coord\"},\"doc\":\"Must contain at least 2 coordinates\"},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"Polygon\",\"fields\":[{\"name\":\"outerBoundaryIs\",\"type\":{\"type\":\"record\",\"name\":\"LinearRing\",\"fields\":[{\"name\":\"coords\",\"type\":{\"type\":\"array\",\"items\":\"Coord\"},\"doc\":\"Must contain at least 3 coordinates\"}]}},{\"name\":\"innerBoundaryIs\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"LinearRing\"}],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"Box\",\"doc\":\"TODO: fix coord top left and bottom right names to be compatible with schema\",\"fields\":[{\"name\":\"coordTopLeft\",\"type\":\"Coord\"},{\"name\":\"coordBottomRight\",\"type\":\"Coord\"},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"CircularArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"radius\",\"type\":\"double\"},{\"name\":\"distanceUnit\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"DistanceUnit\",\"symbols\":[\"meter\"]}],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"CircularArcArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"inRadius\",\"type\":\"double\"},{\"name\":\"outRadius\",\"type\":\"double\"},{\"name\":\"startAngle\",\"type\":\"double\"},{\"name\":\"stopAngle\",\"type\":\"double\"},{\"name\":\"angularUnit\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"AngularUnit\",\"symbols\":[\"Degrees\",\"Radians\"]}],\"default\":null},{\"name\":\"distanceUnit\",\"type\":[\"null\",\"DistanceUnit\"],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"EllipticalArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"angle\",\"type\":\"double\"},{\"name\":\"semiMajor\",\"type\":\"double\"},{\"name\":\"semiMinor\",\"type\":\"double\"},{\"name\":\"stopAngle\",\"type\":\"double\"},{\"name\":\"angularUnit\",\"type\":[\"null\",\"AngularUnit\"],\"default\":null},{\"name\":\"distanceUnit\",\"type\":[\"null\",\"DistanceUnit\"],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]}],\"doc\":\"TODO: add  MultiLineString | MultiPoint | MultiPolygon if they are needed\"},{\"name\":\"alt_alt_acc\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Alt\",\"fields\":[{\"name\":\"alt\",\"type\":\"int\",\"doc\":\"Altitude in meters\"}]},{\"type\":\"record\",\"name\":\"AltAcc\",\"fields\":[{\"name\":\"alt_acc\",\"type\":[\"null\",\"int\"],\"doc\":\"Accuracy of Altitude in meters\",\"default\":null}]}],\"default\":null},{\"name\":\"speed\",\"type\":[\"null\",\"int\"],\"doc\":\"Speed in m/s\",\"default\":null},{\"name\":\"direction\",\"type\":[\"null\",\"int\"],\"doc\":\"Direction of movement in degrees\",\"default\":null},{\"name\":\"lev_conf\",\"type\":[\"null\",\"int\"],\"doc\":\"Probability in percent that the Mobile Station is located in the position area that is returned\",\"default\":null}]},{\"type\":\"record\",\"name\":\"Poserr\",\"fields\":[{\"name\":\"result\",\"type\":{\"type\":\"record\",\"name\":\"Result\",\"fields\":[{\"name\":\"result\",\"type\":{\"type\":\"enum\",\"name\":\"ResultEnum\",\"symbols\":[\"OK\",\"SYSTEM_FAILURE\",\"UNSPECIFIED_ERROR\",\"UNAUTHORIZED_APPLICATION\",\"UNKNOWN_SUBSCRIBER\",\"ABSENT_SUBSCRIBER\",\"POSITION_METHOD_FAILURE\",\"CONGESTION_IN_LOCATION_SERVER\",\"CONGESTION_IN_MOBILE_NETWORK\",\"UNSUPPORTED_VERSION\",\"TOO_MANY_POSITION_ITEMS\",\"FORMAT_ERROR\",\"SYNTAX_ERROR\",\"PROTOCOL_ELEMENT_NOT_SUPPORTED\",\"SERVICE_NOT_SUPPORTED\",\"PROTOCOL_ELEMENT_ATTRIBUTE_NOT_SUPPORTED\",\"INVALID_PROTOCOL_ELEMENT_VALUE\",\"INVALID_PROTOCOL_ELEMENT_ATTRIBUTE_VALUE\",\"PROTOCOL_ELEMENT_VALUE_NOT_SUPPORTED\",\"PROTOCOL_ELEMENT_ATTRIBUTE_VALUE_NOT_SUPPORTED\",\"QOP_NOT_ATTAINABLE\",\"POSITIONING_NOT_ALLOWED\",\"DISALLOWED_BY_LOCAL_REGULATIONS\",\"MISCONFIGURATION_OF_LOCATION_SERVER\"]},\"doc\":\"See MLP 3.1 specifications chapter 5.4 on Result Codes\"},{\"name\":\"attr_resid\",\"type\":\"string\",\"doc\":\"See MLP 3.1 specifications chapter 5.4 on Result Codes\"}]}},{\"name\":\"add_info\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"time\",\"type\":\"Time\"}]}]}]}");
+  private static final long serialVersionUID = -2714485998483034042L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Pos\",\"namespace\":\"eu.driver.model.mlp\",\"fields\":[{\"name\":\"msid\",\"type\":{\"type\":\"record\",\"name\":\"Msid\",\"fields\":[{\"name\":\"msid\",\"type\":\"string\"},{\"name\":\"attr_type\",\"type\":{\"type\":\"enum\",\"name\":\"AttrType\",\"symbols\":[\"MSISDN\",\"IMSI\",\"IMEI\",\"MIN\",\"MDN\",\"EME_MSID\",\"ASID\",\"OPE_ID\",\"IPV4\",\"IPV6\",\"SESSID\"]}},{\"name\":\"attr_enc\",\"type\":{\"type\":\"enum\",\"name\":\"AttrEnc\",\"symbols\":[\"ASC\",\"CRP\"]},\"namespace\":\"eu.driver.model.mlp\"}]}},{\"name\":\"pd\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Pd\",\"fields\":[{\"name\":\"time\",\"type\":{\"type\":\"record\",\"name\":\"Time\",\"fields\":[{\"name\":\"time\",\"type\":\"long\",\"doc\":\"UTC Timestamp in milliseconds. Original MLP uses String: yyyyMMddhhmmss\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"attr_utc_off\",\"type\":\"string\",\"doc\":\"Specifies the UTC [UTC] offset in hours and minutes. Positive values indicate time zones east of Greenwich.\",\"default\":\"0000\"}]}},{\"name\":\"shape\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"fields\":[{\"name\":\"coord\",\"type\":{\"type\":\"record\",\"name\":\"Coord\",\"fields\":[{\"name\":\"X\",\"type\":\"string\",\"doc\":\"The first coordinate in a coordinate system (30 27 45.3N)\"},{\"name\":\"Y\",\"type\":[\"null\",\"string\"],\"doc\":\"Second ordinate in a coordinate.system (45 25 52.9E). This is optional if it is a linear coordinate system.\",\"default\":null},{\"name\":\"Z\",\"type\":[\"null\",\"string\"],\"doc\":\"Third ordinate in a coordinate system which has at least three ordinates.\",\"default\":null}]}},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"LineString\",\"fields\":[{\"name\":\"coord\",\"type\":{\"type\":\"array\",\"items\":\"Coord\"},\"doc\":\"Must contain at least 2 coordinates\"},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"Polygon\",\"fields\":[{\"name\":\"outerBoundaryIs\",\"type\":{\"type\":\"record\",\"name\":\"LinearRing\",\"fields\":[{\"name\":\"coords\",\"type\":{\"type\":\"array\",\"items\":\"Coord\"},\"doc\":\"Must contain at least 3 coordinates\"}]}},{\"name\":\"innerBoundaryIs\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"LinearRing\"}],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"Box\",\"doc\":\"TODO: fix coord top left and bottom right names to be compatible with schema\",\"fields\":[{\"name\":\"coordTopLeft\",\"type\":\"Coord\"},{\"name\":\"coordBottomRight\",\"type\":\"Coord\"},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"CircularArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"radius\",\"type\":\"double\"},{\"name\":\"distanceUnit\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"DistanceUnit\",\"symbols\":[\"meter\"]}],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"CircularArcArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"inRadius\",\"type\":\"double\"},{\"name\":\"outRadius\",\"type\":\"double\"},{\"name\":\"startAngle\",\"type\":\"double\"},{\"name\":\"stopAngle\",\"type\":\"double\"},{\"name\":\"angularUnit\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"AngularUnit\",\"symbols\":[\"Degrees\",\"Radians\"]}],\"default\":null},{\"name\":\"distanceUnit\",\"type\":[\"null\",\"DistanceUnit\"],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]},{\"type\":\"record\",\"name\":\"EllipticalArea\",\"fields\":[{\"name\":\"coord\",\"type\":\"Coord\"},{\"name\":\"angle\",\"type\":\"double\"},{\"name\":\"semiMajor\",\"type\":\"double\"},{\"name\":\"semiMinor\",\"type\":\"double\"},{\"name\":\"stopAngle\",\"type\":\"double\"},{\"name\":\"angularUnit\",\"type\":[\"null\",\"AngularUnit\"],\"default\":null},{\"name\":\"distanceUnit\",\"type\":[\"null\",\"DistanceUnit\"],\"default\":null},{\"name\":\"attr_gid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attr_srsName\",\"type\":[\"null\",\"string\"],\"default\":null}]}],\"doc\":\"TODO: add  MultiLineString | MultiPoint | MultiPolygon if they are needed\"},{\"name\":\"alt\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Alt\",\"fields\":[{\"name\":\"alt\",\"type\":\"int\",\"doc\":\"Altitude in meters\"}]}],\"default\":null},{\"name\":\"altAcc\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"AltAcc\",\"fields\":[{\"name\":\"alt_acc\",\"type\":[\"null\",\"int\"],\"doc\":\"Accuracy of Altitude in meters\",\"default\":null}]}],\"default\":null},{\"name\":\"speed\",\"type\":[\"null\",\"int\"],\"doc\":\"Speed in m/s\",\"default\":null},{\"name\":\"direction\",\"type\":[\"null\",\"int\"],\"doc\":\"Direction of movement in degrees\",\"default\":null},{\"name\":\"lev_conf\",\"type\":[\"null\",\"int\"],\"doc\":\"Probability in percent that the Mobile Station is located in the position area that is returned\",\"default\":null}]}],\"default\":null},{\"name\":\"poserr\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Poserr\",\"fields\":[{\"name\":\"result\",\"type\":{\"type\":\"record\",\"name\":\"Result\",\"fields\":[{\"name\":\"result\",\"type\":{\"type\":\"enum\",\"name\":\"ResultEnum\",\"symbols\":[\"OK\",\"SYSTEM_FAILURE\",\"UNSPECIFIED_ERROR\",\"UNAUTHORIZED_APPLICATION\",\"UNKNOWN_SUBSCRIBER\",\"ABSENT_SUBSCRIBER\",\"POSITION_METHOD_FAILURE\",\"CONGESTION_IN_LOCATION_SERVER\",\"CONGESTION_IN_MOBILE_NETWORK\",\"UNSUPPORTED_VERSION\",\"TOO_MANY_POSITION_ITEMS\",\"FORMAT_ERROR\",\"SYNTAX_ERROR\",\"PROTOCOL_ELEMENT_NOT_SUPPORTED\",\"SERVICE_NOT_SUPPORTED\",\"PROTOCOL_ELEMENT_ATTRIBUTE_NOT_SUPPORTED\",\"INVALID_PROTOCOL_ELEMENT_VALUE\",\"INVALID_PROTOCOL_ELEMENT_ATTRIBUTE_VALUE\",\"PROTOCOL_ELEMENT_VALUE_NOT_SUPPORTED\",\"PROTOCOL_ELEMENT_ATTRIBUTE_VALUE_NOT_SUPPORTED\",\"QOP_NOT_ATTAINABLE\",\"POSITIONING_NOT_ALLOWED\",\"DISALLOWED_BY_LOCAL_REGULATIONS\",\"MISCONFIGURATION_OF_LOCATION_SERVER\"]},\"doc\":\"See MLP 3.1 specifications chapter 5.4 on Result Codes\"},{\"name\":\"attr_resid\",\"type\":\"string\",\"doc\":\"See MLP 3.1 specifications chapter 5.4 on Result Codes\"}]}},{\"name\":\"add_info\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"time\",\"type\":\"Time\"}]}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,8 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
   }
 
   @Deprecated public eu.driver.model.mlp.Msid msid;
-  @Deprecated public java.lang.Object pd_poserr;
+  @Deprecated public eu.driver.model.mlp.Pd pd;
+  @Deprecated public eu.driver.model.mlp.Poserr poserr;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -64,11 +65,13 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
   /**
    * All-args constructor.
    * @param msid The new value for msid
-   * @param pd_poserr The new value for pd_poserr
+   * @param pd The new value for pd
+   * @param poserr The new value for poserr
    */
-  public Pos(eu.driver.model.mlp.Msid msid, java.lang.Object pd_poserr) {
+  public Pos(eu.driver.model.mlp.Msid msid, eu.driver.model.mlp.Pd pd, eu.driver.model.mlp.Poserr poserr) {
     this.msid = msid;
-    this.pd_poserr = pd_poserr;
+    this.pd = pd;
+    this.poserr = poserr;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -76,7 +79,8 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return msid;
-    case 1: return pd_poserr;
+    case 1: return pd;
+    case 2: return poserr;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -86,7 +90,8 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: msid = (eu.driver.model.mlp.Msid)value$; break;
-    case 1: pd_poserr = (java.lang.Object)value$; break;
+    case 1: pd = (eu.driver.model.mlp.Pd)value$; break;
+    case 2: poserr = (eu.driver.model.mlp.Poserr)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -108,19 +113,35 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
   }
 
   /**
-   * Gets the value of the 'pd_poserr' field.
-   * @return The value of the 'pd_poserr' field.
+   * Gets the value of the 'pd' field.
+   * @return The value of the 'pd' field.
    */
-  public java.lang.Object getPdPoserr() {
-    return pd_poserr;
+  public eu.driver.model.mlp.Pd getPd() {
+    return pd;
   }
 
   /**
-   * Sets the value of the 'pd_poserr' field.
+   * Sets the value of the 'pd' field.
    * @param value the value to set.
    */
-  public void setPdPoserr(java.lang.Object value) {
-    this.pd_poserr = value;
+  public void setPd(eu.driver.model.mlp.Pd value) {
+    this.pd = value;
+  }
+
+  /**
+   * Gets the value of the 'poserr' field.
+   * @return The value of the 'poserr' field.
+   */
+  public eu.driver.model.mlp.Poserr getPoserr() {
+    return poserr;
+  }
+
+  /**
+   * Sets the value of the 'poserr' field.
+   * @param value the value to set.
+   */
+  public void setPoserr(eu.driver.model.mlp.Poserr value) {
+    this.poserr = value;
   }
 
   /**
@@ -157,7 +178,10 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
 
     private eu.driver.model.mlp.Msid msid;
     private eu.driver.model.mlp.Msid.Builder msidBuilder;
-    private java.lang.Object pd_poserr;
+    private eu.driver.model.mlp.Pd pd;
+    private eu.driver.model.mlp.Pd.Builder pdBuilder;
+    private eu.driver.model.mlp.Poserr poserr;
+    private eu.driver.model.mlp.Poserr.Builder poserrBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -177,9 +201,19 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
       if (other.hasMsidBuilder()) {
         this.msidBuilder = eu.driver.model.mlp.Msid.newBuilder(other.getMsidBuilder());
       }
-      if (isValidValue(fields()[1], other.pd_poserr)) {
-        this.pd_poserr = data().deepCopy(fields()[1].schema(), other.pd_poserr);
+      if (isValidValue(fields()[1], other.pd)) {
+        this.pd = data().deepCopy(fields()[1].schema(), other.pd);
         fieldSetFlags()[1] = true;
+      }
+      if (other.hasPdBuilder()) {
+        this.pdBuilder = eu.driver.model.mlp.Pd.newBuilder(other.getPdBuilder());
+      }
+      if (isValidValue(fields()[2], other.poserr)) {
+        this.poserr = data().deepCopy(fields()[2].schema(), other.poserr);
+        fieldSetFlags()[2] = true;
+      }
+      if (other.hasPoserrBuilder()) {
+        this.poserrBuilder = eu.driver.model.mlp.Poserr.newBuilder(other.getPoserrBuilder());
       }
     }
 
@@ -194,10 +228,16 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
         fieldSetFlags()[0] = true;
       }
       this.msidBuilder = null;
-      if (isValidValue(fields()[1], other.pd_poserr)) {
-        this.pd_poserr = data().deepCopy(fields()[1].schema(), other.pd_poserr);
+      if (isValidValue(fields()[1], other.pd)) {
+        this.pd = data().deepCopy(fields()[1].schema(), other.pd);
         fieldSetFlags()[1] = true;
       }
+      this.pdBuilder = null;
+      if (isValidValue(fields()[2], other.poserr)) {
+        this.poserr = data().deepCopy(fields()[2].schema(), other.poserr);
+        fieldSetFlags()[2] = true;
+      }
+      this.poserrBuilder = null;
     }
 
     /**
@@ -275,41 +315,150 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
     }
 
     /**
-      * Gets the value of the 'pd_poserr' field.
+      * Gets the value of the 'pd' field.
       * @return The value.
       */
-    public java.lang.Object getPdPoserr() {
-      return pd_poserr;
+    public eu.driver.model.mlp.Pd getPd() {
+      return pd;
     }
 
     /**
-      * Sets the value of the 'pd_poserr' field.
-      * @param value The value of 'pd_poserr'.
+      * Sets the value of the 'pd' field.
+      * @param value The value of 'pd'.
       * @return This builder.
       */
-    public eu.driver.model.mlp.Pos.Builder setPdPoserr(java.lang.Object value) {
+    public eu.driver.model.mlp.Pos.Builder setPd(eu.driver.model.mlp.Pd value) {
       validate(fields()[1], value);
-      this.pd_poserr = value;
+      this.pdBuilder = null;
+      this.pd = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'pd_poserr' field has been set.
-      * @return True if the 'pd_poserr' field has been set, false otherwise.
+      * Checks whether the 'pd' field has been set.
+      * @return True if the 'pd' field has been set, false otherwise.
       */
-    public boolean hasPdPoserr() {
+    public boolean hasPd() {
       return fieldSetFlags()[1];
     }
 
+    /**
+     * Gets the Builder instance for the 'pd' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public eu.driver.model.mlp.Pd.Builder getPdBuilder() {
+      if (pdBuilder == null) {
+        if (hasPd()) {
+          setPdBuilder(eu.driver.model.mlp.Pd.newBuilder(pd));
+        } else {
+          setPdBuilder(eu.driver.model.mlp.Pd.newBuilder());
+        }
+      }
+      return pdBuilder;
+    }
 
     /**
-      * Clears the value of the 'pd_poserr' field.
+     * Sets the Builder instance for the 'pd' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public eu.driver.model.mlp.Pos.Builder setPdBuilder(eu.driver.model.mlp.Pd.Builder value) {
+      clearPd();
+      pdBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'pd' field has an active Builder instance
+     * @return True if the 'pd' field has an active Builder instance
+     */
+    public boolean hasPdBuilder() {
+      return pdBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'pd' field.
       * @return This builder.
       */
-    public eu.driver.model.mlp.Pos.Builder clearPdPoserr() {
-      pd_poserr = null;
+    public eu.driver.model.mlp.Pos.Builder clearPd() {
+      pd = null;
+      pdBuilder = null;
       fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'poserr' field.
+      * @return The value.
+      */
+    public eu.driver.model.mlp.Poserr getPoserr() {
+      return poserr;
+    }
+
+    /**
+      * Sets the value of the 'poserr' field.
+      * @param value The value of 'poserr'.
+      * @return This builder.
+      */
+    public eu.driver.model.mlp.Pos.Builder setPoserr(eu.driver.model.mlp.Poserr value) {
+      validate(fields()[2], value);
+      this.poserrBuilder = null;
+      this.poserr = value;
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'poserr' field has been set.
+      * @return True if the 'poserr' field has been set, false otherwise.
+      */
+    public boolean hasPoserr() {
+      return fieldSetFlags()[2];
+    }
+
+    /**
+     * Gets the Builder instance for the 'poserr' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public eu.driver.model.mlp.Poserr.Builder getPoserrBuilder() {
+      if (poserrBuilder == null) {
+        if (hasPoserr()) {
+          setPoserrBuilder(eu.driver.model.mlp.Poserr.newBuilder(poserr));
+        } else {
+          setPoserrBuilder(eu.driver.model.mlp.Poserr.newBuilder());
+        }
+      }
+      return poserrBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'poserr' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public eu.driver.model.mlp.Pos.Builder setPoserrBuilder(eu.driver.model.mlp.Poserr.Builder value) {
+      clearPoserr();
+      poserrBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'poserr' field has an active Builder instance
+     * @return True if the 'poserr' field has an active Builder instance
+     */
+    public boolean hasPoserrBuilder() {
+      return poserrBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'poserr' field.
+      * @return This builder.
+      */
+    public eu.driver.model.mlp.Pos.Builder clearPoserr() {
+      poserr = null;
+      poserrBuilder = null;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -323,7 +472,16 @@ public class Pos extends org.apache.avro.specific.SpecificRecordBase implements 
         } else {
           record.msid = fieldSetFlags()[0] ? this.msid : (eu.driver.model.mlp.Msid) defaultValue(fields()[0]);
         }
-        record.pd_poserr = fieldSetFlags()[1] ? this.pd_poserr : (java.lang.Object) defaultValue(fields()[1]);
+        if (pdBuilder != null) {
+          record.pd = this.pdBuilder.build();
+        } else {
+          record.pd = fieldSetFlags()[1] ? this.pd : (eu.driver.model.mlp.Pd) defaultValue(fields()[1]);
+        }
+        if (poserrBuilder != null) {
+          record.poserr = this.poserrBuilder.build();
+        } else {
+          record.poserr = fieldSetFlags()[2] ? this.poserr : (eu.driver.model.mlp.Poserr) defaultValue(fields()[2]);
+        }
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

@@ -40,7 +40,7 @@ public class CISAdapter {
 	public CISAdapter() {
 		producerMap = new HashMap<>();
 		initializeProducers();
-		//startHeartbeats();
+		startHeartbeats();
 		configurationProducer.sendConfiguration(); // send initial configuration
 		logger.info("CISAdapter initialized");
 	}

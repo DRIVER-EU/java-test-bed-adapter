@@ -64,8 +64,8 @@
                       }
                     },
                     {
-                      "name": "pd_poserr",
-                      "type": [
+                      "name": "pd",
+                      "type": ["null",
                         {
                           "name": "Pd",
                           "namespace": "eu.driver.model.mlp",
@@ -376,11 +376,9 @@
                                 }
                               ]
                             },
-                            {
-                              "name": "alt_alt_acc",
-                              "type": [
-                                "null",
-                                {
+							{
+								"name": "alt",
+								"type": ["null", {
                                   "name": "Alt",
                                   "namespace": "eu.driver.model.mlp",
                                   "type": "record",
@@ -391,8 +389,12 @@
                                       "doc": "Altitude in meters"
                                     }
                                   ]
-                                },
-                                {
+                                }],
+								"default": null
+							},
+							{
+								"name": "altAcc",
+								"type": ["null", {
                                   "name": "AltAcc",
                                   "namespace": "eu.driver.model.mlp",
                                   "type": "record",
@@ -404,10 +406,9 @@
                                       "doc": "Accuracy of Altitude in meters"
                                     }
                                   ]
-                                }
-                              ],
-                              "default": null
-                            },
+                                }],
+								"default": null
+							},
                             {
                               "name": "speed",
                               "doc": "Speed in m/s",
@@ -427,8 +428,12 @@
                               "default": null
                             }
                           ]
-                        },
-                        {
+                        }],
+						"default": null
+					},
+					{
+						"name": "poserr",
+						"type": ["null", {
                           "name": "Poserr",
                           "namespace": "eu.driver.model.mlp",
                           "type": "record",
@@ -494,7 +499,8 @@
                             }
                           ]
                         }
-                    ]
+                    ],
+					"default": null
                   }
                 ]
               }
