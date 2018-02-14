@@ -34,11 +34,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>ly.stealth</groupId>
-			<artifactId>xml-avro</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
@@ -53,11 +48,6 @@
 			<groupId>org.apache.avro</groupId>
 			<artifactId>avro-maven-plugin</artifactId>
 			<version>${avro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.confluent</groupId>
-			<artifactId>kafka-avro-serializer</artifactId>
-			<version>${confluent.version}</version>
 		</dependency>
 	</dependencies>
 
