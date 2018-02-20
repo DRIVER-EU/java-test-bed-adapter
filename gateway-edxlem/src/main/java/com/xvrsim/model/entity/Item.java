@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** XVR Simulation Item, representing a visual entity inside the simulation world */
 @org.apache.avro.specific.AvroGenerated
 public class Item extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4545517960687460105L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Item\",\"namespace\":\"com.xvrsim.model.entity\",\"doc\":\"XVR Simulation Item, representing a visual entity inside the simulation world\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]},\"doc\":\"location of this item\"},{\"name\":\"orientation\",\"type\":{\"type\":\"record\",\"name\":\"Orientation\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84/Aviation-based representation of an orientation on earth - Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"roll\",\"type\":\"double\",\"doc\":\"roll or bank in degrees (-180, 180] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - bank of +45 is 45 degrees roll to the right, -45 is 45 degrees roll to the left\"}]},\"doc\":\"orientation of this item\"},{\"name\":\"velocity\",\"type\":{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]},\"doc\":\"movement vector of the item, including the magnitude\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is movable in the simulation world\"},{\"name\":\"tags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of all tags associated with this item\",\"default\":null},{\"name\":\"physicalConnections\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of physical connection entities references (represented by their GUIDs) this item has\",\"default\":null},{\"name\":\"group\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the group connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"formation\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the formation connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"unit\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the unit connection entity (represented by its GUID) this item is part of\",\"default\":null}]}");
+  private static final long serialVersionUID = -8942752223655657126L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Item\",\"namespace\":\"com.xvrsim.model.entity\",\"doc\":\"XVR Simulation Item, representing a visual entity inside the simulation world\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]},\"doc\":\"location of this item\"},{\"name\":\"orientation\",\"type\":{\"type\":\"record\",\"name\":\"Orientation\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84/Aviation-based representation of an orientation on earth - Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"roll\",\"type\":\"double\",\"doc\":\"roll or bank in degrees (-180, 180] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - bank of +45 is 45 degrees roll to the right, -45 is 45 degrees roll to the left\"}]},\"doc\":\"orientation of this item\"},{\"name\":\"velocity\",\"type\":{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]},\"doc\":\"movement vector of the item, including the magnitude\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is movable in the simulation world\"},{\"name\":\"itemType\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"ObjectType\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is an object\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectSubType\",\"symbols\":[\"PROP\",\"TOOL\"]},\"doc\":\"sub type of objects that this item is\"}]},{\"type\":\"record\",\"name\":\"PersonType\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is a person\",\"fields\":[{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"PersonSubType\",\"symbols\":[\"MALE\",\"FEMALE\",\"UNKNOWN\"]},\"doc\":\"gender of the person\"}]},{\"type\":\"record\",\"name\":\"VehicleType\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is a vehicle\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"VehicleSubType\",\"symbols\":[\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\"]},\"doc\":\"sub type of vehicles that this item is\"}]}],\"doc\":\"concrete type of this item - can be of type ObjectType, PersonType or VehicleType\",\"default\":null},{\"name\":\"scenarioLabel\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"EnvironmentLabel\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is labeled as environment\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"EnvironmentSubLabel\",\"symbols\":[\"FOLIAGE\",\"ROAD\"]},\"doc\":\"sub label of environment that this item has\"}]},{\"type\":\"record\",\"name\":\"IncidentLabel\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is labeled as incident\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"IncidentSubLabel\",\"symbols\":[\"FIRE\",\"CRASH\"]},\"doc\":\"sub label of incident that this item has\"}]},{\"type\":\"record\",\"name\":\"RescueLabel\",\"namespace\":\"com.xvrsim.model.entity.item\",\"doc\":\"information if the item is labeled as rescue\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"RescueSubLabel\",\"symbols\":[\"POLICE\",\"MEDICAL\",\"FIRE\",\"SECURITY\",\"MILITARY\"]},\"doc\":\"sub label of rescue that this item has\"}]}],\"doc\":\"scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel\",\"default\":null},{\"name\":\"userTags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of all tags the user provided associated with this item\",\"default\":null},{\"name\":\"physicalConnections\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of physical connection entities references (represented by their GUIDs) this item has\",\"default\":null},{\"name\":\"group\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the group connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"formation\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the formation connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"unit\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the unit connection entity (represented by its GUID) this item is part of\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -68,8 +68,12 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
   @Deprecated public boolean visibleForParticipant;
   /** indication whether or not this item is movable in the simulation world */
   @Deprecated public boolean movable;
-  /** list of all tags associated with this item */
-  @Deprecated public java.util.List<java.lang.CharSequence> tags;
+  /** concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
+  @Deprecated public java.lang.Object itemType;
+  /** scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
+  @Deprecated public java.lang.Object scenarioLabel;
+  /** list of all tags the user provided associated with this item */
+  @Deprecated public java.util.List<java.lang.CharSequence> userTags;
   /** list of physical connection entities references (represented by their GUIDs) this item has */
   @Deprecated public java.util.List<java.lang.CharSequence> physicalConnections;
   /** reference to the group connection entity (represented by its GUID) this item is part of */
@@ -96,13 +100,15 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
    * @param velocity movement vector of the item, including the magnitude
    * @param visibleForParticipant indication whether or not this item is visible for all participants
    * @param movable indication whether or not this item is movable in the simulation world
-   * @param tags list of all tags associated with this item
+   * @param itemType concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+   * @param scenarioLabel scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   * @param userTags list of all tags the user provided associated with this item
    * @param physicalConnections list of physical connection entities references (represented by their GUIDs) this item has
    * @param group reference to the group connection entity (represented by its GUID) this item is part of
    * @param formation reference to the formation connection entity (represented by its GUID) this item is part of
    * @param unit reference to the unit connection entity (represented by its GUID) this item is part of
    */
-  public Item(java.lang.CharSequence guid, java.lang.CharSequence name, java.lang.CharSequence owner, eu.driver.model.geo.Location location, eu.driver.model.geo.Orientation orientation, eu.driver.model.geo.Velocity velocity, java.lang.Boolean visibleForParticipant, java.lang.Boolean movable, java.util.List<java.lang.CharSequence> tags, java.util.List<java.lang.CharSequence> physicalConnections, java.lang.CharSequence group, java.lang.CharSequence formation, java.lang.CharSequence unit) {
+  public Item(java.lang.CharSequence guid, java.lang.CharSequence name, java.lang.CharSequence owner, eu.driver.model.geo.Location location, eu.driver.model.geo.Orientation orientation, eu.driver.model.geo.Velocity velocity, java.lang.Boolean visibleForParticipant, java.lang.Boolean movable, java.lang.Object itemType, java.lang.Object scenarioLabel, java.util.List<java.lang.CharSequence> userTags, java.util.List<java.lang.CharSequence> physicalConnections, java.lang.CharSequence group, java.lang.CharSequence formation, java.lang.CharSequence unit) {
     this.guid = guid;
     this.name = name;
     this.owner = owner;
@@ -111,7 +117,9 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     this.velocity = velocity;
     this.visibleForParticipant = visibleForParticipant;
     this.movable = movable;
-    this.tags = tags;
+    this.itemType = itemType;
+    this.scenarioLabel = scenarioLabel;
+    this.userTags = userTags;
     this.physicalConnections = physicalConnections;
     this.group = group;
     this.formation = formation;
@@ -130,11 +138,13 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     case 5: return velocity;
     case 6: return visibleForParticipant;
     case 7: return movable;
-    case 8: return tags;
-    case 9: return physicalConnections;
-    case 10: return group;
-    case 11: return formation;
-    case 12: return unit;
+    case 8: return itemType;
+    case 9: return scenarioLabel;
+    case 10: return userTags;
+    case 11: return physicalConnections;
+    case 12: return group;
+    case 13: return formation;
+    case 14: return unit;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -151,11 +161,13 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     case 5: velocity = (eu.driver.model.geo.Velocity)value$; break;
     case 6: visibleForParticipant = (java.lang.Boolean)value$; break;
     case 7: movable = (java.lang.Boolean)value$; break;
-    case 8: tags = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 9: physicalConnections = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 10: group = (java.lang.CharSequence)value$; break;
-    case 11: formation = (java.lang.CharSequence)value$; break;
-    case 12: unit = (java.lang.CharSequence)value$; break;
+    case 8: itemType = (java.lang.Object)value$; break;
+    case 9: scenarioLabel = (java.lang.Object)value$; break;
+    case 10: userTags = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 11: physicalConnections = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 12: group = (java.lang.CharSequence)value$; break;
+    case 13: formation = (java.lang.CharSequence)value$; break;
+    case 14: unit = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -297,20 +309,54 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
   }
 
   /**
-   * Gets the value of the 'tags' field.
-   * @return list of all tags associated with this item
+   * Gets the value of the 'itemType' field.
+   * @return concrete type of this item - can be of type ObjectType, PersonType or VehicleType
    */
-  public java.util.List<java.lang.CharSequence> getTags() {
-    return tags;
+  public java.lang.Object getItemType() {
+    return itemType;
   }
 
   /**
-   * Sets the value of the 'tags' field.
-   * list of all tags associated with this item
+   * Sets the value of the 'itemType' field.
+   * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
    * @param value the value to set.
    */
-  public void setTags(java.util.List<java.lang.CharSequence> value) {
-    this.tags = value;
+  public void setItemType(java.lang.Object value) {
+    this.itemType = value;
+  }
+
+  /**
+   * Gets the value of the 'scenarioLabel' field.
+   * @return scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   */
+  public java.lang.Object getScenarioLabel() {
+    return scenarioLabel;
+  }
+
+  /**
+   * Sets the value of the 'scenarioLabel' field.
+   * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   * @param value the value to set.
+   */
+  public void setScenarioLabel(java.lang.Object value) {
+    this.scenarioLabel = value;
+  }
+
+  /**
+   * Gets the value of the 'userTags' field.
+   * @return list of all tags the user provided associated with this item
+   */
+  public java.util.List<java.lang.CharSequence> getUserTags() {
+    return userTags;
+  }
+
+  /**
+   * Sets the value of the 'userTags' field.
+   * list of all tags the user provided associated with this item
+   * @param value the value to set.
+   */
+  public void setUserTags(java.util.List<java.lang.CharSequence> value) {
+    this.userTags = value;
   }
 
   /**
@@ -432,8 +478,12 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     private boolean visibleForParticipant;
     /** indication whether or not this item is movable in the simulation world */
     private boolean movable;
-    /** list of all tags associated with this item */
-    private java.util.List<java.lang.CharSequence> tags;
+    /** concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
+    private java.lang.Object itemType;
+    /** scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
+    private java.lang.Object scenarioLabel;
+    /** list of all tags the user provided associated with this item */
+    private java.util.List<java.lang.CharSequence> userTags;
     /** list of physical connection entities references (represented by their GUIDs) this item has */
     private java.util.List<java.lang.CharSequence> physicalConnections;
     /** reference to the group connection entity (represented by its GUID) this item is part of */
@@ -495,25 +545,33 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
         this.movable = data().deepCopy(fields()[7].schema(), other.movable);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.tags)) {
-        this.tags = data().deepCopy(fields()[8].schema(), other.tags);
+      if (isValidValue(fields()[8], other.itemType)) {
+        this.itemType = data().deepCopy(fields()[8].schema(), other.itemType);
         fieldSetFlags()[8] = true;
       }
-      if (isValidValue(fields()[9], other.physicalConnections)) {
-        this.physicalConnections = data().deepCopy(fields()[9].schema(), other.physicalConnections);
+      if (isValidValue(fields()[9], other.scenarioLabel)) {
+        this.scenarioLabel = data().deepCopy(fields()[9].schema(), other.scenarioLabel);
         fieldSetFlags()[9] = true;
       }
-      if (isValidValue(fields()[10], other.group)) {
-        this.group = data().deepCopy(fields()[10].schema(), other.group);
+      if (isValidValue(fields()[10], other.userTags)) {
+        this.userTags = data().deepCopy(fields()[10].schema(), other.userTags);
         fieldSetFlags()[10] = true;
       }
-      if (isValidValue(fields()[11], other.formation)) {
-        this.formation = data().deepCopy(fields()[11].schema(), other.formation);
+      if (isValidValue(fields()[11], other.physicalConnections)) {
+        this.physicalConnections = data().deepCopy(fields()[11].schema(), other.physicalConnections);
         fieldSetFlags()[11] = true;
       }
-      if (isValidValue(fields()[12], other.unit)) {
-        this.unit = data().deepCopy(fields()[12].schema(), other.unit);
+      if (isValidValue(fields()[12], other.group)) {
+        this.group = data().deepCopy(fields()[12].schema(), other.group);
         fieldSetFlags()[12] = true;
+      }
+      if (isValidValue(fields()[13], other.formation)) {
+        this.formation = data().deepCopy(fields()[13].schema(), other.formation);
+        fieldSetFlags()[13] = true;
+      }
+      if (isValidValue(fields()[14], other.unit)) {
+        this.unit = data().deepCopy(fields()[14].schema(), other.unit);
+        fieldSetFlags()[14] = true;
       }
     }
 
@@ -558,25 +616,33 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
         this.movable = data().deepCopy(fields()[7].schema(), other.movable);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.tags)) {
-        this.tags = data().deepCopy(fields()[8].schema(), other.tags);
+      if (isValidValue(fields()[8], other.itemType)) {
+        this.itemType = data().deepCopy(fields()[8].schema(), other.itemType);
         fieldSetFlags()[8] = true;
       }
-      if (isValidValue(fields()[9], other.physicalConnections)) {
-        this.physicalConnections = data().deepCopy(fields()[9].schema(), other.physicalConnections);
+      if (isValidValue(fields()[9], other.scenarioLabel)) {
+        this.scenarioLabel = data().deepCopy(fields()[9].schema(), other.scenarioLabel);
         fieldSetFlags()[9] = true;
       }
-      if (isValidValue(fields()[10], other.group)) {
-        this.group = data().deepCopy(fields()[10].schema(), other.group);
+      if (isValidValue(fields()[10], other.userTags)) {
+        this.userTags = data().deepCopy(fields()[10].schema(), other.userTags);
         fieldSetFlags()[10] = true;
       }
-      if (isValidValue(fields()[11], other.formation)) {
-        this.formation = data().deepCopy(fields()[11].schema(), other.formation);
+      if (isValidValue(fields()[11], other.physicalConnections)) {
+        this.physicalConnections = data().deepCopy(fields()[11].schema(), other.physicalConnections);
         fieldSetFlags()[11] = true;
       }
-      if (isValidValue(fields()[12], other.unit)) {
-        this.unit = data().deepCopy(fields()[12].schema(), other.unit);
+      if (isValidValue(fields()[12], other.group)) {
+        this.group = data().deepCopy(fields()[12].schema(), other.group);
         fieldSetFlags()[12] = true;
+      }
+      if (isValidValue(fields()[13], other.formation)) {
+        this.formation = data().deepCopy(fields()[13].schema(), other.formation);
+        fieldSetFlags()[13] = true;
+      }
+      if (isValidValue(fields()[14], other.unit)) {
+        this.unit = data().deepCopy(fields()[14].schema(), other.unit);
+        fieldSetFlags()[14] = true;
       }
     }
 
@@ -1037,45 +1103,131 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     }
 
     /**
-      * Gets the value of the 'tags' field.
-      * list of all tags associated with this item
+      * Gets the value of the 'itemType' field.
+      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @return The value.
       */
-    public java.util.List<java.lang.CharSequence> getTags() {
-      return tags;
+    public java.lang.Object getItemType() {
+      return itemType;
     }
 
     /**
-      * Sets the value of the 'tags' field.
-      * list of all tags associated with this item
-      * @param value The value of 'tags'.
+      * Sets the value of the 'itemType' field.
+      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * @param value The value of 'itemType'.
       * @return This builder.
       */
-    public com.xvrsim.model.entity.Item.Builder setTags(java.util.List<java.lang.CharSequence> value) {
+    public com.xvrsim.model.entity.Item.Builder setItemType(java.lang.Object value) {
       validate(fields()[8], value);
-      this.tags = value;
+      this.itemType = value;
       fieldSetFlags()[8] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'tags' field has been set.
-      * list of all tags associated with this item
-      * @return True if the 'tags' field has been set, false otherwise.
+      * Checks whether the 'itemType' field has been set.
+      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * @return True if the 'itemType' field has been set, false otherwise.
       */
-    public boolean hasTags() {
+    public boolean hasItemType() {
       return fieldSetFlags()[8];
     }
 
 
     /**
-      * Clears the value of the 'tags' field.
-      * list of all tags associated with this item
+      * Clears the value of the 'itemType' field.
+      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @return This builder.
       */
-    public com.xvrsim.model.entity.Item.Builder clearTags() {
-      tags = null;
+    public com.xvrsim.model.entity.Item.Builder clearItemType() {
+      itemType = null;
       fieldSetFlags()[8] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'scenarioLabel' field.
+      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * @return The value.
+      */
+    public java.lang.Object getScenarioLabel() {
+      return scenarioLabel;
+    }
+
+    /**
+      * Sets the value of the 'scenarioLabel' field.
+      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * @param value The value of 'scenarioLabel'.
+      * @return This builder.
+      */
+    public com.xvrsim.model.entity.Item.Builder setScenarioLabel(java.lang.Object value) {
+      validate(fields()[9], value);
+      this.scenarioLabel = value;
+      fieldSetFlags()[9] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'scenarioLabel' field has been set.
+      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * @return True if the 'scenarioLabel' field has been set, false otherwise.
+      */
+    public boolean hasScenarioLabel() {
+      return fieldSetFlags()[9];
+    }
+
+
+    /**
+      * Clears the value of the 'scenarioLabel' field.
+      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * @return This builder.
+      */
+    public com.xvrsim.model.entity.Item.Builder clearScenarioLabel() {
+      scenarioLabel = null;
+      fieldSetFlags()[9] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'userTags' field.
+      * list of all tags the user provided associated with this item
+      * @return The value.
+      */
+    public java.util.List<java.lang.CharSequence> getUserTags() {
+      return userTags;
+    }
+
+    /**
+      * Sets the value of the 'userTags' field.
+      * list of all tags the user provided associated with this item
+      * @param value The value of 'userTags'.
+      * @return This builder.
+      */
+    public com.xvrsim.model.entity.Item.Builder setUserTags(java.util.List<java.lang.CharSequence> value) {
+      validate(fields()[10], value);
+      this.userTags = value;
+      fieldSetFlags()[10] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'userTags' field has been set.
+      * list of all tags the user provided associated with this item
+      * @return True if the 'userTags' field has been set, false otherwise.
+      */
+    public boolean hasUserTags() {
+      return fieldSetFlags()[10];
+    }
+
+
+    /**
+      * Clears the value of the 'userTags' field.
+      * list of all tags the user provided associated with this item
+      * @return This builder.
+      */
+    public com.xvrsim.model.entity.Item.Builder clearUserTags() {
+      userTags = null;
+      fieldSetFlags()[10] = false;
       return this;
     }
 
@@ -1095,9 +1247,9 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return This builder.
       */
     public com.xvrsim.model.entity.Item.Builder setPhysicalConnections(java.util.List<java.lang.CharSequence> value) {
-      validate(fields()[9], value);
+      validate(fields()[11], value);
       this.physicalConnections = value;
-      fieldSetFlags()[9] = true;
+      fieldSetFlags()[11] = true;
       return this;
     }
 
@@ -1107,7 +1259,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return True if the 'physicalConnections' field has been set, false otherwise.
       */
     public boolean hasPhysicalConnections() {
-      return fieldSetFlags()[9];
+      return fieldSetFlags()[11];
     }
 
 
@@ -1118,7 +1270,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       */
     public com.xvrsim.model.entity.Item.Builder clearPhysicalConnections() {
       physicalConnections = null;
-      fieldSetFlags()[9] = false;
+      fieldSetFlags()[11] = false;
       return this;
     }
 
@@ -1138,9 +1290,9 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return This builder.
       */
     public com.xvrsim.model.entity.Item.Builder setGroup(java.lang.CharSequence value) {
-      validate(fields()[10], value);
+      validate(fields()[12], value);
       this.group = value;
-      fieldSetFlags()[10] = true;
+      fieldSetFlags()[12] = true;
       return this;
     }
 
@@ -1150,7 +1302,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return True if the 'group' field has been set, false otherwise.
       */
     public boolean hasGroup() {
-      return fieldSetFlags()[10];
+      return fieldSetFlags()[12];
     }
 
 
@@ -1161,7 +1313,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       */
     public com.xvrsim.model.entity.Item.Builder clearGroup() {
       group = null;
-      fieldSetFlags()[10] = false;
+      fieldSetFlags()[12] = false;
       return this;
     }
 
@@ -1181,9 +1333,9 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return This builder.
       */
     public com.xvrsim.model.entity.Item.Builder setFormation(java.lang.CharSequence value) {
-      validate(fields()[11], value);
+      validate(fields()[13], value);
       this.formation = value;
-      fieldSetFlags()[11] = true;
+      fieldSetFlags()[13] = true;
       return this;
     }
 
@@ -1193,7 +1345,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return True if the 'formation' field has been set, false otherwise.
       */
     public boolean hasFormation() {
-      return fieldSetFlags()[11];
+      return fieldSetFlags()[13];
     }
 
 
@@ -1204,7 +1356,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       */
     public com.xvrsim.model.entity.Item.Builder clearFormation() {
       formation = null;
-      fieldSetFlags()[11] = false;
+      fieldSetFlags()[13] = false;
       return this;
     }
 
@@ -1224,9 +1376,9 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return This builder.
       */
     public com.xvrsim.model.entity.Item.Builder setUnit(java.lang.CharSequence value) {
-      validate(fields()[12], value);
+      validate(fields()[14], value);
       this.unit = value;
-      fieldSetFlags()[12] = true;
+      fieldSetFlags()[14] = true;
       return this;
     }
 
@@ -1236,7 +1388,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       * @return True if the 'unit' field has been set, false otherwise.
       */
     public boolean hasUnit() {
-      return fieldSetFlags()[12];
+      return fieldSetFlags()[14];
     }
 
 
@@ -1247,7 +1399,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
       */
     public com.xvrsim.model.entity.Item.Builder clearUnit() {
       unit = null;
-      fieldSetFlags()[12] = false;
+      fieldSetFlags()[14] = false;
       return this;
     }
 
@@ -1276,11 +1428,13 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
         }
         record.visibleForParticipant = fieldSetFlags()[6] ? this.visibleForParticipant : (java.lang.Boolean) defaultValue(fields()[6]);
         record.movable = fieldSetFlags()[7] ? this.movable : (java.lang.Boolean) defaultValue(fields()[7]);
-        record.tags = fieldSetFlags()[8] ? this.tags : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[8]);
-        record.physicalConnections = fieldSetFlags()[9] ? this.physicalConnections : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[9]);
-        record.group = fieldSetFlags()[10] ? this.group : (java.lang.CharSequence) defaultValue(fields()[10]);
-        record.formation = fieldSetFlags()[11] ? this.formation : (java.lang.CharSequence) defaultValue(fields()[11]);
-        record.unit = fieldSetFlags()[12] ? this.unit : (java.lang.CharSequence) defaultValue(fields()[12]);
+        record.itemType = fieldSetFlags()[8] ? this.itemType : (java.lang.Object) defaultValue(fields()[8]);
+        record.scenarioLabel = fieldSetFlags()[9] ? this.scenarioLabel : (java.lang.Object) defaultValue(fields()[9]);
+        record.userTags = fieldSetFlags()[10] ? this.userTags : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[10]);
+        record.physicalConnections = fieldSetFlags()[11] ? this.physicalConnections : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[11]);
+        record.group = fieldSetFlags()[12] ? this.group : (java.lang.CharSequence) defaultValue(fields()[12]);
+        record.formation = fieldSetFlags()[13] ? this.formation : (java.lang.CharSequence) defaultValue(fields()[13]);
+        record.unit = fieldSetFlags()[14] ? this.unit : (java.lang.CharSequence) defaultValue(fields()[14]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

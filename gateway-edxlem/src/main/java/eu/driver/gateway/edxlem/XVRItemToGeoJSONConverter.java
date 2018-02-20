@@ -1,11 +1,12 @@
 package eu.driver.gateway.edxlem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.xvrsim.model.entity.Item;
+import com.xvrsim.model.entity.item.ObjectType;
+import com.xvrsim.model.entity.item.PersonType;
+import com.xvrsim.model.entity.item.VehicleType;
 
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.api.IAvroReceiver;
@@ -49,6 +50,8 @@ public class XVRItemToGeoJSONConverter implements IAvroReceiver<Item> {
 		xvrItemBuilder.setRoll(item.getOrientation().getRoll());
 		xvrItemBuilder.setSpeed(item.getVelocity().getMagnitude());
 		
+		setItemType(xvrItemBuilder, item);
+		
 		featureBuilder.setProperties(xvrItemBuilder.build());
 		
 		featureBuilder.build();
@@ -56,6 +59,25 @@ public class XVRItemToGeoJSONConverter implements IAvroReceiver<Item> {
 		features.add(featureBuilder.build());
 		builder.setFeatures(features);
 		return builder.build();
+	}
+	
+	private void setItemType(XVRItemProperties.Builder properties, Item item) {
+		Object type = item.getItemType();
+		if(type instanceof ObjectType) {
+			ObjectType ot = (ObjectType) type;
+			properties.setType(ot.getClass().getName());
+			properties.setSubType(ot.getSubType().name());
+		}
+		if(type instanceof VehicleType) {
+			VehicleType ot = (VehicleType) type;
+			properties.setType(ot.getClass().getName());
+			properties.setSubType(ot.getSubType().name());
+		}
+		if(type instanceof PersonType) {
+			PersonType ot = (PersonType) type;
+			properties.setType(ot.getClass().getName());
+			properties.setSubType(ot.getGender().name());
+		}
 	}
 
 }

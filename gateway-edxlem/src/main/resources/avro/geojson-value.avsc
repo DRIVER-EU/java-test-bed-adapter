@@ -237,6 +237,22 @@
 						{
 							"name": "roll",
 							"type": "double"
+						},
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "subType",
+							"type": "string"
+						},
+						{
+							"name": "label",
+							"type": "string"
+						},
+						{
+							"name": "subLabel",
+							"type": "string"
 						}
 					]
 				}

@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Specfic properties for an XVR emergency vehicle */
 @org.apache.avro.specific.AvroGenerated
 public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7152353016188956314L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"}]}");
+  private static final long serialVersionUID = -2944856405027524222L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":\"string\"},{\"name\":\"subType\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"subLabel\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -57,6 +57,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
   @Deprecated public double yaw;
   @Deprecated public double pitch;
   @Deprecated public double roll;
+  @Deprecated public java.lang.CharSequence type;
+  @Deprecated public java.lang.CharSequence subType;
+  @Deprecated public java.lang.CharSequence label;
+  @Deprecated public java.lang.CharSequence subLabel;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -72,13 +76,21 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
    * @param yaw The new value for yaw
    * @param pitch The new value for pitch
    * @param roll The new value for roll
+   * @param type The new value for type
+   * @param subType The new value for subType
+   * @param label The new value for label
+   * @param subLabel The new value for subLabel
    */
-  public XVRItemProperties(java.lang.CharSequence guid, java.lang.Double speed, java.lang.Double yaw, java.lang.Double pitch, java.lang.Double roll) {
+  public XVRItemProperties(java.lang.CharSequence guid, java.lang.Double speed, java.lang.Double yaw, java.lang.Double pitch, java.lang.Double roll, java.lang.CharSequence type, java.lang.CharSequence subType, java.lang.CharSequence label, java.lang.CharSequence subLabel) {
     this.guid = guid;
     this.speed = speed;
     this.yaw = yaw;
     this.pitch = pitch;
     this.roll = roll;
+    this.type = type;
+    this.subType = subType;
+    this.label = label;
+    this.subLabel = subLabel;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -90,6 +102,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     case 2: return yaw;
     case 3: return pitch;
     case 4: return roll;
+    case 5: return type;
+    case 6: return subType;
+    case 7: return label;
+    case 8: return subLabel;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -103,6 +119,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     case 2: yaw = (java.lang.Double)value$; break;
     case 3: pitch = (java.lang.Double)value$; break;
     case 4: roll = (java.lang.Double)value$; break;
+    case 5: type = (java.lang.CharSequence)value$; break;
+    case 6: subType = (java.lang.CharSequence)value$; break;
+    case 7: label = (java.lang.CharSequence)value$; break;
+    case 8: subLabel = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -188,6 +208,70 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
   }
 
   /**
+   * Gets the value of the 'type' field.
+   * @return The value of the 'type' field.
+   */
+  public java.lang.CharSequence getType() {
+    return type;
+  }
+
+  /**
+   * Sets the value of the 'type' field.
+   * @param value the value to set.
+   */
+  public void setType(java.lang.CharSequence value) {
+    this.type = value;
+  }
+
+  /**
+   * Gets the value of the 'subType' field.
+   * @return The value of the 'subType' field.
+   */
+  public java.lang.CharSequence getSubType() {
+    return subType;
+  }
+
+  /**
+   * Sets the value of the 'subType' field.
+   * @param value the value to set.
+   */
+  public void setSubType(java.lang.CharSequence value) {
+    this.subType = value;
+  }
+
+  /**
+   * Gets the value of the 'label' field.
+   * @return The value of the 'label' field.
+   */
+  public java.lang.CharSequence getLabel() {
+    return label;
+  }
+
+  /**
+   * Sets the value of the 'label' field.
+   * @param value the value to set.
+   */
+  public void setLabel(java.lang.CharSequence value) {
+    this.label = value;
+  }
+
+  /**
+   * Gets the value of the 'subLabel' field.
+   * @return The value of the 'subLabel' field.
+   */
+  public java.lang.CharSequence getSubLabel() {
+    return subLabel;
+  }
+
+  /**
+   * Sets the value of the 'subLabel' field.
+   * @param value the value to set.
+   */
+  public void setSubLabel(java.lang.CharSequence value) {
+    this.subLabel = value;
+  }
+
+  /**
    * Creates a new XVRItemProperties RecordBuilder.
    * @return A new XVRItemProperties RecordBuilder
    */
@@ -224,6 +308,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     private double yaw;
     private double pitch;
     private double roll;
+    private java.lang.CharSequence type;
+    private java.lang.CharSequence subType;
+    private java.lang.CharSequence label;
+    private java.lang.CharSequence subLabel;
 
     /** Creates a new Builder */
     private Builder() {
@@ -256,6 +344,22 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
         this.roll = data().deepCopy(fields()[4].schema(), other.roll);
         fieldSetFlags()[4] = true;
       }
+      if (isValidValue(fields()[5], other.type)) {
+        this.type = data().deepCopy(fields()[5].schema(), other.type);
+        fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.subType)) {
+        this.subType = data().deepCopy(fields()[6].schema(), other.subType);
+        fieldSetFlags()[6] = true;
+      }
+      if (isValidValue(fields()[7], other.label)) {
+        this.label = data().deepCopy(fields()[7].schema(), other.label);
+        fieldSetFlags()[7] = true;
+      }
+      if (isValidValue(fields()[8], other.subLabel)) {
+        this.subLabel = data().deepCopy(fields()[8].schema(), other.subLabel);
+        fieldSetFlags()[8] = true;
+      }
     }
 
     /**
@@ -283,6 +387,22 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       if (isValidValue(fields()[4], other.roll)) {
         this.roll = data().deepCopy(fields()[4].schema(), other.roll);
         fieldSetFlags()[4] = true;
+      }
+      if (isValidValue(fields()[5], other.type)) {
+        this.type = data().deepCopy(fields()[5].schema(), other.type);
+        fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.subType)) {
+        this.subType = data().deepCopy(fields()[6].schema(), other.subType);
+        fieldSetFlags()[6] = true;
+      }
+      if (isValidValue(fields()[7], other.label)) {
+        this.label = data().deepCopy(fields()[7].schema(), other.label);
+        fieldSetFlags()[7] = true;
+      }
+      if (isValidValue(fields()[8], other.subLabel)) {
+        this.subLabel = data().deepCopy(fields()[8].schema(), other.subLabel);
+        fieldSetFlags()[8] = true;
       }
     }
 
@@ -477,6 +597,162 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       return this;
     }
 
+    /**
+      * Gets the value of the 'type' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getType() {
+      return type;
+    }
+
+    /**
+      * Sets the value of the 'type' field.
+      * @param value The value of 'type'.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder setType(java.lang.CharSequence value) {
+      validate(fields()[5], value);
+      this.type = value;
+      fieldSetFlags()[5] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'type' field has been set.
+      * @return True if the 'type' field has been set, false otherwise.
+      */
+    public boolean hasType() {
+      return fieldSetFlags()[5];
+    }
+
+
+    /**
+      * Clears the value of the 'type' field.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder clearType() {
+      type = null;
+      fieldSetFlags()[5] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'subType' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getSubType() {
+      return subType;
+    }
+
+    /**
+      * Sets the value of the 'subType' field.
+      * @param value The value of 'subType'.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder setSubType(java.lang.CharSequence value) {
+      validate(fields()[6], value);
+      this.subType = value;
+      fieldSetFlags()[6] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'subType' field has been set.
+      * @return True if the 'subType' field has been set, false otherwise.
+      */
+    public boolean hasSubType() {
+      return fieldSetFlags()[6];
+    }
+
+
+    /**
+      * Clears the value of the 'subType' field.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder clearSubType() {
+      subType = null;
+      fieldSetFlags()[6] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'label' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getLabel() {
+      return label;
+    }
+
+    /**
+      * Sets the value of the 'label' field.
+      * @param value The value of 'label'.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder setLabel(java.lang.CharSequence value) {
+      validate(fields()[7], value);
+      this.label = value;
+      fieldSetFlags()[7] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'label' field has been set.
+      * @return True if the 'label' field has been set, false otherwise.
+      */
+    public boolean hasLabel() {
+      return fieldSetFlags()[7];
+    }
+
+
+    /**
+      * Clears the value of the 'label' field.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder clearLabel() {
+      label = null;
+      fieldSetFlags()[7] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'subLabel' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getSubLabel() {
+      return subLabel;
+    }
+
+    /**
+      * Sets the value of the 'subLabel' field.
+      * @param value The value of 'subLabel'.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder setSubLabel(java.lang.CharSequence value) {
+      validate(fields()[8], value);
+      this.subLabel = value;
+      fieldSetFlags()[8] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'subLabel' field has been set.
+      * @return True if the 'subLabel' field has been set, false otherwise.
+      */
+    public boolean hasSubLabel() {
+      return fieldSetFlags()[8];
+    }
+
+
+    /**
+      * Clears the value of the 'subLabel' field.
+      * @return This builder.
+      */
+    public eu.driver.model.geojson.XVRItemProperties.Builder clearSubLabel() {
+      subLabel = null;
+      fieldSetFlags()[8] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public XVRItemProperties build() {
@@ -487,6 +763,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
         record.yaw = fieldSetFlags()[2] ? this.yaw : (java.lang.Double) defaultValue(fields()[2]);
         record.pitch = fieldSetFlags()[3] ? this.pitch : (java.lang.Double) defaultValue(fields()[3]);
         record.roll = fieldSetFlags()[4] ? this.roll : (java.lang.Double) defaultValue(fields()[4]);
+        record.type = fieldSetFlags()[5] ? this.type : (java.lang.CharSequence) defaultValue(fields()[5]);
+        record.subType = fieldSetFlags()[6] ? this.subType : (java.lang.CharSequence) defaultValue(fields()[6]);
+        record.label = fieldSetFlags()[7] ? this.label : (java.lang.CharSequence) defaultValue(fields()[7]);
+        record.subLabel = fieldSetFlags()[8] ? this.subLabel : (java.lang.CharSequence) defaultValue(fields()[8]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
