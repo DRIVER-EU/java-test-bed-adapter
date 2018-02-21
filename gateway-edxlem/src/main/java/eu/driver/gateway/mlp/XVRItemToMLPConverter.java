@@ -1,4 +1,4 @@
-package eu.driver.gateway.edxlem;
+package eu.driver.gateway.mlp;
 
 import com.xvrsim.model.entity.Item;
 
@@ -24,7 +24,6 @@ public class XVRItemToMLPConverter implements IAvroReceiver<Item> {
 		outputProducer = producer;
 	}
 
-	@Override
 	public void receiveMessage(Item message) {
 		SlRep locationReport = itemToStandardLocationReport(message);
 		System.out.println("Converted to MLP: " + locationReport);
