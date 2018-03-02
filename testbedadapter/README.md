@@ -4,7 +4,7 @@ It offers one central point for communication: Adaptor.getInstance();
 
 In this following methods are available:
 
-## public getInstance for instantiation the Adapter
+## public getInstance for instantiation the Adapter Singelton
 In this, the check to the configured KAFKA is done. The Adapter is able to detect the mode in which the Adapter should run:
 ### Available modes are:
 DEV_MODE, SEC_DEV_MODE, TRIAL_MODE

@@ -8,16 +8,24 @@ WebSocket: established by the client, adaptor is sending the message via this so
 # Requirements for Development
 
 * Java JDK 1.8+
+* Development environment e.g. Eclipse
+* maven
 
 # Run the Adaptor
 
 * Run docker container
 
+# Swagger Interface for testing
+The REST Adapter offers for testing purposes a swagger ui where all exposed methods can be tested.
+The SWAGER UI can be reached by:
+http://localhsot:8090/swagger-ui.html
+
 # Configuration
 
 ## Default values
+### application.properties
+server.port = 8090
 
-TODO: fill this
 
 ## Specific Configuration
 
