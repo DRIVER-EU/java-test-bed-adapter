@@ -36,6 +36,7 @@ public class ConsumerProperties extends KafkaProperties {
 		if (instance == null) {
 			instance = new ConsumerProperties(secured);
 		}
+		
 		return instance;
 	}
 
@@ -46,6 +47,9 @@ public class ConsumerProperties extends KafkaProperties {
 		if(secured) {
 			loadSSLConfigFile();	
 		}
+		// the the GROUP_ID to the Client_ID as this has to be unique
+		setProperty(GROUP_ID, ClientProperties.getInstance().getProperty("client.id", "default_java_adapter_group"));
+		
 	}
 	
 	private void loadConfigFile() {
