@@ -15,25 +15,6 @@ public class CISAdapterCAPExample {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// created the CIS Adapter that will send heartbeats, log
-<<<<<<< HEAD
-		CISAdapter adapter = new CISAdapter();
-
-		// Add an Avro Receiver (callback for receiving Avro Records) for topic 'cap'
-		adapter.addAvroReceiver("cap", new PrintingAvroReceiver());
-		adapter.addAvroReceiver("connect-status-heartbeat", new PrintingAvroReceiver());
-		
-		// Create a general purpose producer for sending an Avro GenericRecord
-		GenericProducer producer = adapter.getProducer("cap");
-		
-		// Generate a CAP Avro message from an XML source
-		GenericRecord capAvro = generateAvroCapFromXML();
-		// Use the producer to send a CAP message. This will be received and printed via
-		// the Callback above.
-
-		while (true) {
-			producer.send(capAvro);
-			Thread.sleep(5000);
-=======
 		CISAdapter adapter = CISAdapter.getInstance();
 		
 		// Add callbacks for received messages
@@ -47,7 +28,6 @@ public class CISAdapterCAPExample {
 			}
 		} catch (CommunicationException cEx) {
 			
->>>>>>> remotes/origin/Develop
 		}
 	}
 
