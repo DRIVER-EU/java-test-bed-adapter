@@ -32,17 +32,20 @@ public class ConsumerProperties extends KafkaProperties {
 	 * @return The Singleton Consumer Properties object containing all Kafka
 	 *         consumer related configuration.
 	 */
-	public static ConsumerProperties getInstance() {
+	public static ConsumerProperties getInstance(Boolean secured) {
 		if (instance == null) {
-			instance = new ConsumerProperties();
+			instance = new ConsumerProperties(secured);
 		}
 		return instance;
 	}
 
-	private ConsumerProperties() {
+	private ConsumerProperties(Boolean secured) {
 		super();
 		setDefaults();
 		loadConfigFile();
+		if(secured) {
+			loadSSLConfigFile();	
+		}
 	}
 	
 	private void loadConfigFile() {
@@ -52,6 +55,16 @@ public class ConsumerProperties extends KafkaProperties {
 			fis.close();
 		} catch (IOException e) {
 			logger.error("Could not read Consumer Properties file consumer.properties in config folder");
+		}
+	}
+	
+	private void loadSSLConfigFile() {
+		try {
+			FileInputStream fis = new FileInputStream("config/ssl.properties");
+			load(fis);
+			fis.close();
+		} catch (IOException e) {
+			logger.error("Could not read Client Properties file client.properties in config folder");
 		}
 	}
 

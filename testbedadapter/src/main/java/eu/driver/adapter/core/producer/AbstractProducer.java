@@ -49,6 +49,8 @@ public abstract class AbstractProducer<Key extends IndexedRecord, Value extends 
 			// TODO: proper logging
 			ex.printStackTrace();
 			System.err.print("Error while serializing message: " + message);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

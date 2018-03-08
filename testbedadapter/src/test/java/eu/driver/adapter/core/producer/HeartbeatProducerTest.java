@@ -26,7 +26,7 @@ public class HeartbeatProducerTest extends TestCase {
 		return new TestSuite(HeartbeatProducerTest.class);
 	}
 
-	public void testHeartbeatIntervals() throws InterruptedException {
+	public void testHeartbeatIntervals() throws Exception {
 		MockProducer<EDXLDistribution, IndexedRecord> prod = new MockProducer<>();
 		HeartbeatProducer producer = new HeartbeatProducer(prod);
 		producer.startHeartbeats(50);

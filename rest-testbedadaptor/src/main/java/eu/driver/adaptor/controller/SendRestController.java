@@ -9,11 +9,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-
-
-
-
-
 import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +23,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import eu.driver.adapter.core.CISAdapter;
-import eu.driver.adapter.core.producer.GenericProducer;
+import eu.driver.adapter.excpetion.CommunicationException;
+import eu.driver.adaptor.callback.AdapterCallback;
 import eu.driver.adaptor.mapper.cap.XMLToAVROMapper;
-import eu.driver.examples.adapter.PrintingAvroReceiver;
 
 @RestController
 public class SendRestController implements ResourceProcessor<RepositoryLinksResource> {
 
 	private Logger log = Logger.getLogger(this.getClass());
 	private XMLToAVROMapper avroMapper = new XMLToAVROMapper();
-	private CISAdapter adapter = new CISAdapter();
+	private CISAdapter adapter = CISAdapter.getInstance();
  
 	@Override
 	public RepositoryLinksResource process(RepositoryLinksResource resource) {
@@ -46,8 +41,7 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 	}
 	
 	public SendRestController() {
-		this.adapter.addAvroReceiver("cap", new PrintingAvroReceiver());
-		this.adapter.addAvroReceiver("connect-status-heartbeat", new PrintingAvroReceiver());
+		this.adapter.addCallback(new AdapterCallback(), "cap");
 	}
 	
 	@ApiOperation(value = "sendXMLMessage", nickname = "sendXMLMessage")
@@ -70,12 +64,10 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 		
 		Response response = new Response();
 		GenericRecord avroRecord = null;
-		GenericProducer producer = null;
 		// check message type
 		if (type.equalsIgnoreCase("CAP")) {
 			log.info("Processing CAP message.");
 			avroRecord = avroMapper.convertCapToAvro(xmlMsg, true);
-			producer = this.adapter.getProducer("cap");
 			
 		} else if (type.equalsIgnoreCase("MLP")) {
 			log.info("Processing MLP message.");
@@ -85,12 +77,21 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 			
 		}
 		
-		if (avroRecord != null && producer != null) {
-			producer.send(avroRecord);
+		if (avroRecord != null) {
+			try {
+				adapter.sendMessage(avroRecord);
+				response.setMessage("The message was send successfully!");
+			} catch(CommunicationException cEx) {
+				log.error("Error sending the record!", cEx);
+				response.setMessage("Error sending the record!");
+				response.setDetails(cEx.getMessage());
+				return new ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		}
 		
+		
 		log.info("sendXMLMessage -->");
-	    return new ResponseEntity<Response>(response, HttpStatus.OK);
+		return new ResponseEntity<Response>(response, HttpStatus.OK);
 	}
 
 

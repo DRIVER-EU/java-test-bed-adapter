@@ -1,5 +1,6 @@
 package eu.driver.adapter.core.producer;
 
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -9,7 +10,11 @@ import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.common.errors.SerializationException;
 
+import eu.driver.adapter.constants.TopicConstants;
+import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adapter.properties.ClientProperties;
+import eu.driver.adapter.time.ISO8601TimestampProvider;
+import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.edxl.DistributionKind;
 import eu.driver.model.edxl.DistributionStatus;
@@ -29,10 +34,22 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
 
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
+	
 
-	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
-		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.HEARTBEAT_TOPIC));
+	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer) throws Exception {
+		super(producer, TopicConstants.HEARTBEAT_TOPIC);
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
+	}
+	
+	public void sendInitialHeartbeat() throws CommunicationException {
+		Heartbeat heartbeat = new Heartbeat();
+		heartbeat.setId(this.getClientId());
+		heartbeat.setAlive(new Date().getTime());
+		try {
+			this.send(heartbeat);
+		} catch (Exception e) {
+			throw new CommunicationException();
+		}
 	}
 
 	/**

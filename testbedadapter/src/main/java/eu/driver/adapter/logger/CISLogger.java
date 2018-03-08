@@ -1,8 +1,7 @@
 package eu.driver.adapter.logger;
 
-import org.apache.avro.generic.IndexedRecord;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.EventConstants;
@@ -10,13 +9,13 @@ import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
 
+import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.core.producer.LogProducer;
 import eu.driver.adapter.properties.ClientProperties;
-import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;
-import eu.driver.model.core.Log;
-import eu.driver.model.edxl.EDXLDistribution;
+import eu.driver.model.system.Level;
+import eu.driver.model.system.Log;
 
 public final class CISLogger extends MarkerIgnoringBase {
 
@@ -35,7 +34,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	 * Kafka Log Producer that is shared by all Logger instances
 	 */
 	private static LogProducer producer;
-
+	
 	public static Logger logger(Class<?> clazz) {
 		return new CISLogger(clazz);
 	}
@@ -45,33 +44,26 @@ public final class CISLogger extends MarkerIgnoringBase {
 		clientId = ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 		name = clazz.getName();
 		timestampProvider = new ISO8601TimestampProvider();
-		if (isLoggingEnabled()) {
-			lazyInitializeProducer();
-		}
 	}
-
-	private boolean isLoggingEnabled() {
-		return isErrorEnabled() || isWarnEnabled() || isInfoEnabled() || isDebugEnabled() || isTraceEnabled();
-	}
-
-	private static void lazyInitializeProducer() {
-		if (producer == null) {
-			Producer<EDXLDistribution, IndexedRecord> kafkaProducer = new KafkaProducer<>(
-					ProducerProperties.getInstance());
-			producer = new LogProducer(kafkaProducer);
-		}
+	
+	public void setLogProducer(LogProducer logProducer) {
+		producer = logProducer;
 	}
 
 	private Log createLog(String message) {
 		Log log = new Log();
 		log.setId(clientId);
+		log.setDateTimeSent(new Date().getTime());
+		log.setLevel(Level.DEBUG);
 		log.setLog(message);
 		return log;
 	}
 
 	private void sendLog(String message) {
 		Log log = createLog(message);
-		producer.send(log);
+		if (producer != null) {
+			producer.send(log);
+		}
 	}
 
 	/**
