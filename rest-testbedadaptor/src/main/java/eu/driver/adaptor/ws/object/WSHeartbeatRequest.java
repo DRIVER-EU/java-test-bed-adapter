@@ -34,4 +34,14 @@ public class WSHeartbeatRequest {
 	public void setSendTime(Date sendTime) {
 		this.sendTime = sendTime;
 	}
+	
+	public WSHeartbeatResponse createResponse() {
+		WSHeartbeatResponse response = new WSHeartbeatResponse();
+		
+		response.setRequestId(this.requestId);
+		response.setSendTime(new Date());
+		response.setState("OK");
+		
+		return response;
+	}
 }

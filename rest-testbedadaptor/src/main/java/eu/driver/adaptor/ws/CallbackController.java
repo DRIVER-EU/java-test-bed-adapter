@@ -48,6 +48,8 @@ public class CallbackController {
 		try {
 			if (session != null && session.isOpen()) {
 				session.sendMessage(responseMsg);
+			} else if (restEndpointUrl != null) {
+				sendMessagetoRESTEndpoint(msg);
 			}
 		} catch (IOException e) {
 			log.error("Error sending the notification!");

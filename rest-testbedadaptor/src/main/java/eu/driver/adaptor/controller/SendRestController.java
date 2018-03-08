@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adaptor.callback.AdapterCallback;
@@ -41,7 +42,7 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 	}
 	
 	public SendRestController() {
-		this.adapter.addCallback(new AdapterCallback(), "cap");
+		this.adapter.addCallback(new AdapterCallback(), TopicConstants.STANDARD_TOPIC_CAP);
 	}
 	
 	@ApiOperation(value = "sendXMLMessage", nickname = "sendXMLMessage")
@@ -67,7 +68,7 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 		// check message type
 		if (type.equalsIgnoreCase("CAP")) {
 			log.info("Processing CAP message.");
-			avroRecord = avroMapper.convertCapToAvro(xmlMsg, true);
+			avroRecord = avroMapper.convertCapToAvro(xmlMsg);
 			
 		} else if (type.equalsIgnoreCase("MLP")) {
 			log.info("Processing MLP message.");
@@ -87,8 +88,10 @@ public class SendRestController implements ResourceProcessor<RepositoryLinksReso
 				response.setDetails(cEx.getMessage());
 				return new ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
+		} else {
+			response.setMessage("Unknown message type!");
+			return new ResponseEntity<Response>(response, HttpStatus.BAD_REQUEST);
 		}
-		
 		
 		log.info("sendXMLMessage -->");
 		return new ResponseEntity<Response>(response, HttpStatus.OK);

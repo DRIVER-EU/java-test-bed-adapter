@@ -42,11 +42,6 @@
 			<artifactId>java-adaptor-avro-schemas</artifactId>
 			<version>${testbed.avro.schema.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google</groupId>
-			<artifactId>cap-library</artifactId>
-			<version>r11</version>
-		</dependency>
 	</dependencies>
 
 	<build>

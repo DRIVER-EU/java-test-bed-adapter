@@ -9,7 +9,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import eu.driver.adaptor.ws.object.WSHeartbeatRequest;
 import eu.driver.adaptor.ws.object.WSHeartbeatResponse;
+
 
 public class StringJSONMapper {
 	
@@ -40,8 +42,8 @@ public class StringJSONMapper {
     	return jsonInString;
     }
 	
-	public WSHeartbeatResponse stringToHBMessage(String message) {
-		log.info("--> stringToHBMessage");
+	public WSHeartbeatResponse stringToHBResponseMessage(String message) {
+		log.info("--> stringToHBResponseMessage");
 		WSHeartbeatResponse response = null;
 		try {
 			response = mapper.readValue(message, WSHeartbeatResponse.class);
@@ -54,6 +56,22 @@ public class StringJSONMapper {
 		}
 		
 		return response;
+	}
+	
+	public WSHeartbeatRequest stringToHBRequestMessage(String message) {
+		log.info("--> stringToHBRequestMessage");
+		WSHeartbeatRequest request = null;
+		try {
+			request = mapper.readValue(message, WSHeartbeatRequest.class);
+		} catch (JsonParseException e) {
+			log.error("Error reading the message!", e);
+		} catch (JsonMappingException e) {
+			log.error("Error reading the message!", e);
+		} catch (IOException e) {
+			log.error("Error reading the message!", e);
+		}
+		
+		return request;
 	}
 
 }
