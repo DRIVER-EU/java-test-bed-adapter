@@ -59,5 +59,22 @@ public class XMLToAVROMapper {
 		log.info("convertCapToAvro -->");
 		return avroAlert;
 	}
+	
+	public String convertAvroToCap(eu.driver.model.cap.Alert alert) {
+		log.info("--> convertAvroToCap");
+		String xmlCap = null;
+		try {
+			String avscFile = XMLToAVROMapper.class.getResource("/avro/other/cap/cap-value.avsc").getPath();
+			Schema schema = new Schema.Parser().parse(new File(avscFile));
+			DatumBuilder datumBuilder = new DatumBuilder(schema);
+			// ToDo: AVRO To XML converter needs to be implemented
+			//xmlCap = datumBuilder.createDatum(alert);
+		} catch (IOException e) {
+			log.error("Error creating AVRO Message");
+		}
+		
+		log.info("convertAvroToCap -->");
+		return xmlCap;
+	}
 
 }

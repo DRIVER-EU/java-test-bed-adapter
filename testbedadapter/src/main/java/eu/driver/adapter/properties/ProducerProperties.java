@@ -33,22 +33,35 @@ public class ProducerProperties extends KafkaProperties {
 	 * @return The Singleton Producer Properties object containing all Kafka produer
 	 *         related configuration.
 	 */
-	public static ProducerProperties getInstance() {
+	public static ProducerProperties getInstance(Boolean secured) {
 		if (instance == null) {
-			instance = new ProducerProperties();
+			instance = new ProducerProperties(secured);
 		}
 		return instance;
 	}
 
-	private ProducerProperties() {
+	private ProducerProperties(Boolean secured) {
 		super();
 		setDefaults();
 		loadConfigFile();
+		if(secured) {
+			loadSSLConfigFile();	
+		}
 	}
 	
 	private void loadConfigFile() {
 		try {
 			FileInputStream fis = new FileInputStream("config/producer.properties");
+			load(fis);
+			fis.close();
+		} catch (IOException e) {
+			logger.error("Could not read Client Properties file client.properties in config folder");
+		}
+	}
+	
+	private void loadSSLConfigFile() {
+		try {
+			FileInputStream fis = new FileInputStream("config/ssl.properties");
 			load(fis);
 			fis.close();
 		} catch (IOException e) {

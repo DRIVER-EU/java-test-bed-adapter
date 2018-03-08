@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.core;
+package eu.driver.model.cap;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -11,25 +11,24 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** Key of a Log message */
 @org.apache.avro.specific.AvroGenerated
-public class LogKey extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6045832176280583033L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LogKey\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Key of a Log message\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"The client id of the sending adapter\"}]}");
+public class subscribeAllowed extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 2657012756123570415L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"subscribeAllowed\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<LogKey> ENCODER =
-      new BinaryMessageEncoder<LogKey>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<subscribeAllowed> ENCODER =
+      new BinaryMessageEncoder<subscribeAllowed>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<LogKey> DECODER =
-      new BinaryMessageDecoder<LogKey>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<subscribeAllowed> DECODER =
+      new BinaryMessageDecoder<subscribeAllowed>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<LogKey> getDecoder() {
+  public static BinaryMessageDecoder<subscribeAllowed> getDecoder() {
     return DECODER;
   }
 
@@ -37,22 +36,22 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<LogKey> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<LogKey>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<subscribeAllowed> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<subscribeAllowed>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this LogKey to a ByteBuffer. */
+  /** Serializes this subscribeAllowed to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a LogKey from a ByteBuffer. */
-  public static LogKey fromByteBuffer(
+  /** Deserializes a subscribeAllowed from a ByteBuffer. */
+  public static subscribeAllowed fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  /** The client id of the sending adapter */
+  /** sender Client id */
   @Deprecated public java.lang.CharSequence id;
 
   /**
@@ -60,13 +59,13 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public LogKey() {}
+  public subscribeAllowed() {}
 
   /**
    * All-args constructor.
-   * @param id The client id of the sending adapter
+   * @param id sender Client id
    */
-  public LogKey(java.lang.CharSequence id) {
+  public subscribeAllowed(java.lang.CharSequence id) {
     this.id = id;
   }
 
@@ -90,7 +89,7 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'id' field.
-   * @return The client id of the sending adapter
+   * @return sender Client id
    */
   public java.lang.CharSequence getId() {
     return id;
@@ -98,7 +97,7 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Sets the value of the 'id' field.
-   * The client id of the sending adapter
+   * sender Client id
    * @param value the value to set.
    */
   public void setId(java.lang.CharSequence value) {
@@ -106,38 +105,38 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   /**
-   * Creates a new LogKey RecordBuilder.
-   * @return A new LogKey RecordBuilder
+   * Creates a new subscribeAllowed RecordBuilder.
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.core.LogKey.Builder newBuilder() {
-    return new eu.driver.model.core.LogKey.Builder();
+  public static eu.driver.model.cap.subscribeAllowed.Builder newBuilder() {
+    return new eu.driver.model.cap.subscribeAllowed.Builder();
   }
 
   /**
-   * Creates a new LogKey RecordBuilder by copying an existing Builder.
+   * Creates a new subscribeAllowed RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new LogKey RecordBuilder
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.core.LogKey.Builder newBuilder(eu.driver.model.core.LogKey.Builder other) {
-    return new eu.driver.model.core.LogKey.Builder(other);
+  public static eu.driver.model.cap.subscribeAllowed.Builder newBuilder(eu.driver.model.cap.subscribeAllowed.Builder other) {
+    return new eu.driver.model.cap.subscribeAllowed.Builder(other);
   }
 
   /**
-   * Creates a new LogKey RecordBuilder by copying an existing LogKey instance.
+   * Creates a new subscribeAllowed RecordBuilder by copying an existing subscribeAllowed instance.
    * @param other The existing instance to copy.
-   * @return A new LogKey RecordBuilder
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.core.LogKey.Builder newBuilder(eu.driver.model.core.LogKey other) {
-    return new eu.driver.model.core.LogKey.Builder(other);
+  public static eu.driver.model.cap.subscribeAllowed.Builder newBuilder(eu.driver.model.cap.subscribeAllowed other) {
+    return new eu.driver.model.cap.subscribeAllowed.Builder(other);
   }
 
   /**
-   * RecordBuilder for LogKey instances.
+   * RecordBuilder for subscribeAllowed instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<LogKey>
-    implements org.apache.avro.data.RecordBuilder<LogKey> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<subscribeAllowed>
+    implements org.apache.avro.data.RecordBuilder<subscribeAllowed> {
 
-    /** The client id of the sending adapter */
+    /** sender Client id */
     private java.lang.CharSequence id;
 
     /** Creates a new Builder */
@@ -149,7 +148,7 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.core.LogKey.Builder other) {
+    private Builder(eu.driver.model.cap.subscribeAllowed.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -158,10 +157,10 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
     }
 
     /**
-     * Creates a Builder by copying an existing LogKey instance
+     * Creates a Builder by copying an existing subscribeAllowed instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.core.LogKey other) {
+    private Builder(eu.driver.model.cap.subscribeAllowed other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -171,7 +170,7 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Gets the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @return The value.
       */
     public java.lang.CharSequence getId() {
@@ -180,11 +179,11 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Sets the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.core.LogKey.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.cap.subscribeAllowed.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -193,7 +192,7 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Checks whether the 'id' field has been set.
-      * The client id of the sending adapter
+      * sender Client id
       * @return True if the 'id' field has been set, false otherwise.
       */
     public boolean hasId() {
@@ -203,10 +202,10 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Clears the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @return This builder.
       */
-    public eu.driver.model.core.LogKey.Builder clearId() {
+    public eu.driver.model.cap.subscribeAllowed.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -214,9 +213,9 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     @Override
     @SuppressWarnings("unchecked")
-    public LogKey build() {
+    public subscribeAllowed build() {
       try {
-        LogKey record = new LogKey();
+        subscribeAllowed record = new subscribeAllowed();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.CharSequence) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
@@ -226,8 +225,8 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<LogKey>
-    WRITER$ = (org.apache.avro.io.DatumWriter<LogKey>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<subscribeAllowed>
+    WRITER$ = (org.apache.avro.io.DatumWriter<subscribeAllowed>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -235,8 +234,8 @@ public class LogKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<LogKey>
-    READER$ = (org.apache.avro.io.DatumReader<LogKey>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<subscribeAllowed>
+    READER$ = (org.apache.avro.io.DatumReader<subscribeAllowed>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

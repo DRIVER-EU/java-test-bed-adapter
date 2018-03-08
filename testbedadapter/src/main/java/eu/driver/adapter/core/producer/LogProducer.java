@@ -3,7 +3,7 @@ package eu.driver.adapter.core.producer;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
-import eu.driver.adapter.properties.ClientProperties;
+import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.model.edxl.EDXLDistribution;
 
 /**
@@ -16,7 +16,7 @@ import eu.driver.model.edxl.EDXLDistribution;
 public class LogProducer extends AbstractEDXLDEProducer {
 
 	public LogProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
-		super(producer, ClientProperties.getInstance().getProperty(ClientProperties.LOG_TOPIC));
+		super(producer, TopicConstants.LOGGING_TOPIC);
 	}
 
 	@Override
