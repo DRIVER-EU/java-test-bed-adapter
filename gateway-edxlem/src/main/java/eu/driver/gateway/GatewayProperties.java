@@ -63,6 +63,7 @@ public class GatewayProperties extends Properties {
 	private void setDefaults() {
 		setProperty(INPUT_TOPIC, "");
 		setProperty(OUTPUT_TOPIC, "");
+		setProperty(OUTPUT_FREQUENCY, "1000");
 	}
 
 }

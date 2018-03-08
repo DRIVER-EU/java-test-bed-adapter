@@ -43,6 +43,7 @@ public class XVRItemToGeoJSONConverter implements IAvroReceiver<Item> {
 		reportingScheduler = Executors.newScheduledThreadPool(1);
 		long freq = Long.parseLong(GatewayProperties.getInstance().getProperty(GatewayProperties.OUTPUT_FREQUENCY));
 		reportingScheduler.scheduleAtFixedRate(new ReportingTask(), 0, freq, TimeUnit.MILLISECONDS);
+		logger.info("Start Converting XVR Items to GeoJSON every " + freq + " milliseconds (windowed)");
 	}
 
 	public void receiveMessage(Item message) {
