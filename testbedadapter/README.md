@@ -1,5 +1,5 @@
 # JAVA Testbed Adaptor
-The Java Testbed adaptor is used to be integrated directly into the JAVA application. It is build as library for easy integraton.
+The Java Testbed adaptor is used to be integrated directly into the JAVA application. It is build as library for easy integration.
 It offers one central point for communication: Adaptor.getInstance();
 
 In this following methods are available:
@@ -49,33 +49,33 @@ public void addLogCallback(methodDelegate(avroLogRecord))
 ## Default values
 
 ###Default Consumer Properties
-bootstrap.servers=broker.url
-group.id=<client.id> from the client-config.properties files
-enable.auto.commit=true
-auto.offset.reset=latest
-key.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializer
-value.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializer
-schema.registry.url=schema.url
+* bootstrap.servers=broker.url
+* group.id=<client.id> from the client-config.properties files
+* enable.auto.commit=true
+* auto.offset.reset=latest
+* key.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializer
+* value.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializer
+* schema.registry.url=schema.url
 
 ###Default Consumer Properties
-bootstrap.servers=broker.url
-schema.registry.url=schema.url
-compression.type=none
-acks=all
-retries=retry.count
-request.timeout.ms= retry.time
-key.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
-value.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
+* bootstrap.servers=broker.url
+* schema.registry.url=schema.url
+* compression.type=none
+* acks=all
+* retries=retry.count
+* request.timeout.ms= retry.time
+* key.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
+* value.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
 
 ## Specific Configuration
 
 If you wish to override default configuration values you can do so in the configuration files in the 'config' directory.
 ###Specific Client Properties
-client.id=solution client
-heartbeat.interval=5000
-certificate.path=path
-broker.url=
-schema.url=
-send.sync=true/false
-retry.count=3
-retry.time=1000?
+* client.id=solution client
+* heartbeat.interval=5000
+* certificate.path=path
+* broker.url=
+* schema.url=
+* send.sync=true/false
+* retry.count=3
+* retry.time=1000?

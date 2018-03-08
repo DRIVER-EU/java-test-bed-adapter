@@ -6,33 +6,28 @@ import java.io.IOException;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 
+import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.core.CISAdapter;
-import eu.driver.adapter.core.producer.GenericProducer;
+import eu.driver.adapter.excpetion.CommunicationException;
 import ly.stealth.xmlavro.DatumBuilder;
 
 public class CISAdapterCAPExample {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// created the CIS Adapter that will send heartbeats, log
-		CISAdapter adapter = new CISAdapter();
+		CISAdapter adapter = CISAdapter.getInstance();
+		
+		// Add callbacks for received messages
+		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.STANDARD_TOPIC_CAP);
+		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.HEARTBEAT_TOPIC);
 
-		// Add an Avro Receiver (callback for receiving Avro Records) for topic 'cap'
-		adapter.addAvroReceiver("cap", new PrintingAvroReceiver());
-		adapter.addAvroReceiver("connect-status-heartbeat", new PrintingAvroReceiver());
-		
-		// Create a general purpose producer for sending an Avro GenericRecord
-		GenericProducer producer = adapter.getProducer("cap");
-		
-		
-		
-		// Generate a CAP Avro message from an XML source
-		GenericRecord capAvro = generateAvroCapFromXML();
-		// Use the producer to send a CAP message. This will be received and printed via
-		// the Callback above.
-
-		while (true) {
-			producer.send(capAvro);
-			Thread.sleep(5000);
+		try {
+			while (true) {
+				adapter.sendMessage(generateAvroCapFromXML());
+				Thread.sleep(5000);
+			}
+		} catch (CommunicationException cEx) {
+			
 		}
 	}
 

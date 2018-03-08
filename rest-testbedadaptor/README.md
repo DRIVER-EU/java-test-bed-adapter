@@ -18,13 +18,13 @@ WebSocket: established by the client, adaptor is sending the message via this so
 # Swagger Interface for testing
 The REST Adapter offers for testing purposes a swagger ui where all exposed methods can be tested.
 The SWAGER UI can be reached by:
-http://localhsot:8090/swagger-ui.html
+*http://localhsot:8090/swagger-ui.html
 
 # Configuration
 
 ## Default values
 ### application.properties
-server.port = 8090
+*server.port = 8090
 
 
 ## Specific Configuration
