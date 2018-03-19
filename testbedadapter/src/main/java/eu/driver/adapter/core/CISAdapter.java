@@ -102,7 +102,7 @@ public class CISAdapter {
 		sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
 		try {
 			logger.info("Check Adpter DEV Mode");
-			heartbeatProducer = new HeartbeatProducer(sharedAvroProducer);
+			heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);	
 			heartbeatProducer.sendInitialHeartbeat();
 			addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer());
 			adpterMode = AdapterMode.DEV_MODE;
@@ -112,7 +112,7 @@ public class CISAdapter {
 			connectModeSec = true;
 			sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
 			try {
-				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer);
+				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);	
 				heartbeatProducer.sendInitialHeartbeat();
 				addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer());
 				adpterMode = AdapterMode.SEC_DEV_MODE;
@@ -125,7 +125,7 @@ public class CISAdapter {
 		if (adpterMode != AdapterMode.TRIAL_MODE) {
 			initCoreTopics();
 			adapterInitDone = true;	
-		}
+		} 
 		logger.info("initializeProducers -->");
 	}
 	
@@ -133,7 +133,7 @@ public class CISAdapter {
 		logger.info("--> initCoreTopics");
 		try {
 			if (adpterMode == AdapterMode.TRIAL_MODE) {
-				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer);
+				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);
 				heartbeatProducer.sendInitialHeartbeat();
 			}
 			this.startHeartbeats();
@@ -162,8 +162,6 @@ public class CISAdapter {
 	private void addAvroReceiver(String topic, GenericAvroReceiver receiver) {
 		GenericCallbackConsumer consumer = new GenericCallbackConsumer(
 				new KafkaConsumer<IndexedRecord, IndexedRecord>(ConsumerProperties.getInstance(connectModeSec)), topic);
-		ClientProperties.getInstance().addConsumedTopic(topic);
-		//configurationProducer.sendConfiguration();
 		Thread t = new Thread(consumer); // TODO: maintain this and clean up thread
 		t.start();
 		logger.info("New Generic Callback Consumer created for topic: " + topic);
@@ -171,7 +169,7 @@ public class CISAdapter {
 	}
 
 	public void sendMessage(IndexedRecord message) throws CommunicationException {
-		logger.info("-->sendMessage");
+		logger.debug("-->sendMessage");
 		if (message.getSchema().getName().equalsIgnoreCase("Alert")) {
 			GenericProducer producer = producerMap.get(TopicConstants.STANDARD_TOPIC_CAP);
 			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
@@ -183,7 +181,7 @@ public class CISAdapter {
 				throw new CommunicationException("Thers is no producer available!");
 			}
 		}
-		logger.info("sendMessage-->");
+		logger.debug("sendMessage-->");
 	}
 	
 	public void sendMessage(IndexedRecord message, String topicName) throws CommunicationException {

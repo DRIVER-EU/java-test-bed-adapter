@@ -19,7 +19,7 @@ public class CISAdapterCAPExample {
 		
 		// Add callbacks for received messages
 		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.STANDARD_TOPIC_CAP);
-		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.HEARTBEAT_TOPIC);
+		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.ADMIN_HEARTBEAT_TOPIC);
 
 		try {
 			while (true) {

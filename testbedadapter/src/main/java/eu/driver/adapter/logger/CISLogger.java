@@ -24,12 +24,6 @@ public final class CISLogger extends MarkerIgnoringBase {
 	private final String clientId;
 	private final ITimestampProvider timestampProvider;
 
-	protected static final int LOG_LEVEL_TRACE = EventConstants.TRACE_INT;
-	protected static final int LOG_LEVEL_DEBUG = EventConstants.DEBUG_INT;
-	protected static final int LOG_LEVEL_INFO = EventConstants.INFO_INT;
-	protected static final int LOG_LEVEL_WARN = EventConstants.WARN_INT;
-	protected static final int LOG_LEVEL_ERROR = EventConstants.ERROR_INT;
-
 	/**
 	 * Kafka Log Producer that is shared by all Logger instances
 	 */
@@ -50,17 +44,17 @@ public final class CISLogger extends MarkerIgnoringBase {
 		producer = logProducer;
 	}
 
-	private Log createLog(String message) {
+	private Log createLog(Level level, String message) {
 		Log log = new Log();
 		log.setId(clientId);
 		log.setDateTimeSent(new Date().getTime());
-		log.setLevel(Level.DEBUG);
+		log.setLevel(level);
 		log.setLog(message);
 		return log;
 	}
 
-	private void sendLog(String message) {
-		Log log = createLog(message);
+	private void sendLog(Level level, String message, Throwable thr) {
+		Log log = createLog(level, message);
 		if (producer != null) {
 			producer.send(log);
 		}
@@ -74,9 +68,9 @@ public final class CISLogger extends MarkerIgnoringBase {
 	 * @param arg1
 	 * @param arg2
 	 */
-	private void formatAndLog(int level, String format, Object arg1, Object arg2) {
+	private void formatAndLog(Level level, String format, Object arg1, Object arg2) {
 		FormattingTuple tp = MessageFormatter.format(format, arg1, arg2);
-		log(level, tp.getMessage(), tp.getThrowable());
+		sendLog(level, tp.getMessage(), tp.getThrowable());
 	}
 
 	/**
@@ -87,59 +81,9 @@ public final class CISLogger extends MarkerIgnoringBase {
 	 * @param arguments
 	 *            a list of 3 ore more arguments
 	 */
-	private void formatAndLog(int level, String format, Object... arguments) {
+	private void formatAndLog(Level level, String format, Object... arguments) {
 		FormattingTuple tp = MessageFormatter.arrayFormat(format, arguments);
-		log(level, tp.getMessage(), tp.getThrowable());
-	}
-
-	/**
-	 * This is our internal implementation for logging regular (non-parameterized)
-	 * log messages.
-	 *
-	 * @param level
-	 *            One of the LOG_LEVEL_XXX constants defining the log level
-	 * @param message
-	 *            The message itself
-	 * @param t
-	 *            The exception whose stack trace should be logged
-	 */
-	private void log(int level, String message, Throwable t) {
-		StringBuilder buf = new StringBuilder(32);
-
-		buf.append(timestampProvider.getTimestamp());
-		buf.append(' ');
-
-		// Append a readable representation of the log level
-		String levelStr = renderLevel(level);
-		buf.append(levelStr);
-		buf.append(' ');
-
-		// Append the name of the log instance if so configured
-		buf.append(logger.getName()).append(" - ");
-
-		// Append the message
-		buf.append(message);
-
-		// write to Kafka topic
-		sendLog(buf.toString());
-
-		// TODO: what to do with Throwable?
-	}
-
-	protected String renderLevel(int level) {
-		switch (level) {
-		case LOG_LEVEL_TRACE:
-			return "TRACE";
-		case LOG_LEVEL_DEBUG:
-			return "DEBUG";
-		case LOG_LEVEL_INFO:
-			return "INFO";
-		case LOG_LEVEL_WARN:
-			return "WARN";
-		case LOG_LEVEL_ERROR:
-			return "ERROR";
-		}
-		throw new IllegalStateException("Unrecognized level [" + level + "]");
+		sendLog(level, tp.getMessage(), tp.getThrowable());
 	}
 
 	@Override
@@ -171,12 +115,11 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public boolean isErrorEnabled() {
 		return logger.isErrorEnabled();
 	}
-
+	
 	@Override
 	public void trace(String message) {
 		if (isTraceEnabled()) {
 			logger.trace(message);
-			log(LOG_LEVEL_TRACE, message, null);
 		}
 	}
 
@@ -184,7 +127,6 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void trace(String message, Object arg) {
 		if (isTraceEnabled()) {
 			logger.trace(message, arg);
-			formatAndLog(LOG_LEVEL_TRACE, message, arg, null);
 		}
 	}
 
@@ -192,7 +134,6 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void trace(String message, Object arg1, Object arg2) {
 		if (isTraceEnabled()) {
 			logger.trace(message, arg1, arg2);
-			formatAndLog(LOG_LEVEL_TRACE, message, arg1, arg2);
 		}
 	}
 
@@ -200,23 +141,22 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void trace(String message, Object... args) {
 		if (isTraceEnabled()) {
 			logger.trace(message, args);
-			formatAndLog(LOG_LEVEL_TRACE, message, args);
 		}
 	}
 
 	@Override
-	public void trace(String msg, Throwable t) {
+	public void trace(String message, Throwable t) {
 		if (isTraceEnabled()) {
-			logger.trace(msg, t);
-			log(LOG_LEVEL_TRACE, msg, t);
+			logger.trace(message, t);
 		}
 	}
+
 
 	@Override
 	public void debug(String message) {
 		if (isDebugEnabled()) {
 			logger.debug(message);
-			log(LOG_LEVEL_DEBUG, message, null);
+			sendLog(Level.DEBUG, message, null);
 		}
 	}
 
@@ -224,7 +164,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void debug(String message, Object arg) {
 		if (isDebugEnabled()) {
 			logger.debug(message, arg);
-			formatAndLog(LOG_LEVEL_DEBUG, message, arg, null);
+			formatAndLog(Level.DEBUG, message, arg, null);
 		}
 	}
 
@@ -232,7 +172,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void debug(String message, Object arg1, Object arg2) {
 		if (isDebugEnabled()) {
 			logger.debug(message, arg1, arg2);
-			formatAndLog(LOG_LEVEL_DEBUG, message, arg1, arg2);
+			formatAndLog(Level.DEBUG, message, arg1, arg2);
 		}
 	}
 
@@ -240,7 +180,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void debug(String message, Object... args) {
 		if (isDebugEnabled()) {
 			logger.debug(message, args);
-			formatAndLog(LOG_LEVEL_DEBUG, message, args);
+			formatAndLog(Level.DEBUG, message, args);
 		}
 	}
 
@@ -248,7 +188,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void debug(String message, Throwable t) {
 		if (isDebugEnabled()) {
 			logger.debug(message, t);
-			log(LOG_LEVEL_DEBUG, message, t);
+			sendLog(Level.DEBUG, message, t);
 		}
 	}
 
@@ -256,7 +196,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void warn(String message) {
 		if (isWarnEnabled()) {
 			logger.warn(message);
-			log(LOG_LEVEL_WARN, message, null);
+			sendLog(Level.WARN, message, null);
 		}
 	}
 
@@ -264,7 +204,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void warn(String message, Object arg) {
 		if (isWarnEnabled()) {
 			logger.warn(message, arg);
-			formatAndLog(LOG_LEVEL_WARN, message, arg, null);
+			formatAndLog(Level.WARN, message, arg, null);
 		}
 	}
 
@@ -272,7 +212,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void warn(String message, Object arg1, Object arg2) {
 		if (isWarnEnabled()) {
 			logger.warn(message, arg1, arg2);
-			formatAndLog(LOG_LEVEL_WARN, message, arg1, arg2);
+			formatAndLog(Level.WARN, message, arg1, arg2);
 		}
 	}
 
@@ -280,7 +220,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void warn(String message, Object... args) {
 		if (isWarnEnabled()) {
 			logger.warn(message, args);
-			formatAndLog(LOG_LEVEL_WARN, message, args);
+			formatAndLog(Level.WARN, message, args);
 		}
 	}
 
@@ -288,7 +228,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void warn(String message, Throwable t) {
 		if (isWarnEnabled()) {
 			logger.warn(message, t);
-			log(LOG_LEVEL_WARN, message, t);
+			sendLog(Level.WARN, message, t);
 		}
 	}
 
@@ -296,7 +236,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void error(String message) {
 		if (isErrorEnabled()) {
 			logger.error(message);
-			log(LOG_LEVEL_ERROR, message, null);
+			sendLog(Level.ERROR, message, null);
 		}
 	}
 
@@ -304,7 +244,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void error(String message, Object arg) {
 		if (isErrorEnabled()) {
 			logger.error(message, arg);
-			formatAndLog(LOG_LEVEL_ERROR, message, arg, null);
+			formatAndLog(Level.ERROR, message, arg, null);
 		}
 	}
 
@@ -312,7 +252,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void error(String message, Object arg1, Object arg2) {
 		if (isErrorEnabled()) {
 			logger.error(message, arg1, arg2);
-			formatAndLog(LOG_LEVEL_ERROR, message, arg1, arg2);
+			formatAndLog(Level.ERROR, message, arg1, arg2);
 		}
 	}
 
@@ -320,7 +260,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void error(String message, Object... args) {
 		if (isErrorEnabled()) {
 			logger.error(message, args);
-			formatAndLog(LOG_LEVEL_ERROR, message, args);
+			formatAndLog(Level.ERROR, message, args);
 		}
 	}
 
@@ -328,7 +268,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void error(String message, Throwable t) {
 		if (isErrorEnabled()) {
 			logger.error(message, t);
-			log(LOG_LEVEL_ERROR, message, t);
+			sendLog(Level.ERROR, message, t);
 		}
 	}
 
@@ -336,7 +276,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void info(String message) {
 		if (isInfoEnabled()) {
 			logger.info(message);
-			log(LOG_LEVEL_INFO, message, null);
+			sendLog(Level.INFO, message, null);
 		}
 	}
 
@@ -344,7 +284,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void info(String message, Object arg) {
 		if (isInfoEnabled()) {
 			logger.info(message, arg);
-			formatAndLog(LOG_LEVEL_INFO, message, arg, null);
+			formatAndLog(Level.INFO, message, arg, null);
 		}
 	}
 
@@ -352,7 +292,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void info(String message, Object arg1, Object arg2) {
 		if (isInfoEnabled()) {
 			logger.info(message, arg1, arg2);
-			formatAndLog(LOG_LEVEL_INFO, message, arg1, arg2);
+			formatAndLog(Level.INFO, message, arg1, arg2);
 		}
 	}
 
@@ -360,7 +300,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void info(String message, Object... args) {
 		if (isInfoEnabled()) {
 			logger.info(message, args);
-			formatAndLog(LOG_LEVEL_INFO, message, args);
+			formatAndLog(Level.INFO, message, args);
 		}
 	}
 
@@ -368,7 +308,7 @@ public final class CISLogger extends MarkerIgnoringBase {
 	public void info(String message, Throwable t) {
 		if (isInfoEnabled()) {
 			logger.info(message, t);
-			log(LOG_LEVEL_INFO, message, t);
+			sendLog(Level.INFO, message, t);
 		}
 	}
 

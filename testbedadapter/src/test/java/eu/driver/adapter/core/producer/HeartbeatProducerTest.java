@@ -5,6 +5,7 @@ import java.util.Date;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.MockProducer;
 
+import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Heartbeat;
@@ -28,7 +29,7 @@ public class HeartbeatProducerTest extends TestCase {
 
 	public void testHeartbeatIntervals() throws Exception {
 		MockProducer<EDXLDistribution, IndexedRecord> prod = new MockProducer<>();
-		HeartbeatProducer producer = new HeartbeatProducer(prod);
+		HeartbeatProducer producer = new HeartbeatProducer(prod, TopicConstants.HEARTBEAT_TOPIC);
 		producer.startHeartbeats(50);
 		Thread.sleep(500); // for some reason it takes ~250ms before the scheduled executor becomes 'stable'
 		producer.stopHeartbeats();

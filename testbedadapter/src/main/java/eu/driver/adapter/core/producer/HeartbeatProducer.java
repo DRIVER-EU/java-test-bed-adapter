@@ -36,8 +36,8 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
 	private ScheduledFuture<?> taskReference = null;
 	
 
-	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer) throws Exception {
-		super(producer, TopicConstants.HEARTBEAT_TOPIC);
+	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer, String topicName) throws Exception {
+		super(producer, topicName);
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
 	}
 	
