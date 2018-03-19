@@ -35,6 +35,8 @@ public class CISAdapter {
 
 	
 	private static CISAdapter aMe = null;
+	
+	private String clientID = null;
 	/**
 	 * Kafka Producer shared by all specific Producers for sending Avro messages to
 	 * the CIS.
@@ -83,6 +85,7 @@ public class CISAdapter {
 		} catch (Exception e) {
 			
 		}
+		this.clientID = ClientProperties.getInstance().getProperty("client.id");
 	}
 	
 	public static synchronized CISAdapter getInstance() {
@@ -90,6 +93,10 @@ public class CISAdapter {
 			CISAdapter.aMe = new CISAdapter();
 		}
 		return CISAdapter.aMe;
+	}
+	
+	public String getClientID() {
+		return this.clientID;
 	}
 	
 	

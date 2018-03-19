@@ -12,7 +12,8 @@ public class ExampleAdaptor {
 		CISAdapter adapter = CISAdapter.getInstance();
 		
 		// add a callback which is called when a message was received in the correspinding topic
-		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.HEARTBEAT_TOPIC);
+		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.ADMIN_HEARTBEAT_TOPIC);
+		adapter.addCallback(new PrintAdapterCallback(), "standard_cap");
 	}
 
 }
