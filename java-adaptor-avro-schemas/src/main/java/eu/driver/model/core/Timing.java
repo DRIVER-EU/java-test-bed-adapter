@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Timing message to distribute the trial time. */
 @org.apache.avro.specific.AvroGenerated
 public class Timing extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5743852268561627889L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Timing\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Timing message to distribute the trial time.\",\"fields\":[{\"name\":\"id\",\"type\":\"long\",\"doc\":\"sequence ID\"},{\"name\":\"updatedAt\",\"type\":\"long\",\"doc\":\"The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTime\",\"type\":\"long\",\"doc\":\"The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"timeElapsed\",\"type\":\"long\",\"doc\":\"The number of milliseconds from the start of the trial.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":\"float\",\"doc\":\"Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.\"}]}");
+  private static final long serialVersionUID = -1801812225786619744L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Timing\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Timing message to distribute the trial time.\",\"fields\":[{\"name\":\"updatedAt\",\"type\":\"long\",\"doc\":\"The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTime\",\"type\":\"long\",\"doc\":\"The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"timeElapsed\",\"type\":\"long\",\"doc\":\"The number of milliseconds from the start of the trial.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":\"float\",\"doc\":\"Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,6 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
     return DECODER.decode(b);
   }
 
-  /** sequence ID */
-  @Deprecated public long id;
   /** The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
   @Deprecated public long updatedAt;
   /** The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
@@ -72,14 +70,12 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * All-args constructor.
-   * @param id sequence ID
    * @param updatedAt The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.
    * @param trialTime The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.
    * @param timeElapsed The number of milliseconds from the start of the trial.
    * @param trialTimeSpeed Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.
    */
-  public Timing(java.lang.Long id, java.lang.Long updatedAt, java.lang.Long trialTime, java.lang.Long timeElapsed, java.lang.Float trialTimeSpeed) {
-    this.id = id;
+  public Timing(java.lang.Long updatedAt, java.lang.Long trialTime, java.lang.Long timeElapsed, java.lang.Float trialTimeSpeed) {
     this.updatedAt = updatedAt;
     this.trialTime = trialTime;
     this.timeElapsed = timeElapsed;
@@ -90,11 +86,10 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return id;
-    case 1: return updatedAt;
-    case 2: return trialTime;
-    case 3: return timeElapsed;
-    case 4: return trialTimeSpeed;
+    case 0: return updatedAt;
+    case 1: return trialTime;
+    case 2: return timeElapsed;
+    case 3: return trialTimeSpeed;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -103,30 +98,12 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.Long)value$; break;
-    case 1: updatedAt = (java.lang.Long)value$; break;
-    case 2: trialTime = (java.lang.Long)value$; break;
-    case 3: timeElapsed = (java.lang.Long)value$; break;
-    case 4: trialTimeSpeed = (java.lang.Float)value$; break;
+    case 0: updatedAt = (java.lang.Long)value$; break;
+    case 1: trialTime = (java.lang.Long)value$; break;
+    case 2: timeElapsed = (java.lang.Long)value$; break;
+    case 3: trialTimeSpeed = (java.lang.Float)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
-  }
-
-  /**
-   * Gets the value of the 'id' field.
-   * @return sequence ID
-   */
-  public java.lang.Long getId() {
-    return id;
-  }
-
-  /**
-   * Sets the value of the 'id' field.
-   * sequence ID
-   * @param value the value to set.
-   */
-  public void setId(java.lang.Long value) {
-    this.id = value;
   }
 
   /**
@@ -229,8 +206,6 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Timing>
     implements org.apache.avro.data.RecordBuilder<Timing> {
 
-    /** sequence ID */
-    private long id;
     /** The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
     private long updatedAt;
     /** The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
@@ -251,25 +226,21 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
      */
     private Builder(eu.driver.model.core.Timing.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.id)) {
-        this.id = data().deepCopy(fields()[0].schema(), other.id);
+      if (isValidValue(fields()[0], other.updatedAt)) {
+        this.updatedAt = data().deepCopy(fields()[0].schema(), other.updatedAt);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.updatedAt)) {
-        this.updatedAt = data().deepCopy(fields()[1].schema(), other.updatedAt);
+      if (isValidValue(fields()[1], other.trialTime)) {
+        this.trialTime = data().deepCopy(fields()[1].schema(), other.trialTime);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.trialTime)) {
-        this.trialTime = data().deepCopy(fields()[2].schema(), other.trialTime);
+      if (isValidValue(fields()[2], other.timeElapsed)) {
+        this.timeElapsed = data().deepCopy(fields()[2].schema(), other.timeElapsed);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.timeElapsed)) {
-        this.timeElapsed = data().deepCopy(fields()[3].schema(), other.timeElapsed);
+      if (isValidValue(fields()[3], other.trialTimeSpeed)) {
+        this.trialTimeSpeed = data().deepCopy(fields()[3].schema(), other.trialTimeSpeed);
         fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.trialTimeSpeed)) {
-        this.trialTimeSpeed = data().deepCopy(fields()[4].schema(), other.trialTimeSpeed);
-        fieldSetFlags()[4] = true;
       }
     }
 
@@ -279,68 +250,22 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
      */
     private Builder(eu.driver.model.core.Timing other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.id)) {
-        this.id = data().deepCopy(fields()[0].schema(), other.id);
+      if (isValidValue(fields()[0], other.updatedAt)) {
+        this.updatedAt = data().deepCopy(fields()[0].schema(), other.updatedAt);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.updatedAt)) {
-        this.updatedAt = data().deepCopy(fields()[1].schema(), other.updatedAt);
+      if (isValidValue(fields()[1], other.trialTime)) {
+        this.trialTime = data().deepCopy(fields()[1].schema(), other.trialTime);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.trialTime)) {
-        this.trialTime = data().deepCopy(fields()[2].schema(), other.trialTime);
+      if (isValidValue(fields()[2], other.timeElapsed)) {
+        this.timeElapsed = data().deepCopy(fields()[2].schema(), other.timeElapsed);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.timeElapsed)) {
-        this.timeElapsed = data().deepCopy(fields()[3].schema(), other.timeElapsed);
+      if (isValidValue(fields()[3], other.trialTimeSpeed)) {
+        this.trialTimeSpeed = data().deepCopy(fields()[3].schema(), other.trialTimeSpeed);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.trialTimeSpeed)) {
-        this.trialTimeSpeed = data().deepCopy(fields()[4].schema(), other.trialTimeSpeed);
-        fieldSetFlags()[4] = true;
-      }
-    }
-
-    /**
-      * Gets the value of the 'id' field.
-      * sequence ID
-      * @return The value.
-      */
-    public java.lang.Long getId() {
-      return id;
-    }
-
-    /**
-      * Sets the value of the 'id' field.
-      * sequence ID
-      * @param value The value of 'id'.
-      * @return This builder.
-      */
-    public eu.driver.model.core.Timing.Builder setId(long value) {
-      validate(fields()[0], value);
-      this.id = value;
-      fieldSetFlags()[0] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'id' field has been set.
-      * sequence ID
-      * @return True if the 'id' field has been set, false otherwise.
-      */
-    public boolean hasId() {
-      return fieldSetFlags()[0];
-    }
-
-
-    /**
-      * Clears the value of the 'id' field.
-      * sequence ID
-      * @return This builder.
-      */
-    public eu.driver.model.core.Timing.Builder clearId() {
-      fieldSetFlags()[0] = false;
-      return this;
     }
 
     /**
@@ -359,9 +284,9 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder setUpdatedAt(long value) {
-      validate(fields()[1], value);
+      validate(fields()[0], value);
       this.updatedAt = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[0] = true;
       return this;
     }
 
@@ -371,7 +296,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return True if the 'updatedAt' field has been set, false otherwise.
       */
     public boolean hasUpdatedAt() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[0];
     }
 
 
@@ -381,7 +306,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder clearUpdatedAt() {
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[0] = false;
       return this;
     }
 
@@ -401,9 +326,9 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder setTrialTime(long value) {
-      validate(fields()[2], value);
+      validate(fields()[1], value);
       this.trialTime = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -413,7 +338,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return True if the 'trialTime' field has been set, false otherwise.
       */
     public boolean hasTrialTime() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[1];
     }
 
 
@@ -423,7 +348,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder clearTrialTime() {
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -443,9 +368,9 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder setTimeElapsed(long value) {
-      validate(fields()[3], value);
+      validate(fields()[2], value);
       this.timeElapsed = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -455,7 +380,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return True if the 'timeElapsed' field has been set, false otherwise.
       */
     public boolean hasTimeElapsed() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[2];
     }
 
 
@@ -465,7 +390,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder clearTimeElapsed() {
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -485,9 +410,9 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder setTrialTimeSpeed(float value) {
-      validate(fields()[4], value);
+      validate(fields()[3], value);
       this.trialTimeSpeed = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -497,7 +422,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return True if the 'trialTimeSpeed' field has been set, false otherwise.
       */
     public boolean hasTrialTimeSpeed() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
 
 
@@ -507,7 +432,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       * @return This builder.
       */
     public eu.driver.model.core.Timing.Builder clearTrialTimeSpeed() {
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -516,11 +441,10 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
     public Timing build() {
       try {
         Timing record = new Timing();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
-        record.updatedAt = fieldSetFlags()[1] ? this.updatedAt : (java.lang.Long) defaultValue(fields()[1]);
-        record.trialTime = fieldSetFlags()[2] ? this.trialTime : (java.lang.Long) defaultValue(fields()[2]);
-        record.timeElapsed = fieldSetFlags()[3] ? this.timeElapsed : (java.lang.Long) defaultValue(fields()[3]);
-        record.trialTimeSpeed = fieldSetFlags()[4] ? this.trialTimeSpeed : (java.lang.Float) defaultValue(fields()[4]);
+        record.updatedAt = fieldSetFlags()[0] ? this.updatedAt : (java.lang.Long) defaultValue(fields()[0]);
+        record.trialTime = fieldSetFlags()[1] ? this.trialTime : (java.lang.Long) defaultValue(fields()[1]);
+        record.timeElapsed = fieldSetFlags()[2] ? this.timeElapsed : (java.lang.Long) defaultValue(fields()[2]);
+        record.trialTimeSpeed = fieldSetFlags()[3] ? this.trialTimeSpeed : (java.lang.Float) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
