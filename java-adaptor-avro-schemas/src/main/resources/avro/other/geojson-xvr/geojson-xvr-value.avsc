@@ -3,7 +3,8 @@
   "namespace": "eu.driver.model.geojson",
   "doc": "A GeoJSON FeatureCollection object. As the properties are generic, it should be replaced by a record with named properties.",
   "type": "record",
-  "fields": [{
+  "fields": [
+    {
       "name": "type",
       "type": {
 		"name": "FeatureCollectionType",
