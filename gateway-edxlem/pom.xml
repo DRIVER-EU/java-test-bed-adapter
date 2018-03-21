@@ -87,6 +87,13 @@
 				</executions>
 				<configuration>
 					<finalName>uber-${project.artifactId}-${project.version}</finalName>
+					<transformers>
+						<!-- add Main-Class to manifest file -->
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>eu.driver.gateway.GatewayConverter</mainClass>
+						</transformer>
+					</transformers>
 				</configuration>
 			</plugin>
 		</plugins>

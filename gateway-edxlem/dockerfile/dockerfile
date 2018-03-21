@@ -1,0 +1,4 @@
+FROM openjdk:8-jdk
+ADD uber-gateway-edxlem-0.0.1.jar /opt/application/uber-gateway-edxlem-0.0.1.jar
+ADD run.sh /opt/application/run.sh
+CMD ["/bin/bash","/opt/application/run.sh"]
