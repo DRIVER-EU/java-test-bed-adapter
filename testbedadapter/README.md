@@ -1,6 +1,6 @@
-# JAVA Testbed Adaptor
-The Java Testbed adaptor is used to be integrated directly into the JAVA application. It is build as library for easy integration.
-It offers one central point for communication: Adaptor.getInstance();
+# JAVA Testbed Adapter
+The Java Testbed Adapter is used to be integrated directly into the JAVA application. It is build as library for easy integration.
+It offers one central point for communication: Adapter.getInstance();
 
 In this following methods are available:
 
@@ -40,9 +40,9 @@ public void addLogCallback(methodDelegate(avroLogRecord))
 * Development Environment e.g.: Eclipse
 * maven
 
-# Run the Adaptor
+# Run the Adapter
 
-* the build of this java adaptor results in an java library that can be included in your JAVA application.
+* the build of this java Adapter results in an java library that can be included in your JAVA application.
 
 # Configuration
 
