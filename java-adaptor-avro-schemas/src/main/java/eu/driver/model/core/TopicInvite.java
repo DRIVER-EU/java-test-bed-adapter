@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.system;
+package eu.driver.model.core;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** The message send by the admin tool to tell the adaptor to which topic he is invited to join. */
 @org.apache.avro.specific.AvroGenerated
 public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8696230013099166043L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TopicInvite\",\"namespace\":\"eu.driver.model.system\",\"doc\":\"The message send by the admin tool to tell the adaptor to which topic he is invited to join.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Client id\"},{\"name\":\"topicName\",\"type\":\"string\",\"doc\":\"The name of the Topic to which the adaptor (client) is invited to join.\"},{\"name\":\"subscribeAllowed\",\"type\":\"boolean\",\"doc\":\"Indicates if the client is allowed to connect as subscriber.\"},{\"name\":\"publishAllowed\",\"type\":\"boolean\",\"doc\":\"Indicates if the client is allowed to connect as subscriber.\"}]}");
+  private static final long serialVersionUID = 6549324775941114574L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TopicInvite\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"The message send by the admin tool to tell the adaptor to which topic he is invited to join.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Client id\"},{\"name\":\"topicName\",\"type\":\"string\",\"doc\":\"The name of the Topic to which the adaptor (client) is invited to join.\"},{\"name\":\"subscribeAllowed\",\"type\":\"boolean\",\"doc\":\"Indicates if the client is allowed to connect as subscriber.\"},{\"name\":\"publishAllowed\",\"type\":\"boolean\",\"doc\":\"Indicates if the client is allowed to connect as subscriber.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -178,8 +178,8 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new TopicInvite RecordBuilder.
    * @return A new TopicInvite RecordBuilder
    */
-  public static eu.driver.model.system.TopicInvite.Builder newBuilder() {
-    return new eu.driver.model.system.TopicInvite.Builder();
+  public static eu.driver.model.core.TopicInvite.Builder newBuilder() {
+    return new eu.driver.model.core.TopicInvite.Builder();
   }
 
   /**
@@ -187,8 +187,8 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new TopicInvite RecordBuilder
    */
-  public static eu.driver.model.system.TopicInvite.Builder newBuilder(eu.driver.model.system.TopicInvite.Builder other) {
-    return new eu.driver.model.system.TopicInvite.Builder(other);
+  public static eu.driver.model.core.TopicInvite.Builder newBuilder(eu.driver.model.core.TopicInvite.Builder other) {
+    return new eu.driver.model.core.TopicInvite.Builder(other);
   }
 
   /**
@@ -196,8 +196,8 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new TopicInvite RecordBuilder
    */
-  public static eu.driver.model.system.TopicInvite.Builder newBuilder(eu.driver.model.system.TopicInvite other) {
-    return new eu.driver.model.system.TopicInvite.Builder(other);
+  public static eu.driver.model.core.TopicInvite.Builder newBuilder(eu.driver.model.core.TopicInvite other) {
+    return new eu.driver.model.core.TopicInvite.Builder(other);
   }
 
   /**
@@ -224,7 +224,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.system.TopicInvite.Builder other) {
+    private Builder(eu.driver.model.core.TopicInvite.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -248,7 +248,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing TopicInvite instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.system.TopicInvite other) {
+    private Builder(eu.driver.model.core.TopicInvite other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -283,7 +283,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.core.TopicInvite.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -305,7 +305,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * Client id
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder clearId() {
+    public eu.driver.model.core.TopicInvite.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -326,7 +326,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'topicName'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder setTopicName(java.lang.CharSequence value) {
+    public eu.driver.model.core.TopicInvite.Builder setTopicName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.topicName = value;
       fieldSetFlags()[1] = true;
@@ -348,7 +348,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * The name of the Topic to which the adaptor (client) is invited to join.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder clearTopicName() {
+    public eu.driver.model.core.TopicInvite.Builder clearTopicName() {
       topicName = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -369,7 +369,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'subscribeAllowed'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder setSubscribeAllowed(boolean value) {
+    public eu.driver.model.core.TopicInvite.Builder setSubscribeAllowed(boolean value) {
       validate(fields()[2], value);
       this.subscribeAllowed = value;
       fieldSetFlags()[2] = true;
@@ -391,7 +391,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * Indicates if the client is allowed to connect as subscriber.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder clearSubscribeAllowed() {
+    public eu.driver.model.core.TopicInvite.Builder clearSubscribeAllowed() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -411,7 +411,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'publishAllowed'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder setPublishAllowed(boolean value) {
+    public eu.driver.model.core.TopicInvite.Builder setPublishAllowed(boolean value) {
       validate(fields()[3], value);
       this.publishAllowed = value;
       fieldSetFlags()[3] = true;
@@ -433,7 +433,7 @@ public class TopicInvite extends org.apache.avro.specific.SpecificRecordBase imp
       * Indicates if the client is allowed to connect as subscriber.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicInvite.Builder clearPublishAllowed() {
+    public eu.driver.model.core.TopicInvite.Builder clearPublishAllowed() {
       fieldSetFlags()[3] = false;
       return this;
     }

@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.system;
+package eu.driver.model.core;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** The message send to the admin tool to request a topic to be created and grant clients access as publisher/subscriber to them. */
 @org.apache.avro.specific.AvroGenerated
 public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4046114709606144346L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TopicCreate\",\"namespace\":\"eu.driver.model.system\",\"doc\":\"The message send to the admin tool to request a topic to be created and grant clients access as publisher/subscriber to them.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"},{\"name\":\"topicName\",\"type\":\"string\",\"doc\":\"The name of the Topic to be created by the admin tool.\"},{\"name\":\"subscribeAllowed\",\"type\":[{\"type\":\"record\",\"name\":\"subscribeAllowed\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}],\"doc\":\"Indicates which clients are allowed to connect as subscriber.\"},{\"name\":\"publishedAllowed\",\"type\":[{\"type\":\"record\",\"name\":\"publishedAllowed\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}],\"doc\":\"Indicates which clients are allowed to connect as publisher.\"}]}");
+  private static final long serialVersionUID = 612440153029334933L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TopicCreate\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"The message send to the admin tool to request a topic to be created and grant clients access as publisher/subscriber to them.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"},{\"name\":\"topicName\",\"type\":\"string\",\"doc\":\"The name of the Topic to be created by the admin tool.\"},{\"name\":\"subscribeAllowed\",\"type\":[{\"type\":\"record\",\"name\":\"subscribeAllowed\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}],\"doc\":\"Indicates which clients are allowed to connect as subscriber.\"},{\"name\":\"publishedAllowed\",\"type\":[{\"type\":\"record\",\"name\":\"publishedAllowed\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}],\"doc\":\"Indicates which clients are allowed to connect as publisher.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -178,8 +178,8 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new TopicCreate RecordBuilder.
    * @return A new TopicCreate RecordBuilder
    */
-  public static eu.driver.model.system.TopicCreate.Builder newBuilder() {
-    return new eu.driver.model.system.TopicCreate.Builder();
+  public static eu.driver.model.core.TopicCreate.Builder newBuilder() {
+    return new eu.driver.model.core.TopicCreate.Builder();
   }
 
   /**
@@ -187,8 +187,8 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new TopicCreate RecordBuilder
    */
-  public static eu.driver.model.system.TopicCreate.Builder newBuilder(eu.driver.model.system.TopicCreate.Builder other) {
-    return new eu.driver.model.system.TopicCreate.Builder(other);
+  public static eu.driver.model.core.TopicCreate.Builder newBuilder(eu.driver.model.core.TopicCreate.Builder other) {
+    return new eu.driver.model.core.TopicCreate.Builder(other);
   }
 
   /**
@@ -196,8 +196,8 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new TopicCreate RecordBuilder
    */
-  public static eu.driver.model.system.TopicCreate.Builder newBuilder(eu.driver.model.system.TopicCreate other) {
-    return new eu.driver.model.system.TopicCreate.Builder(other);
+  public static eu.driver.model.core.TopicCreate.Builder newBuilder(eu.driver.model.core.TopicCreate other) {
+    return new eu.driver.model.core.TopicCreate.Builder(other);
   }
 
   /**
@@ -224,7 +224,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.system.TopicCreate.Builder other) {
+    private Builder(eu.driver.model.core.TopicCreate.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -248,7 +248,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing TopicCreate instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.system.TopicCreate other) {
+    private Builder(eu.driver.model.core.TopicCreate other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -283,7 +283,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.core.TopicCreate.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -305,7 +305,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * sender Client id
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder clearId() {
+    public eu.driver.model.core.TopicCreate.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -326,7 +326,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'topicName'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder setTopicName(java.lang.CharSequence value) {
+    public eu.driver.model.core.TopicCreate.Builder setTopicName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.topicName = value;
       fieldSetFlags()[1] = true;
@@ -348,7 +348,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * The name of the Topic to be created by the admin tool.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder clearTopicName() {
+    public eu.driver.model.core.TopicCreate.Builder clearTopicName() {
       topicName = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -369,7 +369,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'subscribeAllowed'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder setSubscribeAllowed(java.lang.Object value) {
+    public eu.driver.model.core.TopicCreate.Builder setSubscribeAllowed(java.lang.Object value) {
       validate(fields()[2], value);
       this.subscribeAllowed = value;
       fieldSetFlags()[2] = true;
@@ -391,7 +391,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * Indicates which clients are allowed to connect as subscriber.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder clearSubscribeAllowed() {
+    public eu.driver.model.core.TopicCreate.Builder clearSubscribeAllowed() {
       subscribeAllowed = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -412,7 +412,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'publishedAllowed'.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder setPublishedAllowed(java.lang.Object value) {
+    public eu.driver.model.core.TopicCreate.Builder setPublishedAllowed(java.lang.Object value) {
       validate(fields()[3], value);
       this.publishedAllowed = value;
       fieldSetFlags()[3] = true;
@@ -434,7 +434,7 @@ public class TopicCreate extends org.apache.avro.specific.SpecificRecordBase imp
       * Indicates which clients are allowed to connect as publisher.
       * @return This builder.
       */
-    public eu.driver.model.system.TopicCreate.Builder clearPublishedAllowed() {
+    public eu.driver.model.core.TopicCreate.Builder clearPublishedAllowed() {
       publishedAllowed = null;
       fieldSetFlags()[3] = false;
       return this;

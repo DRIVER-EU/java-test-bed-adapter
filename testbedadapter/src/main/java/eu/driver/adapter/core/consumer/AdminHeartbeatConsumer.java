@@ -1,22 +1,22 @@
 package eu.driver.adapter.core.consumer;
 
 import org.apache.avro.generic.IndexedRecord;
-import org.slf4j.Logger;
+import org.apache.avro.specific.SpecificData;
 
-import eu.driver.adapter.core.CISAdapter;
-import eu.driver.adapter.logger.CISLogger;
 import eu.driver.api.GenericAvroReceiver;
-import eu.driver.model.core.AdminHeartbeat;
 
 public class AdminHeartbeatConsumer extends GenericAvroReceiver {
 
-	private Logger logger = CISLogger.logger(CISAdapter.class);
-	
 	@Override
-	public void receiveMessage(IndexedRecord message) {
-		if (message instanceof AdminHeartbeat) {
-			logger.info("AdminTool heartbeat received!");
-			
+	public void receiveMessage(IndexedRecord receivedMessage) {
+		if (receivedMessage.getSchema().getName().equalsIgnoreCase("AdminHeartbeat")) {
+			try {
+				eu.driver.model.core.AdminHeartbeat logMsg = (eu.driver.model.core.AdminHeartbeat) SpecificData.get().deepCopy(eu.driver.model.core.AdminHeartbeat.SCHEMA$, receivedMessage);
+				System.out.println("AdminHeartbeat Msg received!");
+				System.out.println(logMsg);
+			} catch (Exception e) {
+				
+			}
 		}
 	}
 

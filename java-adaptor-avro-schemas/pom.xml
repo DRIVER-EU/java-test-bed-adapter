@@ -4,7 +4,7 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>java-adaptor-avro-schemas</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter</name>

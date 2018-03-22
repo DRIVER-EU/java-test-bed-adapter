@@ -9,7 +9,7 @@ import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.core.producer.AbstractEDXLDEProducer;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.model.edxl.EDXLDistribution;
-import eu.driver.model.system.TopicInvite;
+import eu.driver.model.core.TopicInvite;
 
 public class TopicInviteProducer  extends AbstractEDXLDEProducer {
 	

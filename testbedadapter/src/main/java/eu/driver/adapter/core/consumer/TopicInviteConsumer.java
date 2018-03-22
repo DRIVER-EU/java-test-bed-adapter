@@ -16,7 +16,7 @@ public class TopicInviteConsumer extends GenericAvroReceiver {
 	public void receiveMessage(IndexedRecord receivedMessage) {
 		if (receivedMessage.getSchema().getName().equalsIgnoreCase("TopicInvite")) {
 			try {
-				eu.driver.model.system.TopicInvite inviteMsg = (eu.driver.model.system.TopicInvite) SpecificData.get().deepCopy(eu.driver.model.system.TopicInvite.SCHEMA$, receivedMessage);
+				eu.driver.model.core.TopicInvite inviteMsg = (eu.driver.model.core.TopicInvite) SpecificData.get().deepCopy(eu.driver.model.core.TopicInvite.SCHEMA$, receivedMessage);
 				if (inviteMsg.getId().toString().equalsIgnoreCase(CISAdapter.getInstance().getClientID())) {
 					logger.info("The Adaptor received a message to join the topic: " + inviteMsg.getTopicName());
 					CISAdapter.getInstance().topicInviteReceived(inviteMsg);

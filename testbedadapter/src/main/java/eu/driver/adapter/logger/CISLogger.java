@@ -4,25 +4,20 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.EventConstants;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
 
-import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.core.producer.LogProducer;
 import eu.driver.adapter.properties.ClientProperties;
-import eu.driver.adapter.time.ISO8601TimestampProvider;
-import eu.driver.adapter.time.ITimestampProvider;
-import eu.driver.model.system.Level;
-import eu.driver.model.system.Log;
+import eu.driver.model.core.Level;
+import eu.driver.model.core.Log;
 
 public final class CISLogger extends MarkerIgnoringBase {
 
 	private static final long serialVersionUID = 4267880126821228370L;
 	private final Logger logger;
 	private final String clientId;
-	private final ITimestampProvider timestampProvider;
 
 	/**
 	 * Kafka Log Producer that is shared by all Logger instances
@@ -37,7 +32,6 @@ public final class CISLogger extends MarkerIgnoringBase {
 		logger = LoggerFactory.getLogger(clazz);
 		clientId = ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 		name = clazz.getName();
-		timestampProvider = new ISO8601TimestampProvider();
 	}
 	
 	public void setLogProducer(LogProducer logProducer) {

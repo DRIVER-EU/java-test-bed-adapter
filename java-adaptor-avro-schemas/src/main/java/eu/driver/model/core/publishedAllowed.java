@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.cap;
+package eu.driver.model.core;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -11,25 +11,24 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** Key of a CAP Alert message */
 @org.apache.avro.specific.AvroGenerated
-public class CapKey extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7491614356809232369L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CapKey\",\"namespace\":\"eu.driver.model.cap\",\"doc\":\"Key of a CAP Alert message\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"The client id of the sending adapter\"}]}");
+public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 7514680700853547136L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"publishedAllowed\",\"namespace\":\"eu.driver.model.core\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<CapKey> ENCODER =
-      new BinaryMessageEncoder<CapKey>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<publishedAllowed> ENCODER =
+      new BinaryMessageEncoder<publishedAllowed>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<CapKey> DECODER =
-      new BinaryMessageDecoder<CapKey>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<publishedAllowed> DECODER =
+      new BinaryMessageDecoder<publishedAllowed>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<CapKey> getDecoder() {
+  public static BinaryMessageDecoder<publishedAllowed> getDecoder() {
     return DECODER;
   }
 
@@ -37,22 +36,22 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<CapKey> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<CapKey>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<publishedAllowed> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<publishedAllowed>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this CapKey to a ByteBuffer. */
+  /** Serializes this publishedAllowed to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a CapKey from a ByteBuffer. */
-  public static CapKey fromByteBuffer(
+  /** Deserializes a publishedAllowed from a ByteBuffer. */
+  public static publishedAllowed fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  /** The client id of the sending adapter */
+  /** sender Client id */
   @Deprecated public java.lang.CharSequence id;
 
   /**
@@ -60,13 +59,13 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public CapKey() {}
+  public publishedAllowed() {}
 
   /**
    * All-args constructor.
-   * @param id The client id of the sending adapter
+   * @param id sender Client id
    */
-  public CapKey(java.lang.CharSequence id) {
+  public publishedAllowed(java.lang.CharSequence id) {
     this.id = id;
   }
 
@@ -90,7 +89,7 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'id' field.
-   * @return The client id of the sending adapter
+   * @return sender Client id
    */
   public java.lang.CharSequence getId() {
     return id;
@@ -98,7 +97,7 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Sets the value of the 'id' field.
-   * The client id of the sending adapter
+   * sender Client id
    * @param value the value to set.
    */
   public void setId(java.lang.CharSequence value) {
@@ -106,38 +105,38 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   /**
-   * Creates a new CapKey RecordBuilder.
-   * @return A new CapKey RecordBuilder
+   * Creates a new publishedAllowed RecordBuilder.
+   * @return A new publishedAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.CapKey.Builder newBuilder() {
-    return new eu.driver.model.cap.CapKey.Builder();
+  public static eu.driver.model.core.publishedAllowed.Builder newBuilder() {
+    return new eu.driver.model.core.publishedAllowed.Builder();
   }
 
   /**
-   * Creates a new CapKey RecordBuilder by copying an existing Builder.
+   * Creates a new publishedAllowed RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new CapKey RecordBuilder
+   * @return A new publishedAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.CapKey.Builder newBuilder(eu.driver.model.cap.CapKey.Builder other) {
-    return new eu.driver.model.cap.CapKey.Builder(other);
+  public static eu.driver.model.core.publishedAllowed.Builder newBuilder(eu.driver.model.core.publishedAllowed.Builder other) {
+    return new eu.driver.model.core.publishedAllowed.Builder(other);
   }
 
   /**
-   * Creates a new CapKey RecordBuilder by copying an existing CapKey instance.
+   * Creates a new publishedAllowed RecordBuilder by copying an existing publishedAllowed instance.
    * @param other The existing instance to copy.
-   * @return A new CapKey RecordBuilder
+   * @return A new publishedAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.CapKey.Builder newBuilder(eu.driver.model.cap.CapKey other) {
-    return new eu.driver.model.cap.CapKey.Builder(other);
+  public static eu.driver.model.core.publishedAllowed.Builder newBuilder(eu.driver.model.core.publishedAllowed other) {
+    return new eu.driver.model.core.publishedAllowed.Builder(other);
   }
 
   /**
-   * RecordBuilder for CapKey instances.
+   * RecordBuilder for publishedAllowed instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CapKey>
-    implements org.apache.avro.data.RecordBuilder<CapKey> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<publishedAllowed>
+    implements org.apache.avro.data.RecordBuilder<publishedAllowed> {
 
-    /** The client id of the sending adapter */
+    /** sender Client id */
     private java.lang.CharSequence id;
 
     /** Creates a new Builder */
@@ -149,7 +148,7 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.cap.CapKey.Builder other) {
+    private Builder(eu.driver.model.core.publishedAllowed.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -158,10 +157,10 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
     }
 
     /**
-     * Creates a Builder by copying an existing CapKey instance
+     * Creates a Builder by copying an existing publishedAllowed instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.cap.CapKey other) {
+    private Builder(eu.driver.model.core.publishedAllowed other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -171,7 +170,7 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Gets the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @return The value.
       */
     public java.lang.CharSequence getId() {
@@ -180,11 +179,11 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Sets the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.cap.CapKey.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.core.publishedAllowed.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -193,7 +192,7 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Checks whether the 'id' field has been set.
-      * The client id of the sending adapter
+      * sender Client id
       * @return True if the 'id' field has been set, false otherwise.
       */
     public boolean hasId() {
@@ -203,10 +202,10 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     /**
       * Clears the value of the 'id' field.
-      * The client id of the sending adapter
+      * sender Client id
       * @return This builder.
       */
-    public eu.driver.model.cap.CapKey.Builder clearId() {
+    public eu.driver.model.core.publishedAllowed.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -214,9 +213,9 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
 
     @Override
     @SuppressWarnings("unchecked")
-    public CapKey build() {
+    public publishedAllowed build() {
       try {
-        CapKey record = new CapKey();
+        publishedAllowed record = new publishedAllowed();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.CharSequence) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
@@ -226,8 +225,8 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<CapKey>
-    WRITER$ = (org.apache.avro.io.DatumWriter<CapKey>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<publishedAllowed>
+    WRITER$ = (org.apache.avro.io.DatumWriter<publishedAllowed>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -235,8 +234,8 @@ public class CapKey extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<CapKey>
-    READER$ = (org.apache.avro.io.DatumReader<CapKey>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<publishedAllowed>
+    READER$ = (org.apache.avro.io.DatumReader<publishedAllowed>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

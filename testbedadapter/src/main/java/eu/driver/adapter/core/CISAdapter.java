@@ -25,11 +25,10 @@ import eu.driver.adapter.properties.ConsumerProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
-import eu.driver.model.cap.Alert;
 import eu.driver.model.core.Timing;
 import eu.driver.model.edxl.EDXLDistribution;
-import eu.driver.model.system.Log;
-import eu.driver.model.system.TopicInvite;
+import eu.driver.model.core.Log;
+import eu.driver.model.core.TopicInvite;
 
 public class CISAdapter {
 

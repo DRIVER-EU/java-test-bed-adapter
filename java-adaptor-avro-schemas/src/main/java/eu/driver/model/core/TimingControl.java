@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** TimingControl message to distribute the trial time changes. */
 @org.apache.avro.specific.AvroGenerated
 public class TimingControl extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 794863150713524003L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TimingControl\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"TimingControl message to distribute the trial time changes.\",\"fields\":[{\"name\":\"command\",\"type\":{\"type\":\"enum\",\"name\":\"Command\",\"namespace\":\"eu.driver.model.system\",\"symbols\":[\"Init\",\"Start\",\"Pause\",\"Update\",\"Stop\",\"Reset\"]},\"doc\":\"The type of command to switch the state of the time-service.\"},{\"name\":\"trialTime\",\"type\":[\"null\",\"long\"],\"doc\":\"The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"default\":null,\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":[\"null\",\"float\"],\"doc\":\"The Trialtime speed factor.\",\"default\":null}]}");
+  private static final long serialVersionUID = -988767209954325423L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TimingControl\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"TimingControl message to distribute the trial time changes.\",\"fields\":[{\"name\":\"command\",\"type\":{\"type\":\"enum\",\"name\":\"Command\",\"symbols\":[\"Init\",\"Start\",\"Pause\",\"Update\",\"Stop\",\"Reset\"]},\"doc\":\"The type of command to switch the state of the time-service.\"},{\"name\":\"trialTime\",\"type\":[\"null\",\"long\"],\"doc\":\"The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"default\":null,\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":[\"null\",\"float\"],\"doc\":\"The Trialtime speed factor.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -53,7 +53,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /** The type of command to switch the state of the time-service. */
-  @Deprecated public eu.driver.model.system.Command command;
+  @Deprecated public eu.driver.model.core.Command command;
   /** The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
   @Deprecated public java.lang.Long trialTime;
   /** The Trialtime speed factor. */
@@ -72,7 +72,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
    * @param trialTime The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.
    * @param trialTimeSpeed The Trialtime speed factor.
    */
-  public TimingControl(eu.driver.model.system.Command command, java.lang.Long trialTime, java.lang.Float trialTimeSpeed) {
+  public TimingControl(eu.driver.model.core.Command command, java.lang.Long trialTime, java.lang.Float trialTimeSpeed) {
     this.command = command;
     this.trialTime = trialTime;
     this.trialTimeSpeed = trialTimeSpeed;
@@ -93,7 +93,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: command = (eu.driver.model.system.Command)value$; break;
+    case 0: command = (eu.driver.model.core.Command)value$; break;
     case 1: trialTime = (java.lang.Long)value$; break;
     case 2: trialTimeSpeed = (java.lang.Float)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -104,7 +104,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'command' field.
    * @return The type of command to switch the state of the time-service.
    */
-  public eu.driver.model.system.Command getCommand() {
+  public eu.driver.model.core.Command getCommand() {
     return command;
   }
 
@@ -113,7 +113,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
    * The type of command to switch the state of the time-service.
    * @param value the value to set.
    */
-  public void setCommand(eu.driver.model.system.Command value) {
+  public void setCommand(eu.driver.model.core.Command value) {
     this.command = value;
   }
 
@@ -184,7 +184,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
     implements org.apache.avro.data.RecordBuilder<TimingControl> {
 
     /** The type of command to switch the state of the time-service. */
-    private eu.driver.model.system.Command command;
+    private eu.driver.model.core.Command command;
     /** The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
     private java.lang.Long trialTime;
     /** The Trialtime speed factor. */
@@ -240,7 +240,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
       * The type of command to switch the state of the time-service.
       * @return The value.
       */
-    public eu.driver.model.system.Command getCommand() {
+    public eu.driver.model.core.Command getCommand() {
       return command;
     }
 
@@ -250,7 +250,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'command'.
       * @return This builder.
       */
-    public eu.driver.model.core.TimingControl.Builder setCommand(eu.driver.model.system.Command value) {
+    public eu.driver.model.core.TimingControl.Builder setCommand(eu.driver.model.core.Command value) {
       validate(fields()[0], value);
       this.command = value;
       fieldSetFlags()[0] = true;
@@ -369,7 +369,7 @@ public class TimingControl extends org.apache.avro.specific.SpecificRecordBase i
     public TimingControl build() {
       try {
         TimingControl record = new TimingControl();
-        record.command = fieldSetFlags()[0] ? this.command : (eu.driver.model.system.Command) defaultValue(fields()[0]);
+        record.command = fieldSetFlags()[0] ? this.command : (eu.driver.model.core.Command) defaultValue(fields()[0]);
         record.trialTime = fieldSetFlags()[1] ? this.trialTime : (java.lang.Long) defaultValue(fields()[1]);
         record.trialTimeSpeed = fieldSetFlags()[2] ? this.trialTimeSpeed : (java.lang.Float) defaultValue(fields()[2]);
         return record;

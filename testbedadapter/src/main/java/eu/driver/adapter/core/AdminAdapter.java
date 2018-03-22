@@ -16,6 +16,7 @@ import eu.driver.adapter.core.consumer.GenericCallbackConsumer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
 import eu.driver.adapter.core.producer.LogProducer;
+import eu.driver.adapter.core.producer.admin.AdminHeartbeatProducer;
 import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
@@ -42,9 +43,9 @@ public class AdminAdapter {
 	/*
 	 * The Core Producers
 	 */
-	private HeartbeatProducer heartbeatProducer;
+	private AdminHeartbeatProducer heartbeatProducer;
 	
-	private CISLogger logger = new CISLogger(CISAdapter.class);
+	private CISLogger logger = new CISLogger(AdminAdapter.class);
 	private Boolean connectModeSec = false;
 	
 	private AdminAdapter() {
@@ -70,7 +71,7 @@ public class AdminAdapter {
 		sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
 		try {
 			logger.info("Check Adpter DEV Mode");
-			heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.ADMIN_HEARTBEAT_TOPIC);	
+			heartbeatProducer = new AdminHeartbeatProducer(sharedAvroProducer, TopicConstants.ADMIN_HEARTBEAT_TOPIC);	
 			heartbeatProducer.sendInitialHeartbeat();
 		} catch (Exception cEx) {
 			logger.info("CISAdapter initialized failed with non secure connection!");
@@ -78,7 +79,7 @@ public class AdminAdapter {
 			connectModeSec = true;
 			sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
 			try {
-				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.ADMIN_HEARTBEAT_TOPIC);	
+				heartbeatProducer = new AdminHeartbeatProducer(sharedAvroProducer, TopicConstants.ADMIN_HEARTBEAT_TOPIC);	
 				heartbeatProducer.sendInitialHeartbeat();
 			} catch (Exception e) {
 				logger.info("Adapter cannot be initialized, something is wrong!");

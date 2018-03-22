@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.system;
+package eu.driver.model.core;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Log message, especially useful to inform others of errors that are occurring. */
 @org.apache.avro.specific.AvroGenerated
 public class Log extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5895625292294916407L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Log\",\"namespace\":\"eu.driver.model.system\",\"doc\":\"Log message, especially useful to inform others of errors that are occurring.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Client id\"},{\"name\":\"dateTimeSent\",\"type\":\"long\",\"doc\":\"The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"level\",\"type\":{\"type\":\"enum\",\"name\":\"Level\",\"symbols\":[\"DEBUG\",\"INFO\",\"WARN\",\"ERROR\",\"CRITICAL\",\"SILLY\"]},\"doc\":\"The action-ability of the message.\"},{\"name\":\"log\",\"type\":\"string\",\"doc\":\"Actual log message\"}]}");
+  private static final long serialVersionUID = 5129144093425199790L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Log\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Log message, especially useful to inform others of errors that are occurring.\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Client id\"},{\"name\":\"dateTimeSent\",\"type\":\"long\",\"doc\":\"The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"level\",\"type\":{\"type\":\"enum\",\"name\":\"Level\",\"symbols\":[\"DEBUG\",\"INFO\",\"WARN\",\"ERROR\",\"CRITICAL\",\"SILLY\"]},\"doc\":\"The action-ability of the message.\"},{\"name\":\"log\",\"type\":\"string\",\"doc\":\"Actual log message\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -57,7 +57,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
   /** The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
   @Deprecated public long dateTimeSent;
   /** The action-ability of the message. */
-  @Deprecated public eu.driver.model.system.Level level;
+  @Deprecated public eu.driver.model.core.Level level;
   /** Actual log message */
   @Deprecated public java.lang.CharSequence log;
 
@@ -75,7 +75,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param level The action-ability of the message.
    * @param log Actual log message
    */
-  public Log(java.lang.CharSequence id, java.lang.Long dateTimeSent, eu.driver.model.system.Level level, java.lang.CharSequence log) {
+  public Log(java.lang.CharSequence id, java.lang.Long dateTimeSent, eu.driver.model.core.Level level, java.lang.CharSequence log) {
     this.id = id;
     this.dateTimeSent = dateTimeSent;
     this.level = level;
@@ -100,7 +100,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
     switch (field$) {
     case 0: id = (java.lang.CharSequence)value$; break;
     case 1: dateTimeSent = (java.lang.Long)value$; break;
-    case 2: level = (eu.driver.model.system.Level)value$; break;
+    case 2: level = (eu.driver.model.core.Level)value$; break;
     case 3: log = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -144,7 +144,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * Gets the value of the 'level' field.
    * @return The action-ability of the message.
    */
-  public eu.driver.model.system.Level getLevel() {
+  public eu.driver.model.core.Level getLevel() {
     return level;
   }
 
@@ -153,7 +153,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * The action-ability of the message.
    * @param value the value to set.
    */
-  public void setLevel(eu.driver.model.system.Level value) {
+  public void setLevel(eu.driver.model.core.Level value) {
     this.level = value;
   }
 
@@ -178,8 +178,8 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * Creates a new Log RecordBuilder.
    * @return A new Log RecordBuilder
    */
-  public static eu.driver.model.system.Log.Builder newBuilder() {
-    return new eu.driver.model.system.Log.Builder();
+  public static eu.driver.model.core.Log.Builder newBuilder() {
+    return new eu.driver.model.core.Log.Builder();
   }
 
   /**
@@ -187,8 +187,8 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing builder to copy.
    * @return A new Log RecordBuilder
    */
-  public static eu.driver.model.system.Log.Builder newBuilder(eu.driver.model.system.Log.Builder other) {
-    return new eu.driver.model.system.Log.Builder(other);
+  public static eu.driver.model.core.Log.Builder newBuilder(eu.driver.model.core.Log.Builder other) {
+    return new eu.driver.model.core.Log.Builder(other);
   }
 
   /**
@@ -196,8 +196,8 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing instance to copy.
    * @return A new Log RecordBuilder
    */
-  public static eu.driver.model.system.Log.Builder newBuilder(eu.driver.model.system.Log other) {
-    return new eu.driver.model.system.Log.Builder(other);
+  public static eu.driver.model.core.Log.Builder newBuilder(eu.driver.model.core.Log other) {
+    return new eu.driver.model.core.Log.Builder(other);
   }
 
   /**
@@ -211,7 +211,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
     /** The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC. */
     private long dateTimeSent;
     /** The action-ability of the message. */
-    private eu.driver.model.system.Level level;
+    private eu.driver.model.core.Level level;
     /** Actual log message */
     private java.lang.CharSequence log;
 
@@ -224,7 +224,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.system.Log.Builder other) {
+    private Builder(eu.driver.model.core.Log.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -248,7 +248,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Log instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.system.Log other) {
+    private Builder(eu.driver.model.core.Log other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -283,7 +283,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.core.Log.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -305,7 +305,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * Client id
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder clearId() {
+    public eu.driver.model.core.Log.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -326,7 +326,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'dateTimeSent'.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder setDateTimeSent(long value) {
+    public eu.driver.model.core.Log.Builder setDateTimeSent(long value) {
       validate(fields()[1], value);
       this.dateTimeSent = value;
       fieldSetFlags()[1] = true;
@@ -348,7 +348,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * The date and time the distribution message was sent as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder clearDateTimeSent() {
+    public eu.driver.model.core.Log.Builder clearDateTimeSent() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -358,7 +358,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * The action-ability of the message.
       * @return The value.
       */
-    public eu.driver.model.system.Level getLevel() {
+    public eu.driver.model.core.Level getLevel() {
       return level;
     }
 
@@ -368,7 +368,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'level'.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder setLevel(eu.driver.model.system.Level value) {
+    public eu.driver.model.core.Log.Builder setLevel(eu.driver.model.core.Level value) {
       validate(fields()[2], value);
       this.level = value;
       fieldSetFlags()[2] = true;
@@ -390,7 +390,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * The action-ability of the message.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder clearLevel() {
+    public eu.driver.model.core.Log.Builder clearLevel() {
       level = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -411,7 +411,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'log'.
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder setLog(java.lang.CharSequence value) {
+    public eu.driver.model.core.Log.Builder setLog(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.log = value;
       fieldSetFlags()[3] = true;
@@ -433,7 +433,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
       * Actual log message
       * @return This builder.
       */
-    public eu.driver.model.system.Log.Builder clearLog() {
+    public eu.driver.model.core.Log.Builder clearLog() {
       log = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -446,7 +446,7 @@ public class Log extends org.apache.avro.specific.SpecificRecordBase implements 
         Log record = new Log();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.dateTimeSent = fieldSetFlags()[1] ? this.dateTimeSent : (java.lang.Long) defaultValue(fields()[1]);
-        record.level = fieldSetFlags()[2] ? this.level : (eu.driver.model.system.Level) defaultValue(fields()[2]);
+        record.level = fieldSetFlags()[2] ? this.level : (eu.driver.model.core.Level) defaultValue(fields()[2]);
         record.log = fieldSetFlags()[3] ? this.log : (java.lang.CharSequence) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {

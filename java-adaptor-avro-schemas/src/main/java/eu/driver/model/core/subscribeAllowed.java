@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.cap;
+package eu.driver.model.core;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -12,23 +12,23 @@ import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6304027057797238260L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"publishedAllowed\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}");
+public class subscribeAllowed extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 2011559250870021531L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"subscribeAllowed\",\"namespace\":\"eu.driver.model.core\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"sender Client id\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<publishedAllowed> ENCODER =
-      new BinaryMessageEncoder<publishedAllowed>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<subscribeAllowed> ENCODER =
+      new BinaryMessageEncoder<subscribeAllowed>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<publishedAllowed> DECODER =
-      new BinaryMessageDecoder<publishedAllowed>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<subscribeAllowed> DECODER =
+      new BinaryMessageDecoder<subscribeAllowed>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<publishedAllowed> getDecoder() {
+  public static BinaryMessageDecoder<subscribeAllowed> getDecoder() {
     return DECODER;
   }
 
@@ -36,17 +36,17 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<publishedAllowed> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<publishedAllowed>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<subscribeAllowed> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<subscribeAllowed>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this publishedAllowed to a ByteBuffer. */
+  /** Serializes this subscribeAllowed to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a publishedAllowed from a ByteBuffer. */
-  public static publishedAllowed fromByteBuffer(
+  /** Deserializes a subscribeAllowed from a ByteBuffer. */
+  public static subscribeAllowed fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -59,13 +59,13 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public publishedAllowed() {}
+  public subscribeAllowed() {}
 
   /**
    * All-args constructor.
    * @param id sender Client id
    */
-  public publishedAllowed(java.lang.CharSequence id) {
+  public subscribeAllowed(java.lang.CharSequence id) {
     this.id = id;
   }
 
@@ -105,36 +105,36 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /**
-   * Creates a new publishedAllowed RecordBuilder.
-   * @return A new publishedAllowed RecordBuilder
+   * Creates a new subscribeAllowed RecordBuilder.
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.publishedAllowed.Builder newBuilder() {
-    return new eu.driver.model.cap.publishedAllowed.Builder();
+  public static eu.driver.model.core.subscribeAllowed.Builder newBuilder() {
+    return new eu.driver.model.core.subscribeAllowed.Builder();
   }
 
   /**
-   * Creates a new publishedAllowed RecordBuilder by copying an existing Builder.
+   * Creates a new subscribeAllowed RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new publishedAllowed RecordBuilder
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.publishedAllowed.Builder newBuilder(eu.driver.model.cap.publishedAllowed.Builder other) {
-    return new eu.driver.model.cap.publishedAllowed.Builder(other);
+  public static eu.driver.model.core.subscribeAllowed.Builder newBuilder(eu.driver.model.core.subscribeAllowed.Builder other) {
+    return new eu.driver.model.core.subscribeAllowed.Builder(other);
   }
 
   /**
-   * Creates a new publishedAllowed RecordBuilder by copying an existing publishedAllowed instance.
+   * Creates a new subscribeAllowed RecordBuilder by copying an existing subscribeAllowed instance.
    * @param other The existing instance to copy.
-   * @return A new publishedAllowed RecordBuilder
+   * @return A new subscribeAllowed RecordBuilder
    */
-  public static eu.driver.model.cap.publishedAllowed.Builder newBuilder(eu.driver.model.cap.publishedAllowed other) {
-    return new eu.driver.model.cap.publishedAllowed.Builder(other);
+  public static eu.driver.model.core.subscribeAllowed.Builder newBuilder(eu.driver.model.core.subscribeAllowed other) {
+    return new eu.driver.model.core.subscribeAllowed.Builder(other);
   }
 
   /**
-   * RecordBuilder for publishedAllowed instances.
+   * RecordBuilder for subscribeAllowed instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<publishedAllowed>
-    implements org.apache.avro.data.RecordBuilder<publishedAllowed> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<subscribeAllowed>
+    implements org.apache.avro.data.RecordBuilder<subscribeAllowed> {
 
     /** sender Client id */
     private java.lang.CharSequence id;
@@ -148,7 +148,7 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.cap.publishedAllowed.Builder other) {
+    private Builder(eu.driver.model.core.subscribeAllowed.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -157,10 +157,10 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
     }
 
     /**
-     * Creates a Builder by copying an existing publishedAllowed instance
+     * Creates a Builder by copying an existing subscribeAllowed instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.cap.publishedAllowed other) {
+    private Builder(eu.driver.model.core.subscribeAllowed other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -183,7 +183,7 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public eu.driver.model.cap.publishedAllowed.Builder setId(java.lang.CharSequence value) {
+    public eu.driver.model.core.subscribeAllowed.Builder setId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -205,7 +205,7 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
       * sender Client id
       * @return This builder.
       */
-    public eu.driver.model.cap.publishedAllowed.Builder clearId() {
+    public eu.driver.model.core.subscribeAllowed.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -213,9 +213,9 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
 
     @Override
     @SuppressWarnings("unchecked")
-    public publishedAllowed build() {
+    public subscribeAllowed build() {
       try {
-        publishedAllowed record = new publishedAllowed();
+        subscribeAllowed record = new subscribeAllowed();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.CharSequence) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
@@ -225,8 +225,8 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<publishedAllowed>
-    WRITER$ = (org.apache.avro.io.DatumWriter<publishedAllowed>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<subscribeAllowed>
+    WRITER$ = (org.apache.avro.io.DatumWriter<subscribeAllowed>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -234,8 +234,8 @@ public class publishedAllowed extends org.apache.avro.specific.SpecificRecordBas
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<publishedAllowed>
-    READER$ = (org.apache.avro.io.DatumReader<publishedAllowed>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<subscribeAllowed>
+    READER$ = (org.apache.avro.io.DatumReader<subscribeAllowed>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
