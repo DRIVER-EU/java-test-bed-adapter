@@ -176,16 +176,34 @@ public class CISAdapter {
 
 	public void sendMessage(IndexedRecord message) throws CommunicationException {
 		logger.debug("-->sendMessage");
+		GenericProducer producer = null;
 		if (message.getSchema().getName().equalsIgnoreCase("Alert")) {
-			GenericProducer producer = producerMap.get(TopicConstants.STANDARD_TOPIC_CAP);
+			producer = producerMap.get(TopicConstants.STANDARD_TOPIC_CAP);
 			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
 				producer = createProducer(TopicConstants.STANDARD_TOPIC_CAP);
 			}
-			if (producer != null) {
-				producer.send(message);
-			} else {
-				throw new CommunicationException("Thers is no producer available!");
+			
+		} else if (message.getSchema().getName().equalsIgnoreCase("SlRep")) {
+			producer = producerMap.get(TopicConstants.STANDARD_TOPIC_MLP);
+			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
+				producer = createProducer(TopicConstants.STANDARD_TOPIC_MLP);
 			}
+		} else if (message.getSchema().getName().equalsIgnoreCase("FeatureCollection")) {
+			producer = producerMap.get(TopicConstants.STANDARD_TOPIC_GEOJSON);
+			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
+				producer = createProducer(TopicConstants.STANDARD_TOPIC_GEOJSON);
+			}
+		} else if (message.getSchema().getName().equalsIgnoreCase("TSO_2_0")) {
+			producer = producerMap.get(TopicConstants.STANDARD_TOPIC_EMSI);
+			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
+				producer = createProducer(TopicConstants.STANDARD_TOPIC_EMSI);
+			}
+		}
+		
+		if (producer != null) {
+			producer.send(message);
+		} else {
+			throw new CommunicationException("Thers is no producer available!");
 		}
 		logger.debug("sendMessage-->");
 	}
@@ -236,8 +254,8 @@ public class CISAdapter {
 	public void addLogEntry(Log logEntry) {
 		logger.info("--> addLogEntry");
 		try {
-			sendMessage(logEntry);
-		} catch (CommunicationException cEx) {
+			logProducer.send(logEntry);
+		} catch (Exception cEx) {
 			logger.error("Cannot send the log to the log topic!", cEx);
 		}
 		logger.info("addLogEntry -->");

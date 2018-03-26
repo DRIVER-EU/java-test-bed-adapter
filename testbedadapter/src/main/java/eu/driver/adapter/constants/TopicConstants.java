@@ -13,4 +13,7 @@ public class TopicConstants {
 	public static final String CONFIG_TOPIC = "system_config";
 	
 	public static final String STANDARD_TOPIC_CAP = "standard_cap";
+	public static final String STANDARD_TOPIC_MLP = "standard_mlp";
+	public static final String STANDARD_TOPIC_EMSI = "standard_emsi";
+	public static final String STANDARD_TOPIC_GEOJSON = "standard_geojson";
 }
