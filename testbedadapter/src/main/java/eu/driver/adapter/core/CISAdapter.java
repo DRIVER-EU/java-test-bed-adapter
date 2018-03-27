@@ -77,19 +77,26 @@ public class CISAdapter {
 	private Boolean connectModeSec = false;
 	private Boolean adapterInitDone = false;
 
-	private CISAdapter() {
+	private CISAdapter(Boolean handleTopicInvite) {
 		producerMap = new HashMap<>();
 		try {
-			initializeProducers();
+			initializeProducers(handleTopicInvite);
 		} catch (Exception e) {
 			
 		}
 		this.clientID = ClientProperties.getInstance().getProperty("client.id");
 	}
 	
+	public static synchronized CISAdapter getInstance(Boolean handleTopicInvite) {
+		if (CISAdapter.aMe == null) {
+			CISAdapter.aMe = new CISAdapter(handleTopicInvite);
+		}
+		return CISAdapter.aMe;
+	}
+	
 	public static synchronized CISAdapter getInstance() {
 		if (CISAdapter.aMe == null) {
-			CISAdapter.aMe = new CISAdapter();
+			CISAdapter.aMe = new CISAdapter(true);
 		}
 		return CISAdapter.aMe;
 	}
@@ -102,7 +109,7 @@ public class CISAdapter {
 	/**
 	 * Initializes the core producers used by the CIS Adapter
 	 */
-	private void initializeProducers() {
+	private void initializeProducers(Boolean handleTopicInvite) {
 		logger.info("--> initializeProducers");
 		// actual Kafka producer used by all generic producers s
 		sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
@@ -129,13 +136,13 @@ public class CISAdapter {
 			}
 		}
 		if (adpterMode != AdapterMode.TRIAL_MODE) {
-			initCoreTopics();
+			initCoreTopics(handleTopicInvite);
 			adapterInitDone = true;	
 		} 
 		logger.info("initializeProducers -->");
 	}
 	
-	private void initCoreTopics() {
+	private void initCoreTopics(Boolean handleTopicInvite) {
 		logger.info("--> initCoreTopics");
 		try {
 			if (adpterMode == AdapterMode.TRIAL_MODE) {
@@ -147,7 +154,9 @@ public class CISAdapter {
 			logger.setLogProducer(logProducer);
 			
 			// create the consumers
-			addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
+			if (handleTopicInvite) {
+				addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
+			}
 			addAvroReceiver(TopicConstants.TIMING_TOPIC, new TimeConsumer());
 			
 		} catch (Exception e) {
