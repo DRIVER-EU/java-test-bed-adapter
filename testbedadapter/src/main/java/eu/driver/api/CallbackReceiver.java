@@ -11,9 +11,9 @@ public class CallbackReceiver extends GenericAvroReceiver {
 	}
 
 	@Override
-	public void receiveMessage(IndexedRecord message) {
+	public void receiveMessage(IndexedRecord key, IndexedRecord message) {
 		if (this.callback != null) {
-			callback.messageReceived(message);
+			callback.messageReceived(key, message);
 		}
 	}
 }

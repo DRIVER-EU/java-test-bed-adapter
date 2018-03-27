@@ -173,7 +173,7 @@ public class CISAdapter {
 		logger.info("New Generic Callback Consumer created for topic: " + topic);
 		consumer.addReceiver(receiver);
 	}
-
+	
 	public void sendMessage(IndexedRecord message) throws CommunicationException {
 		logger.debug("-->sendMessage");
 		GenericProducer producer = null;

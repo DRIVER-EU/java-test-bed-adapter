@@ -15,9 +15,9 @@ public class AdapterCallbackConsumer extends GenericAvroReceiver {
 	}
 	
 	@Override
-	public void receiveMessage(IndexedRecord message) {
+	public void receiveMessage(IndexedRecord key, IndexedRecord message) {
 		if (this.callback != null) {
-			this.callback.messageReceived(message);
+			this.callback.messageReceived(key, message);
 		}
 	}
 

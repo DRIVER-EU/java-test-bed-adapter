@@ -13,7 +13,7 @@ public class TimeConsumer extends GenericAvroReceiver {
 	private Logger logger = CISLogger.logger(CISAdapter.class);
 	
 	@Override
-	public void receiveMessage(IndexedRecord message) {
+	public void receiveMessage(IndexedRecord key, IndexedRecord message) {
 		if (message instanceof Timing) {
 			logger.info("Timing message received!");
 			CISAdapter.getInstance().setCurrentTiming((Timing)message);

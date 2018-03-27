@@ -13,7 +13,7 @@ public class TopicInviteConsumer extends GenericAvroReceiver {
 	private Logger logger = CISLogger.logger(CISAdapter.class);
 	
 	@Override
-	public void receiveMessage(IndexedRecord receivedMessage) {
+	public void receiveMessage(IndexedRecord key, IndexedRecord receivedMessage) {
 		if (receivedMessage.getSchema().getName().equalsIgnoreCase("TopicInvite")) {
 			try {
 				eu.driver.model.core.TopicInvite inviteMsg = (eu.driver.model.core.TopicInvite) SpecificData.get().deepCopy(eu.driver.model.core.TopicInvite.SCHEMA$, receivedMessage);

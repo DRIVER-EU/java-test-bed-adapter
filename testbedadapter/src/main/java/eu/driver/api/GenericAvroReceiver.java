@@ -2,7 +2,7 @@ package eu.driver.api;
 
 import org.apache.avro.generic.IndexedRecord;
 
-public abstract class GenericAvroReceiver implements IAvroReceiver<IndexedRecord> {
+public abstract class GenericAvroReceiver implements IAvroReceiver<IndexedRecord,IndexedRecord> {
 	
 	/**
 	 * Receives a message of type Message from the CIS Adapter.
@@ -13,6 +13,6 @@ public abstract class GenericAvroReceiver implements IAvroReceiver<IndexedRecord
 	 * by the Client application that uses the CIS Adapter.
 	 * @param message
 	 */
-	public abstract void receiveMessage(IndexedRecord message);
+	public abstract void receiveMessage(IndexedRecord key, IndexedRecord message);
 
 }

@@ -13,7 +13,7 @@ import eu.driver.api.IAvroReceiver;
 
 public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends IndexedRecord> extends AbstractConsumer<Key, Value> {
 	
-	private Collection<IAvroReceiver<Value>> receivers;
+	private Collection<IAvroReceiver<Key,Value>> receivers;
 
 	public CallbackConsumer(Consumer<Key, Value> consumer, String topic) {
 		super(consumer, topic);
@@ -27,18 +27,19 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends 
 		while (true) {
 			ConsumerRecords<Key, Value> records = consumer.poll(1000);
 			for (ConsumerRecord<Key, Value> record : records) {
+				Key key = record.key();
 				Value message = record.value();
-				sendMessageToReceivers(message);
+				sendMessageToReceivers(key, message);
 			}
 		}
 	}
 	
-	public void addReceiver(IAvroReceiver<Value> receiver) {
+	public void addReceiver(IAvroReceiver<Key,Value> receiver) {
 		receivers.add(receiver);
 	}
 	
-	private void sendMessageToReceivers(Value message) {
-		receivers.forEach(r -> r.receiveMessage(message));
+	private void sendMessageToReceivers(Key key, Value message) {
+		receivers.forEach(r -> r.receiveMessage(key, message));
 	}
 
 }
