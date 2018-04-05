@@ -67,7 +67,7 @@ public class AdminAdapter {
 	 * Initializes the core producers used by the CIS Adapter
 	 */
 	private void initializeProducers() throws Exception {
-		logger.info("--> initializeProducers");
+		logger.info("initializeProducers");
 		sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
 		try {
 			logger.info("Check Adpter DEV Mode");
@@ -88,16 +88,13 @@ public class AdminAdapter {
 		}
 		
 		this.startHeartbeats();
-		logger.info("initializeProducers -->");
 	}
 	
 	public void addCallback(IAdaptorCallback callback, String topicName) {
-		logger.info("--> addCallback: " + topicName);
+		logger.info("addCallback: " + topicName);
 		
 		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
 		addAvroReceiver(topicName, callbackConsumer);
-		
-		logger.info("addCallback-->");
 	}
 	
 	private void addAvroReceiver(String topic, GenericAvroReceiver receiver) {

@@ -1,6 +1,8 @@
 package eu.driver.adapter.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.avro.generic.IndexedRecord;
@@ -47,6 +49,7 @@ public class CISAdapter {
 	 */
 	private HeartbeatProducer heartbeatProducer;
 	private LogProducer logProducer;
+	private GenericProducer largeDataProducer;
 	
 	/*
 	 * The type specific producers
@@ -56,6 +59,7 @@ public class CISAdapter {
 	 * The type specific consumers
 	 */
 	private Map<String, AdapterCallbackConsumer> consumerMap = new HashMap<String, AdapterCallbackConsumer>();
+	private List<GenericCallbackConsumer> consumers = new ArrayList<GenericCallbackConsumer>();
 
 	
 	/*
@@ -99,6 +103,16 @@ public class CISAdapter {
 			CISAdapter.aMe = new CISAdapter(true);
 		}
 		return CISAdapter.aMe;
+	}
+	
+	public void closeAdapter() {
+		// Stop Heartbeat
+		heartbeatProducer.stopHeartbeats();
+		
+		// Stop/Close All Consumers
+		for (GenericCallbackConsumer consumer : this.consumers) {
+			consumer.stop();
+		}
 	}
 	
 	public String getClientID() {
@@ -153,11 +167,13 @@ public class CISAdapter {
 			logProducer = new LogProducer(sharedAvroProducer);
 			logger.setLogProducer(logProducer);
 			
+			
 			// create the consumers
 			if (handleTopicInvite) {
 				addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
 			}
 			addAvroReceiver(TopicConstants.TIMING_TOPIC, new TimeConsumer());
+			largeDataProducer = new GenericProducer(sharedAvroProducer, TopicConstants.LARGE_DATA_UPDTAE);
 			
 		} catch (Exception e) {
 			logger.error("Error initializing the CoreTopic Producers/Consumers!", e);
@@ -179,8 +195,10 @@ public class CISAdapter {
 				new KafkaConsumer<IndexedRecord, IndexedRecord>(ConsumerProperties.getInstance(connectModeSec)), topic);
 		Thread t = new Thread(consumer); // TODO: maintain this and clean up thread
 		t.start();
+		
 		logger.info("New Generic Callback Consumer created for topic: " + topic);
 		consumer.addReceiver(receiver);
+		consumers.add(consumer);
 	}
 	
 	public void sendMessage(IndexedRecord message) throws CommunicationException {
@@ -207,6 +225,8 @@ public class CISAdapter {
 			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
 				producer = createProducer(TopicConstants.STANDARD_TOPIC_EMSI);
 			}
+		} else if (message.getSchema().getName().equalsIgnoreCase("LargeDataUpdate")) {
+			producer = largeDataProducer;
 		}
 		
 		if (producer != null) {
@@ -237,7 +257,8 @@ public class CISAdapter {
 				topicName.equalsIgnoreCase(TopicConstants.HEARTBEAT_TOPIC) ||
 				topicName.equalsIgnoreCase(TopicConstants.LOGGING_TOPIC) ||
 				topicName.equalsIgnoreCase(TopicConstants.TIMING_TOPIC) ||
-				topicName.equalsIgnoreCase(TopicConstants.TOPIC_INVITE_TOPIC)) {
+				topicName.equalsIgnoreCase(TopicConstants.TOPIC_INVITE_TOPIC)||
+				topicName.equalsIgnoreCase(TopicConstants.LARGE_DATA_UPDTAE)) {
 					AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
 					addAvroReceiver(topicName, callbackConsumer);
 					consumerMap.put(topicName, callbackConsumer);
@@ -261,13 +282,13 @@ public class CISAdapter {
 	}
 	
 	public void addLogEntry(Log logEntry) {
-		logger.info("--> addLogEntry");
+		logger.debug("--> addLogEntry");
 		try {
 			logProducer.send(logEntry);
 		} catch (Exception cEx) {
 			logger.error("Cannot send the log to the log topic!", cEx);
 		}
-		logger.info("addLogEntry -->");
+		logger.debug("addLogEntry -->");
 	}
 	
 	public void addLogCallback(IAdaptorCallback callback) {

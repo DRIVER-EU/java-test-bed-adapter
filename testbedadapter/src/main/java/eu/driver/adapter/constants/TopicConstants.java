@@ -11,6 +11,7 @@ public class TopicConstants {
 	public static final String TIMING_TOPIC = "system_timing";
 	public static final String TIMING_CONTROL_TOPIC = "system_timing_control";
 	public static final String CONFIG_TOPIC = "system_config";
+	public static final String LARGE_DATA_UPDTAE = "system_large_data_update";
 	
 	public static final String STANDARD_TOPIC_CAP = "standard_cap";
 	public static final String STANDARD_TOPIC_MLP = "standard_mlp";

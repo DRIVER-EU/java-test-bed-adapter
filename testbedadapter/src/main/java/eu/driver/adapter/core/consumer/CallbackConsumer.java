@@ -14,6 +14,8 @@ import eu.driver.api.IAvroReceiver;
 public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends IndexedRecord> extends AbstractConsumer<Key, Value> {
 	
 	private Collection<IAvroReceiver<Key,Value>> receivers;
+	
+	private boolean run = true;
 
 	public CallbackConsumer(Consumer<Key, Value> consumer, String topic) {
 		super(consumer, topic);
@@ -24,7 +26,7 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends 
 	public void run() {
 		consumer.subscribe(Collections.singletonList(getTopic()));
 		logger.debug("Callback Consumer thread started for topic: " + getTopic());
-		while (true) {
+		while (this.run) {
 			ConsumerRecords<Key, Value> records = consumer.poll(1000);
 			for (ConsumerRecord<Key, Value> record : records) {
 				Key key = record.key();
@@ -32,6 +34,11 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends 
 				sendMessageToReceivers(key, message);
 			}
 		}
+		logger.debug("Callback Consumer thread stopped for topic: " + getTopic());
+	}
+	
+	public void stop(){
+		this.run = false;
 	}
 	
 	public void addReceiver(IAvroReceiver<Key,Value> receiver) {
