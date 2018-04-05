@@ -11,7 +11,7 @@
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testbed.avro.schema.version>0.0.1</testbed.avro.schema.version>
+		<testbed.avro.schema.version>1.0.3</testbed.avro.schema.version>
 	</properties>
 
 	<repositories>
