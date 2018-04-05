@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Specfic properties for an XVR emergency vehicle */
 @org.apache.avro.specific.AvroGenerated
 public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2944856405027524222L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":\"string\"},{\"name\":\"subType\",\"type\":\"string\"},{\"name\":\"label\",\"type\":\"string\"},{\"name\":\"subLabel\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = -5071076891449078230L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subType\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"label\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subLabel\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
