@@ -226,7 +226,15 @@ public class CISAdapter {
 				producer = createProducer(TopicConstants.STANDARD_TOPIC_EMSI);
 			}
 		} else if (message.getSchema().getName().equalsIgnoreCase("LargeDataUpdate")) {
-			producer = largeDataProducer;
+			producer = producerMap.get(TopicConstants.LARGE_DATA_UPDTAE);
+			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
+				producer = createProducer(TopicConstants.LARGE_DATA_UPDTAE);
+			}
+		} else if (message.getSchema().getName().equalsIgnoreCase("MapLayerUpdate")) {
+			producer = producerMap.get(TopicConstants.MAP_LAYER_UPDTAE);
+			if (producer == null && (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE)) {
+				producer = createProducer(TopicConstants.MAP_LAYER_UPDTAE);
+			}
 		}
 		
 		if (producer != null) {
