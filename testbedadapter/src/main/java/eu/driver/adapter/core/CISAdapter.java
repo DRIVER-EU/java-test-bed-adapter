@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -19,7 +23,9 @@ import eu.driver.adapter.core.consumer.TimeConsumer;
 import eu.driver.adapter.core.consumer.TopicInviteConsumer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
+import eu.driver.adapter.core.producer.HeartbeatTask;
 import eu.driver.adapter.core.producer.LogProducer;
+import eu.driver.adapter.core.time.TimeInterpolationTask;
 import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
@@ -38,6 +44,10 @@ public class CISAdapter {
 	private static CISAdapter aMe = null;
 	
 	private String clientID = null;
+	
+	private ScheduledExecutorService timingScheduler;
+	private ScheduledFuture<?> timetaskReference = null;
+	private long timeTaskIntervalMS = 200L;
 	/**
 	 * Kafka Producer shared by all specific Producers for sending Avro messages to
 	 * the CIS.
@@ -65,7 +75,7 @@ public class CISAdapter {
 	/*
 	 * The type specific callbacks
 	 */
-	private Map<String, IAdaptorCallback> callbackMap = new HashMap<String, IAdaptorCallback>();
+	private Map<String, List<IAdaptorCallback>> callbackMap = new HashMap<String, List<IAdaptorCallback>>();
 	
 	/*
 	 * The invites to topics
@@ -85,6 +95,9 @@ public class CISAdapter {
 		producerMap = new HashMap<>();
 		try {
 			initializeProducers(handleTopicInvite);
+			timingScheduler = Executors.newScheduledThreadPool(1);
+			TimeInterpolationTask task = new TimeInterpolationTask(this, timeTaskIntervalMS);
+			timetaskReference = timingScheduler.scheduleAtFixedRate(task, 0, timeTaskIntervalMS, TimeUnit.MILLISECONDS);
 		} catch (Exception e) {
 			
 		}
@@ -108,6 +121,10 @@ public class CISAdapter {
 	public void closeAdapter() {
 		// Stop Heartbeat
 		heartbeatProducer.stopHeartbeats();
+		if (timetaskReference != null) {
+			timetaskReference.cancel(false);
+			timetaskReference = null;
+		}
 		
 		// Stop/Close All Consumers
 		for (GenericCallbackConsumer consumer : this.consumers) {
@@ -254,39 +271,44 @@ public class CISAdapter {
 	
 	public void addCallback(IAdaptorCallback callback, String topicName) {
 		logger.info("--> addCallback: " + topicName);
-		this.callbackMap.put(topicName, callback);
-		
-		if (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE) {
-			AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
-			addAvroReceiver(topicName, callbackConsumer);
-			consumerMap.put(topicName, callbackConsumer);
-		} else if (adapterInitDone) {
-			if (topicName.equalsIgnoreCase(TopicConstants.ADMIN_HEARTBEAT_TOPIC) || 
-				topicName.equalsIgnoreCase(TopicConstants.HEARTBEAT_TOPIC) ||
-				topicName.equalsIgnoreCase(TopicConstants.LOGGING_TOPIC) ||
-				topicName.equalsIgnoreCase(TopicConstants.TIMING_TOPIC) ||
-				topicName.equalsIgnoreCase(TopicConstants.TOPIC_INVITE_TOPIC)||
-				topicName.equalsIgnoreCase(TopicConstants.LARGE_DATA_UPDTAE)) {
-					AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
-					addAvroReceiver(topicName, callbackConsumer);
-					consumerMap.put(topicName, callbackConsumer);
-			} else {
-				// check if we have already an invite for this, is yes, create the consumer and bind the callback to that
-				if (this.topicInvitesConsumers.get(topicName) != null) {
-					logger.info("Invite for that topic as subscriber was received, add consumer!");
-					AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
-					addAvroReceiver(topicName, callbackConsumer);
-					consumerMap.put(topicName, callbackConsumer);
-					logger.debug("Consumer Created, added to consumerMap.");
+		List<IAdaptorCallback> callbacks = this.callbackMap.get(topicName);
+		if (callbacks == null) {
+			callbacks = new ArrayList<IAdaptorCallback>();
+		}
+		callbacks.add(callback);
+		this.callbackMap.put(topicName, callbacks);
+		AdapterCallbackConsumer callbackConsumer = consumerMap.get(topicName);
+		if (callbackConsumer != null) {
+			callbackConsumer.setCallbacks(callbacks);
+		} else {
+			if (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE) {
+				callbackConsumer = new AdapterCallbackConsumer(callbacks);
+				addAvroReceiver(topicName, callbackConsumer);
+				consumerMap.put(topicName, callbackConsumer);
+			} else if (adapterInitDone) {
+				if (topicName.equalsIgnoreCase(TopicConstants.ADMIN_HEARTBEAT_TOPIC) || 
+					topicName.equalsIgnoreCase(TopicConstants.HEARTBEAT_TOPIC) ||
+					topicName.equalsIgnoreCase(TopicConstants.LOGGING_TOPIC) ||
+					topicName.equalsIgnoreCase(TopicConstants.TIMING_TOPIC) ||
+					topicName.equalsIgnoreCase(TopicConstants.TOPIC_INVITE_TOPIC)||
+					topicName.equalsIgnoreCase(TopicConstants.LARGE_DATA_UPDTAE)) {
+						callbackConsumer = new AdapterCallbackConsumer(callbacks);
+						addAvroReceiver(topicName, callbackConsumer);
+						consumerMap.put(topicName, callbackConsumer);
+				} else {
+					// check if we have already an invite for this, is yes, create the consumer and bind the callback to that
+					if (this.topicInvitesConsumers.get(topicName) != null) {
+						logger.info("Invite for that topic as subscriber was received, add consumer!");
+						callbackConsumer = new AdapterCallbackConsumer(callbacks);
+						addAvroReceiver(topicName, callbackConsumer);
+						consumerMap.put(topicName, callbackConsumer);
+						logger.debug("Consumer Created, added to consumerMap.");
+					}
 				}
 			}
 		}
 		
 		logger.info("addCallback-->");
-	}
-	
-	public Timing getTimeInfo() {
-		return this.timing;
 	}
 	
 	public void addLogEntry(Log logEntry) {
@@ -315,7 +337,18 @@ public class CISAdapter {
 	 * GETTER/SETTERS
 	 */
 	public void setCurrentTiming(Timing timing) {
-		this.timing = timing;
+		synchronized(this.timing) {
+			this.timing = timing;
+		}
+	}
+	
+	public Timing getTimeInfo() {
+		if (this.timing != null) {
+			synchronized(this.timing) {
+				return this.timing;
+			}
+		}
+		return null;
 	}
 	
 	public LogProducer getLogProducer() {
@@ -334,9 +367,9 @@ public class CISAdapter {
 		}
 		if (inviteMsg.getSubscribeAllowed()) {
 			this.topicInvitesConsumers.put(topicName, inviteMsg);
-			IAdaptorCallback callback = this.callbackMap.get(topicName);
-			if (callback != null && consumerMap.get(topicName) != null) {
-				AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
+			List<IAdaptorCallback> callbacks = this.callbackMap.get(topicName);
+			if (callbacks != null && consumerMap.get(topicName) != null) {
+				AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callbacks);
 				addAvroReceiver(topicName, callbackConsumer);
 				consumerMap.put(topicName, callbackConsumer);
 			}
