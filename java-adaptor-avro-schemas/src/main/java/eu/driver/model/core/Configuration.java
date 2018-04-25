@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Configuration message, mainly for inspecting what a client is producing and consuming. */
 @org.apache.avro.specific.AvroGenerated
 public class Configuration extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2562302679384508610L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"heartbeatInterval\",\"type\":[\"null\",\"int\"],\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":5000},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OffsetFetchRequest\",\"fields\":[{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"offset\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"partition\",\"type\":[\"null\",\"int\"],\"default\":null}]}}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
+  private static final long serialVersionUID = 213374455554373294L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Configuration\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Configuration message, mainly for inspecting what a client is producing and consuming.\",\"fields\":[{\"name\":\"clientId\",\"type\":\"string\",\"doc\":\"ID of the client\"},{\"name\":\"kafkaHost\",\"type\":\"string\",\"doc\":\"URI of the Kafka broker\"},{\"name\":\"schemaRegistry\",\"type\":\"string\",\"doc\":\"URI of the schema registry\"},{\"name\":\"heartbeatInterval\",\"type\":\"int\",\"doc\":\"Time in msec how often you send out a heartbeat. Default 5000\",\"default\":5000},{\"name\":\"consume\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OffsetFetchRequest\",\"fields\":[{\"name\":\"topic\",\"type\":\"string\"},{\"name\":\"offset\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"partition\",\"type\":[\"null\",\"int\"],\"default\":null}]}}],\"doc\":\"Topics you are consuming\",\"default\":null},{\"name\":\"produce\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Topics you are producing\",\"default\":null},{\"name\":\"logging\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LogSettings\",\"fields\":[{\"name\":\"logToFile\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to file as specified in logFile\",\"default\":null},{\"name\":\"logFile\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the log file\",\"default\":null},{\"name\":\"logToConsole\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to console. Number indicates logging level\",\"default\":null},{\"name\":\"logToKafka\",\"type\":[\"null\",\"int\"],\"doc\":\"If set [0..5], log to Kafka\",\"default\":null}]}],\"doc\":\"Logging details, may be replaced by an enum\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -59,7 +59,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
   /** URI of the schema registry */
   @Deprecated public java.lang.CharSequence schemaRegistry;
   /** Time in msec how often you send out a heartbeat. Default 5000 */
-  @Deprecated public java.lang.Integer heartbeatInterval;
+  @Deprecated public int heartbeatInterval;
   /** Topics you are consuming */
   @Deprecated public java.util.List<eu.driver.model.core.OffsetFetchRequest> consume;
   /** Topics you are producing */
@@ -282,7 +282,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
     /** URI of the schema registry */
     private java.lang.CharSequence schemaRegistry;
     /** Time in msec how often you send out a heartbeat. Default 5000 */
-    private java.lang.Integer heartbeatInterval;
+    private int heartbeatInterval;
     /** Topics you are consuming */
     private java.util.List<eu.driver.model.core.OffsetFetchRequest> consume;
     /** Topics you are producing */
@@ -516,7 +516,7 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'heartbeatInterval'.
       * @return This builder.
       */
-    public eu.driver.model.core.Configuration.Builder setHeartbeatInterval(java.lang.Integer value) {
+    public eu.driver.model.core.Configuration.Builder setHeartbeatInterval(int value) {
       validate(fields()[3], value);
       this.heartbeatInterval = value;
       fieldSetFlags()[3] = true;
@@ -539,7 +539,6 @@ public class Configuration extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public eu.driver.model.core.Configuration.Builder clearHeartbeatInterval() {
-      heartbeatInterval = null;
       fieldSetFlags()[3] = false;
       return this;
     }
