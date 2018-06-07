@@ -8,7 +8,6 @@ import ly.stealth.xmlavro.DatumBuilder;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
-import org.xml.sax.SAXParseException;
 
 public class XMLToAVROMapper {
 	
@@ -24,8 +23,7 @@ public class XMLToAVROMapper {
 		GenericRecord avroAlert = null;
 		
 		try {
-			String avscFile = XMLToAVROMapper.class.getResource("/avro/other/cap/cap-value.avsc").getPath();
-			Schema schema = new Schema.Parser().parse(new File(avscFile));
+			Schema schema = new Schema.Parser().parse(new File("config/avro/standard/cap/standard_cap-value.avsc"));
 			DatumBuilder datumBuilder = new DatumBuilder(schema);
 			avroAlert = datumBuilder.createDatum(capMsg);
 		} catch (IOException e) {
@@ -42,8 +40,7 @@ public class XMLToAVROMapper {
 		GenericRecord avroAlert = null;
 		
 		try {
-			String avscFile = XMLToAVROMapper.class.getResource("/avro/other/mlp/mlp-slr-value.avsc").getPath();
-			Schema schema = new Schema.Parser().parse(new File(avscFile));
+			Schema schema = new Schema.Parser().parse(new File("config/avro/standard/mlp/standard_mlp-value.avsc"));
 			DatumBuilder datumBuilder = new DatumBuilder(schema);
 			avroAlert = datumBuilder.createDatum(capMsg);
 		} catch (IOException e) {
@@ -60,8 +57,7 @@ public class XMLToAVROMapper {
 		GenericRecord avroAlert = null;
 		
 		try {
-			String avscFile = XMLToAVROMapper.class.getResource("/avro/other/geojson/geojson-value.avsc").getPath();
-			Schema schema = new Schema.Parser().parse(new File(avscFile));
+			Schema schema = new Schema.Parser().parse(new File("config/avro/standard/geojson/standard_geojson-value.avsc"));
 			DatumBuilder datumBuilder = new DatumBuilder(schema);
 			avroAlert = datumBuilder.createDatum(capMsg);
 		} catch (IOException e) {
@@ -76,8 +72,7 @@ public class XMLToAVROMapper {
 		log.info("--> convertAvroToCap");
 		String xmlCap = null;
 		try {
-			String avscFile = XMLToAVROMapper.class.getResource("/avro/other/cap/cap-value.avsc").getPath();
-			Schema schema = new Schema.Parser().parse(new File(avscFile));
+			Schema schema = new Schema.Parser().parse(new File("config/avro/standard/cap/standard_cap-value.avsc"));
 			DatumBuilder datumBuilder = new DatumBuilder(schema);
 			// ToDo: AVRO To XML converter needs to be implemented
 			//xmlCap = datumBuilder.createDatum(alert);

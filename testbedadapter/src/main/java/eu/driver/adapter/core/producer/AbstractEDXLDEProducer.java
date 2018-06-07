@@ -1,5 +1,8 @@
 package eu.driver.adapter.core.producer;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
 
@@ -8,6 +11,7 @@ import eu.driver.model.edxl.DistributionStatus;
 import eu.driver.model.edxl.EDXLDistribution;
 
 public abstract class AbstractEDXLDEProducer extends AbstractProducer<EDXLDistribution, IndexedRecord> {
+	Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 
 	public AbstractEDXLDEProducer(Producer<EDXLDistribution, IndexedRecord> producer, String topic) {
 		super(producer, topic);
@@ -16,8 +20,8 @@ public abstract class AbstractEDXLDEProducer extends AbstractProducer<EDXLDistri
 	@Override
 	public EDXLDistribution createKey() {
 		EDXLDistribution key = new EDXLDistribution();
-		key.setDateTimeSent(System.currentTimeMillis());
-		key.setDateTimeExpires(System.currentTimeMillis());
+		key.setDateTimeSent(cal.getTimeInMillis());
+		key.setDateTimeExpires(cal.getTimeInMillis());
 		key.setDistributionID(getClientId() + "-" + getMessageNumber());
 		key.setSenderID(getClientId());
 		key.setDistributionKind(DistributionKind.Unknown);
