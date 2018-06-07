@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A GeoJSON Feature object */
 @org.apache.avro.specific.AvroGenerated
 public class Feature extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8936640948507027356L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Feature\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\",{\"type\":\"array\",\"items\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]},{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]}]},\"doc\":\"Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.\",\"namespace\":\"eu.driver.model.geojson\"}]}");
+  private static final long serialVersionUID = -1036250564848917746L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Feature\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subType\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"name of this entity\",\"default\":null},{\"name\":\"owner\",\"type\":[\"null\",\"string\"],\"doc\":\"identifier of the simulator currently responsible for this entity\",\"default\":null},{\"name\":\"label\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subLabel\",\"type\":[\"null\",\"string\"],\"default\":null}]},\"doc\":\"Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -56,7 +56,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
   @Deprecated public java.util.List<java.lang.Double> bbox;
   @Deprecated public java.lang.Object geometry;
   /** Any type, without infinite nesting, should be replaced during actual usage with a record with named properties. */
-  @Deprecated public java.util.Map<java.lang.CharSequence,java.lang.Object> properties;
+  @Deprecated public eu.driver.model.geojson.XVRItemProperties properties;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -72,7 +72,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param geometry The new value for geometry
    * @param properties Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
    */
-  public Feature(eu.driver.model.geojson.FeatureType type, java.util.List<java.lang.Double> bbox, java.lang.Object geometry, java.util.Map<java.lang.CharSequence,java.lang.Object> properties) {
+  public Feature(eu.driver.model.geojson.FeatureType type, java.util.List<java.lang.Double> bbox, java.lang.Object geometry, eu.driver.model.geojson.XVRItemProperties properties) {
     this.type = type;
     this.bbox = bbox;
     this.geometry = geometry;
@@ -98,7 +98,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
     case 0: type = (eu.driver.model.geojson.FeatureType)value$; break;
     case 1: bbox = (java.util.List<java.lang.Double>)value$; break;
     case 2: geometry = (java.lang.Object)value$; break;
-    case 3: properties = (java.util.Map<java.lang.CharSequence,java.lang.Object>)value$; break;
+    case 3: properties = (eu.driver.model.geojson.XVRItemProperties)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -155,7 +155,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'properties' field.
    * @return Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
    */
-  public java.util.Map<java.lang.CharSequence,java.lang.Object> getProperties() {
+  public eu.driver.model.geojson.XVRItemProperties getProperties() {
     return properties;
   }
 
@@ -164,7 +164,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
    * @param value the value to set.
    */
-  public void setProperties(java.util.Map<java.lang.CharSequence,java.lang.Object> value) {
+  public void setProperties(eu.driver.model.geojson.XVRItemProperties value) {
     this.properties = value;
   }
 
@@ -204,7 +204,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
     private java.util.List<java.lang.Double> bbox;
     private java.lang.Object geometry;
     /** Any type, without infinite nesting, should be replaced during actual usage with a record with named properties. */
-    private java.util.Map<java.lang.CharSequence,java.lang.Object> properties;
+    private eu.driver.model.geojson.XVRItemProperties properties;
+    private eu.driver.model.geojson.XVRItemProperties.Builder propertiesBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -233,6 +234,9 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.properties = data().deepCopy(fields()[3].schema(), other.properties);
         fieldSetFlags()[3] = true;
       }
+      if (other.hasPropertiesBuilder()) {
+        this.propertiesBuilder = eu.driver.model.geojson.XVRItemProperties.newBuilder(other.getPropertiesBuilder());
+      }
     }
 
     /**
@@ -257,6 +261,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.properties = data().deepCopy(fields()[3].schema(), other.properties);
         fieldSetFlags()[3] = true;
       }
+      this.propertiesBuilder = null;
     }
 
     /**
@@ -381,7 +386,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
       * @return The value.
       */
-    public java.util.Map<java.lang.CharSequence,java.lang.Object> getProperties() {
+    public eu.driver.model.geojson.XVRItemProperties getProperties() {
       return properties;
     }
 
@@ -391,8 +396,9 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'properties'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder setProperties(java.util.Map<java.lang.CharSequence,java.lang.Object> value) {
+    public eu.driver.model.geojson.Feature.Builder setProperties(eu.driver.model.geojson.XVRItemProperties value) {
       validate(fields()[3], value);
+      this.propertiesBuilder = null;
       this.properties = value;
       fieldSetFlags()[3] = true;
       return this;
@@ -407,6 +413,42 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       return fieldSetFlags()[3];
     }
 
+    /**
+     * Gets the Builder instance for the 'properties' field and creates one if it doesn't exist yet.
+     * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+     * @return This builder.
+     */
+    public eu.driver.model.geojson.XVRItemProperties.Builder getPropertiesBuilder() {
+      if (propertiesBuilder == null) {
+        if (hasProperties()) {
+          setPropertiesBuilder(eu.driver.model.geojson.XVRItemProperties.newBuilder(properties));
+        } else {
+          setPropertiesBuilder(eu.driver.model.geojson.XVRItemProperties.newBuilder());
+        }
+      }
+      return propertiesBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'properties' field
+     * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public eu.driver.model.geojson.Feature.Builder setPropertiesBuilder(eu.driver.model.geojson.XVRItemProperties.Builder value) {
+      clearProperties();
+      propertiesBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'properties' field has an active Builder instance
+     * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+     * @return True if the 'properties' field has an active Builder instance
+     */
+    public boolean hasPropertiesBuilder() {
+      return propertiesBuilder != null;
+    }
 
     /**
       * Clears the value of the 'properties' field.
@@ -415,6 +457,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       */
     public eu.driver.model.geojson.Feature.Builder clearProperties() {
       properties = null;
+      propertiesBuilder = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -427,7 +470,11 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         record.type = fieldSetFlags()[0] ? this.type : (eu.driver.model.geojson.FeatureType) defaultValue(fields()[0]);
         record.bbox = fieldSetFlags()[1] ? this.bbox : (java.util.List<java.lang.Double>) defaultValue(fields()[1]);
         record.geometry = fieldSetFlags()[2] ? this.geometry : (java.lang.Object) defaultValue(fields()[2]);
-        record.properties = fieldSetFlags()[3] ? this.properties : (java.util.Map<java.lang.CharSequence,java.lang.Object>) defaultValue(fields()[3]);
+        if (propertiesBuilder != null) {
+          record.properties = this.propertiesBuilder.build();
+        } else {
+          record.properties = fieldSetFlags()[3] ? this.properties : (eu.driver.model.geojson.XVRItemProperties) defaultValue(fields()[3]);
+        }
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
