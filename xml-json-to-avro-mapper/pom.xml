@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>driver.eu</groupId>
 	<artifactId>xml-json-to-avro-mapper</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter mapping library</name>
 	<url>http://www.driverproject.eu</url>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testbed.avro.schema.version>1.0.3</testbed.avro.schema.version>
+		<testbed.avro.schema.version>1.0.8</testbed.avro.schema.version>
 	</properties>
 
 	<repositories>
@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>ly.stealth</groupId>
 			<artifactId>xml-avro</artifactId>
-			<version>0.0.1</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>driver.eu</groupId>

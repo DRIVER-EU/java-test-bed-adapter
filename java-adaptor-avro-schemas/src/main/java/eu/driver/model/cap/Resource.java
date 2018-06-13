@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Resource extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3426430860898034462L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"resourceDesc\",\"type\":\"string\"},{\"name\":\"size\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"uri\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO, anyURI\",\"default\":null},{\"name\":\"deferUri\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"digest\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
+  private static final long serialVersionUID = -4930610548859980125L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Resource\",\"namespace\":\"eu.driver.model.cap\",\"fields\":[{\"name\":\"resourceDesc\",\"type\":\"string\"},{\"name\":\"size\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"uri\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO, anyURI\",\"default\":null},{\"name\":\"mimeType\",\"type\":[\"null\",\"string\"],\"doc\":\"The mimetype of the resource!\",\"default\":null},{\"name\":\"deferUri\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"digest\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -55,6 +55,8 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
   @Deprecated public java.lang.Integer size;
   /** TODO, anyURI */
   @Deprecated public java.lang.CharSequence uri;
+  /** The mimetype of the resource! */
+  @Deprecated public java.lang.CharSequence mimeType;
   @Deprecated public java.lang.CharSequence deferUri;
   @Deprecated public java.lang.CharSequence digest;
 
@@ -70,13 +72,15 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
    * @param resourceDesc The new value for resourceDesc
    * @param size The new value for size
    * @param uri TODO, anyURI
+   * @param mimeType The mimetype of the resource!
    * @param deferUri The new value for deferUri
    * @param digest The new value for digest
    */
-  public Resource(java.lang.CharSequence resourceDesc, java.lang.Integer size, java.lang.CharSequence uri, java.lang.CharSequence deferUri, java.lang.CharSequence digest) {
+  public Resource(java.lang.CharSequence resourceDesc, java.lang.Integer size, java.lang.CharSequence uri, java.lang.CharSequence mimeType, java.lang.CharSequence deferUri, java.lang.CharSequence digest) {
     this.resourceDesc = resourceDesc;
     this.size = size;
     this.uri = uri;
+    this.mimeType = mimeType;
     this.deferUri = deferUri;
     this.digest = digest;
   }
@@ -88,8 +92,9 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: return resourceDesc;
     case 1: return size;
     case 2: return uri;
-    case 3: return deferUri;
-    case 4: return digest;
+    case 3: return mimeType;
+    case 4: return deferUri;
+    case 5: return digest;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -101,8 +106,9 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: resourceDesc = (java.lang.CharSequence)value$; break;
     case 1: size = (java.lang.Integer)value$; break;
     case 2: uri = (java.lang.CharSequence)value$; break;
-    case 3: deferUri = (java.lang.CharSequence)value$; break;
-    case 4: digest = (java.lang.CharSequence)value$; break;
+    case 3: mimeType = (java.lang.CharSequence)value$; break;
+    case 4: deferUri = (java.lang.CharSequence)value$; break;
+    case 5: digest = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -154,6 +160,23 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
    */
   public void setUri(java.lang.CharSequence value) {
     this.uri = value;
+  }
+
+  /**
+   * Gets the value of the 'mimeType' field.
+   * @return The mimetype of the resource!
+   */
+  public java.lang.CharSequence getMimeType() {
+    return mimeType;
+  }
+
+  /**
+   * Sets the value of the 'mimeType' field.
+   * The mimetype of the resource!
+   * @param value the value to set.
+   */
+  public void setMimeType(java.lang.CharSequence value) {
+    this.mimeType = value;
   }
 
   /**
@@ -224,6 +247,8 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
     private java.lang.Integer size;
     /** TODO, anyURI */
     private java.lang.CharSequence uri;
+    /** The mimetype of the resource! */
+    private java.lang.CharSequence mimeType;
     private java.lang.CharSequence deferUri;
     private java.lang.CharSequence digest;
 
@@ -250,13 +275,17 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
         this.uri = data().deepCopy(fields()[2].schema(), other.uri);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.deferUri)) {
-        this.deferUri = data().deepCopy(fields()[3].schema(), other.deferUri);
+      if (isValidValue(fields()[3], other.mimeType)) {
+        this.mimeType = data().deepCopy(fields()[3].schema(), other.mimeType);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.digest)) {
-        this.digest = data().deepCopy(fields()[4].schema(), other.digest);
+      if (isValidValue(fields()[4], other.deferUri)) {
+        this.deferUri = data().deepCopy(fields()[4].schema(), other.deferUri);
         fieldSetFlags()[4] = true;
+      }
+      if (isValidValue(fields()[5], other.digest)) {
+        this.digest = data().deepCopy(fields()[5].schema(), other.digest);
+        fieldSetFlags()[5] = true;
       }
     }
 
@@ -278,13 +307,17 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
         this.uri = data().deepCopy(fields()[2].schema(), other.uri);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.deferUri)) {
-        this.deferUri = data().deepCopy(fields()[3].schema(), other.deferUri);
+      if (isValidValue(fields()[3], other.mimeType)) {
+        this.mimeType = data().deepCopy(fields()[3].schema(), other.mimeType);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.digest)) {
-        this.digest = data().deepCopy(fields()[4].schema(), other.digest);
+      if (isValidValue(fields()[4], other.deferUri)) {
+        this.deferUri = data().deepCopy(fields()[4].schema(), other.deferUri);
         fieldSetFlags()[4] = true;
+      }
+      if (isValidValue(fields()[5], other.digest)) {
+        this.digest = data().deepCopy(fields()[5].schema(), other.digest);
+        fieldSetFlags()[5] = true;
       }
     }
 
@@ -410,6 +443,49 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
+      * Gets the value of the 'mimeType' field.
+      * The mimetype of the resource!
+      * @return The value.
+      */
+    public java.lang.CharSequence getMimeType() {
+      return mimeType;
+    }
+
+    /**
+      * Sets the value of the 'mimeType' field.
+      * The mimetype of the resource!
+      * @param value The value of 'mimeType'.
+      * @return This builder.
+      */
+    public eu.driver.model.cap.Resource.Builder setMimeType(java.lang.CharSequence value) {
+      validate(fields()[3], value);
+      this.mimeType = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'mimeType' field has been set.
+      * The mimetype of the resource!
+      * @return True if the 'mimeType' field has been set, false otherwise.
+      */
+    public boolean hasMimeType() {
+      return fieldSetFlags()[3];
+    }
+
+
+    /**
+      * Clears the value of the 'mimeType' field.
+      * The mimetype of the resource!
+      * @return This builder.
+      */
+    public eu.driver.model.cap.Resource.Builder clearMimeType() {
+      mimeType = null;
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
       * Gets the value of the 'deferUri' field.
       * @return The value.
       */
@@ -423,9 +499,9 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public eu.driver.model.cap.Resource.Builder setDeferUri(java.lang.CharSequence value) {
-      validate(fields()[3], value);
+      validate(fields()[4], value);
       this.deferUri = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -434,7 +510,7 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       * @return True if the 'deferUri' field has been set, false otherwise.
       */
     public boolean hasDeferUri() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
 
 
@@ -444,7 +520,7 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       */
     public eu.driver.model.cap.Resource.Builder clearDeferUri() {
       deferUri = null;
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -462,9 +538,9 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public eu.driver.model.cap.Resource.Builder setDigest(java.lang.CharSequence value) {
-      validate(fields()[4], value);
+      validate(fields()[5], value);
       this.digest = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -473,7 +549,7 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       * @return True if the 'digest' field has been set, false otherwise.
       */
     public boolean hasDigest() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[5];
     }
 
 
@@ -483,7 +559,7 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
       */
     public eu.driver.model.cap.Resource.Builder clearDigest() {
       digest = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -495,8 +571,9 @@ public class Resource extends org.apache.avro.specific.SpecificRecordBase implem
         record.resourceDesc = fieldSetFlags()[0] ? this.resourceDesc : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.size = fieldSetFlags()[1] ? this.size : (java.lang.Integer) defaultValue(fields()[1]);
         record.uri = fieldSetFlags()[2] ? this.uri : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.deferUri = fieldSetFlags()[3] ? this.deferUri : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.digest = fieldSetFlags()[4] ? this.digest : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.mimeType = fieldSetFlags()[3] ? this.mimeType : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.deferUri = fieldSetFlags()[4] ? this.deferUri : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.digest = fieldSetFlags()[5] ? this.digest : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

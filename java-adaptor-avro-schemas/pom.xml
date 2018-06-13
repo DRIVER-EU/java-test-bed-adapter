@@ -4,10 +4,10 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>java-adaptor-avro-schemas</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.8</version>
 	<packaging>jar</packaging>
 
-	<name>DRIVER Java Testbed Adapter</name>
+	<name>DRIVER Java Testbed Adapter AVRO Classes</name>
 	<url>http://www.driverproject.eu</url>
 
 	<repositories>

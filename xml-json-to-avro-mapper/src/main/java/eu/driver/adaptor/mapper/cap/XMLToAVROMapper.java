@@ -9,6 +9,8 @@ import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
 
+import eu.driver.model.cap.Alert;
+
 public class XMLToAVROMapper {
 	
 	private Logger log = Logger.getLogger(this.getClass());
@@ -23,10 +25,10 @@ public class XMLToAVROMapper {
 		GenericRecord avroAlert = null;
 		
 		try {
-			Schema schema = new Schema.Parser().parse(new File("config/avro/standard/cap/standard_cap-value.avsc"));
-			DatumBuilder datumBuilder = new DatumBuilder(schema);
+			//Schema schema = new Schema.Parser().parse(new File("config/avro/standard/cap/standard_cap-value.avsc"));
+			DatumBuilder datumBuilder = new DatumBuilder(new Alert().getSchema());
 			avroAlert = datumBuilder.createDatum(capMsg);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.error("Error creating AVRO Message");
 		}
 		
