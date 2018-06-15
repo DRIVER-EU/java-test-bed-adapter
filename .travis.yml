@@ -4,9 +4,8 @@ jdk:
 
 before_install: cd java-adaptor-avro-schemas
 install: mvn install
-after_install: cd ..
 
-before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
+before_deploy: cd .. && cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
 deploy:
   provider: script
   script: mvn deploy
