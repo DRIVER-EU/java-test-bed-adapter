@@ -20,6 +20,14 @@ jobs:
         script: mvn deploy
         on:
           branch: master
+    - stage: xml-json-to-avro-mapper
+      before_script: cd xml-json-to-avro-mapper
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
           
 cache:
   directories:
