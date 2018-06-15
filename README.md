@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DRIVER-EU/java-test-bed-adapter.svg?branch=master)](https://travis-ci.org/DRIVER-EU/java-test-bed-adapter)
+
 # java-test-bed-adapter
 The JAVA test-bed adapter
 
