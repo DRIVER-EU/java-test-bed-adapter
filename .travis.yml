@@ -5,14 +5,16 @@ jdk:
 jobs:
   include:
     - stage: java-adapter-avro-schemas
-      before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd java-adaptor-avro-schemas
+      before_script: cd java-adaptor-avro-schemas
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
       deploy: 
         provider: script
         script: mvn deploy
         on:
           branch: master
     - stage: java-adapter
-      before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
+      before_script: cd testbedadapter
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
       deploy: 
         provider: script
         script: mvn deploy
