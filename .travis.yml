@@ -6,11 +6,19 @@ jobs:
   include:
     - stage: java-adapter-avro-schemas
       before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd java-adaptor-avro-schemas
-      deploy: mvn deploy
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
     - stage: java-adapter
       before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
-      deploy: mvn deploy
-    
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
+          
 cache:
   directories:
   - ".autoconf"
