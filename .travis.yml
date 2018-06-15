@@ -2,15 +2,14 @@ language: java
 jdk:
 - oraclejdk8
 
-before_install: cd java-adaptor-avro-schemas
-install: mvn install
-
-before_deploy: cd .. && cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
-deploy:
-  provider: script
-  script: mvn deploy
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: java-adapter-avro-schemas
+      before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd java-adaptor-avro-schemas
+      deploy: mvn deploy
+    - stage: java-adapter
+      before_deploy: cp .travis.settings.xml $HOME/.m2/settings.xml && cd testbedadapter
+      deploy: mvn deploy
     
 cache:
   directories:
