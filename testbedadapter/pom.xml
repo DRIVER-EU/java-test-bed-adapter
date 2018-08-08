@@ -5,7 +5,7 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>testbed-adapter</artifactId>
-	<version>1.0.12</version>
+	<version>1.0.13</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter</name>

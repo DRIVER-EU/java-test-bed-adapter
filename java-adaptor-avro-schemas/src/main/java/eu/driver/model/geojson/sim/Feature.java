@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.geojson;
+package eu.driver.model.geojson.sim;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A GeoJSON Feature object */
 @org.apache.avro.specific.AvroGenerated
 public class Feature extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8936640948507027356L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Feature\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\",{\"type\":\"array\",\"items\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]},{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]}]},\"doc\":\"Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.\",\"namespace\":\"eu.driver.model.geojson\"}]}");
+  private static final long serialVersionUID = -4549242568032192190L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Feature\",\"namespace\":\"eu.driver.model.geojson.sim\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"record\",\"name\":\"SimulatedEntityProperties\",\"doc\":\"Specfic properties for an Simulated entity\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"speed\",\"type\":[\"null\",\"double\"],\"doc\":\"speed of the entity in m/s\",\"default\":null},{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"TypeEnum\",\"symbols\":[\"OBJECT\",\"PERSON\",\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\",\"DRONE\",\"UNIT\",\"STATION\",\"UNITGROUP\",\"UNKNOWN\"]}},{\"name\":\"label\",\"type\":\"string\",\"doc\":\"Label that describes the domain of the entity. E.g. Police, Medical, Fire or Military.\"},{\"name\":\"subEntities\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Entities contained by this entity. Only used for Units, Stations and Unit Groups. Array of strings consists of guids.\",\"default\":null}]},\"doc\":\"Properties that provide additional specification of the Simulated entity in addition to its geographic information.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,11 +52,11 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
-  @Deprecated public eu.driver.model.geojson.FeatureType type;
+  @Deprecated public eu.driver.model.geojson.sim.FeatureType type;
   @Deprecated public java.util.List<java.lang.Double> bbox;
   @Deprecated public java.lang.Object geometry;
-  /** Any type, without infinite nesting, should be replaced during actual usage with a record with named properties. */
-  @Deprecated public java.util.Map<java.lang.CharSequence,java.lang.Object> properties;
+  /** Properties that provide additional specification of the Simulated entity in addition to its geographic information. */
+  @Deprecated public eu.driver.model.geojson.sim.SimulatedEntityProperties properties;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -70,9 +70,9 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param type The new value for type
    * @param bbox The new value for bbox
    * @param geometry The new value for geometry
-   * @param properties Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+   * @param properties Properties that provide additional specification of the Simulated entity in addition to its geographic information.
    */
-  public Feature(eu.driver.model.geojson.FeatureType type, java.util.List<java.lang.Double> bbox, java.lang.Object geometry, java.util.Map<java.lang.CharSequence,java.lang.Object> properties) {
+  public Feature(eu.driver.model.geojson.sim.FeatureType type, java.util.List<java.lang.Double> bbox, java.lang.Object geometry, eu.driver.model.geojson.sim.SimulatedEntityProperties properties) {
     this.type = type;
     this.bbox = bbox;
     this.geometry = geometry;
@@ -95,10 +95,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: type = (eu.driver.model.geojson.FeatureType)value$; break;
+    case 0: type = (eu.driver.model.geojson.sim.FeatureType)value$; break;
     case 1: bbox = (java.util.List<java.lang.Double>)value$; break;
     case 2: geometry = (java.lang.Object)value$; break;
-    case 3: properties = (java.util.Map<java.lang.CharSequence,java.lang.Object>)value$; break;
+    case 3: properties = (eu.driver.model.geojson.sim.SimulatedEntityProperties)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -107,7 +107,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'type' field.
    * @return The value of the 'type' field.
    */
-  public eu.driver.model.geojson.FeatureType getType() {
+  public eu.driver.model.geojson.sim.FeatureType getType() {
     return type;
   }
 
@@ -115,7 +115,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'type' field.
    * @param value the value to set.
    */
-  public void setType(eu.driver.model.geojson.FeatureType value) {
+  public void setType(eu.driver.model.geojson.sim.FeatureType value) {
     this.type = value;
   }
 
@@ -153,18 +153,18 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'properties' field.
-   * @return Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+   * @return Properties that provide additional specification of the Simulated entity in addition to its geographic information.
    */
-  public java.util.Map<java.lang.CharSequence,java.lang.Object> getProperties() {
+  public eu.driver.model.geojson.sim.SimulatedEntityProperties getProperties() {
     return properties;
   }
 
   /**
    * Sets the value of the 'properties' field.
-   * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+   * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
    * @param value the value to set.
    */
-  public void setProperties(java.util.Map<java.lang.CharSequence,java.lang.Object> value) {
+  public void setProperties(eu.driver.model.geojson.sim.SimulatedEntityProperties value) {
     this.properties = value;
   }
 
@@ -172,8 +172,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Creates a new Feature RecordBuilder.
    * @return A new Feature RecordBuilder
    */
-  public static eu.driver.model.geojson.Feature.Builder newBuilder() {
-    return new eu.driver.model.geojson.Feature.Builder();
+  public static eu.driver.model.geojson.sim.Feature.Builder newBuilder() {
+    return new eu.driver.model.geojson.sim.Feature.Builder();
   }
 
   /**
@@ -181,8 +181,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param other The existing builder to copy.
    * @return A new Feature RecordBuilder
    */
-  public static eu.driver.model.geojson.Feature.Builder newBuilder(eu.driver.model.geojson.Feature.Builder other) {
-    return new eu.driver.model.geojson.Feature.Builder(other);
+  public static eu.driver.model.geojson.sim.Feature.Builder newBuilder(eu.driver.model.geojson.sim.Feature.Builder other) {
+    return new eu.driver.model.geojson.sim.Feature.Builder(other);
   }
 
   /**
@@ -190,8 +190,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param other The existing instance to copy.
    * @return A new Feature RecordBuilder
    */
-  public static eu.driver.model.geojson.Feature.Builder newBuilder(eu.driver.model.geojson.Feature other) {
-    return new eu.driver.model.geojson.Feature.Builder(other);
+  public static eu.driver.model.geojson.sim.Feature.Builder newBuilder(eu.driver.model.geojson.sim.Feature other) {
+    return new eu.driver.model.geojson.sim.Feature.Builder(other);
   }
 
   /**
@@ -200,11 +200,12 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Feature>
     implements org.apache.avro.data.RecordBuilder<Feature> {
 
-    private eu.driver.model.geojson.FeatureType type;
+    private eu.driver.model.geojson.sim.FeatureType type;
     private java.util.List<java.lang.Double> bbox;
     private java.lang.Object geometry;
-    /** Any type, without infinite nesting, should be replaced during actual usage with a record with named properties. */
-    private java.util.Map<java.lang.CharSequence,java.lang.Object> properties;
+    /** Properties that provide additional specification of the Simulated entity in addition to its geographic information. */
+    private eu.driver.model.geojson.sim.SimulatedEntityProperties properties;
+    private eu.driver.model.geojson.sim.SimulatedEntityProperties.Builder propertiesBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -215,7 +216,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.geojson.Feature.Builder other) {
+    private Builder(eu.driver.model.geojson.sim.Feature.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -233,13 +234,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.properties = data().deepCopy(fields()[3].schema(), other.properties);
         fieldSetFlags()[3] = true;
       }
+      if (other.hasPropertiesBuilder()) {
+        this.propertiesBuilder = eu.driver.model.geojson.sim.SimulatedEntityProperties.newBuilder(other.getPropertiesBuilder());
+      }
     }
 
     /**
      * Creates a Builder by copying an existing Feature instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.geojson.Feature other) {
+    private Builder(eu.driver.model.geojson.sim.Feature other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -257,13 +261,14 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.properties = data().deepCopy(fields()[3].schema(), other.properties);
         fieldSetFlags()[3] = true;
       }
+      this.propertiesBuilder = null;
     }
 
     /**
       * Gets the value of the 'type' field.
       * @return The value.
       */
-    public eu.driver.model.geojson.FeatureType getType() {
+    public eu.driver.model.geojson.sim.FeatureType getType() {
       return type;
     }
 
@@ -272,7 +277,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'type'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder setType(eu.driver.model.geojson.FeatureType value) {
+    public eu.driver.model.geojson.sim.Feature.Builder setType(eu.driver.model.geojson.sim.FeatureType value) {
       validate(fields()[0], value);
       this.type = value;
       fieldSetFlags()[0] = true;
@@ -292,7 +297,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'type' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder clearType() {
+    public eu.driver.model.geojson.sim.Feature.Builder clearType() {
       type = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -311,7 +316,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'bbox'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder setBbox(java.util.List<java.lang.Double> value) {
+    public eu.driver.model.geojson.sim.Feature.Builder setBbox(java.util.List<java.lang.Double> value) {
       validate(fields()[1], value);
       this.bbox = value;
       fieldSetFlags()[1] = true;
@@ -331,7 +336,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'bbox' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder clearBbox() {
+    public eu.driver.model.geojson.sim.Feature.Builder clearBbox() {
       bbox = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -350,7 +355,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'geometry'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder setGeometry(java.lang.Object value) {
+    public eu.driver.model.geojson.sim.Feature.Builder setGeometry(java.lang.Object value) {
       validate(fields()[2], value);
       this.geometry = value;
       fieldSetFlags()[2] = true;
@@ -370,7 +375,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'geometry' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder clearGeometry() {
+    public eu.driver.model.geojson.sim.Feature.Builder clearGeometry() {
       geometry = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -378,21 +383,22 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'properties' field.
-      * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+      * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
       * @return The value.
       */
-    public java.util.Map<java.lang.CharSequence,java.lang.Object> getProperties() {
+    public eu.driver.model.geojson.sim.SimulatedEntityProperties getProperties() {
       return properties;
     }
 
     /**
       * Sets the value of the 'properties' field.
-      * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+      * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
       * @param value The value of 'properties'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder setProperties(java.util.Map<java.lang.CharSequence,java.lang.Object> value) {
+    public eu.driver.model.geojson.sim.Feature.Builder setProperties(eu.driver.model.geojson.sim.SimulatedEntityProperties value) {
       validate(fields()[3], value);
+      this.propertiesBuilder = null;
       this.properties = value;
       fieldSetFlags()[3] = true;
       return this;
@@ -400,21 +406,58 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'properties' field has been set.
-      * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+      * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
       * @return True if the 'properties' field has been set, false otherwise.
       */
     public boolean hasProperties() {
       return fieldSetFlags()[3];
     }
 
+    /**
+     * Gets the Builder instance for the 'properties' field and creates one if it doesn't exist yet.
+     * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
+     * @return This builder.
+     */
+    public eu.driver.model.geojson.sim.SimulatedEntityProperties.Builder getPropertiesBuilder() {
+      if (propertiesBuilder == null) {
+        if (hasProperties()) {
+          setPropertiesBuilder(eu.driver.model.geojson.sim.SimulatedEntityProperties.newBuilder(properties));
+        } else {
+          setPropertiesBuilder(eu.driver.model.geojson.sim.SimulatedEntityProperties.newBuilder());
+        }
+      }
+      return propertiesBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'properties' field
+     * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public eu.driver.model.geojson.sim.Feature.Builder setPropertiesBuilder(eu.driver.model.geojson.sim.SimulatedEntityProperties.Builder value) {
+      clearProperties();
+      propertiesBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'properties' field has an active Builder instance
+     * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
+     * @return True if the 'properties' field has an active Builder instance
+     */
+    public boolean hasPropertiesBuilder() {
+      return propertiesBuilder != null;
+    }
 
     /**
       * Clears the value of the 'properties' field.
-      * Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.
+      * Properties that provide additional specification of the Simulated entity in addition to its geographic information.
       * @return This builder.
       */
-    public eu.driver.model.geojson.Feature.Builder clearProperties() {
+    public eu.driver.model.geojson.sim.Feature.Builder clearProperties() {
       properties = null;
+      propertiesBuilder = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -424,10 +467,14 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
     public Feature build() {
       try {
         Feature record = new Feature();
-        record.type = fieldSetFlags()[0] ? this.type : (eu.driver.model.geojson.FeatureType) defaultValue(fields()[0]);
+        record.type = fieldSetFlags()[0] ? this.type : (eu.driver.model.geojson.sim.FeatureType) defaultValue(fields()[0]);
         record.bbox = fieldSetFlags()[1] ? this.bbox : (java.util.List<java.lang.Double>) defaultValue(fields()[1]);
         record.geometry = fieldSetFlags()[2] ? this.geometry : (java.lang.Object) defaultValue(fields()[2]);
-        record.properties = fieldSetFlags()[3] ? this.properties : (java.util.Map<java.lang.CharSequence,java.lang.Object>) defaultValue(fields()[3]);
+        if (propertiesBuilder != null) {
+          record.properties = this.propertiesBuilder.build();
+        } else {
+          record.properties = fieldSetFlags()[3] ? this.properties : (eu.driver.model.geojson.sim.SimulatedEntityProperties) defaultValue(fields()[3]);
+        }
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

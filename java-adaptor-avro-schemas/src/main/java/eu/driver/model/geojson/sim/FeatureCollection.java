@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package eu.driver.model.geojson;
+package eu.driver.model.geojson.sim;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** A GeoJSON FeatureCollection object. As the properties are generic, it should be replaced by a record with named properties. */
+/** A GeoJSON FeatureCollection object. The properties are made specific to be filled in with information from Simulated Entity data. */
 @org.apache.avro.specific.AvroGenerated
 public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 637431650843051779L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FeatureCollection\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"A GeoJSON FeatureCollection object. As the properties are generic, it should be replaced by a record with named properties.\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureCollectionType\",\"symbols\":[\"FeatureCollection\"]},\"default\":\"FeatureCollection\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"features\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Feature\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\",{\"type\":\"array\",\"items\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]},{\"type\":\"map\",\"values\":[\"null\",\"boolean\",\"string\",\"int\",\"long\",\"float\",\"double\"]}]},\"doc\":\"Any type, without infinite nesting, should be replaced during actual usage with a record with named properties.\",\"namespace\":\"eu.driver.model.geojson\"}]}}]}]}");
+  private static final long serialVersionUID = 4388751758175373250L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FeatureCollection\",\"namespace\":\"eu.driver.model.geojson.sim\",\"doc\":\"A GeoJSON FeatureCollection object. The properties are made specific to be filled in with information from Simulated Entity data.\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureCollectionType\",\"symbols\":[\"FeatureCollection\"]},\"default\":\"FeatureCollection\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"features\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Feature\",\"doc\":\"A GeoJSON Feature object\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"FeatureType\",\"symbols\":[\"Feature\"]},\"default\":\"Feature\"},{\"name\":\"bbox\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"double\"}],\"default\":null},{\"name\":\"geometry\",\"type\":[{\"type\":\"record\",\"name\":\"Point\",\"doc\":\"Describes a point geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PointType\",\"symbols\":[\"Point\"]},\"default\":\"Point\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]},{\"type\":\"record\",\"name\":\"LineString\",\"doc\":\"Describes a LineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"LineStringType\",\"symbols\":[\"LineString\"]},\"default\":\"LineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}]},{\"type\":\"record\",\"name\":\"MultiLineString\",\"doc\":\"Describes a MultiLineString geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiLineStringType\",\"symbols\":[\"MultiLineString\"]},\"default\":\"MultiLineString\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"Polygon\",\"doc\":\"Describes a Polygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"PolygonType\",\"symbols\":[\"Polygon\"]},\"default\":\"Polygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}]},{\"type\":\"record\",\"name\":\"MultiPolygon\",\"doc\":\"Describes a MultiPolygon geometry\",\"fields\":[{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"MultiPolygonType\",\"symbols\":[\"MultiPolygon\"]},\"default\":\"MultiPolygon\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":\"double\"}}}}}]}]},{\"name\":\"properties\",\"type\":{\"type\":\"record\",\"name\":\"SimulatedEntityProperties\",\"doc\":\"Specfic properties for an Simulated entity\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"speed\",\"type\":[\"null\",\"double\"],\"doc\":\"speed of the entity in m/s\",\"default\":null},{\"name\":\"type\",\"type\":{\"type\":\"enum\",\"name\":\"TypeEnum\",\"symbols\":[\"OBJECT\",\"PERSON\",\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\",\"DRONE\",\"UNIT\",\"STATION\",\"UNITGROUP\",\"UNKNOWN\"]}},{\"name\":\"label\",\"type\":\"string\",\"doc\":\"Label that describes the domain of the entity. E.g. Police, Medical, Fire or Military.\"},{\"name\":\"subEntities\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Entities contained by this entity. Only used for Units, Stations and Unit Groups. Array of strings consists of guids.\",\"default\":null}]},\"doc\":\"Properties that provide additional specification of the Simulated entity in addition to its geographic information.\"}]}}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,9 +52,9 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
     return DECODER.decode(b);
   }
 
-  @Deprecated public eu.driver.model.geojson.FeatureCollectionType type;
+  @Deprecated public eu.driver.model.geojson.sim.FeatureCollectionType type;
   @Deprecated public java.util.List<java.lang.Double> bbox;
-  @Deprecated public java.util.List<eu.driver.model.geojson.Feature> features;
+  @Deprecated public java.util.List<eu.driver.model.geojson.sim.Feature> features;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -69,7 +69,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * @param bbox The new value for bbox
    * @param features The new value for features
    */
-  public FeatureCollection(eu.driver.model.geojson.FeatureCollectionType type, java.util.List<java.lang.Double> bbox, java.util.List<eu.driver.model.geojson.Feature> features) {
+  public FeatureCollection(eu.driver.model.geojson.sim.FeatureCollectionType type, java.util.List<java.lang.Double> bbox, java.util.List<eu.driver.model.geojson.sim.Feature> features) {
     this.type = type;
     this.bbox = bbox;
     this.features = features;
@@ -90,9 +90,9 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: type = (eu.driver.model.geojson.FeatureCollectionType)value$; break;
+    case 0: type = (eu.driver.model.geojson.sim.FeatureCollectionType)value$; break;
     case 1: bbox = (java.util.List<java.lang.Double>)value$; break;
-    case 2: features = (java.util.List<eu.driver.model.geojson.Feature>)value$; break;
+    case 2: features = (java.util.List<eu.driver.model.geojson.sim.Feature>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -101,7 +101,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'type' field.
    * @return The value of the 'type' field.
    */
-  public eu.driver.model.geojson.FeatureCollectionType getType() {
+  public eu.driver.model.geojson.sim.FeatureCollectionType getType() {
     return type;
   }
 
@@ -109,7 +109,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'type' field.
    * @param value the value to set.
    */
-  public void setType(eu.driver.model.geojson.FeatureCollectionType value) {
+  public void setType(eu.driver.model.geojson.sim.FeatureCollectionType value) {
     this.type = value;
   }
 
@@ -133,7 +133,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'features' field.
    * @return The value of the 'features' field.
    */
-  public java.util.List<eu.driver.model.geojson.Feature> getFeatures() {
+  public java.util.List<eu.driver.model.geojson.sim.Feature> getFeatures() {
     return features;
   }
 
@@ -141,7 +141,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'features' field.
    * @param value the value to set.
    */
-  public void setFeatures(java.util.List<eu.driver.model.geojson.Feature> value) {
+  public void setFeatures(java.util.List<eu.driver.model.geojson.sim.Feature> value) {
     this.features = value;
   }
 
@@ -149,8 +149,8 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * Creates a new FeatureCollection RecordBuilder.
    * @return A new FeatureCollection RecordBuilder
    */
-  public static eu.driver.model.geojson.FeatureCollection.Builder newBuilder() {
-    return new eu.driver.model.geojson.FeatureCollection.Builder();
+  public static eu.driver.model.geojson.sim.FeatureCollection.Builder newBuilder() {
+    return new eu.driver.model.geojson.sim.FeatureCollection.Builder();
   }
 
   /**
@@ -158,8 +158,8 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing builder to copy.
    * @return A new FeatureCollection RecordBuilder
    */
-  public static eu.driver.model.geojson.FeatureCollection.Builder newBuilder(eu.driver.model.geojson.FeatureCollection.Builder other) {
-    return new eu.driver.model.geojson.FeatureCollection.Builder(other);
+  public static eu.driver.model.geojson.sim.FeatureCollection.Builder newBuilder(eu.driver.model.geojson.sim.FeatureCollection.Builder other) {
+    return new eu.driver.model.geojson.sim.FeatureCollection.Builder(other);
   }
 
   /**
@@ -167,8 +167,8 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing instance to copy.
    * @return A new FeatureCollection RecordBuilder
    */
-  public static eu.driver.model.geojson.FeatureCollection.Builder newBuilder(eu.driver.model.geojson.FeatureCollection other) {
-    return new eu.driver.model.geojson.FeatureCollection.Builder(other);
+  public static eu.driver.model.geojson.sim.FeatureCollection.Builder newBuilder(eu.driver.model.geojson.sim.FeatureCollection other) {
+    return new eu.driver.model.geojson.sim.FeatureCollection.Builder(other);
   }
 
   /**
@@ -177,9 +177,9 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FeatureCollection>
     implements org.apache.avro.data.RecordBuilder<FeatureCollection> {
 
-    private eu.driver.model.geojson.FeatureCollectionType type;
+    private eu.driver.model.geojson.sim.FeatureCollectionType type;
     private java.util.List<java.lang.Double> bbox;
-    private java.util.List<eu.driver.model.geojson.Feature> features;
+    private java.util.List<eu.driver.model.geojson.sim.Feature> features;
 
     /** Creates a new Builder */
     private Builder() {
@@ -190,7 +190,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.driver.model.geojson.FeatureCollection.Builder other) {
+    private Builder(eu.driver.model.geojson.sim.FeatureCollection.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -210,7 +210,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing FeatureCollection instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.driver.model.geojson.FeatureCollection other) {
+    private Builder(eu.driver.model.geojson.sim.FeatureCollection other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -230,7 +230,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'type' field.
       * @return The value.
       */
-    public eu.driver.model.geojson.FeatureCollectionType getType() {
+    public eu.driver.model.geojson.sim.FeatureCollectionType getType() {
       return type;
     }
 
@@ -239,7 +239,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'type'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder setType(eu.driver.model.geojson.FeatureCollectionType value) {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder setType(eu.driver.model.geojson.sim.FeatureCollectionType value) {
       validate(fields()[0], value);
       this.type = value;
       fieldSetFlags()[0] = true;
@@ -259,7 +259,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'type' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder clearType() {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder clearType() {
       type = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -278,7 +278,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'bbox'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder setBbox(java.util.List<java.lang.Double> value) {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder setBbox(java.util.List<java.lang.Double> value) {
       validate(fields()[1], value);
       this.bbox = value;
       fieldSetFlags()[1] = true;
@@ -298,7 +298,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'bbox' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder clearBbox() {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder clearBbox() {
       bbox = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -308,7 +308,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'features' field.
       * @return The value.
       */
-    public java.util.List<eu.driver.model.geojson.Feature> getFeatures() {
+    public java.util.List<eu.driver.model.geojson.sim.Feature> getFeatures() {
       return features;
     }
 
@@ -317,7 +317,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'features'.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder setFeatures(java.util.List<eu.driver.model.geojson.Feature> value) {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder setFeatures(java.util.List<eu.driver.model.geojson.sim.Feature> value) {
       validate(fields()[2], value);
       this.features = value;
       fieldSetFlags()[2] = true;
@@ -337,7 +337,7 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'features' field.
       * @return This builder.
       */
-    public eu.driver.model.geojson.FeatureCollection.Builder clearFeatures() {
+    public eu.driver.model.geojson.sim.FeatureCollection.Builder clearFeatures() {
       features = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -348,9 +348,9 @@ public class FeatureCollection extends org.apache.avro.specific.SpecificRecordBa
     public FeatureCollection build() {
       try {
         FeatureCollection record = new FeatureCollection();
-        record.type = fieldSetFlags()[0] ? this.type : (eu.driver.model.geojson.FeatureCollectionType) defaultValue(fields()[0]);
+        record.type = fieldSetFlags()[0] ? this.type : (eu.driver.model.geojson.sim.FeatureCollectionType) defaultValue(fields()[0]);
         record.bbox = fieldSetFlags()[1] ? this.bbox : (java.util.List<java.lang.Double>) defaultValue(fields()[1]);
-        record.features = fieldSetFlags()[2] ? this.features : (java.util.List<eu.driver.model.geojson.Feature>) defaultValue(fields()[2]);
+        record.features = fieldSetFlags()[2] ? this.features : (java.util.List<eu.driver.model.geojson.sim.Feature>) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
