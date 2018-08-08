@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Common Simulation Space Item, representing a visual entity inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE* */
 @org.apache.avro.specific.AvroGenerated
 public class Item extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6486747442714091942L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Item\",\"namespace\":\"eu.driver.model.sim.entity\",\"doc\":\"Common Simulation Space Item, representing a visual entity inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE*\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]},\"doc\":\"location of this item\"},{\"name\":\"orientation\",\"type\":{\"type\":\"record\",\"name\":\"Orientation\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of an orientation on earth - Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"roll\",\"type\":\"double\",\"doc\":\"roll or bank in degrees (-180, 180] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - bank of +45 is 45 degrees roll to the right, -45 is 45 degrees roll to the left\"}]},\"doc\":\"orientation of this item\"},{\"name\":\"velocity\",\"type\":{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]},\"doc\":\"movement vector of the item, including the magnitude\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"indication whether or not this item is movable in the simulation world\"},{\"name\":\"itemType\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"ObjectType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is an object\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectSubType\",\"symbols\":[\"PROP\",\"TOOL\"]},\"doc\":\"sub type of objects that this item is\"}]},{\"type\":\"record\",\"name\":\"PersonType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is a person\",\"fields\":[{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"PersonSubType\",\"symbols\":[\"MALE\",\"FEMALE\",\"UNKNOWN\"]},\"doc\":\"gender of the person\"}]},{\"type\":\"record\",\"name\":\"VehicleType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is a vehicle\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"VehicleSubType\",\"symbols\":[\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\"]},\"doc\":\"sub type of vehicles that this item is\"}]}],\"doc\":\"concrete type of this item - can be of type ObjectType, PersonType or VehicleType\",\"default\":null},{\"name\":\"scenarioLabel\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"EnvironmentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as environment\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"EnvironmentSubLabel\",\"symbols\":[\"FOLIAGE\",\"ROAD\"]},\"doc\":\"sub label of environment that this item has\"}]},{\"type\":\"record\",\"name\":\"IncidentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as incident\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"IncidentSubLabel\",\"symbols\":[\"FIRE\",\"CRASH\"]},\"doc\":\"sub label of incident that this item has\"}]},{\"type\":\"record\",\"name\":\"RescueLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as rescue\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"RescueSubLabel\",\"symbols\":[\"POLICE\",\"MEDICAL\",\"FIRE\",\"SECURITY\",\"MILITARY\"]},\"doc\":\"sub label of rescue that this item has\"}]}],\"doc\":\"scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel\",\"default\":null},{\"name\":\"userTags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of all tags the user provided associated with this item\",\"default\":null},{\"name\":\"physicalConnections\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of physical connection entities references (represented by their GUIDs) this item has\",\"default\":null},{\"name\":\"group\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the group connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"formation\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the formation connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"unit\",\"type\":[\"null\",\"string\"],\"doc\":\"reference to the unit connection entity (represented by its GUID) this item is part of\",\"default\":null}]}");
+  private static final long serialVersionUID = -3747272104282084868L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Item\",\"namespace\":\"eu.driver.model.sim.entity\",\"doc\":\"Common Simulation Space Item, representing a visual entity inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE*\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"Globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"Identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"Latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":[\"null\",\"double\"],\"doc\":\"Altitude in meters - 0 is surface of WGS84-based ellipsoid\",\"default\":null}]},\"doc\":\"Location of this item\"},{\"name\":\"orientation\",\"type\":{\"type\":\"record\",\"name\":\"Orientation\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of an orientation on earth - Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"roll\",\"type\":\"double\",\"doc\":\"Roll or bank in degrees (-180, 180] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - bank of +45 is 45 degrees roll to the right, -45 is 45 degrees roll to the left\"}]},\"doc\":\"Orientation of this item\"},{\"name\":\"velocity\",\"type\":{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"Velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]},\"doc\":\"Movement vector of the item, including the magnitude\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"Indication whether or not this item is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"Indication whether or not this item is movable in the simulation world\"},{\"name\":\"itemType\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"ObjectType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is an object\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectSubType\",\"symbols\":[\"PROP\",\"TOOL\"]},\"doc\":\"Sub type of objects that this item is\"}]},{\"type\":\"record\",\"name\":\"PersonType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is a person\",\"fields\":[{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"PersonSubType\",\"symbols\":[\"MALE\",\"FEMALE\",\"UNKNOWN\"]},\"doc\":\"Gender of the person\"}]},{\"type\":\"record\",\"name\":\"VehicleType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is a vehicle\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"VehicleSubType\",\"symbols\":[\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\"]},\"doc\":\"Sub type of vehicles that this item is\"}]}],\"doc\":\"Concrete type of this item - can be of type ObjectType, PersonType or VehicleType\",\"default\":null},{\"name\":\"scenarioLabel\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"EnvironmentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as environment\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"EnvironmentSubLabel\",\"symbols\":[\"FOLIAGE\",\"ROAD\"]},\"doc\":\"Sub label of environment that this item has\"}]},{\"type\":\"record\",\"name\":\"IncidentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as incident\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"IncidentSubLabel\",\"symbols\":[\"FIRE\",\"CRASH\"]},\"doc\":\"Sub label of incident that this item has\"}]},{\"type\":\"record\",\"name\":\"RescueLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as rescue\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"RescueSubLabel\",\"symbols\":[\"POLICE\",\"MEDICAL\",\"FIRE\",\"SECURITY\",\"MILITARY\"]},\"doc\":\"Sub label of rescue that this item has\"}]}],\"doc\":\"Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel\",\"default\":null},{\"name\":\"userTags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"List of all tags the user provided associated with this item\",\"default\":null},{\"name\":\"physicalConnections\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"List of physical connection entities references (represented by their GUIDs) this item has\",\"default\":null},{\"name\":\"group\",\"type\":[\"null\",\"string\"],\"doc\":\"Reference to the group connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"formation\",\"type\":[\"null\",\"string\"],\"doc\":\"Reference to the formation connection entity (represented by its GUID) this item is part of\",\"default\":null},{\"name\":\"unit\",\"type\":[\"null\",\"string\"],\"doc\":\"Reference to the unit connection entity (represented by its GUID) this item is part of\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,35 +52,35 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
     return DECODER.decode(b);
   }
 
-  /** globally unique identifier for this entity */
+  /** Globally unique identifier for this entity */
   @Deprecated public java.lang.CharSequence guid;
-  /** name of this entity */
+  /** Name of this entity */
   @Deprecated public java.lang.CharSequence name;
-  /** identifier of the simulator currently responsible for this entity */
+  /** Identifier of the simulator currently responsible for this entity */
   @Deprecated public java.lang.CharSequence owner;
-  /** location of this item */
+  /** Location of this item */
   @Deprecated public eu.driver.model.sim.geo.Location location;
-  /** orientation of this item */
+  /** Orientation of this item */
   @Deprecated public eu.driver.model.sim.geo.Orientation orientation;
-  /** movement vector of the item, including the magnitude */
+  /** Movement vector of the item, including the magnitude */
   @Deprecated public eu.driver.model.sim.geo.Velocity velocity;
-  /** indication whether or not this item is visible for all participants */
+  /** Indication whether or not this item is visible for all participants */
   @Deprecated public boolean visibleForParticipant;
-  /** indication whether or not this item is movable in the simulation world */
+  /** Indication whether or not this item is movable in the simulation world */
   @Deprecated public boolean movable;
-  /** concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
+  /** Concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
   @Deprecated public java.lang.Object itemType;
-  /** scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
+  /** Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
   @Deprecated public java.lang.Object scenarioLabel;
-  /** list of all tags the user provided associated with this item */
+  /** List of all tags the user provided associated with this item */
   @Deprecated public java.util.List<java.lang.CharSequence> userTags;
-  /** list of physical connection entities references (represented by their GUIDs) this item has */
+  /** List of physical connection entities references (represented by their GUIDs) this item has */
   @Deprecated public java.util.List<java.lang.CharSequence> physicalConnections;
-  /** reference to the group connection entity (represented by its GUID) this item is part of */
+  /** Reference to the group connection entity (represented by its GUID) this item is part of */
   @Deprecated public java.lang.CharSequence group;
-  /** reference to the formation connection entity (represented by its GUID) this item is part of */
+  /** Reference to the formation connection entity (represented by its GUID) this item is part of */
   @Deprecated public java.lang.CharSequence formation;
-  /** reference to the unit connection entity (represented by its GUID) this item is part of */
+  /** Reference to the unit connection entity (represented by its GUID) this item is part of */
   @Deprecated public java.lang.CharSequence unit;
 
   /**
@@ -92,21 +92,21 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * All-args constructor.
-   * @param guid globally unique identifier for this entity
-   * @param name name of this entity
-   * @param owner identifier of the simulator currently responsible for this entity
-   * @param location location of this item
-   * @param orientation orientation of this item
-   * @param velocity movement vector of the item, including the magnitude
-   * @param visibleForParticipant indication whether or not this item is visible for all participants
-   * @param movable indication whether or not this item is movable in the simulation world
-   * @param itemType concrete type of this item - can be of type ObjectType, PersonType or VehicleType
-   * @param scenarioLabel scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
-   * @param userTags list of all tags the user provided associated with this item
-   * @param physicalConnections list of physical connection entities references (represented by their GUIDs) this item has
-   * @param group reference to the group connection entity (represented by its GUID) this item is part of
-   * @param formation reference to the formation connection entity (represented by its GUID) this item is part of
-   * @param unit reference to the unit connection entity (represented by its GUID) this item is part of
+   * @param guid Globally unique identifier for this entity
+   * @param name Name of this entity
+   * @param owner Identifier of the simulator currently responsible for this entity
+   * @param location Location of this item
+   * @param orientation Orientation of this item
+   * @param velocity Movement vector of the item, including the magnitude
+   * @param visibleForParticipant Indication whether or not this item is visible for all participants
+   * @param movable Indication whether or not this item is movable in the simulation world
+   * @param itemType Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+   * @param scenarioLabel Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   * @param userTags List of all tags the user provided associated with this item
+   * @param physicalConnections List of physical connection entities references (represented by their GUIDs) this item has
+   * @param group Reference to the group connection entity (represented by its GUID) this item is part of
+   * @param formation Reference to the formation connection entity (represented by its GUID) this item is part of
+   * @param unit Reference to the unit connection entity (represented by its GUID) this item is part of
    */
   public Item(java.lang.CharSequence guid, java.lang.CharSequence name, java.lang.CharSequence owner, eu.driver.model.sim.geo.Location location, eu.driver.model.sim.geo.Orientation orientation, eu.driver.model.sim.geo.Velocity velocity, java.lang.Boolean visibleForParticipant, java.lang.Boolean movable, java.lang.Object itemType, java.lang.Object scenarioLabel, java.util.List<java.lang.CharSequence> userTags, java.util.List<java.lang.CharSequence> physicalConnections, java.lang.CharSequence group, java.lang.CharSequence formation, java.lang.CharSequence unit) {
     this.guid = guid;
@@ -174,7 +174,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'guid' field.
-   * @return globally unique identifier for this entity
+   * @return Globally unique identifier for this entity
    */
   public java.lang.CharSequence getGuid() {
     return guid;
@@ -182,7 +182,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'guid' field.
-   * globally unique identifier for this entity
+   * Globally unique identifier for this entity
    * @param value the value to set.
    */
   public void setGuid(java.lang.CharSequence value) {
@@ -191,7 +191,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'name' field.
-   * @return name of this entity
+   * @return Name of this entity
    */
   public java.lang.CharSequence getName() {
     return name;
@@ -199,7 +199,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'name' field.
-   * name of this entity
+   * Name of this entity
    * @param value the value to set.
    */
   public void setName(java.lang.CharSequence value) {
@@ -208,7 +208,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'owner' field.
-   * @return identifier of the simulator currently responsible for this entity
+   * @return Identifier of the simulator currently responsible for this entity
    */
   public java.lang.CharSequence getOwner() {
     return owner;
@@ -216,7 +216,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'owner' field.
-   * identifier of the simulator currently responsible for this entity
+   * Identifier of the simulator currently responsible for this entity
    * @param value the value to set.
    */
   public void setOwner(java.lang.CharSequence value) {
@@ -225,7 +225,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'location' field.
-   * @return location of this item
+   * @return Location of this item
    */
   public eu.driver.model.sim.geo.Location getLocation() {
     return location;
@@ -233,7 +233,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'location' field.
-   * location of this item
+   * Location of this item
    * @param value the value to set.
    */
   public void setLocation(eu.driver.model.sim.geo.Location value) {
@@ -242,7 +242,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'orientation' field.
-   * @return orientation of this item
+   * @return Orientation of this item
    */
   public eu.driver.model.sim.geo.Orientation getOrientation() {
     return orientation;
@@ -250,7 +250,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'orientation' field.
-   * orientation of this item
+   * Orientation of this item
    * @param value the value to set.
    */
   public void setOrientation(eu.driver.model.sim.geo.Orientation value) {
@@ -259,7 +259,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'velocity' field.
-   * @return movement vector of the item, including the magnitude
+   * @return Movement vector of the item, including the magnitude
    */
   public eu.driver.model.sim.geo.Velocity getVelocity() {
     return velocity;
@@ -267,7 +267,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'velocity' field.
-   * movement vector of the item, including the magnitude
+   * Movement vector of the item, including the magnitude
    * @param value the value to set.
    */
   public void setVelocity(eu.driver.model.sim.geo.Velocity value) {
@@ -276,7 +276,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'visibleForParticipant' field.
-   * @return indication whether or not this item is visible for all participants
+   * @return Indication whether or not this item is visible for all participants
    */
   public java.lang.Boolean getVisibleForParticipant() {
     return visibleForParticipant;
@@ -284,7 +284,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'visibleForParticipant' field.
-   * indication whether or not this item is visible for all participants
+   * Indication whether or not this item is visible for all participants
    * @param value the value to set.
    */
   public void setVisibleForParticipant(java.lang.Boolean value) {
@@ -293,7 +293,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'movable' field.
-   * @return indication whether or not this item is movable in the simulation world
+   * @return Indication whether or not this item is movable in the simulation world
    */
   public java.lang.Boolean getMovable() {
     return movable;
@@ -301,7 +301,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'movable' field.
-   * indication whether or not this item is movable in the simulation world
+   * Indication whether or not this item is movable in the simulation world
    * @param value the value to set.
    */
   public void setMovable(java.lang.Boolean value) {
@@ -310,7 +310,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'itemType' field.
-   * @return concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+   * @return Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
    */
   public java.lang.Object getItemType() {
     return itemType;
@@ -318,7 +318,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'itemType' field.
-   * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+   * Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
    * @param value the value to set.
    */
   public void setItemType(java.lang.Object value) {
@@ -327,7 +327,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'scenarioLabel' field.
-   * @return scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   * @return Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
    */
   public java.lang.Object getScenarioLabel() {
     return scenarioLabel;
@@ -335,7 +335,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'scenarioLabel' field.
-   * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+   * Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
    * @param value the value to set.
    */
   public void setScenarioLabel(java.lang.Object value) {
@@ -344,7 +344,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'userTags' field.
-   * @return list of all tags the user provided associated with this item
+   * @return List of all tags the user provided associated with this item
    */
   public java.util.List<java.lang.CharSequence> getUserTags() {
     return userTags;
@@ -352,7 +352,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'userTags' field.
-   * list of all tags the user provided associated with this item
+   * List of all tags the user provided associated with this item
    * @param value the value to set.
    */
   public void setUserTags(java.util.List<java.lang.CharSequence> value) {
@@ -361,7 +361,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'physicalConnections' field.
-   * @return list of physical connection entities references (represented by their GUIDs) this item has
+   * @return List of physical connection entities references (represented by their GUIDs) this item has
    */
   public java.util.List<java.lang.CharSequence> getPhysicalConnections() {
     return physicalConnections;
@@ -369,7 +369,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'physicalConnections' field.
-   * list of physical connection entities references (represented by their GUIDs) this item has
+   * List of physical connection entities references (represented by their GUIDs) this item has
    * @param value the value to set.
    */
   public void setPhysicalConnections(java.util.List<java.lang.CharSequence> value) {
@@ -378,7 +378,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'group' field.
-   * @return reference to the group connection entity (represented by its GUID) this item is part of
+   * @return Reference to the group connection entity (represented by its GUID) this item is part of
    */
   public java.lang.CharSequence getGroup() {
     return group;
@@ -386,7 +386,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'group' field.
-   * reference to the group connection entity (represented by its GUID) this item is part of
+   * Reference to the group connection entity (represented by its GUID) this item is part of
    * @param value the value to set.
    */
   public void setGroup(java.lang.CharSequence value) {
@@ -395,7 +395,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'formation' field.
-   * @return reference to the formation connection entity (represented by its GUID) this item is part of
+   * @return Reference to the formation connection entity (represented by its GUID) this item is part of
    */
   public java.lang.CharSequence getFormation() {
     return formation;
@@ -403,7 +403,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'formation' field.
-   * reference to the formation connection entity (represented by its GUID) this item is part of
+   * Reference to the formation connection entity (represented by its GUID) this item is part of
    * @param value the value to set.
    */
   public void setFormation(java.lang.CharSequence value) {
@@ -412,7 +412,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Gets the value of the 'unit' field.
-   * @return reference to the unit connection entity (represented by its GUID) this item is part of
+   * @return Reference to the unit connection entity (represented by its GUID) this item is part of
    */
   public java.lang.CharSequence getUnit() {
     return unit;
@@ -420,7 +420,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * Sets the value of the 'unit' field.
-   * reference to the unit connection entity (represented by its GUID) this item is part of
+   * Reference to the unit connection entity (represented by its GUID) this item is part of
    * @param value the value to set.
    */
   public void setUnit(java.lang.CharSequence value) {
@@ -459,38 +459,38 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Item>
     implements org.apache.avro.data.RecordBuilder<Item> {
 
-    /** globally unique identifier for this entity */
+    /** Globally unique identifier for this entity */
     private java.lang.CharSequence guid;
-    /** name of this entity */
+    /** Name of this entity */
     private java.lang.CharSequence name;
-    /** identifier of the simulator currently responsible for this entity */
+    /** Identifier of the simulator currently responsible for this entity */
     private java.lang.CharSequence owner;
-    /** location of this item */
+    /** Location of this item */
     private eu.driver.model.sim.geo.Location location;
     private eu.driver.model.sim.geo.Location.Builder locationBuilder;
-    /** orientation of this item */
+    /** Orientation of this item */
     private eu.driver.model.sim.geo.Orientation orientation;
     private eu.driver.model.sim.geo.Orientation.Builder orientationBuilder;
-    /** movement vector of the item, including the magnitude */
+    /** Movement vector of the item, including the magnitude */
     private eu.driver.model.sim.geo.Velocity velocity;
     private eu.driver.model.sim.geo.Velocity.Builder velocityBuilder;
-    /** indication whether or not this item is visible for all participants */
+    /** Indication whether or not this item is visible for all participants */
     private boolean visibleForParticipant;
-    /** indication whether or not this item is movable in the simulation world */
+    /** Indication whether or not this item is movable in the simulation world */
     private boolean movable;
-    /** concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
+    /** Concrete type of this item - can be of type ObjectType, PersonType or VehicleType */
     private java.lang.Object itemType;
-    /** scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
+    /** Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel */
     private java.lang.Object scenarioLabel;
-    /** list of all tags the user provided associated with this item */
+    /** List of all tags the user provided associated with this item */
     private java.util.List<java.lang.CharSequence> userTags;
-    /** list of physical connection entities references (represented by their GUIDs) this item has */
+    /** List of physical connection entities references (represented by their GUIDs) this item has */
     private java.util.List<java.lang.CharSequence> physicalConnections;
-    /** reference to the group connection entity (represented by its GUID) this item is part of */
+    /** Reference to the group connection entity (represented by its GUID) this item is part of */
     private java.lang.CharSequence group;
-    /** reference to the formation connection entity (represented by its GUID) this item is part of */
+    /** Reference to the formation connection entity (represented by its GUID) this item is part of */
     private java.lang.CharSequence formation;
-    /** reference to the unit connection entity (represented by its GUID) this item is part of */
+    /** Reference to the unit connection entity (represented by its GUID) this item is part of */
     private java.lang.CharSequence unit;
 
     /** Creates a new Builder */
@@ -648,7 +648,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return The value.
       */
     public java.lang.CharSequence getGuid() {
@@ -657,7 +657,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @param value The value of 'guid'.
       * @return This builder.
       */
@@ -670,7 +670,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'guid' field has been set.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return True if the 'guid' field has been set, false otherwise.
       */
     public boolean hasGuid() {
@@ -680,7 +680,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearGuid() {
@@ -691,7 +691,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @return The value.
       */
     public java.lang.CharSequence getName() {
@@ -700,7 +700,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @param value The value of 'name'.
       * @return This builder.
       */
@@ -713,7 +713,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'name' field has been set.
-      * name of this entity
+      * Name of this entity
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
@@ -723,7 +723,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearName() {
@@ -734,7 +734,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return The value.
       */
     public java.lang.CharSequence getOwner() {
@@ -743,7 +743,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @param value The value of 'owner'.
       * @return This builder.
       */
@@ -756,7 +756,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'owner' field has been set.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return True if the 'owner' field has been set, false otherwise.
       */
     public boolean hasOwner() {
@@ -766,7 +766,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearOwner() {
@@ -777,7 +777,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'location' field.
-      * location of this item
+      * Location of this item
       * @return The value.
       */
     public eu.driver.model.sim.geo.Location getLocation() {
@@ -786,7 +786,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'location' field.
-      * location of this item
+      * Location of this item
       * @param value The value of 'location'.
       * @return This builder.
       */
@@ -800,7 +800,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'location' field has been set.
-      * location of this item
+      * Location of this item
       * @return True if the 'location' field has been set, false otherwise.
       */
     public boolean hasLocation() {
@@ -809,7 +809,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Gets the Builder instance for the 'location' field and creates one if it doesn't exist yet.
-     * location of this item
+     * Location of this item
      * @return This builder.
      */
     public eu.driver.model.sim.geo.Location.Builder getLocationBuilder() {
@@ -825,7 +825,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Sets the Builder instance for the 'location' field
-     * location of this item
+     * Location of this item
      * @param value The builder instance that must be set.
      * @return This builder.
      */
@@ -837,7 +837,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Checks whether the 'location' field has an active Builder instance
-     * location of this item
+     * Location of this item
      * @return True if the 'location' field has an active Builder instance
      */
     public boolean hasLocationBuilder() {
@@ -846,7 +846,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'location' field.
-      * location of this item
+      * Location of this item
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearLocation() {
@@ -858,7 +858,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'orientation' field.
-      * orientation of this item
+      * Orientation of this item
       * @return The value.
       */
     public eu.driver.model.sim.geo.Orientation getOrientation() {
@@ -867,7 +867,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'orientation' field.
-      * orientation of this item
+      * Orientation of this item
       * @param value The value of 'orientation'.
       * @return This builder.
       */
@@ -881,7 +881,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'orientation' field has been set.
-      * orientation of this item
+      * Orientation of this item
       * @return True if the 'orientation' field has been set, false otherwise.
       */
     public boolean hasOrientation() {
@@ -890,7 +890,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Gets the Builder instance for the 'orientation' field and creates one if it doesn't exist yet.
-     * orientation of this item
+     * Orientation of this item
      * @return This builder.
      */
     public eu.driver.model.sim.geo.Orientation.Builder getOrientationBuilder() {
@@ -906,7 +906,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Sets the Builder instance for the 'orientation' field
-     * orientation of this item
+     * Orientation of this item
      * @param value The builder instance that must be set.
      * @return This builder.
      */
@@ -918,7 +918,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Checks whether the 'orientation' field has an active Builder instance
-     * orientation of this item
+     * Orientation of this item
      * @return True if the 'orientation' field has an active Builder instance
      */
     public boolean hasOrientationBuilder() {
@@ -927,7 +927,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'orientation' field.
-      * orientation of this item
+      * Orientation of this item
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearOrientation() {
@@ -939,7 +939,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'velocity' field.
-      * movement vector of the item, including the magnitude
+      * Movement vector of the item, including the magnitude
       * @return The value.
       */
     public eu.driver.model.sim.geo.Velocity getVelocity() {
@@ -948,7 +948,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'velocity' field.
-      * movement vector of the item, including the magnitude
+      * Movement vector of the item, including the magnitude
       * @param value The value of 'velocity'.
       * @return This builder.
       */
@@ -962,7 +962,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'velocity' field has been set.
-      * movement vector of the item, including the magnitude
+      * Movement vector of the item, including the magnitude
       * @return True if the 'velocity' field has been set, false otherwise.
       */
     public boolean hasVelocity() {
@@ -971,7 +971,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Gets the Builder instance for the 'velocity' field and creates one if it doesn't exist yet.
-     * movement vector of the item, including the magnitude
+     * Movement vector of the item, including the magnitude
      * @return This builder.
      */
     public eu.driver.model.sim.geo.Velocity.Builder getVelocityBuilder() {
@@ -987,7 +987,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Sets the Builder instance for the 'velocity' field
-     * movement vector of the item, including the magnitude
+     * Movement vector of the item, including the magnitude
      * @param value The builder instance that must be set.
      * @return This builder.
      */
@@ -999,7 +999,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
      * Checks whether the 'velocity' field has an active Builder instance
-     * movement vector of the item, including the magnitude
+     * Movement vector of the item, including the magnitude
      * @return True if the 'velocity' field has an active Builder instance
      */
     public boolean hasVelocityBuilder() {
@@ -1008,7 +1008,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'velocity' field.
-      * movement vector of the item, including the magnitude
+      * Movement vector of the item, including the magnitude
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearVelocity() {
@@ -1020,7 +1020,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'visibleForParticipant' field.
-      * indication whether or not this item is visible for all participants
+      * Indication whether or not this item is visible for all participants
       * @return The value.
       */
     public java.lang.Boolean getVisibleForParticipant() {
@@ -1029,7 +1029,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'visibleForParticipant' field.
-      * indication whether or not this item is visible for all participants
+      * Indication whether or not this item is visible for all participants
       * @param value The value of 'visibleForParticipant'.
       * @return This builder.
       */
@@ -1042,7 +1042,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'visibleForParticipant' field has been set.
-      * indication whether or not this item is visible for all participants
+      * Indication whether or not this item is visible for all participants
       * @return True if the 'visibleForParticipant' field has been set, false otherwise.
       */
     public boolean hasVisibleForParticipant() {
@@ -1052,7 +1052,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'visibleForParticipant' field.
-      * indication whether or not this item is visible for all participants
+      * Indication whether or not this item is visible for all participants
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearVisibleForParticipant() {
@@ -1062,7 +1062,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'movable' field.
-      * indication whether or not this item is movable in the simulation world
+      * Indication whether or not this item is movable in the simulation world
       * @return The value.
       */
     public java.lang.Boolean getMovable() {
@@ -1071,7 +1071,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'movable' field.
-      * indication whether or not this item is movable in the simulation world
+      * Indication whether or not this item is movable in the simulation world
       * @param value The value of 'movable'.
       * @return This builder.
       */
@@ -1084,7 +1084,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'movable' field has been set.
-      * indication whether or not this item is movable in the simulation world
+      * Indication whether or not this item is movable in the simulation world
       * @return True if the 'movable' field has been set, false otherwise.
       */
     public boolean hasMovable() {
@@ -1094,7 +1094,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'movable' field.
-      * indication whether or not this item is movable in the simulation world
+      * Indication whether or not this item is movable in the simulation world
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearMovable() {
@@ -1104,7 +1104,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'itemType' field.
-      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @return The value.
       */
     public java.lang.Object getItemType() {
@@ -1113,7 +1113,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'itemType' field.
-      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @param value The value of 'itemType'.
       * @return This builder.
       */
@@ -1126,7 +1126,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'itemType' field has been set.
-      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @return True if the 'itemType' field has been set, false otherwise.
       */
     public boolean hasItemType() {
@@ -1136,7 +1136,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'itemType' field.
-      * concrete type of this item - can be of type ObjectType, PersonType or VehicleType
+      * Concrete type of this item - can be of type ObjectType, PersonType or VehicleType
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearItemType() {
@@ -1147,7 +1147,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'scenarioLabel' field.
-      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
       * @return The value.
       */
     public java.lang.Object getScenarioLabel() {
@@ -1156,7 +1156,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'scenarioLabel' field.
-      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
       * @param value The value of 'scenarioLabel'.
       * @return This builder.
       */
@@ -1169,7 +1169,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'scenarioLabel' field has been set.
-      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
       * @return True if the 'scenarioLabel' field has been set, false otherwise.
       */
     public boolean hasScenarioLabel() {
@@ -1179,7 +1179,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'scenarioLabel' field.
-      * scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
+      * Scenario type of this item - can be of type EnvironmentLabel, IncidentLabel or RescueLabel
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearScenarioLabel() {
@@ -1190,7 +1190,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'userTags' field.
-      * list of all tags the user provided associated with this item
+      * List of all tags the user provided associated with this item
       * @return The value.
       */
     public java.util.List<java.lang.CharSequence> getUserTags() {
@@ -1199,7 +1199,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'userTags' field.
-      * list of all tags the user provided associated with this item
+      * List of all tags the user provided associated with this item
       * @param value The value of 'userTags'.
       * @return This builder.
       */
@@ -1212,7 +1212,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'userTags' field has been set.
-      * list of all tags the user provided associated with this item
+      * List of all tags the user provided associated with this item
       * @return True if the 'userTags' field has been set, false otherwise.
       */
     public boolean hasUserTags() {
@@ -1222,7 +1222,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'userTags' field.
-      * list of all tags the user provided associated with this item
+      * List of all tags the user provided associated with this item
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearUserTags() {
@@ -1233,7 +1233,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'physicalConnections' field.
-      * list of physical connection entities references (represented by their GUIDs) this item has
+      * List of physical connection entities references (represented by their GUIDs) this item has
       * @return The value.
       */
     public java.util.List<java.lang.CharSequence> getPhysicalConnections() {
@@ -1242,7 +1242,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'physicalConnections' field.
-      * list of physical connection entities references (represented by their GUIDs) this item has
+      * List of physical connection entities references (represented by their GUIDs) this item has
       * @param value The value of 'physicalConnections'.
       * @return This builder.
       */
@@ -1255,7 +1255,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'physicalConnections' field has been set.
-      * list of physical connection entities references (represented by their GUIDs) this item has
+      * List of physical connection entities references (represented by their GUIDs) this item has
       * @return True if the 'physicalConnections' field has been set, false otherwise.
       */
     public boolean hasPhysicalConnections() {
@@ -1265,7 +1265,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'physicalConnections' field.
-      * list of physical connection entities references (represented by their GUIDs) this item has
+      * List of physical connection entities references (represented by their GUIDs) this item has
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearPhysicalConnections() {
@@ -1276,7 +1276,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'group' field.
-      * reference to the group connection entity (represented by its GUID) this item is part of
+      * Reference to the group connection entity (represented by its GUID) this item is part of
       * @return The value.
       */
     public java.lang.CharSequence getGroup() {
@@ -1285,7 +1285,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'group' field.
-      * reference to the group connection entity (represented by its GUID) this item is part of
+      * Reference to the group connection entity (represented by its GUID) this item is part of
       * @param value The value of 'group'.
       * @return This builder.
       */
@@ -1298,7 +1298,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'group' field has been set.
-      * reference to the group connection entity (represented by its GUID) this item is part of
+      * Reference to the group connection entity (represented by its GUID) this item is part of
       * @return True if the 'group' field has been set, false otherwise.
       */
     public boolean hasGroup() {
@@ -1308,7 +1308,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'group' field.
-      * reference to the group connection entity (represented by its GUID) this item is part of
+      * Reference to the group connection entity (represented by its GUID) this item is part of
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearGroup() {
@@ -1319,7 +1319,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'formation' field.
-      * reference to the formation connection entity (represented by its GUID) this item is part of
+      * Reference to the formation connection entity (represented by its GUID) this item is part of
       * @return The value.
       */
     public java.lang.CharSequence getFormation() {
@@ -1328,7 +1328,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'formation' field.
-      * reference to the formation connection entity (represented by its GUID) this item is part of
+      * Reference to the formation connection entity (represented by its GUID) this item is part of
       * @param value The value of 'formation'.
       * @return This builder.
       */
@@ -1341,7 +1341,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'formation' field has been set.
-      * reference to the formation connection entity (represented by its GUID) this item is part of
+      * Reference to the formation connection entity (represented by its GUID) this item is part of
       * @return True if the 'formation' field has been set, false otherwise.
       */
     public boolean hasFormation() {
@@ -1351,7 +1351,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'formation' field.
-      * reference to the formation connection entity (represented by its GUID) this item is part of
+      * Reference to the formation connection entity (represented by its GUID) this item is part of
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearFormation() {
@@ -1362,7 +1362,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Gets the value of the 'unit' field.
-      * reference to the unit connection entity (represented by its GUID) this item is part of
+      * Reference to the unit connection entity (represented by its GUID) this item is part of
       * @return The value.
       */
     public java.lang.CharSequence getUnit() {
@@ -1371,7 +1371,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Sets the value of the 'unit' field.
-      * reference to the unit connection entity (represented by its GUID) this item is part of
+      * Reference to the unit connection entity (represented by its GUID) this item is part of
       * @param value The value of 'unit'.
       * @return This builder.
       */
@@ -1384,7 +1384,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Checks whether the 'unit' field has been set.
-      * reference to the unit connection entity (represented by its GUID) this item is part of
+      * Reference to the unit connection entity (represented by its GUID) this item is part of
       * @return True if the 'unit' field has been set, false otherwise.
       */
     public boolean hasUnit() {
@@ -1394,7 +1394,7 @@ public class Item extends org.apache.avro.specific.SpecificRecordBase implements
 
     /**
       * Clears the value of the 'unit' field.
-      * reference to the unit connection entity (represented by its GUID) this item is part of
+      * Reference to the unit connection entity (represented by its GUID) this item is part of
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Item.Builder clearUnit() {

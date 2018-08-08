@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Common Simulation Space Location, representing a visual location (building or area) inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE* */
 @org.apache.avro.specific.AvroGenerated
 public class Station extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1036854024116749874L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Station\",\"namespace\":\"eu.driver.model.sim.entity\",\"doc\":\"Common Simulation Space Location, representing a visual location (building or area) inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE*\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]},\"doc\":\"geo-referenced location of this station\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"Postal address information\",\"fields\":[{\"name\":\"street\",\"type\":\"string\",\"doc\":\"the street name\"},{\"name\":\"postalCode\",\"type\":\"string\",\"doc\":\"the postal code\"},{\"name\":\"city\",\"type\":\"string\",\"doc\":\"the city name\"},{\"name\":\"state\",\"type\":\"string\",\"doc\":\"the state or province name\"},{\"name\":\"country\",\"type\":\"string\",\"doc\":\"the country name\"}]},\"doc\":\"address information regarding the station\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"indication whether or not this station is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"indication whether or not this station is movable in the simulation world\"},{\"name\":\"scenarioLabel\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ScenarioLabel\",\"symbols\":[\"GENERIC\",\"POLICE\",\"AMBULANCE\",\"FIRE\",\"HOSPITAL\",\"MILITARY\",\"INCIDENT\",\"INCIDENT_MANAGEMENT\"]}],\"doc\":\"scenario category of this station\",\"default\":null},{\"name\":\"userTags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of all tags the user provided associated with this station\",\"default\":null},{\"name\":\"items\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"list of physical item references (represented by their GUIDs) that are currently at the station\",\"default\":null}]}");
+  private static final long serialVersionUID = 8944268004931812622L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Station\",\"namespace\":\"eu.driver.model.sim.entity\",\"doc\":\"Common Simulation Space Location, representing a visual location (building or area) inside the simulation world. *Copyright (C) 2017-2018 XVR Simulation B.V., Delft, The Netherlands, Martijn Hendriks <hendriks @ xvrsim.com>. This file is part of DRIVER+ WP923 Test-bed infrastructure project. This file is licensed under the MIT license : https://github.com/DRIVER-EU/avro-schemas/blob/master/LICENSE*\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\",\"doc\":\"Globally unique identifier for this entity\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of this entity\"},{\"name\":\"owner\",\"type\":\"string\",\"doc\":\"Identifier of the simulator currently responsible for this entity\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"Latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"Altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]},\"doc\":\"Geo-referenced location of this station\"},{\"name\":\"address\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"Postal address information\",\"fields\":[{\"name\":\"street\",\"type\":\"string\",\"doc\":\"The street name\"},{\"name\":\"postalCode\",\"type\":\"string\",\"doc\":\"The postal code\"},{\"name\":\"city\",\"type\":\"string\",\"doc\":\"The city name\"},{\"name\":\"state\",\"type\":\"string\",\"doc\":\"The state or province name\"},{\"name\":\"country\",\"type\":\"string\",\"doc\":\"The country name\"}]},\"doc\":\"Address information regarding the station\"},{\"name\":\"visibleForParticipant\",\"type\":\"boolean\",\"doc\":\"Indication whether or not this station is visible for all participants\"},{\"name\":\"movable\",\"type\":\"boolean\",\"doc\":\"Indication whether or not this station is movable in the simulation world\"},{\"name\":\"scenarioLabel\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ScenarioLabel\",\"namespace\":\"eu.driver.model.sim.entity.station\",\"symbols\":[\"GENERIC\",\"POLICE\",\"AMBULANCE\",\"FIRE\",\"HOSPITAL\",\"MILITARY\",\"INCIDENT\",\"INCIDENT_MANAGEMENT\"]}],\"doc\":\"Scenario category of this station\",\"default\":null},{\"name\":\"userTags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"List of all tags the user provided associated with this station\",\"default\":null},{\"name\":\"items\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"List of physical item references (represented by their GUIDs) that are currently at the station\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,25 +52,25 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
-  /** globally unique identifier for this entity */
+  /** Globally unique identifier for this entity */
   @Deprecated public java.lang.CharSequence guid;
-  /** name of this entity */
+  /** Name of this entity */
   @Deprecated public java.lang.CharSequence name;
-  /** identifier of the simulator currently responsible for this entity */
+  /** Identifier of the simulator currently responsible for this entity */
   @Deprecated public java.lang.CharSequence owner;
-  /** geo-referenced location of this station */
+  /** Geo-referenced location of this station */
   @Deprecated public eu.driver.model.sim.geo.Location location;
-  /** address information regarding the station */
+  /** Address information regarding the station */
   @Deprecated public eu.driver.model.sim.geo.Address address;
-  /** indication whether or not this station is visible for all participants */
+  /** Indication whether or not this station is visible for all participants */
   @Deprecated public boolean visibleForParticipant;
-  /** indication whether or not this station is movable in the simulation world */
+  /** Indication whether or not this station is movable in the simulation world */
   @Deprecated public boolean movable;
-  /** scenario category of this station */
-  @Deprecated public eu.driver.model.sim.entity.ScenarioLabel scenarioLabel;
-  /** list of all tags the user provided associated with this station */
+  /** Scenario category of this station */
+  @Deprecated public eu.driver.model.sim.entity.station.ScenarioLabel scenarioLabel;
+  /** List of all tags the user provided associated with this station */
   @Deprecated public java.util.List<java.lang.CharSequence> userTags;
-  /** list of physical item references (represented by their GUIDs) that are currently at the station */
+  /** List of physical item references (represented by their GUIDs) that are currently at the station */
   @Deprecated public java.util.List<java.lang.CharSequence> items;
 
   /**
@@ -82,18 +82,18 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * All-args constructor.
-   * @param guid globally unique identifier for this entity
-   * @param name name of this entity
-   * @param owner identifier of the simulator currently responsible for this entity
-   * @param location geo-referenced location of this station
-   * @param address address information regarding the station
-   * @param visibleForParticipant indication whether or not this station is visible for all participants
-   * @param movable indication whether or not this station is movable in the simulation world
-   * @param scenarioLabel scenario category of this station
-   * @param userTags list of all tags the user provided associated with this station
-   * @param items list of physical item references (represented by their GUIDs) that are currently at the station
+   * @param guid Globally unique identifier for this entity
+   * @param name Name of this entity
+   * @param owner Identifier of the simulator currently responsible for this entity
+   * @param location Geo-referenced location of this station
+   * @param address Address information regarding the station
+   * @param visibleForParticipant Indication whether or not this station is visible for all participants
+   * @param movable Indication whether or not this station is movable in the simulation world
+   * @param scenarioLabel Scenario category of this station
+   * @param userTags List of all tags the user provided associated with this station
+   * @param items List of physical item references (represented by their GUIDs) that are currently at the station
    */
-  public Station(java.lang.CharSequence guid, java.lang.CharSequence name, java.lang.CharSequence owner, eu.driver.model.sim.geo.Location location, eu.driver.model.sim.geo.Address address, java.lang.Boolean visibleForParticipant, java.lang.Boolean movable, eu.driver.model.sim.entity.ScenarioLabel scenarioLabel, java.util.List<java.lang.CharSequence> userTags, java.util.List<java.lang.CharSequence> items) {
+  public Station(java.lang.CharSequence guid, java.lang.CharSequence name, java.lang.CharSequence owner, eu.driver.model.sim.geo.Location location, eu.driver.model.sim.geo.Address address, java.lang.Boolean visibleForParticipant, java.lang.Boolean movable, eu.driver.model.sim.entity.station.ScenarioLabel scenarioLabel, java.util.List<java.lang.CharSequence> userTags, java.util.List<java.lang.CharSequence> items) {
     this.guid = guid;
     this.name = name;
     this.owner = owner;
@@ -135,7 +135,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
     case 4: address = (eu.driver.model.sim.geo.Address)value$; break;
     case 5: visibleForParticipant = (java.lang.Boolean)value$; break;
     case 6: movable = (java.lang.Boolean)value$; break;
-    case 7: scenarioLabel = (eu.driver.model.sim.entity.ScenarioLabel)value$; break;
+    case 7: scenarioLabel = (eu.driver.model.sim.entity.station.ScenarioLabel)value$; break;
     case 8: userTags = (java.util.List<java.lang.CharSequence>)value$; break;
     case 9: items = (java.util.List<java.lang.CharSequence>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -144,7 +144,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'guid' field.
-   * @return globally unique identifier for this entity
+   * @return Globally unique identifier for this entity
    */
   public java.lang.CharSequence getGuid() {
     return guid;
@@ -152,7 +152,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'guid' field.
-   * globally unique identifier for this entity
+   * Globally unique identifier for this entity
    * @param value the value to set.
    */
   public void setGuid(java.lang.CharSequence value) {
@@ -161,7 +161,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'name' field.
-   * @return name of this entity
+   * @return Name of this entity
    */
   public java.lang.CharSequence getName() {
     return name;
@@ -169,7 +169,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'name' field.
-   * name of this entity
+   * Name of this entity
    * @param value the value to set.
    */
   public void setName(java.lang.CharSequence value) {
@@ -178,7 +178,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'owner' field.
-   * @return identifier of the simulator currently responsible for this entity
+   * @return Identifier of the simulator currently responsible for this entity
    */
   public java.lang.CharSequence getOwner() {
     return owner;
@@ -186,7 +186,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'owner' field.
-   * identifier of the simulator currently responsible for this entity
+   * Identifier of the simulator currently responsible for this entity
    * @param value the value to set.
    */
   public void setOwner(java.lang.CharSequence value) {
@@ -195,7 +195,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'location' field.
-   * @return geo-referenced location of this station
+   * @return Geo-referenced location of this station
    */
   public eu.driver.model.sim.geo.Location getLocation() {
     return location;
@@ -203,7 +203,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'location' field.
-   * geo-referenced location of this station
+   * Geo-referenced location of this station
    * @param value the value to set.
    */
   public void setLocation(eu.driver.model.sim.geo.Location value) {
@@ -212,7 +212,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'address' field.
-   * @return address information regarding the station
+   * @return Address information regarding the station
    */
   public eu.driver.model.sim.geo.Address getAddress() {
     return address;
@@ -220,7 +220,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'address' field.
-   * address information regarding the station
+   * Address information regarding the station
    * @param value the value to set.
    */
   public void setAddress(eu.driver.model.sim.geo.Address value) {
@@ -229,7 +229,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'visibleForParticipant' field.
-   * @return indication whether or not this station is visible for all participants
+   * @return Indication whether or not this station is visible for all participants
    */
   public java.lang.Boolean getVisibleForParticipant() {
     return visibleForParticipant;
@@ -237,7 +237,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'visibleForParticipant' field.
-   * indication whether or not this station is visible for all participants
+   * Indication whether or not this station is visible for all participants
    * @param value the value to set.
    */
   public void setVisibleForParticipant(java.lang.Boolean value) {
@@ -246,7 +246,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'movable' field.
-   * @return indication whether or not this station is movable in the simulation world
+   * @return Indication whether or not this station is movable in the simulation world
    */
   public java.lang.Boolean getMovable() {
     return movable;
@@ -254,7 +254,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'movable' field.
-   * indication whether or not this station is movable in the simulation world
+   * Indication whether or not this station is movable in the simulation world
    * @param value the value to set.
    */
   public void setMovable(java.lang.Boolean value) {
@@ -263,24 +263,24 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'scenarioLabel' field.
-   * @return scenario category of this station
+   * @return Scenario category of this station
    */
-  public eu.driver.model.sim.entity.ScenarioLabel getScenarioLabel() {
+  public eu.driver.model.sim.entity.station.ScenarioLabel getScenarioLabel() {
     return scenarioLabel;
   }
 
   /**
    * Sets the value of the 'scenarioLabel' field.
-   * scenario category of this station
+   * Scenario category of this station
    * @param value the value to set.
    */
-  public void setScenarioLabel(eu.driver.model.sim.entity.ScenarioLabel value) {
+  public void setScenarioLabel(eu.driver.model.sim.entity.station.ScenarioLabel value) {
     this.scenarioLabel = value;
   }
 
   /**
    * Gets the value of the 'userTags' field.
-   * @return list of all tags the user provided associated with this station
+   * @return List of all tags the user provided associated with this station
    */
   public java.util.List<java.lang.CharSequence> getUserTags() {
     return userTags;
@@ -288,7 +288,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'userTags' field.
-   * list of all tags the user provided associated with this station
+   * List of all tags the user provided associated with this station
    * @param value the value to set.
    */
   public void setUserTags(java.util.List<java.lang.CharSequence> value) {
@@ -297,7 +297,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'items' field.
-   * @return list of physical item references (represented by their GUIDs) that are currently at the station
+   * @return List of physical item references (represented by their GUIDs) that are currently at the station
    */
   public java.util.List<java.lang.CharSequence> getItems() {
     return items;
@@ -305,7 +305,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'items' field.
-   * list of physical item references (represented by their GUIDs) that are currently at the station
+   * List of physical item references (represented by their GUIDs) that are currently at the station
    * @param value the value to set.
    */
   public void setItems(java.util.List<java.lang.CharSequence> value) {
@@ -344,27 +344,27 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Station>
     implements org.apache.avro.data.RecordBuilder<Station> {
 
-    /** globally unique identifier for this entity */
+    /** Globally unique identifier for this entity */
     private java.lang.CharSequence guid;
-    /** name of this entity */
+    /** Name of this entity */
     private java.lang.CharSequence name;
-    /** identifier of the simulator currently responsible for this entity */
+    /** Identifier of the simulator currently responsible for this entity */
     private java.lang.CharSequence owner;
-    /** geo-referenced location of this station */
+    /** Geo-referenced location of this station */
     private eu.driver.model.sim.geo.Location location;
     private eu.driver.model.sim.geo.Location.Builder locationBuilder;
-    /** address information regarding the station */
+    /** Address information regarding the station */
     private eu.driver.model.sim.geo.Address address;
     private eu.driver.model.sim.geo.Address.Builder addressBuilder;
-    /** indication whether or not this station is visible for all participants */
+    /** Indication whether or not this station is visible for all participants */
     private boolean visibleForParticipant;
-    /** indication whether or not this station is movable in the simulation world */
+    /** Indication whether or not this station is movable in the simulation world */
     private boolean movable;
-    /** scenario category of this station */
-    private eu.driver.model.sim.entity.ScenarioLabel scenarioLabel;
-    /** list of all tags the user provided associated with this station */
+    /** Scenario category of this station */
+    private eu.driver.model.sim.entity.station.ScenarioLabel scenarioLabel;
+    /** List of all tags the user provided associated with this station */
     private java.util.List<java.lang.CharSequence> userTags;
-    /** list of physical item references (represented by their GUIDs) that are currently at the station */
+    /** List of physical item references (represented by their GUIDs) that are currently at the station */
     private java.util.List<java.lang.CharSequence> items;
 
     /** Creates a new Builder */
@@ -478,7 +478,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return The value.
       */
     public java.lang.CharSequence getGuid() {
@@ -487,7 +487,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @param value The value of 'guid'.
       * @return This builder.
       */
@@ -500,7 +500,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'guid' field has been set.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return True if the 'guid' field has been set, false otherwise.
       */
     public boolean hasGuid() {
@@ -510,7 +510,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'guid' field.
-      * globally unique identifier for this entity
+      * Globally unique identifier for this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearGuid() {
@@ -521,7 +521,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @return The value.
       */
     public java.lang.CharSequence getName() {
@@ -530,7 +530,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @param value The value of 'name'.
       * @return This builder.
       */
@@ -543,7 +543,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'name' field has been set.
-      * name of this entity
+      * Name of this entity
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
@@ -553,7 +553,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'name' field.
-      * name of this entity
+      * Name of this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearName() {
@@ -564,7 +564,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return The value.
       */
     public java.lang.CharSequence getOwner() {
@@ -573,7 +573,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @param value The value of 'owner'.
       * @return This builder.
       */
@@ -586,7 +586,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'owner' field has been set.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return True if the 'owner' field has been set, false otherwise.
       */
     public boolean hasOwner() {
@@ -596,7 +596,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
+      * Identifier of the simulator currently responsible for this entity
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearOwner() {
@@ -607,7 +607,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'location' field.
-      * geo-referenced location of this station
+      * Geo-referenced location of this station
       * @return The value.
       */
     public eu.driver.model.sim.geo.Location getLocation() {
@@ -616,7 +616,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'location' field.
-      * geo-referenced location of this station
+      * Geo-referenced location of this station
       * @param value The value of 'location'.
       * @return This builder.
       */
@@ -630,7 +630,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'location' field has been set.
-      * geo-referenced location of this station
+      * Geo-referenced location of this station
       * @return True if the 'location' field has been set, false otherwise.
       */
     public boolean hasLocation() {
@@ -639,7 +639,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the Builder instance for the 'location' field and creates one if it doesn't exist yet.
-     * geo-referenced location of this station
+     * Geo-referenced location of this station
      * @return This builder.
      */
     public eu.driver.model.sim.geo.Location.Builder getLocationBuilder() {
@@ -655,7 +655,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the Builder instance for the 'location' field
-     * geo-referenced location of this station
+     * Geo-referenced location of this station
      * @param value The builder instance that must be set.
      * @return This builder.
      */
@@ -667,7 +667,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Checks whether the 'location' field has an active Builder instance
-     * geo-referenced location of this station
+     * Geo-referenced location of this station
      * @return True if the 'location' field has an active Builder instance
      */
     public boolean hasLocationBuilder() {
@@ -676,7 +676,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'location' field.
-      * geo-referenced location of this station
+      * Geo-referenced location of this station
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearLocation() {
@@ -688,7 +688,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'address' field.
-      * address information regarding the station
+      * Address information regarding the station
       * @return The value.
       */
     public eu.driver.model.sim.geo.Address getAddress() {
@@ -697,7 +697,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'address' field.
-      * address information regarding the station
+      * Address information regarding the station
       * @param value The value of 'address'.
       * @return This builder.
       */
@@ -711,7 +711,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'address' field has been set.
-      * address information regarding the station
+      * Address information regarding the station
       * @return True if the 'address' field has been set, false otherwise.
       */
     public boolean hasAddress() {
@@ -720,7 +720,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the Builder instance for the 'address' field and creates one if it doesn't exist yet.
-     * address information regarding the station
+     * Address information regarding the station
      * @return This builder.
      */
     public eu.driver.model.sim.geo.Address.Builder getAddressBuilder() {
@@ -736,7 +736,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the Builder instance for the 'address' field
-     * address information regarding the station
+     * Address information regarding the station
      * @param value The builder instance that must be set.
      * @return This builder.
      */
@@ -748,7 +748,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Checks whether the 'address' field has an active Builder instance
-     * address information regarding the station
+     * Address information regarding the station
      * @return True if the 'address' field has an active Builder instance
      */
     public boolean hasAddressBuilder() {
@@ -757,7 +757,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'address' field.
-      * address information regarding the station
+      * Address information regarding the station
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearAddress() {
@@ -769,7 +769,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'visibleForParticipant' field.
-      * indication whether or not this station is visible for all participants
+      * Indication whether or not this station is visible for all participants
       * @return The value.
       */
     public java.lang.Boolean getVisibleForParticipant() {
@@ -778,7 +778,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'visibleForParticipant' field.
-      * indication whether or not this station is visible for all participants
+      * Indication whether or not this station is visible for all participants
       * @param value The value of 'visibleForParticipant'.
       * @return This builder.
       */
@@ -791,7 +791,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'visibleForParticipant' field has been set.
-      * indication whether or not this station is visible for all participants
+      * Indication whether or not this station is visible for all participants
       * @return True if the 'visibleForParticipant' field has been set, false otherwise.
       */
     public boolean hasVisibleForParticipant() {
@@ -801,7 +801,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'visibleForParticipant' field.
-      * indication whether or not this station is visible for all participants
+      * Indication whether or not this station is visible for all participants
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearVisibleForParticipant() {
@@ -811,7 +811,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'movable' field.
-      * indication whether or not this station is movable in the simulation world
+      * Indication whether or not this station is movable in the simulation world
       * @return The value.
       */
     public java.lang.Boolean getMovable() {
@@ -820,7 +820,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'movable' field.
-      * indication whether or not this station is movable in the simulation world
+      * Indication whether or not this station is movable in the simulation world
       * @param value The value of 'movable'.
       * @return This builder.
       */
@@ -833,7 +833,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'movable' field has been set.
-      * indication whether or not this station is movable in the simulation world
+      * Indication whether or not this station is movable in the simulation world
       * @return True if the 'movable' field has been set, false otherwise.
       */
     public boolean hasMovable() {
@@ -843,7 +843,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'movable' field.
-      * indication whether or not this station is movable in the simulation world
+      * Indication whether or not this station is movable in the simulation world
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearMovable() {
@@ -853,20 +853,20 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'scenarioLabel' field.
-      * scenario category of this station
+      * Scenario category of this station
       * @return The value.
       */
-    public eu.driver.model.sim.entity.ScenarioLabel getScenarioLabel() {
+    public eu.driver.model.sim.entity.station.ScenarioLabel getScenarioLabel() {
       return scenarioLabel;
     }
 
     /**
       * Sets the value of the 'scenarioLabel' field.
-      * scenario category of this station
+      * Scenario category of this station
       * @param value The value of 'scenarioLabel'.
       * @return This builder.
       */
-    public eu.driver.model.sim.entity.Station.Builder setScenarioLabel(eu.driver.model.sim.entity.ScenarioLabel value) {
+    public eu.driver.model.sim.entity.Station.Builder setScenarioLabel(eu.driver.model.sim.entity.station.ScenarioLabel value) {
       validate(fields()[7], value);
       this.scenarioLabel = value;
       fieldSetFlags()[7] = true;
@@ -875,7 +875,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'scenarioLabel' field has been set.
-      * scenario category of this station
+      * Scenario category of this station
       * @return True if the 'scenarioLabel' field has been set, false otherwise.
       */
     public boolean hasScenarioLabel() {
@@ -885,7 +885,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'scenarioLabel' field.
-      * scenario category of this station
+      * Scenario category of this station
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearScenarioLabel() {
@@ -896,7 +896,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'userTags' field.
-      * list of all tags the user provided associated with this station
+      * List of all tags the user provided associated with this station
       * @return The value.
       */
     public java.util.List<java.lang.CharSequence> getUserTags() {
@@ -905,7 +905,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'userTags' field.
-      * list of all tags the user provided associated with this station
+      * List of all tags the user provided associated with this station
       * @param value The value of 'userTags'.
       * @return This builder.
       */
@@ -918,7 +918,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'userTags' field has been set.
-      * list of all tags the user provided associated with this station
+      * List of all tags the user provided associated with this station
       * @return True if the 'userTags' field has been set, false otherwise.
       */
     public boolean hasUserTags() {
@@ -928,7 +928,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'userTags' field.
-      * list of all tags the user provided associated with this station
+      * List of all tags the user provided associated with this station
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearUserTags() {
@@ -939,7 +939,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'items' field.
-      * list of physical item references (represented by their GUIDs) that are currently at the station
+      * List of physical item references (represented by their GUIDs) that are currently at the station
       * @return The value.
       */
     public java.util.List<java.lang.CharSequence> getItems() {
@@ -948,7 +948,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'items' field.
-      * list of physical item references (represented by their GUIDs) that are currently at the station
+      * List of physical item references (represented by their GUIDs) that are currently at the station
       * @param value The value of 'items'.
       * @return This builder.
       */
@@ -961,7 +961,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'items' field has been set.
-      * list of physical item references (represented by their GUIDs) that are currently at the station
+      * List of physical item references (represented by their GUIDs) that are currently at the station
       * @return True if the 'items' field has been set, false otherwise.
       */
     public boolean hasItems() {
@@ -971,7 +971,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'items' field.
-      * list of physical item references (represented by their GUIDs) that are currently at the station
+      * List of physical item references (represented by their GUIDs) that are currently at the station
       * @return This builder.
       */
     public eu.driver.model.sim.entity.Station.Builder clearItems() {
@@ -1000,7 +1000,7 @@ public class Station extends org.apache.avro.specific.SpecificRecordBase impleme
         }
         record.visibleForParticipant = fieldSetFlags()[5] ? this.visibleForParticipant : (java.lang.Boolean) defaultValue(fields()[5]);
         record.movable = fieldSetFlags()[6] ? this.movable : (java.lang.Boolean) defaultValue(fields()[6]);
-        record.scenarioLabel = fieldSetFlags()[7] ? this.scenarioLabel : (eu.driver.model.sim.entity.ScenarioLabel) defaultValue(fields()[7]);
+        record.scenarioLabel = fieldSetFlags()[7] ? this.scenarioLabel : (eu.driver.model.sim.entity.station.ScenarioLabel) defaultValue(fields()[7]);
         record.userTags = fieldSetFlags()[8] ? this.userTags : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[8]);
         record.items = fieldSetFlags()[9] ? this.items : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[9]);
         return record;

@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is labeled as environment */
+/** Information if the item is labeled as environment */
 @org.apache.avro.specific.AvroGenerated
 public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 4716104894582291999L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EnvironmentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as environment\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"EnvironmentSubLabel\",\"symbols\":[\"FOLIAGE\",\"ROAD\"]},\"doc\":\"sub label of environment that this item has\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EnvironmentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as environment\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"EnvironmentSubLabel\",\"symbols\":[\"FOLIAGE\",\"ROAD\"]},\"doc\":\"Sub label of environment that this item has\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
     return DECODER.decode(b);
   }
 
-  /** sub label of environment that this item has */
+  /** Sub label of environment that this item has */
   @Deprecated public eu.driver.model.sim.entity.item.EnvironmentSubLabel subLabel;
 
   /**
@@ -64,7 +64,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
   /**
    * All-args constructor.
-   * @param subLabel sub label of environment that this item has
+   * @param subLabel Sub label of environment that this item has
    */
   public EnvironmentLabel(eu.driver.model.sim.entity.item.EnvironmentSubLabel subLabel) {
     this.subLabel = subLabel;
@@ -90,7 +90,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
   /**
    * Gets the value of the 'subLabel' field.
-   * @return sub label of environment that this item has
+   * @return Sub label of environment that this item has
    */
   public eu.driver.model.sim.entity.item.EnvironmentSubLabel getSubLabel() {
     return subLabel;
@@ -98,7 +98,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
   /**
    * Sets the value of the 'subLabel' field.
-   * sub label of environment that this item has
+   * Sub label of environment that this item has
    * @param value the value to set.
    */
   public void setSubLabel(eu.driver.model.sim.entity.item.EnvironmentSubLabel value) {
@@ -137,7 +137,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<EnvironmentLabel>
     implements org.apache.avro.data.RecordBuilder<EnvironmentLabel> {
 
-    /** sub label of environment that this item has */
+    /** Sub label of environment that this item has */
     private eu.driver.model.sim.entity.item.EnvironmentSubLabel subLabel;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
     /**
       * Gets the value of the 'subLabel' field.
-      * sub label of environment that this item has
+      * Sub label of environment that this item has
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.EnvironmentSubLabel getSubLabel() {
@@ -180,7 +180,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
     /**
       * Sets the value of the 'subLabel' field.
-      * sub label of environment that this item has
+      * Sub label of environment that this item has
       * @param value The value of 'subLabel'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
     /**
       * Checks whether the 'subLabel' field has been set.
-      * sub label of environment that this item has
+      * Sub label of environment that this item has
       * @return True if the 'subLabel' field has been set, false otherwise.
       */
     public boolean hasSubLabel() {
@@ -203,7 +203,7 @@ public class EnvironmentLabel extends org.apache.avro.specific.SpecificRecordBas
 
     /**
       * Clears the value of the 'subLabel' field.
-      * sub label of environment that this item has
+      * Sub label of environment that this item has
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.EnvironmentLabel.Builder clearSubLabel() {

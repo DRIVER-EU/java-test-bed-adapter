@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is labeled as incident */
+/** Information if the item is labeled as incident */
 @org.apache.avro.specific.AvroGenerated
 public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -793465720020758708L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"IncidentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as incident\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"IncidentSubLabel\",\"symbols\":[\"FIRE\",\"CRASH\"]},\"doc\":\"sub label of incident that this item has\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"IncidentLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as incident\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"IncidentSubLabel\",\"symbols\":[\"FIRE\",\"CRASH\"]},\"doc\":\"Sub label of incident that this item has\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
     return DECODER.decode(b);
   }
 
-  /** sub label of incident that this item has */
+  /** Sub label of incident that this item has */
   @Deprecated public eu.driver.model.sim.entity.item.IncidentSubLabel subLabel;
 
   /**
@@ -64,7 +64,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
   /**
    * All-args constructor.
-   * @param subLabel sub label of incident that this item has
+   * @param subLabel Sub label of incident that this item has
    */
   public IncidentLabel(eu.driver.model.sim.entity.item.IncidentSubLabel subLabel) {
     this.subLabel = subLabel;
@@ -90,7 +90,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
   /**
    * Gets the value of the 'subLabel' field.
-   * @return sub label of incident that this item has
+   * @return Sub label of incident that this item has
    */
   public eu.driver.model.sim.entity.item.IncidentSubLabel getSubLabel() {
     return subLabel;
@@ -98,7 +98,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
   /**
    * Sets the value of the 'subLabel' field.
-   * sub label of incident that this item has
+   * Sub label of incident that this item has
    * @param value the value to set.
    */
   public void setSubLabel(eu.driver.model.sim.entity.item.IncidentSubLabel value) {
@@ -137,7 +137,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<IncidentLabel>
     implements org.apache.avro.data.RecordBuilder<IncidentLabel> {
 
-    /** sub label of incident that this item has */
+    /** Sub label of incident that this item has */
     private eu.driver.model.sim.entity.item.IncidentSubLabel subLabel;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
     /**
       * Gets the value of the 'subLabel' field.
-      * sub label of incident that this item has
+      * Sub label of incident that this item has
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.IncidentSubLabel getSubLabel() {
@@ -180,7 +180,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
     /**
       * Sets the value of the 'subLabel' field.
-      * sub label of incident that this item has
+      * Sub label of incident that this item has
       * @param value The value of 'subLabel'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
     /**
       * Checks whether the 'subLabel' field has been set.
-      * sub label of incident that this item has
+      * Sub label of incident that this item has
       * @return True if the 'subLabel' field has been set, false otherwise.
       */
     public boolean hasSubLabel() {
@@ -203,7 +203,7 @@ public class IncidentLabel extends org.apache.avro.specific.SpecificRecordBase i
 
     /**
       * Clears the value of the 'subLabel' field.
-      * sub label of incident that this item has
+      * Sub label of incident that this item has
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.IncidentLabel.Builder clearSubLabel() {

@@ -23,7 +23,6 @@ import eu.driver.adapter.core.consumer.TimeConsumer;
 import eu.driver.adapter.core.consumer.TopicInviteConsumer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
-import eu.driver.adapter.core.producer.HeartbeatTask;
 import eu.driver.adapter.core.producer.LogProducer;
 import eu.driver.adapter.core.time.TimeInterpolationTask;
 import eu.driver.adapter.excpetion.CommunicationException;
@@ -33,10 +32,10 @@ import eu.driver.adapter.properties.ConsumerProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
-import eu.driver.model.core.Timing;
-import eu.driver.model.edxl.EDXLDistribution;
 import eu.driver.model.core.Log;
+import eu.driver.model.core.Timing;
 import eu.driver.model.core.TopicInvite;
+import eu.driver.model.edxl.EDXLDistribution;
 
 public class CISAdapter {
 

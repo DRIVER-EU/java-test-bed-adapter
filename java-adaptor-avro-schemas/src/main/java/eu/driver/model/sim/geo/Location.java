@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** WGS84-based standard representation of a location on earth */
 @org.apache.avro.specific.AvroGenerated
 public class Location extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2922487487392457678L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":\"double\",\"doc\":\"altitude in meters - 0 is surface of WGS84-based ellipsoid\"}]}");
+  private static final long serialVersionUID = -5699847045349196176L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84-based standard representation of a location on earth\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\",\"doc\":\"Latitude in degrees (-90, 90] - 0 is equator\"},{\"name\":\"longitude\",\"type\":\"double\",\"doc\":\"Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]\"},{\"name\":\"altitude\",\"type\":[\"null\",\"double\"],\"doc\":\"Altitude in meters - 0 is surface of WGS84-based ellipsoid\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,12 +52,12 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
     return DECODER.decode(b);
   }
 
-  /** latitude in degrees (-90, 90] - 0 is equator */
+  /** Latitude in degrees (-90, 90] - 0 is equator */
   @Deprecated public double latitude;
-  /** longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south] */
+  /** Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south] */
   @Deprecated public double longitude;
-  /** altitude in meters - 0 is surface of WGS84-based ellipsoid */
-  @Deprecated public double altitude;
+  /** Altitude in meters - 0 is surface of WGS84-based ellipsoid */
+  @Deprecated public java.lang.Double altitude;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,9 +68,9 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
-   * @param latitude latitude in degrees (-90, 90] - 0 is equator
-   * @param longitude longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
-   * @param altitude altitude in meters - 0 is surface of WGS84-based ellipsoid
+   * @param latitude Latitude in degrees (-90, 90] - 0 is equator
+   * @param longitude Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+   * @param altitude Altitude in meters - 0 is surface of WGS84-based ellipsoid
    */
   public Location(java.lang.Double latitude, java.lang.Double longitude, java.lang.Double altitude) {
     this.latitude = latitude;
@@ -102,7 +102,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'latitude' field.
-   * @return latitude in degrees (-90, 90] - 0 is equator
+   * @return Latitude in degrees (-90, 90] - 0 is equator
    */
   public java.lang.Double getLatitude() {
     return latitude;
@@ -110,7 +110,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'latitude' field.
-   * latitude in degrees (-90, 90] - 0 is equator
+   * Latitude in degrees (-90, 90] - 0 is equator
    * @param value the value to set.
    */
   public void setLatitude(java.lang.Double value) {
@@ -119,7 +119,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'longitude' field.
-   * @return longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+   * @return Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
    */
   public java.lang.Double getLongitude() {
     return longitude;
@@ -127,7 +127,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'longitude' field.
-   * longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+   * Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
    * @param value the value to set.
    */
   public void setLongitude(java.lang.Double value) {
@@ -136,7 +136,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'altitude' field.
-   * @return altitude in meters - 0 is surface of WGS84-based ellipsoid
+   * @return Altitude in meters - 0 is surface of WGS84-based ellipsoid
    */
   public java.lang.Double getAltitude() {
     return altitude;
@@ -144,7 +144,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'altitude' field.
-   * altitude in meters - 0 is surface of WGS84-based ellipsoid
+   * Altitude in meters - 0 is surface of WGS84-based ellipsoid
    * @param value the value to set.
    */
   public void setAltitude(java.lang.Double value) {
@@ -183,12 +183,12 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Location>
     implements org.apache.avro.data.RecordBuilder<Location> {
 
-    /** latitude in degrees (-90, 90] - 0 is equator */
+    /** Latitude in degrees (-90, 90] - 0 is equator */
     private double latitude;
-    /** longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south] */
+    /** Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south] */
     private double longitude;
-    /** altitude in meters - 0 is surface of WGS84-based ellipsoid */
-    private double altitude;
+    /** Altitude in meters - 0 is surface of WGS84-based ellipsoid */
+    private java.lang.Double altitude;
 
     /** Creates a new Builder */
     private Builder() {
@@ -237,7 +237,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'latitude' field.
-      * latitude in degrees (-90, 90] - 0 is equator
+      * Latitude in degrees (-90, 90] - 0 is equator
       * @return The value.
       */
     public java.lang.Double getLatitude() {
@@ -246,7 +246,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'latitude' field.
-      * latitude in degrees (-90, 90] - 0 is equator
+      * Latitude in degrees (-90, 90] - 0 is equator
       * @param value The value of 'latitude'.
       * @return This builder.
       */
@@ -259,7 +259,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'latitude' field has been set.
-      * latitude in degrees (-90, 90] - 0 is equator
+      * Latitude in degrees (-90, 90] - 0 is equator
       * @return True if the 'latitude' field has been set, false otherwise.
       */
     public boolean hasLatitude() {
@@ -269,7 +269,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'latitude' field.
-      * latitude in degrees (-90, 90] - 0 is equator
+      * Latitude in degrees (-90, 90] - 0 is equator
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Location.Builder clearLatitude() {
@@ -279,7 +279,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'longitude' field.
-      * longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+      * Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
       * @return The value.
       */
     public java.lang.Double getLongitude() {
@@ -288,7 +288,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'longitude' field.
-      * longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+      * Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
       * @param value The value of 'longitude'.
       * @return This builder.
       */
@@ -301,7 +301,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'longitude' field has been set.
-      * longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+      * Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
       * @return True if the 'longitude' field has been set, false otherwise.
       */
     public boolean hasLongitude() {
@@ -311,7 +311,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'longitude' field.
-      * longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
+      * Longitude in degrees (-180, 180] - 0 is line [geographic north - Greenwich - geographic south]
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Location.Builder clearLongitude() {
@@ -321,7 +321,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'altitude' field.
-      * altitude in meters - 0 is surface of WGS84-based ellipsoid
+      * Altitude in meters - 0 is surface of WGS84-based ellipsoid
       * @return The value.
       */
     public java.lang.Double getAltitude() {
@@ -330,11 +330,11 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'altitude' field.
-      * altitude in meters - 0 is surface of WGS84-based ellipsoid
+      * Altitude in meters - 0 is surface of WGS84-based ellipsoid
       * @param value The value of 'altitude'.
       * @return This builder.
       */
-    public eu.driver.model.sim.geo.Location.Builder setAltitude(double value) {
+    public eu.driver.model.sim.geo.Location.Builder setAltitude(java.lang.Double value) {
       validate(fields()[2], value);
       this.altitude = value;
       fieldSetFlags()[2] = true;
@@ -343,7 +343,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'altitude' field has been set.
-      * altitude in meters - 0 is surface of WGS84-based ellipsoid
+      * Altitude in meters - 0 is surface of WGS84-based ellipsoid
       * @return True if the 'altitude' field has been set, false otherwise.
       */
     public boolean hasAltitude() {
@@ -353,10 +353,11 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'altitude' field.
-      * altitude in meters - 0 is surface of WGS84-based ellipsoid
+      * Altitude in meters - 0 is surface of WGS84-based ellipsoid
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Location.Builder clearAltitude() {
+      altitude = null;
       fieldSetFlags()[2] = false;
       return this;
     }

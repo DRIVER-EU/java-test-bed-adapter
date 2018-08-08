@@ -15,7 +15,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Address extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -1761997549430030641L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"Postal address information\",\"fields\":[{\"name\":\"street\",\"type\":\"string\",\"doc\":\"the street name\"},{\"name\":\"postalCode\",\"type\":\"string\",\"doc\":\"the postal code\"},{\"name\":\"city\",\"type\":\"string\",\"doc\":\"the city name\"},{\"name\":\"state\",\"type\":\"string\",\"doc\":\"the state or province name\"},{\"name\":\"country\",\"type\":\"string\",\"doc\":\"the country name\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"Postal address information\",\"fields\":[{\"name\":\"street\",\"type\":\"string\",\"doc\":\"The street name\"},{\"name\":\"postalCode\",\"type\":\"string\",\"doc\":\"The postal code\"},{\"name\":\"city\",\"type\":\"string\",\"doc\":\"The city name\"},{\"name\":\"state\",\"type\":\"string\",\"doc\":\"The state or province name\"},{\"name\":\"country\",\"type\":\"string\",\"doc\":\"The country name\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,15 +52,15 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
-  /** the street name */
+  /** The street name */
   @Deprecated public java.lang.CharSequence street;
-  /** the postal code */
+  /** The postal code */
   @Deprecated public java.lang.CharSequence postalCode;
-  /** the city name */
+  /** The city name */
   @Deprecated public java.lang.CharSequence city;
-  /** the state or province name */
+  /** The state or province name */
   @Deprecated public java.lang.CharSequence state;
-  /** the country name */
+  /** The country name */
   @Deprecated public java.lang.CharSequence country;
 
   /**
@@ -72,11 +72,11 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * All-args constructor.
-   * @param street the street name
-   * @param postalCode the postal code
-   * @param city the city name
-   * @param state the state or province name
-   * @param country the country name
+   * @param street The street name
+   * @param postalCode The postal code
+   * @param city The city name
+   * @param state The state or province name
+   * @param country The country name
    */
   public Address(java.lang.CharSequence street, java.lang.CharSequence postalCode, java.lang.CharSequence city, java.lang.CharSequence state, java.lang.CharSequence country) {
     this.street = street;
@@ -114,7 +114,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'street' field.
-   * @return the street name
+   * @return The street name
    */
   public java.lang.CharSequence getStreet() {
     return street;
@@ -122,7 +122,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'street' field.
-   * the street name
+   * The street name
    * @param value the value to set.
    */
   public void setStreet(java.lang.CharSequence value) {
@@ -131,7 +131,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'postalCode' field.
-   * @return the postal code
+   * @return The postal code
    */
   public java.lang.CharSequence getPostalCode() {
     return postalCode;
@@ -139,7 +139,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'postalCode' field.
-   * the postal code
+   * The postal code
    * @param value the value to set.
    */
   public void setPostalCode(java.lang.CharSequence value) {
@@ -148,7 +148,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'city' field.
-   * @return the city name
+   * @return The city name
    */
   public java.lang.CharSequence getCity() {
     return city;
@@ -156,7 +156,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'city' field.
-   * the city name
+   * The city name
    * @param value the value to set.
    */
   public void setCity(java.lang.CharSequence value) {
@@ -165,7 +165,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'state' field.
-   * @return the state or province name
+   * @return The state or province name
    */
   public java.lang.CharSequence getState() {
     return state;
@@ -173,7 +173,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'state' field.
-   * the state or province name
+   * The state or province name
    * @param value the value to set.
    */
   public void setState(java.lang.CharSequence value) {
@@ -182,7 +182,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'country' field.
-   * @return the country name
+   * @return The country name
    */
   public java.lang.CharSequence getCountry() {
     return country;
@@ -190,7 +190,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Sets the value of the 'country' field.
-   * the country name
+   * The country name
    * @param value the value to set.
    */
   public void setCountry(java.lang.CharSequence value) {
@@ -229,15 +229,15 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Address>
     implements org.apache.avro.data.RecordBuilder<Address> {
 
-    /** the street name */
+    /** The street name */
     private java.lang.CharSequence street;
-    /** the postal code */
+    /** The postal code */
     private java.lang.CharSequence postalCode;
-    /** the city name */
+    /** The city name */
     private java.lang.CharSequence city;
-    /** the state or province name */
+    /** The state or province name */
     private java.lang.CharSequence state;
-    /** the country name */
+    /** The country name */
     private java.lang.CharSequence country;
 
     /** Creates a new Builder */
@@ -303,7 +303,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'street' field.
-      * the street name
+      * The street name
       * @return The value.
       */
     public java.lang.CharSequence getStreet() {
@@ -312,7 +312,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'street' field.
-      * the street name
+      * The street name
       * @param value The value of 'street'.
       * @return This builder.
       */
@@ -325,7 +325,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'street' field has been set.
-      * the street name
+      * The street name
       * @return True if the 'street' field has been set, false otherwise.
       */
     public boolean hasStreet() {
@@ -335,7 +335,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'street' field.
-      * the street name
+      * The street name
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Address.Builder clearStreet() {
@@ -346,7 +346,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'postalCode' field.
-      * the postal code
+      * The postal code
       * @return The value.
       */
     public java.lang.CharSequence getPostalCode() {
@@ -355,7 +355,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'postalCode' field.
-      * the postal code
+      * The postal code
       * @param value The value of 'postalCode'.
       * @return This builder.
       */
@@ -368,7 +368,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'postalCode' field has been set.
-      * the postal code
+      * The postal code
       * @return True if the 'postalCode' field has been set, false otherwise.
       */
     public boolean hasPostalCode() {
@@ -378,7 +378,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'postalCode' field.
-      * the postal code
+      * The postal code
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Address.Builder clearPostalCode() {
@@ -389,7 +389,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'city' field.
-      * the city name
+      * The city name
       * @return The value.
       */
     public java.lang.CharSequence getCity() {
@@ -398,7 +398,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'city' field.
-      * the city name
+      * The city name
       * @param value The value of 'city'.
       * @return This builder.
       */
@@ -411,7 +411,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'city' field has been set.
-      * the city name
+      * The city name
       * @return True if the 'city' field has been set, false otherwise.
       */
     public boolean hasCity() {
@@ -421,7 +421,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'city' field.
-      * the city name
+      * The city name
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Address.Builder clearCity() {
@@ -432,7 +432,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'state' field.
-      * the state or province name
+      * The state or province name
       * @return The value.
       */
     public java.lang.CharSequence getState() {
@@ -441,7 +441,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'state' field.
-      * the state or province name
+      * The state or province name
       * @param value The value of 'state'.
       * @return This builder.
       */
@@ -454,7 +454,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'state' field has been set.
-      * the state or province name
+      * The state or province name
       * @return True if the 'state' field has been set, false otherwise.
       */
     public boolean hasState() {
@@ -464,7 +464,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'state' field.
-      * the state or province name
+      * The state or province name
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Address.Builder clearState() {
@@ -475,7 +475,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Gets the value of the 'country' field.
-      * the country name
+      * The country name
       * @return The value.
       */
     public java.lang.CharSequence getCountry() {
@@ -484,7 +484,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Sets the value of the 'country' field.
-      * the country name
+      * The country name
       * @param value The value of 'country'.
       * @return This builder.
       */
@@ -497,7 +497,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Checks whether the 'country' field has been set.
-      * the country name
+      * The country name
       * @return True if the 'country' field has been set, false otherwise.
       */
     public boolean hasCountry() {
@@ -507,7 +507,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
       * Clears the value of the 'country' field.
-      * the country name
+      * The country name
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Address.Builder clearCountry() {

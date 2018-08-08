@@ -15,7 +15,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Velocity extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 8007381348687076656L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Velocity\",\"namespace\":\"eu.driver.model.sim.geo\",\"doc\":\"WGS84/Aviation-based representation of a velocity vector. Right-handed item-specific reference system, with in base-setting heading/yaw-axis pointing down (to the centre of the earth), pitch-axis pointing to the right, roll/bank-axis pointing forward\",\"fields\":[{\"name\":\"yaw\",\"type\":\"double\",\"doc\":\"Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST\"},{\"name\":\"pitch\",\"type\":\"double\",\"doc\":\"Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards\"},{\"name\":\"magnitude\",\"type\":\"double\",\"doc\":\"Velocity in meter per second [0, inf) - 0 is standing still relative to the earth\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,11 +52,11 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
     return DECODER.decode(b);
   }
 
-  /** yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST */
+  /** Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST */
   @Deprecated public double yaw;
-  /** pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards */
+  /** Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards */
   @Deprecated public double pitch;
-  /** velocity in meter per second [0, inf) - 0 is standing still relative to the earth */
+  /** Velocity in meter per second [0, inf) - 0 is standing still relative to the earth */
   @Deprecated public double magnitude;
 
   /**
@@ -68,9 +68,9 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
-   * @param yaw yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
-   * @param pitch pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
-   * @param magnitude velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+   * @param yaw Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+   * @param pitch Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+   * @param magnitude Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
    */
   public Velocity(java.lang.Double yaw, java.lang.Double pitch, java.lang.Double magnitude) {
     this.yaw = yaw;
@@ -102,7 +102,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'yaw' field.
-   * @return yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+   * @return Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
    */
   public java.lang.Double getYaw() {
     return yaw;
@@ -110,7 +110,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'yaw' field.
-   * yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+   * Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
    * @param value the value to set.
    */
   public void setYaw(java.lang.Double value) {
@@ -119,7 +119,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'pitch' field.
-   * @return pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+   * @return Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
    */
   public java.lang.Double getPitch() {
     return pitch;
@@ -127,7 +127,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'pitch' field.
-   * pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+   * Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
    * @param value the value to set.
    */
   public void setPitch(java.lang.Double value) {
@@ -136,7 +136,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'magnitude' field.
-   * @return velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+   * @return Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
    */
   public java.lang.Double getMagnitude() {
     return magnitude;
@@ -144,7 +144,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Sets the value of the 'magnitude' field.
-   * velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+   * Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
    * @param value the value to set.
    */
   public void setMagnitude(java.lang.Double value) {
@@ -183,11 +183,11 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Velocity>
     implements org.apache.avro.data.RecordBuilder<Velocity> {
 
-    /** yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST */
+    /** Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST */
     private double yaw;
-    /** pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards */
+    /** Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards */
     private double pitch;
-    /** velocity in meter per second [0, inf) - 0 is standing still relative to the earth */
+    /** Velocity in meter per second [0, inf) - 0 is standing still relative to the earth */
     private double magnitude;
 
     /** Creates a new Builder */
@@ -237,7 +237,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'yaw' field.
-      * yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+      * Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
       * @return The value.
       */
     public java.lang.Double getYaw() {
@@ -246,7 +246,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'yaw' field.
-      * yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+      * Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
       * @param value The value of 'yaw'.
       * @return This builder.
       */
@@ -259,7 +259,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'yaw' field has been set.
-      * yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+      * Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
       * @return True if the 'yaw' field has been set, false otherwise.
       */
     public boolean hasYaw() {
@@ -269,7 +269,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'yaw' field.
-      * yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
+      * Yaw or heading in degrees [0, 360) - 0 is pointing towards geographic north - yaw of 90 is EAST, yaw of 270 is WEST
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Velocity.Builder clearYaw() {
@@ -279,7 +279,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'pitch' field.
-      * pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+      * Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
       * @return The value.
       */
     public java.lang.Double getPitch() {
@@ -288,7 +288,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'pitch' field.
-      * pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+      * Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
       * @param value The value of 'pitch'.
       * @return This builder.
       */
@@ -301,7 +301,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'pitch' field has been set.
-      * pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+      * Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
       * @return True if the 'pitch' field has been set, false otherwise.
       */
     public boolean hasPitch() {
@@ -311,7 +311,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'pitch' field.
-      * pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
+      * Pitch in degrees (-90, 90] - 0 is perpendicular to line [origin of item - centre of WGS84-based ellipsoid] - pitch of +45 is 45 degrees pointing upwards, -45 is 45 degrees pointing downwards
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Velocity.Builder clearPitch() {
@@ -321,7 +321,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Gets the value of the 'magnitude' field.
-      * velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+      * Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
       * @return The value.
       */
     public java.lang.Double getMagnitude() {
@@ -330,7 +330,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Sets the value of the 'magnitude' field.
-      * velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+      * Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
       * @param value The value of 'magnitude'.
       * @return This builder.
       */
@@ -343,7 +343,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Checks whether the 'magnitude' field has been set.
-      * velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+      * Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
       * @return True if the 'magnitude' field has been set, false otherwise.
       */
     public boolean hasMagnitude() {
@@ -353,7 +353,7 @@ public class Velocity extends org.apache.avro.specific.SpecificRecordBase implem
 
     /**
       * Clears the value of the 'magnitude' field.
-      * velocity in meter per second [0, inf) - 0 is standing still relative to the earth
+      * Velocity in meter per second [0, inf) - 0 is standing still relative to the earth
       * @return This builder.
       */
     public eu.driver.model.sim.geo.Velocity.Builder clearMagnitude() {
