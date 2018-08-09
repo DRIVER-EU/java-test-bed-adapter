@@ -141,8 +141,13 @@ public class CISAdapter {
 	 */
 	private void initializeProducers(Boolean handleTopicInvite) {
 		logger.info("--> initializeProducers");
-		// actual Kafka producer used by all generic producers s
-		sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
+		// actual Kafka producer used by all generic producers
+		try {
+			sharedAvroProducer = new KafkaProducer<EDXLDistribution, IndexedRecord>(ProducerProperties.getInstance(connectModeSec));
+		} catch (Exception cEx) {
+			logger.info("CISAdapter failed to create a KafkaProducer!");
+			cEx.printStackTrace();
+		}
 		try {
 			logger.info("Check Adpter DEV Mode");
 			heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);	
