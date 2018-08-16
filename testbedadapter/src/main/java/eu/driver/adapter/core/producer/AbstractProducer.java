@@ -41,6 +41,10 @@ public abstract class AbstractProducer<Key extends IndexedRecord, Value extends 
 	}
 	
 	public void send(Value message) {
+		if (producer == null) {
+			System.err.print("Producer is null, cannot send message: " + message);
+			return;
+		}
 		try {
 			Key key = createKey();
 			ProducerRecord<Key, Value> record = new ProducerRecord<>(topic, key, message);

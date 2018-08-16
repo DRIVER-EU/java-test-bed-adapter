@@ -1,0 +1,40 @@
+language: java
+jdk:
+- oraclejdk8
+
+jobs:
+  include:
+    - stage: java-adapter-avro-schemas
+      before_script: cd java-adaptor-avro-schemas
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
+    - stage: java-adapter
+      before_script: cd testbedadapter
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
+    - stage: xml-json-to-avro-mapper
+      before_script: cd xml-json-to-avro-mapper
+      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+      deploy: 
+        provider: script
+        script: mvn deploy
+        on:
+          branch: master
+          
+cache:
+  directories:
+  - ".autoconf"
+  - "$HOME/.m2"
+  
+env:
+  global:
+  - secure: YTjZ8oPj9WNX9p5vbVOJhdMqG84vZEWpuyx/Ibjn352aF9O04ILZRpi9mBY6eSMEpkqyuA3H+I85C9E0LqJplUIN3Z1E6gqa9Zdkzdx70/wWHa/R6gF1sT6ZUsXmLzDvtsJumW/rgSck5KuiTYdotuWffVy6aRrYXzmmdJXOa1kWdQcHQ8YIpu0mDHsTdKQD77vnv6yPWRvw0KfTZPSB5RbO7Ab+l7wrN1TMRIKNKNCdEricgd9K8g0YZOQDkaAa6SrMHr1TvrTdv93WURm6qLMYfEUAsrfRmxB+3JkiBV+IAkvLdrFJiVaCI64/g3VvEk5irt5eJoCtZ4X+wm3zVP0EKoAmiSKSGqFKRLbklE94G9MCyw3XIMpy5ZIx9jqKl8987DjD6euqFVqEZUfofiq1YKysYCTAN1fcOhy70KLmoutyU3MFgW+Kc4h+SGDMLcgO1Z8LPSDuO0gulBgJg6D1PkwoUMXEfZlG0P7PmCOyAr04sxFnIzvtN1hZFs3kokWzitbhdn9zgnD7jj1sQxTpIP0A25Pg6YPtaKPyAICCNNBlqn2NhZeBqG9fTR6zL9tLUX1Nat/23vDpxhYK1XyuKhcK72w7TtGytUBMlLwdd81fQ7/QotKvcRzZJDHPHUu/57Zyw2ckcxPTtuOyqLEKmuzewIYcgDWJcAegpoc=
+  - secure: LsgmednCYgdOgq0nbp5QDlmaJe3F2yZXvZIiseERy2tTdXapJS9EHaSY7gd4+ISEFXGjNibweXy2VVyKztymL0F3XjoCJFgnHYO2fagKtsRePsb1mYWC9o0Wbte1vnW0Ns8sfynGCfL0mnuY1XxkvYBKhvH8t8DELPCcpUCAYPhewnlr9/ESZnNLzGaK/TGoqcV4Dhr6Y/6WEIF6XzUWyi95xYev6pCtfOmic9yYyynQLnYmbgHVvckH+4/GDy0LOlXRJ2w7WaXpDKjBCzEj1xm0RUChvuGuqjKwSTL69707w6iymDVMcpAQtaN98pFrR35CS9JYh/XWLac3kUoW/i2VLhkAJLAGfjLisrwazQoJlALvY59leq1n/hcn2+XWfn35hksiHg2mFkrv/lV2lV2F+ecN4S1yfnvLB7pkBndtYkUeT6bHFKS/9N433mNAKOGhcg3atoy4mbYDdNZgHPvS4SuMhsy3UFzAAr/yAjbzo4xyhCUDZGLOkw3vXDZ2efLrk9KenPhPPJU3SsxKNsJPyGXJoaUdTO6l7xey0qviY8EMmhWAQDERouD08nDAHDqZpRO1xUsIIEUzg/iWlYrstnlvwGkW8W6VdvyzkJzoWD4veB8Ncqvp/r2NPtfz+kbPeE0dimn88QzXt8bve+N5OhwGyb/Iyh8mXUjBqUA=

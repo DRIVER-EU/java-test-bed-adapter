@@ -2,6 +2,7 @@ package eu.driver.examples.adapter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
@@ -16,19 +17,33 @@ public class CISAdapterCAPExample {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// created the CIS Adapter that will send heartbeats, log
 		CISAdapter adapter = CISAdapter.getInstance();
-		
-		// Add callbacks for received messages
-		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.STANDARD_TOPIC_CAP);
-		adapter.addCallback(new PrintAdapterCallback(), TopicConstants.ADMIN_HEARTBEAT_TOPIC);
 
-		try {
-			while (true) {
-				adapter.sendMessage(generateAvroCapFromXML());
-				Thread.sleep(5000);
-			}
-		} catch (CommunicationException cEx) {
-			
+		String topic = "test-pieter4";
+
+		KeepOperationalReachabilityResponse msg = new KeepOperationalReachabilityResponse();
+		ArrayList<CharSequence> test = new ArrayList<>();
+		test.add("a");
+		test.add("b");
+		msg.setErrorMessages(test);
+		ArrayList<ReachabilityInformation> isochroneInfo = new ArrayList<>();
+
+		for (int i = 0; i < 5000; i++) {
+			isochroneInfo.add(new ReachabilityInformation(i, test));
 		}
+		msg.setListOfIsochroneInformation(isochroneInfo);
+
+		adapter.createProducer(topic);
+		try {
+			adapter.sendMessage(msg, topic);
+		} catch (CommunicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("SENT ! ");
+
+		// Add callbacks for received messages
+		adapter.addCallback(new PrintAdapterCallback(), topic);
 	}
 
 	private static GenericRecord generateAvroCapFromXML() throws IOException {
