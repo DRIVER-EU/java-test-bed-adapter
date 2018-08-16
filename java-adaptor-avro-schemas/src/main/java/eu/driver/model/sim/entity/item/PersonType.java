@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is a person */
+/** Information if the item is a person */
 @org.apache.avro.specific.AvroGenerated
 public class PersonType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -2861682046635770415L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PersonType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is a person\",\"fields\":[{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"PersonSubType\",\"symbols\":[\"MALE\",\"FEMALE\",\"UNKNOWN\"]},\"doc\":\"gender of the person\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PersonType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is a person\",\"fields\":[{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"PersonSubType\",\"symbols\":[\"MALE\",\"FEMALE\",\"UNKNOWN\"]},\"doc\":\"Gender of the person\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
     return DECODER.decode(b);
   }
 
-  /** gender of the person */
+  /** Gender of the person */
   @Deprecated public eu.driver.model.sim.entity.item.PersonSubType gender;
 
   /**
@@ -64,7 +64,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * All-args constructor.
-   * @param gender gender of the person
+   * @param gender Gender of the person
    */
   public PersonType(eu.driver.model.sim.entity.item.PersonSubType gender) {
     this.gender = gender;
@@ -90,7 +90,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'gender' field.
-   * @return gender of the person
+   * @return Gender of the person
    */
   public eu.driver.model.sim.entity.item.PersonSubType getGender() {
     return gender;
@@ -98,7 +98,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Sets the value of the 'gender' field.
-   * gender of the person
+   * Gender of the person
    * @param value the value to set.
    */
   public void setGender(eu.driver.model.sim.entity.item.PersonSubType value) {
@@ -137,7 +137,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<PersonType>
     implements org.apache.avro.data.RecordBuilder<PersonType> {
 
-    /** gender of the person */
+    /** Gender of the person */
     private eu.driver.model.sim.entity.item.PersonSubType gender;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Gets the value of the 'gender' field.
-      * gender of the person
+      * Gender of the person
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.PersonSubType getGender() {
@@ -180,7 +180,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Sets the value of the 'gender' field.
-      * gender of the person
+      * Gender of the person
       * @param value The value of 'gender'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Checks whether the 'gender' field has been set.
-      * gender of the person
+      * Gender of the person
       * @return True if the 'gender' field has been set, false otherwise.
       */
     public boolean hasGender() {
@@ -203,7 +203,7 @@ public class PersonType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Clears the value of the 'gender' field.
-      * gender of the person
+      * Gender of the person
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.PersonType.Builder clearGender() {

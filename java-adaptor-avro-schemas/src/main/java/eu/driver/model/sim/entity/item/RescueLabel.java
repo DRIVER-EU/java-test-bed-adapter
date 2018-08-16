@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is labeled as rescue */
+/** Information if the item is labeled as rescue */
 @org.apache.avro.specific.AvroGenerated
 public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -3258024331444933044L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RescueLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is labeled as rescue\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"RescueSubLabel\",\"symbols\":[\"POLICE\",\"MEDICAL\",\"FIRE\",\"SECURITY\",\"MILITARY\"]},\"doc\":\"sub label of rescue that this item has\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RescueLabel\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is labeled as rescue\",\"fields\":[{\"name\":\"subLabel\",\"type\":{\"type\":\"enum\",\"name\":\"RescueSubLabel\",\"symbols\":[\"POLICE\",\"MEDICAL\",\"FIRE\",\"SECURITY\",\"MILITARY\"]},\"doc\":\"Sub label of rescue that this item has\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
-  /** sub label of rescue that this item has */
+  /** Sub label of rescue that this item has */
   @Deprecated public eu.driver.model.sim.entity.item.RescueSubLabel subLabel;
 
   /**
@@ -64,7 +64,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * All-args constructor.
-   * @param subLabel sub label of rescue that this item has
+   * @param subLabel Sub label of rescue that this item has
    */
   public RescueLabel(eu.driver.model.sim.entity.item.RescueSubLabel subLabel) {
     this.subLabel = subLabel;
@@ -90,7 +90,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * Gets the value of the 'subLabel' field.
-   * @return sub label of rescue that this item has
+   * @return Sub label of rescue that this item has
    */
   public eu.driver.model.sim.entity.item.RescueSubLabel getSubLabel() {
     return subLabel;
@@ -98,7 +98,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * Sets the value of the 'subLabel' field.
-   * sub label of rescue that this item has
+   * Sub label of rescue that this item has
    * @param value the value to set.
    */
   public void setSubLabel(eu.driver.model.sim.entity.item.RescueSubLabel value) {
@@ -137,7 +137,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RescueLabel>
     implements org.apache.avro.data.RecordBuilder<RescueLabel> {
 
-    /** sub label of rescue that this item has */
+    /** Sub label of rescue that this item has */
     private eu.driver.model.sim.entity.item.RescueSubLabel subLabel;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Gets the value of the 'subLabel' field.
-      * sub label of rescue that this item has
+      * Sub label of rescue that this item has
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.RescueSubLabel getSubLabel() {
@@ -180,7 +180,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Sets the value of the 'subLabel' field.
-      * sub label of rescue that this item has
+      * Sub label of rescue that this item has
       * @param value The value of 'subLabel'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Checks whether the 'subLabel' field has been set.
-      * sub label of rescue that this item has
+      * Sub label of rescue that this item has
       * @return True if the 'subLabel' field has been set, false otherwise.
       */
     public boolean hasSubLabel() {
@@ -203,7 +203,7 @@ public class RescueLabel extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Clears the value of the 'subLabel' field.
-      * sub label of rescue that this item has
+      * Sub label of rescue that this item has
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.RescueLabel.Builder clearSubLabel() {

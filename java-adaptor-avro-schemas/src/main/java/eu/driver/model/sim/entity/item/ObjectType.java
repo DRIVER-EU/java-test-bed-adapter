@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is an object */
+/** Information if the item is an object */
 @org.apache.avro.specific.AvroGenerated
 public class ObjectType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 7995214525502139045L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObjectType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is an object\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectSubType\",\"symbols\":[\"PROP\",\"TOOL\"]},\"doc\":\"sub type of objects that this item is\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObjectType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is an object\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"ObjectSubType\",\"symbols\":[\"PROP\",\"TOOL\"]},\"doc\":\"Sub type of objects that this item is\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
     return DECODER.decode(b);
   }
 
-  /** sub type of objects that this item is */
+  /** Sub type of objects that this item is */
   @Deprecated public eu.driver.model.sim.entity.item.ObjectSubType subType;
 
   /**
@@ -64,7 +64,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * All-args constructor.
-   * @param subType sub type of objects that this item is
+   * @param subType Sub type of objects that this item is
    */
   public ObjectType(eu.driver.model.sim.entity.item.ObjectSubType subType) {
     this.subType = subType;
@@ -90,7 +90,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'subType' field.
-   * @return sub type of objects that this item is
+   * @return Sub type of objects that this item is
    */
   public eu.driver.model.sim.entity.item.ObjectSubType getSubType() {
     return subType;
@@ -98,7 +98,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Sets the value of the 'subType' field.
-   * sub type of objects that this item is
+   * Sub type of objects that this item is
    * @param value the value to set.
    */
   public void setSubType(eu.driver.model.sim.entity.item.ObjectSubType value) {
@@ -137,7 +137,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ObjectType>
     implements org.apache.avro.data.RecordBuilder<ObjectType> {
 
-    /** sub type of objects that this item is */
+    /** Sub type of objects that this item is */
     private eu.driver.model.sim.entity.item.ObjectSubType subType;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Gets the value of the 'subType' field.
-      * sub type of objects that this item is
+      * Sub type of objects that this item is
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.ObjectSubType getSubType() {
@@ -180,7 +180,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Sets the value of the 'subType' field.
-      * sub type of objects that this item is
+      * Sub type of objects that this item is
       * @param value The value of 'subType'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Checks whether the 'subType' field has been set.
-      * sub type of objects that this item is
+      * Sub type of objects that this item is
       * @return True if the 'subType' field has been set, false otherwise.
       */
     public boolean hasSubType() {
@@ -203,7 +203,7 @@ public class ObjectType extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Clears the value of the 'subType' field.
-      * sub type of objects that this item is
+      * Sub type of objects that this item is
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.ObjectType.Builder clearSubType() {

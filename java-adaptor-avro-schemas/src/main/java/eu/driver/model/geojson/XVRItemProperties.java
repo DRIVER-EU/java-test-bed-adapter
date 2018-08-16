@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Specfic properties for an XVR emergency vehicle */
 @org.apache.avro.specific.AvroGenerated
 public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3314321210673948682L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subType\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"name of this entity\",\"default\":null},{\"name\":\"owner\",\"type\":[\"null\",\"string\"],\"doc\":\"identifier of the simulator currently responsible for this entity\",\"default\":null},{\"name\":\"label\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subLabel\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
+  private static final long serialVersionUID = -5071076891449078230L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"XVRItemProperties\",\"namespace\":\"eu.driver.model.geojson\",\"doc\":\"Specfic properties for an XVR emergency vehicle\",\"fields\":[{\"name\":\"guid\",\"type\":\"string\"},{\"name\":\"speed\",\"type\":\"double\"},{\"name\":\"yaw\",\"type\":\"double\"},{\"name\":\"pitch\",\"type\":\"double\"},{\"name\":\"roll\",\"type\":\"double\"},{\"name\":\"type\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subType\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"label\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"subLabel\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -59,10 +59,6 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
   @Deprecated public double roll;
   @Deprecated public java.lang.CharSequence type;
   @Deprecated public java.lang.CharSequence subType;
-  /** name of this entity */
-  @Deprecated public java.lang.CharSequence name;
-  /** identifier of the simulator currently responsible for this entity */
-  @Deprecated public java.lang.CharSequence owner;
   @Deprecated public java.lang.CharSequence label;
   @Deprecated public java.lang.CharSequence subLabel;
 
@@ -82,12 +78,10 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
    * @param roll The new value for roll
    * @param type The new value for type
    * @param subType The new value for subType
-   * @param name name of this entity
-   * @param owner identifier of the simulator currently responsible for this entity
    * @param label The new value for label
    * @param subLabel The new value for subLabel
    */
-  public XVRItemProperties(java.lang.CharSequence guid, java.lang.Double speed, java.lang.Double yaw, java.lang.Double pitch, java.lang.Double roll, java.lang.CharSequence type, java.lang.CharSequence subType, java.lang.CharSequence name, java.lang.CharSequence owner, java.lang.CharSequence label, java.lang.CharSequence subLabel) {
+  public XVRItemProperties(java.lang.CharSequence guid, java.lang.Double speed, java.lang.Double yaw, java.lang.Double pitch, java.lang.Double roll, java.lang.CharSequence type, java.lang.CharSequence subType, java.lang.CharSequence label, java.lang.CharSequence subLabel) {
     this.guid = guid;
     this.speed = speed;
     this.yaw = yaw;
@@ -95,8 +89,6 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     this.roll = roll;
     this.type = type;
     this.subType = subType;
-    this.name = name;
-    this.owner = owner;
     this.label = label;
     this.subLabel = subLabel;
   }
@@ -112,10 +104,8 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     case 4: return roll;
     case 5: return type;
     case 6: return subType;
-    case 7: return name;
-    case 8: return owner;
-    case 9: return label;
-    case 10: return subLabel;
+    case 7: return label;
+    case 8: return subLabel;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -131,10 +121,8 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     case 4: roll = (java.lang.Double)value$; break;
     case 5: type = (java.lang.CharSequence)value$; break;
     case 6: subType = (java.lang.CharSequence)value$; break;
-    case 7: name = (java.lang.CharSequence)value$; break;
-    case 8: owner = (java.lang.CharSequence)value$; break;
-    case 9: label = (java.lang.CharSequence)value$; break;
-    case 10: subLabel = (java.lang.CharSequence)value$; break;
+    case 7: label = (java.lang.CharSequence)value$; break;
+    case 8: subLabel = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -252,40 +240,6 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
   }
 
   /**
-   * Gets the value of the 'name' field.
-   * @return name of this entity
-   */
-  public java.lang.CharSequence getName() {
-    return name;
-  }
-
-  /**
-   * Sets the value of the 'name' field.
-   * name of this entity
-   * @param value the value to set.
-   */
-  public void setName(java.lang.CharSequence value) {
-    this.name = value;
-  }
-
-  /**
-   * Gets the value of the 'owner' field.
-   * @return identifier of the simulator currently responsible for this entity
-   */
-  public java.lang.CharSequence getOwner() {
-    return owner;
-  }
-
-  /**
-   * Sets the value of the 'owner' field.
-   * identifier of the simulator currently responsible for this entity
-   * @param value the value to set.
-   */
-  public void setOwner(java.lang.CharSequence value) {
-    this.owner = value;
-  }
-
-  /**
    * Gets the value of the 'label' field.
    * @return The value of the 'label' field.
    */
@@ -356,10 +310,6 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     private double roll;
     private java.lang.CharSequence type;
     private java.lang.CharSequence subType;
-    /** name of this entity */
-    private java.lang.CharSequence name;
-    /** identifier of the simulator currently responsible for this entity */
-    private java.lang.CharSequence owner;
     private java.lang.CharSequence label;
     private java.lang.CharSequence subLabel;
 
@@ -402,21 +352,13 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
         this.subType = data().deepCopy(fields()[6].schema(), other.subType);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.name)) {
-        this.name = data().deepCopy(fields()[7].schema(), other.name);
+      if (isValidValue(fields()[7], other.label)) {
+        this.label = data().deepCopy(fields()[7].schema(), other.label);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.owner)) {
-        this.owner = data().deepCopy(fields()[8].schema(), other.owner);
+      if (isValidValue(fields()[8], other.subLabel)) {
+        this.subLabel = data().deepCopy(fields()[8].schema(), other.subLabel);
         fieldSetFlags()[8] = true;
-      }
-      if (isValidValue(fields()[9], other.label)) {
-        this.label = data().deepCopy(fields()[9].schema(), other.label);
-        fieldSetFlags()[9] = true;
-      }
-      if (isValidValue(fields()[10], other.subLabel)) {
-        this.subLabel = data().deepCopy(fields()[10].schema(), other.subLabel);
-        fieldSetFlags()[10] = true;
       }
     }
 
@@ -454,21 +396,13 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
         this.subType = data().deepCopy(fields()[6].schema(), other.subType);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.name)) {
-        this.name = data().deepCopy(fields()[7].schema(), other.name);
+      if (isValidValue(fields()[7], other.label)) {
+        this.label = data().deepCopy(fields()[7].schema(), other.label);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.owner)) {
-        this.owner = data().deepCopy(fields()[8].schema(), other.owner);
+      if (isValidValue(fields()[8], other.subLabel)) {
+        this.subLabel = data().deepCopy(fields()[8].schema(), other.subLabel);
         fieldSetFlags()[8] = true;
-      }
-      if (isValidValue(fields()[9], other.label)) {
-        this.label = data().deepCopy(fields()[9].schema(), other.label);
-        fieldSetFlags()[9] = true;
-      }
-      if (isValidValue(fields()[10], other.subLabel)) {
-        this.subLabel = data().deepCopy(fields()[10].schema(), other.subLabel);
-        fieldSetFlags()[10] = true;
       }
     }
 
@@ -742,92 +676,6 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
     }
 
     /**
-      * Gets the value of the 'name' field.
-      * name of this entity
-      * @return The value.
-      */
-    public java.lang.CharSequence getName() {
-      return name;
-    }
-
-    /**
-      * Sets the value of the 'name' field.
-      * name of this entity
-      * @param value The value of 'name'.
-      * @return This builder.
-      */
-    public eu.driver.model.geojson.XVRItemProperties.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[7], value);
-      this.name = value;
-      fieldSetFlags()[7] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'name' field has been set.
-      * name of this entity
-      * @return True if the 'name' field has been set, false otherwise.
-      */
-    public boolean hasName() {
-      return fieldSetFlags()[7];
-    }
-
-
-    /**
-      * Clears the value of the 'name' field.
-      * name of this entity
-      * @return This builder.
-      */
-    public eu.driver.model.geojson.XVRItemProperties.Builder clearName() {
-      name = null;
-      fieldSetFlags()[7] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
-      * @return The value.
-      */
-    public java.lang.CharSequence getOwner() {
-      return owner;
-    }
-
-    /**
-      * Sets the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
-      * @param value The value of 'owner'.
-      * @return This builder.
-      */
-    public eu.driver.model.geojson.XVRItemProperties.Builder setOwner(java.lang.CharSequence value) {
-      validate(fields()[8], value);
-      this.owner = value;
-      fieldSetFlags()[8] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'owner' field has been set.
-      * identifier of the simulator currently responsible for this entity
-      * @return True if the 'owner' field has been set, false otherwise.
-      */
-    public boolean hasOwner() {
-      return fieldSetFlags()[8];
-    }
-
-
-    /**
-      * Clears the value of the 'owner' field.
-      * identifier of the simulator currently responsible for this entity
-      * @return This builder.
-      */
-    public eu.driver.model.geojson.XVRItemProperties.Builder clearOwner() {
-      owner = null;
-      fieldSetFlags()[8] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'label' field.
       * @return The value.
       */
@@ -841,9 +689,9 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public eu.driver.model.geojson.XVRItemProperties.Builder setLabel(java.lang.CharSequence value) {
-      validate(fields()[9], value);
+      validate(fields()[7], value);
       this.label = value;
-      fieldSetFlags()[9] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -852,7 +700,7 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'label' field has been set, false otherwise.
       */
     public boolean hasLabel() {
-      return fieldSetFlags()[9];
+      return fieldSetFlags()[7];
     }
 
 
@@ -862,7 +710,7 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       */
     public eu.driver.model.geojson.XVRItemProperties.Builder clearLabel() {
       label = null;
-      fieldSetFlags()[9] = false;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -880,9 +728,9 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public eu.driver.model.geojson.XVRItemProperties.Builder setSubLabel(java.lang.CharSequence value) {
-      validate(fields()[10], value);
+      validate(fields()[8], value);
       this.subLabel = value;
-      fieldSetFlags()[10] = true;
+      fieldSetFlags()[8] = true;
       return this;
     }
 
@@ -891,7 +739,7 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'subLabel' field has been set, false otherwise.
       */
     public boolean hasSubLabel() {
-      return fieldSetFlags()[10];
+      return fieldSetFlags()[8];
     }
 
 
@@ -901,7 +749,7 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
       */
     public eu.driver.model.geojson.XVRItemProperties.Builder clearSubLabel() {
       subLabel = null;
-      fieldSetFlags()[10] = false;
+      fieldSetFlags()[8] = false;
       return this;
     }
 
@@ -917,10 +765,8 @@ public class XVRItemProperties extends org.apache.avro.specific.SpecificRecordBa
         record.roll = fieldSetFlags()[4] ? this.roll : (java.lang.Double) defaultValue(fields()[4]);
         record.type = fieldSetFlags()[5] ? this.type : (java.lang.CharSequence) defaultValue(fields()[5]);
         record.subType = fieldSetFlags()[6] ? this.subType : (java.lang.CharSequence) defaultValue(fields()[6]);
-        record.name = fieldSetFlags()[7] ? this.name : (java.lang.CharSequence) defaultValue(fields()[7]);
-        record.owner = fieldSetFlags()[8] ? this.owner : (java.lang.CharSequence) defaultValue(fields()[8]);
-        record.label = fieldSetFlags()[9] ? this.label : (java.lang.CharSequence) defaultValue(fields()[9]);
-        record.subLabel = fieldSetFlags()[10] ? this.subLabel : (java.lang.CharSequence) defaultValue(fields()[10]);
+        record.label = fieldSetFlags()[7] ? this.label : (java.lang.CharSequence) defaultValue(fields()[7]);
+        record.subLabel = fieldSetFlags()[8] ? this.subLabel : (java.lang.CharSequence) defaultValue(fields()[8]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

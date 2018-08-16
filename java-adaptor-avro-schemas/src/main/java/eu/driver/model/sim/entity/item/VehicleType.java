@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** information if the item is a vehicle */
+/** Information if the item is a vehicle */
 @org.apache.avro.specific.AvroGenerated
 public class VehicleType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 2511101198401545795L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"VehicleType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"information if the item is a vehicle\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"VehicleSubType\",\"symbols\":[\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\"]},\"doc\":\"sub type of vehicles that this item is\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"VehicleType\",\"namespace\":\"eu.driver.model.sim.entity.item\",\"doc\":\"Information if the item is a vehicle\",\"fields\":[{\"name\":\"subType\",\"type\":{\"type\":\"enum\",\"name\":\"VehicleSubType\",\"symbols\":[\"CAR\",\"VAN\",\"TRUCK\",\"BOAT\",\"PLANE\",\"HELICOPTER\",\"MOTORCYCLE\"]},\"doc\":\"Sub type of vehicles that this item is\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
-  /** sub type of vehicles that this item is */
+  /** Sub type of vehicles that this item is */
   @Deprecated public eu.driver.model.sim.entity.item.VehicleSubType subType;
 
   /**
@@ -64,7 +64,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * All-args constructor.
-   * @param subType sub type of vehicles that this item is
+   * @param subType Sub type of vehicles that this item is
    */
   public VehicleType(eu.driver.model.sim.entity.item.VehicleSubType subType) {
     this.subType = subType;
@@ -90,7 +90,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * Gets the value of the 'subType' field.
-   * @return sub type of vehicles that this item is
+   * @return Sub type of vehicles that this item is
    */
   public eu.driver.model.sim.entity.item.VehicleSubType getSubType() {
     return subType;
@@ -98,7 +98,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * Sets the value of the 'subType' field.
-   * sub type of vehicles that this item is
+   * Sub type of vehicles that this item is
    * @param value the value to set.
    */
   public void setSubType(eu.driver.model.sim.entity.item.VehicleSubType value) {
@@ -137,7 +137,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<VehicleType>
     implements org.apache.avro.data.RecordBuilder<VehicleType> {
 
-    /** sub type of vehicles that this item is */
+    /** Sub type of vehicles that this item is */
     private eu.driver.model.sim.entity.item.VehicleSubType subType;
 
     /** Creates a new Builder */
@@ -171,7 +171,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Gets the value of the 'subType' field.
-      * sub type of vehicles that this item is
+      * Sub type of vehicles that this item is
       * @return The value.
       */
     public eu.driver.model.sim.entity.item.VehicleSubType getSubType() {
@@ -180,7 +180,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Sets the value of the 'subType' field.
-      * sub type of vehicles that this item is
+      * Sub type of vehicles that this item is
       * @param value The value of 'subType'.
       * @return This builder.
       */
@@ -193,7 +193,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Checks whether the 'subType' field has been set.
-      * sub type of vehicles that this item is
+      * Sub type of vehicles that this item is
       * @return True if the 'subType' field has been set, false otherwise.
       */
     public boolean hasSubType() {
@@ -203,7 +203,7 @@ public class VehicleType extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Clears the value of the 'subType' field.
-      * sub type of vehicles that this item is
+      * Sub type of vehicles that this item is
       * @return This builder.
       */
     public eu.driver.model.sim.entity.item.VehicleType.Builder clearSubType() {

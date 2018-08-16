@@ -19,4 +19,5 @@ public class TopicConstants {
 	public static final String STANDARD_TOPIC_MLP = "standard_mlp";
 	public static final String STANDARD_TOPIC_EMSI = "standard_emsi";
 	public static final String STANDARD_TOPIC_GEOJSON = "standard_geojson";
+	public static final String STANDARD_TOPIC_GEOJSON_XVR = "standard_geojson_xvr";
 }

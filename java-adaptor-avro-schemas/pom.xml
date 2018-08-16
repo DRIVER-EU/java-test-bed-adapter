@@ -4,7 +4,7 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>java-adaptor-avro-schemas</artifactId>
-	<version>1.0.8</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter AVRO Classes</name>

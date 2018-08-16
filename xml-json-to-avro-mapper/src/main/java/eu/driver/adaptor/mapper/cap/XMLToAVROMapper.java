@@ -10,6 +10,7 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
 
 import eu.driver.model.cap.Alert;
+import eu.driver.model.emsi.TSO_2_0;
 
 public class XMLToAVROMapper {
 	
@@ -68,6 +69,22 @@ public class XMLToAVROMapper {
 		
 		log.info("convertGeoJsonToAvro -->");
 		return avroAlert;
+	}
+	
+	public GenericRecord convertEMSIToAvro(String emsiMsg) {
+		log.info("--> convertEMSIToAvro");
+		log.debug(emsiMsg);
+		GenericRecord avroEMSI = null;
+		
+		try {
+			DatumBuilder datumBuilder = new DatumBuilder(new TSO_2_0().getSchema());
+			avroEMSI = datumBuilder.createDatum(emsiMsg);
+		} catch (Exception e) {
+			log.error("Error creating AVRO Message");
+		}
+		
+		log.info("convertEMSIToAvro -->");
+		return avroEMSI;
 	}
 	
 	public String convertAvroToCap(eu.driver.model.cap.Alert alert) {
