@@ -22,6 +22,7 @@ public class ConsumerProperties extends KafkaProperties {
 	public static final String GROUP_ID = ConsumerConfig.GROUP_ID_CONFIG;
 	public static final String KEY_DESERIALIZER = ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG;
 	public static final String VALUE_DESERIALIZER = ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG;
+	public static final String AUTO_OFFSET_RESET = ConsumerConfig.AUTO_OFFSET_RESET_CONFIG;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ConsumerProperties.class);
 
@@ -74,6 +75,7 @@ public class ConsumerProperties extends KafkaProperties {
 
 	private void setDefaults() {
 		setProperty(GROUP_ID, "default_java_adapter_group");
+		setProperty(AUTO_OFFSET_RESET, "latest");
 		setProperty(KEY_DESERIALIZER, "io.confluent.kafka.serializers.KafkaAvroDeserializer");
 		setProperty(VALUE_DESERIALIZER, "io.confluent.kafka.serializers.KafkaAvroDeserializer");
 	}

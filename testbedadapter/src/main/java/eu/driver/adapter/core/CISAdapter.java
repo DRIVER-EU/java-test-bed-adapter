@@ -100,7 +100,7 @@ public class CISAdapter {
 		} catch (Exception e) {
 			
 		}
-		this.clientID = ClientProperties.getInstance().getProperty("client.id");
+		this.clientID = ClientProperties.getInstance().getProperty(ClientProperties.CLIENT_ID);
 	}
 	
 	public static synchronized CISAdapter getInstance(Boolean handleTopicInvite) {

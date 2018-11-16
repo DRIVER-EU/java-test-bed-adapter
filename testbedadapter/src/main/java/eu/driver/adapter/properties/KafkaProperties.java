@@ -24,8 +24,8 @@ public abstract class KafkaProperties extends Properties {
 	}
 
 	private void setDefaults() {
-		setProperty(SCHEMA_REGISTRY_URL, "http://schema_registry:3502");
-		setProperty(BOOTSTRAP_SERVERS, "broker:3501");
+		setProperty(SCHEMA_REGISTRY_URL, "http://localhost:3502");
+		setProperty(BOOTSTRAP_SERVERS, "localhost:3501");
 	}
 
 }

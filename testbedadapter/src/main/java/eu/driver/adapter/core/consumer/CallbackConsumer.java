@@ -32,6 +32,7 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends 
 				Key key = record.key();
 				Value message = record.value();
 				sendMessageToReceivers(key, message);
+				consumer.commitAsync();
 			}
 		}
 		logger.debug("Callback Consumer thread stopped for topic: " + getTopic());

@@ -2,8 +2,6 @@ package eu.driver.adapter.core.producer;
 
 import java.util.Date;
 
-import eu.driver.adapter.time.ISO8601TimestampProvider;
-import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Heartbeat;
 
 public class HeartbeatTask implements Runnable {

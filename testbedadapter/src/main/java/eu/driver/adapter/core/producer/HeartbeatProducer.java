@@ -8,18 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.common.errors.SerializationException;
 
-import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.excpetion.CommunicationException;
-import eu.driver.adapter.properties.ClientProperties;
-import eu.driver.adapter.time.ISO8601TimestampProvider;
-import eu.driver.adapter.time.ITimestampProvider;
 import eu.driver.model.core.Heartbeat;
 import eu.driver.model.edxl.DistributionKind;
 import eu.driver.model.edxl.DistributionStatus;
 import eu.driver.model.edxl.EDXLDistribution;
-import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 
 /**
  * Producer for the CIS Adapter Core Heartbeat messages. The heartbeat topic and
