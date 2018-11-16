@@ -23,7 +23,7 @@ jobs:
     - stage: java-adapter
       before_script: 
         - cd testbedadapter
-        - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/{$TESTBED_BRANCH}/docker/local/docker-compose.yml
+        - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/$TESTBED_BRANCH/docker/local/docker-compose.yml
         - docker-compose up -d
         - ./travis/wait.sh
       script: 
