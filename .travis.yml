@@ -2,8 +2,11 @@ language: java
 jdk:
   - oraclejdk8
 
-services:
+services: 
   - docker
+  
+sudo:
+  - required
 
 jobs:
   include:
@@ -21,7 +24,7 @@ jobs:
         - cd testbedadapter
         - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/master/docker/local/docker-compose.yml
         - docker-compose up -d
-        - ../travis/wait.sh
+        - sudo ../travis/wait.sh
       script: 
         - mvn test
         - mvn integration-test
