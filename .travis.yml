@@ -2,6 +2,9 @@ language: java
 jdk:
 - oraclejdk8
 
+services:
+  - docker
+
 jobs:
   include:
     - stage: java-adapter-avro-schemas
@@ -14,7 +17,14 @@ jobs:
         on:
           branch: master
     - stage: java-adapter
-      before_script: cd testbedadapter
+      before_script: 
+        - cd testbedadapter
+        - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/master/docker/local/docker-compose.yml
+        - docker-compose up
+      script: 
+        - mvn install
+        - mvn test
+        - mvn integration-test
       before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
       deploy: 
         provider: script
