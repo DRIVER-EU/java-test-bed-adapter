@@ -21,10 +21,11 @@ jobs:
           branch: master
     - stage: java-adapter
       before_script: 
-        - cd testbedadapter
         - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/master/docker/local/docker-compose.yml
         - docker-compose up -d
-        - sudo ../travis/wait.sh
+        - sudo chmod +x ./travis/wait.sh
+        - sudo ./travis/wait.sh
+        - cd testbedadapter
       script: 
         - mvn test
         - mvn integration-test
