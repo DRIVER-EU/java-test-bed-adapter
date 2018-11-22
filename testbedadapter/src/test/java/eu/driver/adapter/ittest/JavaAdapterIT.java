@@ -116,9 +116,11 @@ public class JavaAdapterIT {
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
 
-		for (int i = 0; i < 5; i++) {
-			adapter.sendMessage(testCAP);
-		}
+//		for (int i = 0; i < 5; i++) {
+//			adapter.sendMessage(testCAP);
+//		}
+		
+		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
 
 		// allow 1 min for startup and delivery of msg
 		lock.await(60000, TimeUnit.MILLISECONDS);
