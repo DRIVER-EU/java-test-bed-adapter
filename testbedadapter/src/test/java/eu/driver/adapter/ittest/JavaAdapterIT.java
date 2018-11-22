@@ -91,7 +91,7 @@ public class JavaAdapterIT {
 	public void whenSendingCAP_thenCAPisReceived() throws InterruptedException, CommunicationException {
 		List<IndexedRecord> receivedRecords = new LinkedList<>();
 		CountDownLatch lock = new CountDownLatch(1);
-		
+
 		adapter.addCallback(new IAdaptorCallback() {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
@@ -115,12 +115,16 @@ public class JavaAdapterIT {
 		testCAP.setReferences("testReferences");
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
-		adapter.sendMessage(testCAP);
+
+		for (int i = 0; i < 5; i++) {
+			adapter.sendMessage(testCAP);
+		}
 
 		// allow 1 min for startup and delivery of msg
 		lock.await(60000, TimeUnit.MILLISECONDS);
 
-		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(), receivedRecords.size() == 1);
+		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
+				receivedRecords.size() == 1);
 	}
 
 	private Heartbeat indexedRecordToHeartbeat(IndexedRecord msg) {
