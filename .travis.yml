@@ -16,7 +16,6 @@ before_script:
   - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/$TESTBED_BRANCH/docker/local/docker-compose.yml
   - docker-compose up -d
   - sudo bash ./travis/wait.sh
-  - cd testbedadapter
 script: 
   - bash ./travis/script.sh
 after_script:
