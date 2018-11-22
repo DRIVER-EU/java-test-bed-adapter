@@ -76,9 +76,8 @@ public class JavaAdapterIT {
 			}
 		}, TopicConstants.HEARTBEAT_TOPIC);
 
-		// in 15000 ms we should've sent 3 heartbeats plus 3 times 500ms to allow some
-		// delay
-		lock.await(16500, TimeUnit.MILLISECONDS);
+		// allow one minute for startup, delay and send/delivery of heartbeat msges
+		lock.await(60000, TimeUnit.MILLISECONDS);
 
 		assertTrue("At least 3 heartbeats should have been received but was " + receivedRecords.size(),
 				receivedRecords.size() > 2);
@@ -126,8 +125,8 @@ public class JavaAdapterIT {
 		testCAP.setInfo(null);
 		adapter.sendMessage(testCAP);
 
-		// allow 15000 ms for startup and delivery of msg
-		lock.await(15000, TimeUnit.MILLISECONDS);
+		// allow 1 min for startup and delivery of msg
+		lock.await(60000, TimeUnit.MILLISECONDS);
 
 		assertTrue("Own CAP message should be received", receivedRecords.size() == 1);
 	}
