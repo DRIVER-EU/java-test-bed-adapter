@@ -4,3 +4,4 @@ cd ../testbedadapter
 mvn install -DskipITs
 cd ../xml-json-to-avro-mapper
 mvn install
+cd ..

@@ -4,3 +4,4 @@ cd ../testbedadapter
 mvn deploy -DskipTests
 cd ../xml-json-to-avro-mapper
 mvn deploy -DskipTests
+cd ..

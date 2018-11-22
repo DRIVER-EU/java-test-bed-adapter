@@ -1,2 +1,3 @@
-cd ../testbedadapter
+cd testbedadapter
 mvn test && mvn integration-test
+cd ..

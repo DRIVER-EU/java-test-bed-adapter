@@ -10,16 +10,15 @@ sudo:
   - required
   
 install:
-  - bash -x ./travis/install.sh
+  - bash ./travis/install.sh
   
 before_script: 
   - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/$TESTBED_BRANCH/docker/local/docker-compose.yml
   - docker-compose up -d
-  - sudo chmod +x ./travis/wait.sh
-  - sudo ./travis/wait.sh
+  - sudo bash ./travis/wait.sh
   - cd testbedadapter
 script: 
-  - bash -x ./travis/script.sh
+  - bash ./travis/script.sh
 after_script:
   - docker-compose down
   
@@ -28,7 +27,7 @@ before_deploy:
   
 deploy: 
   provider: script
-  script: bash -x ./travis/deploy.sh
+  script: bash ./travis/deploy.sh
   on:
     branch: master
     
