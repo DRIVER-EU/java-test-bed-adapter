@@ -13,7 +13,7 @@ install:
   - bash ./travis/install.sh
   
 before_script: 
-  - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/$TESTBED_BRANCH/docker/local/docker-compose.yml
+  - wget https://raw.githubusercontent.com/DRIVER-EU/test-bed/$TESTBED_BRANCH/docker/local-lightweight/docker-compose.yml
   - docker-compose up -d
   - sudo bash ./travis/wait.sh
 script: 

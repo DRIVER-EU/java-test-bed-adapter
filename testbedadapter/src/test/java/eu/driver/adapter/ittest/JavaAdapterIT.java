@@ -120,7 +120,7 @@ public class JavaAdapterIT {
 		// allow 1 min for startup and delivery of msg
 		lock.await(60000, TimeUnit.MILLISECONDS);
 
-		assertTrue("Own CAP message should be received", receivedRecords.size() == 1);
+		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(), receivedRecords.size() == 1);
 	}
 
 	private Heartbeat indexedRecordToHeartbeat(IndexedRecord msg) {
