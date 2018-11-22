@@ -68,8 +68,11 @@ public class JavaAdapterIT {
 		adapter.addCallback(new IAdaptorCallback() {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
-				receivedRecords.add(message);
-				lock.countDown();
+				Heartbeat msg = indexedRecordToHeartbeat(message);
+				if (msg.getId().toString().equals("testProducer")) {
+					receivedRecords.add(message);
+					lock.countDown();
+				}
 			}
 		}, TopicConstants.HEARTBEAT_TOPIC);
 
@@ -84,8 +87,6 @@ public class JavaAdapterIT {
 		// acccurate due to thread startup
 		Heartbeat hb1 = indexedRecordToHeartbeat(receivedRecords.get(1));
 		Heartbeat hb2 = indexedRecordToHeartbeat(receivedRecords.get(2));
-		assertEquals(hb1.getId().toString(), "testProducer");
-		assertEquals(hb2.getId().toString(), "testProducer");
 
 		long diff = hb2.getAlive() - hb1.getAlive();
 		assertTrue("Heartbeat updates should be 5000ms apart (allowing 10% deviation), but was " + diff, diff <= 5500);
@@ -125,8 +126,8 @@ public class JavaAdapterIT {
 		testCAP.setInfo(null);
 		adapter.sendMessage(testCAP);
 
-		// allow 5000 ms for startup and delivery of msg
-		lock.await(5000, TimeUnit.MILLISECONDS);
+		// allow 15000 ms for startup and delivery of msg
+		lock.await(15000, TimeUnit.MILLISECONDS);
 
 		assertTrue("Own CAP message should be received", receivedRecords.size() == 1);
 	}

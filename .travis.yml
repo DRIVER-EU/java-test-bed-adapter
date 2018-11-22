@@ -17,7 +17,9 @@ before_script:
   - docker-compose up -d
   - sudo bash ./travis/wait.sh
 script: 
-  - bash ./travis/run-tests.sh
+  - cd testbedadapter
+  - mvn test-compile test failsafe:integration-test failsafe:verify
+  - cd ..
 after_script:
   - docker-compose down
   
