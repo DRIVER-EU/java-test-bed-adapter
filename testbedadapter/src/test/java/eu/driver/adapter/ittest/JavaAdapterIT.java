@@ -115,11 +115,52 @@ public class JavaAdapterIT {
 		testCAP.setReferences("testReferences");
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
-
-//		for (int i = 0; i < 5; i++) {
-//			adapter.sendMessage(testCAP);
-//		}
 		
+		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
+
+		// allow 1 min for startup and delivery of msg
+		lock.await(60000, TimeUnit.MILLISECONDS);
+
+		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
+				receivedRecords.size() == 1);
+	}
+	
+	/**
+	 * Tests Sending and Receiving of own CAP Alert message.
+	 * 
+	 * @throws InterruptedException
+	 * @throws CommunicationException
+	 */
+	@Test
+	public void whenSendingCAP_thenCAPisReceived2() throws InterruptedException, CommunicationException {
+		List<IndexedRecord> receivedRecords = new LinkedList<>();
+		CountDownLatch lock = new CountDownLatch(1);
+
+		adapter.addCallback(new IAdaptorCallback() {
+			@Override
+			public void messageReceived(IndexedRecord key, IndexedRecord message) {
+				receivedRecords.add(message);
+				lock.countDown();
+			}
+		}, TopicConstants.STANDARD_TOPIC_CAP);
+
+		Alert testCAP = new Alert();
+		testCAP.setSender("testSender");
+		testCAP.setIdentifier("testIdentifier");
+		testCAP.setSent("testSent");
+		testCAP.setStatus(Status.Test);
+		testCAP.setMsgType(MsgType.Alert);
+		testCAP.setSource("testSource");
+		testCAP.setScope(Scope.Private);
+		testCAP.setRestriction("testRestriction");
+		testCAP.setAddresses("none");
+		testCAP.setCode("testCode");
+		testCAP.setNote("testNote");
+		testCAP.setReferences("testReferences");
+		testCAP.setIncidents("testIncidents");
+		testCAP.setInfo(null);
+
+	
 		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
 
 		// allow 1 min for startup and delivery of msg
