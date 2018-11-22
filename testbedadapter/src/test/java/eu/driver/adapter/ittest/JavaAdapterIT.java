@@ -1,6 +1,5 @@
 package eu.driver.adapter.ittest;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
@@ -10,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.avro.specific.SpecificData;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -39,21 +37,12 @@ public class JavaAdapterIT {
 
 	private static CISAdapter adapter;
 
-	private CountDownLatch lock;
-
-	private List<IndexedRecord> receivedRecords;
-
 	@BeforeClass
 	public static void setup() {
 		// override client ID
 		ClientProperties.getInstance().setProperty(ClientProperties.CLIENT_ID, "testProducer");
 		ConsumerProperties.getInstance(false).setProperty(ConsumerProperties.AUTO_OFFSET_RESET, "latest");
 		adapter = CISAdapter.getInstance();
-	}
-
-	@Before
-	public void setupTest() {
-		receivedRecords = new LinkedList<>();
 	}
 
 	/**
@@ -64,7 +53,8 @@ public class JavaAdapterIT {
 	 */
 	@Test
 	public void whenConnected_thenHeartbeatsAreSent() throws InterruptedException {
-		lock = new CountDownLatch(3);
+		List<IndexedRecord> receivedRecords = new LinkedList<>();
+		CountDownLatch lock = new CountDownLatch(3);
 		adapter.addCallback(new IAdaptorCallback() {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
@@ -99,7 +89,9 @@ public class JavaAdapterIT {
 	 */
 	@Test
 	public void whenSendingCAP_thenCAPisReceived() throws InterruptedException, CommunicationException {
-		lock = new CountDownLatch(1);
+		List<IndexedRecord> receivedRecords = new LinkedList<>();
+		CountDownLatch lock = new CountDownLatch(1);
+		
 		adapter.addCallback(new IAdaptorCallback() {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
