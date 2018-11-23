@@ -99,7 +99,7 @@ public class JavaAdapterIT {
 				lock.countDown();
 			}
 		}, TopicConstants.STANDARD_TOPIC_CAP);
-
+		
 		Alert testCAP = new Alert();
 		testCAP.setSender("testSender");
 		testCAP.setIdentifier("testIdentifier");
@@ -116,6 +116,7 @@ public class JavaAdapterIT {
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
 		
+		Thread.sleep(10000);
 		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
 
 		// allow 1 min for startup and delivery of msg
@@ -124,7 +125,7 @@ public class JavaAdapterIT {
 		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
 				receivedRecords.size() == 1);
 	}
-	
+
 	/**
 	 * Tests Sending and Receiving of own CAP Alert message.
 	 * 
@@ -160,7 +161,6 @@ public class JavaAdapterIT {
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
 
-	
 		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
 
 		// allow 1 min for startup and delivery of msg
