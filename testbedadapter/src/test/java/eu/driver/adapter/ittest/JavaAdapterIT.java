@@ -120,8 +120,8 @@ public class JavaAdapterIT {
 		GenericProducer producer = adapter.createProducer(TopicConstants.STANDARD_TOPIC_CAP);
 		producer.send(testCAP);
 
-		// allow 5 secs for startup and delivery of msg
-		lock.await(5000, TimeUnit.MILLISECONDS);
+		// allow 1 min for startup and delivery of msg
+		lock.await(60000, TimeUnit.MILLISECONDS);
 
 		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
 				receivedRecords.size() == 1);
