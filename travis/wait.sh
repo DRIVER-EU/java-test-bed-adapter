@@ -12,4 +12,4 @@ until $(curl --output /dev/null --silent --head --fail http://localhost:3502); d
     sleep 5
 done
 
-sleep 60
+sleep 300
