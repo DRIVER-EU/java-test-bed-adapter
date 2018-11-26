@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.core.CISAdapter;
+import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.properties.ConsumerProperties;
@@ -40,7 +41,7 @@ public class JavaAdapterIT {
 	@BeforeClass
 	public static void setup() {
 		// override client ID
-		ClientProperties.getInstance().setProperty(ClientProperties.CLIENT_ID, "testProducer");
+		ClientProperties.getInstance().setProperty(ClientProperties.CLIENT_ID, "testProducer2");
 		ConsumerProperties.getInstance(false).setProperty(ConsumerProperties.AUTO_OFFSET_RESET, "latest");
 		adapter = CISAdapter.getInstance();
 	}
@@ -59,7 +60,7 @@ public class JavaAdapterIT {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
 				Heartbeat msg = indexedRecordToHeartbeat(message);
-				if (msg.getId().toString().equals("testProducer")) {
+				if (msg.getId().toString().equals("testProducer2")) {
 					receivedRecords.add(message);
 					lock.countDown();
 				}
@@ -116,55 +117,11 @@ public class JavaAdapterIT {
 		testCAP.setIncidents("testIncidents");
 		testCAP.setInfo(null);
 		
-		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
+		GenericProducer producer = adapter.createProducer(TopicConstants.STANDARD_TOPIC_CAP);
+		producer.send(testCAP);
 
-		// allow 1 min for startup and delivery of msg
-		lock.await(60000, TimeUnit.MILLISECONDS);
-
-		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
-				receivedRecords.size() == 1);
-	}
-	
-	/**
-	 * Tests Sending and Receiving of own CAP Alert message.
-	 * 
-	 * @throws InterruptedException
-	 * @throws CommunicationException
-	 */
-	@Test
-	public void whenSendingCAP_thenCAPisReceived2() throws InterruptedException, CommunicationException {
-		List<IndexedRecord> receivedRecords = new LinkedList<>();
-		CountDownLatch lock = new CountDownLatch(1);
-
-		adapter.addCallback(new IAdaptorCallback() {
-			@Override
-			public void messageReceived(IndexedRecord key, IndexedRecord message) {
-				receivedRecords.add(message);
-				lock.countDown();
-			}
-		}, TopicConstants.STANDARD_TOPIC_CAP);
-
-		Alert testCAP = new Alert();
-		testCAP.setSender("testSender");
-		testCAP.setIdentifier("testIdentifier");
-		testCAP.setSent("testSent");
-		testCAP.setStatus(Status.Test);
-		testCAP.setMsgType(MsgType.Alert);
-		testCAP.setSource("testSource");
-		testCAP.setScope(Scope.Private);
-		testCAP.setRestriction("testRestriction");
-		testCAP.setAddresses("none");
-		testCAP.setCode("testCode");
-		testCAP.setNote("testNote");
-		testCAP.setReferences("testReferences");
-		testCAP.setIncidents("testIncidents");
-		testCAP.setInfo(null);
-
-	
-		adapter.sendMessage(testCAP, TopicConstants.STANDARD_TOPIC_CAP);
-
-		// allow 1 min for startup and delivery of msg
-		lock.await(60000, TimeUnit.MILLISECONDS);
+		// allow 5 secs for startup and delivery of msg
+		lock.await(5000, TimeUnit.MILLISECONDS);
 
 		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
 				receivedRecords.size() == 1);
