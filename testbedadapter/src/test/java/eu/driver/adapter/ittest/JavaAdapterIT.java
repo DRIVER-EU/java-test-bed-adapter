@@ -37,11 +37,13 @@ import eu.driver.model.core.Heartbeat;
 public class JavaAdapterIT {
 
 	private static CISAdapter adapter;
+	
+	private static String CLIENT_ID = "testProducer17";
 
 	@BeforeClass
 	public static void setup() {
 		// override client ID
-		ClientProperties.getInstance().setProperty(ClientProperties.CLIENT_ID, "testProducer2");
+		ClientProperties.getInstance().setProperty(ClientProperties.CLIENT_ID, CLIENT_ID);
 		ConsumerProperties.getInstance(false).setProperty(ConsumerProperties.AUTO_OFFSET_RESET, "latest");
 		adapter = CISAdapter.getInstance();
 	}
@@ -60,7 +62,7 @@ public class JavaAdapterIT {
 			@Override
 			public void messageReceived(IndexedRecord key, IndexedRecord message) {
 				Heartbeat msg = indexedRecordToHeartbeat(message);
-				if (msg.getId().toString().equals("testProducer2")) {
+				if (msg.getId().toString().equals(CLIENT_ID)) {
 					receivedRecords.add(message);
 					lock.countDown();
 				}
@@ -68,7 +70,7 @@ public class JavaAdapterIT {
 		}, TopicConstants.HEARTBEAT_TOPIC);
 
 		// allow one minute for startup, delay and send/delivery of heartbeat msges
-		lock.await(60000, TimeUnit.MILLISECONDS);
+		lock.await(60, TimeUnit.SECONDS);
 
 		assertTrue("At least 3 heartbeats should have been received but was " + receivedRecords.size(),
 				receivedRecords.size() > 2);
@@ -100,6 +102,9 @@ public class JavaAdapterIT {
 				lock.countDown();
 			}
 		}, TopicConstants.STANDARD_TOPIC_CAP);
+		
+		// allow consumer 60 secs to fetch partition
+		lock.await(60, TimeUnit.SECONDS);
 
 		Alert testCAP = new Alert();
 		testCAP.setSender("testSender");
@@ -121,7 +126,7 @@ public class JavaAdapterIT {
 		producer.send(testCAP);
 
 		// allow 5 sec for startup and delivery of msg
-		lock.await(5000, TimeUnit.MILLISECONDS);
+		lock.await(5, TimeUnit.SECONDS);
 
 		assertTrue("Own CAP message should be received. Received msges: " + receivedRecords.size(),
 				receivedRecords.size() == 1);
