@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** Timing message to distribute the trial time. */
 @org.apache.avro.specific.AvroGenerated
 public class Timing extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1801812225786619744L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Timing\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Timing message to distribute the trial time.\",\"fields\":[{\"name\":\"updatedAt\",\"type\":\"long\",\"doc\":\"The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTime\",\"type\":\"long\",\"doc\":\"The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"timeElapsed\",\"type\":\"long\",\"doc\":\"The number of milliseconds from the start of the trial.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":\"float\",\"doc\":\"Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.\"}]}");
+  private static final long serialVersionUID = 6653542271961315190L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Timing\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"Timing message to distribute the trial time.\",\"fields\":[{\"name\":\"updatedAt\",\"type\":\"long\",\"doc\":\"The date and time the trialTime was updated as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTime\",\"type\":\"long\",\"doc\":\"The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"timeElapsed\",\"type\":\"long\",\"doc\":\"The number of milliseconds from the start of the trial.\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"trialTimeSpeed\",\"type\":\"float\",\"doc\":\"Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.\"},{\"name\":\"state\",\"type\":{\"type\":\"enum\",\"name\":\"State\",\"symbols\":[\"Idle\",\"Initialized\",\"Started\",\"Paused\",\"Stopped\"]},\"doc\":\"The State of the Test-Bed Time Service.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -60,6 +60,8 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
   @Deprecated public long timeElapsed;
   /** Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time. */
   @Deprecated public float trialTimeSpeed;
+  /** The State of the Test-Bed Time Service. */
+  @Deprecated public eu.driver.model.core.State state;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -74,12 +76,14 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param trialTime The fictive date and time of the simulation / trial as the number of milliseconds from the unix epoch, 1 January 1970 00:00:00.000 UTC.
    * @param timeElapsed The number of milliseconds from the start of the trial.
    * @param trialTimeSpeed Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time.
+   * @param state The State of the Test-Bed Time Service.
    */
-  public Timing(java.lang.Long updatedAt, java.lang.Long trialTime, java.lang.Long timeElapsed, java.lang.Float trialTimeSpeed) {
+  public Timing(java.lang.Long updatedAt, java.lang.Long trialTime, java.lang.Long timeElapsed, java.lang.Float trialTimeSpeed, eu.driver.model.core.State state) {
     this.updatedAt = updatedAt;
     this.trialTime = trialTime;
     this.timeElapsed = timeElapsed;
     this.trialTimeSpeed = trialTimeSpeed;
+    this.state = state;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -90,6 +94,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
     case 1: return trialTime;
     case 2: return timeElapsed;
     case 3: return trialTimeSpeed;
+    case 4: return state;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -102,6 +107,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
     case 1: trialTime = (java.lang.Long)value$; break;
     case 2: timeElapsed = (java.lang.Long)value$; break;
     case 3: trialTimeSpeed = (java.lang.Float)value$; break;
+    case 4: state = (eu.driver.model.core.State)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -175,6 +181,23 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   /**
+   * Gets the value of the 'state' field.
+   * @return The State of the Test-Bed Time Service.
+   */
+  public eu.driver.model.core.State getState() {
+    return state;
+  }
+
+  /**
+   * Sets the value of the 'state' field.
+   * The State of the Test-Bed Time Service.
+   * @param value the value to set.
+   */
+  public void setState(eu.driver.model.core.State value) {
+    this.state = value;
+  }
+
+  /**
    * Creates a new Timing RecordBuilder.
    * @return A new Timing RecordBuilder
    */
@@ -214,6 +237,8 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
     private long timeElapsed;
     /** Positive number, indicating how fast the simulation / trial time moves with respect to the actual time. A value of 0 means a pause, 1 is as fast as real-time. */
     private float trialTimeSpeed;
+    /** The State of the Test-Bed Time Service. */
+    private eu.driver.model.core.State state;
 
     /** Creates a new Builder */
     private Builder() {
@@ -242,6 +267,10 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
         this.trialTimeSpeed = data().deepCopy(fields()[3].schema(), other.trialTimeSpeed);
         fieldSetFlags()[3] = true;
       }
+      if (isValidValue(fields()[4], other.state)) {
+        this.state = data().deepCopy(fields()[4].schema(), other.state);
+        fieldSetFlags()[4] = true;
+      }
     }
 
     /**
@@ -265,6 +294,10 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       if (isValidValue(fields()[3], other.trialTimeSpeed)) {
         this.trialTimeSpeed = data().deepCopy(fields()[3].schema(), other.trialTimeSpeed);
         fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.state)) {
+        this.state = data().deepCopy(fields()[4].schema(), other.state);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -436,6 +469,49 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
       return this;
     }
 
+    /**
+      * Gets the value of the 'state' field.
+      * The State of the Test-Bed Time Service.
+      * @return The value.
+      */
+    public eu.driver.model.core.State getState() {
+      return state;
+    }
+
+    /**
+      * Sets the value of the 'state' field.
+      * The State of the Test-Bed Time Service.
+      * @param value The value of 'state'.
+      * @return This builder.
+      */
+    public eu.driver.model.core.Timing.Builder setState(eu.driver.model.core.State value) {
+      validate(fields()[4], value);
+      this.state = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'state' field has been set.
+      * The State of the Test-Bed Time Service.
+      * @return True if the 'state' field has been set, false otherwise.
+      */
+    public boolean hasState() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'state' field.
+      * The State of the Test-Bed Time Service.
+      * @return This builder.
+      */
+    public eu.driver.model.core.Timing.Builder clearState() {
+      state = null;
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Timing build() {
@@ -445,6 +521,7 @@ public class Timing extends org.apache.avro.specific.SpecificRecordBase implemen
         record.trialTime = fieldSetFlags()[1] ? this.trialTime : (java.lang.Long) defaultValue(fields()[1]);
         record.timeElapsed = fieldSetFlags()[2] ? this.timeElapsed : (java.lang.Long) defaultValue(fields()[2]);
         record.trialTimeSpeed = fieldSetFlags()[3] ? this.trialTimeSpeed : (java.lang.Float) defaultValue(fields()[3]);
+        record.state = fieldSetFlags()[4] ? this.state : (eu.driver.model.core.State) defaultValue(fields()[4]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

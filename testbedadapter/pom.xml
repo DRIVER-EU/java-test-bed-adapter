@@ -5,7 +5,7 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>testbed-adapter</artifactId>
-	<version>1.0.14</version>
+	<version>1.0.15</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter</name>
@@ -43,7 +43,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kafka.version>1.0.1</kafka.version>
 		<kafka.scala.version>2.10</kafka.scala.version>
-		<testbed.avro.schema.version>1.1.1</testbed.avro.schema.version>
+		<testbed.avro.schema.version>1.1.2</testbed.avro.schema.version>
 		<confluent.version>4.0.0</confluent.version>
 		<avro.version>1.8.2</avro.version>
 		<slf4j.version>1.7.25</slf4j.version>
