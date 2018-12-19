@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -20,13 +21,21 @@
 			<id>confluent</id>
 			<url>http://packages.confluent.io/maven/</url>
 		</repository>
+		<repository>
+			<id>driver-mvn-repo</id>
+			<url>https://raw.github.com/DRIVER-EU/maven-repo/master/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<kafka.version>1.0.1</kafka.version>
 		<kafka.scala.version>2.10</kafka.scala.version>
-		<testbed.avro.schema.version>1.0.5</testbed.avro.schema.version>
+		<testbed.avro.schema.version>1.0.6</testbed.avro.schema.version>
 		<confluent.version>4.0.0</confluent.version>
 		<avro.version>1.8.2</avro.version>
 		<slf4j.version>1.7.25</slf4j.version>
@@ -43,7 +52,7 @@
 		<dependency>
 			<groupId>ly.stealth</groupId>
 			<artifactId>xml-avro</artifactId>
-			<version>0.0.1</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -127,7 +136,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>

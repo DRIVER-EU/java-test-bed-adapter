@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>driver.eu</groupId>
 	<artifactId>java-adaptor-avro-schemas</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<packaging>jar</packaging>
 
-	<name>DRIVER Java Testbed Adapter</name>
+	<name>DRIVER Java Testbed Adapter AVRO Schemas and Classes</name>
 	<url>http://www.driverproject.eu</url>
 
 	<repositories>
@@ -19,6 +20,14 @@
 		<repository>
 			<id>confluent</id>
 			<url>http://packages.confluent.io/maven/</url>
+		</repository>
+		<repository>
+			<id>driver-mvn-repo</id>
+			<url>https://raw.github.com/DRIVER-EU/maven-repo/master/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -114,7 +123,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
