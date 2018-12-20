@@ -1,38 +1,40 @@
 language: java
 jdk:
 - oraclejdk8
-
 jobs:
   include:
-    - stage: java-adapter-avro-schemas
-      before_script: cd java-adaptor-avro-schemas
-      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
-      deploy: 
-        provider: script
-        script: mvn deploy -DskipTests
-        skip_cleanup: true
-        on:
-          branch: master
-    - stage: java-adapter
-      before_script: cd testbedadapter
-      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
-      deploy: 
-        provider: script
-        script: mvn deploy -DskipTests
-        skip_cleanup: true
-        on:
-          branch: master
-    - stage: xml-json-to-avro-mapper
-      before_script: cd xml-json-to-avro-mapper
-      before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
-      deploy: 
-        provider: script
-        script: mvn deploy -DskipTests
-        skip_cleanup: true
-        on:
-          branch: master
-          
+  - stage: java-adapter-avro-schemas
+    before_script: cd java-adaptor-avro-schemas
+    before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+    deploy:
+      provider: script
+      script: mvn deploy -DskipTests
+      skip_cleanup: true
+      on:
+        branch: master
+  - stage: java-adapter
+    before_script: cd testbedadapter
+    before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+    deploy:
+      provider: script
+      script: mvn deploy -DskipTests
+      skip_cleanup: true
+      on:
+        branch: master
+  - stage: xml-json-to-avro-mapper
+    before_script: cd xml-json-to-avro-mapper
+    before_deploy: cp ../.travis.settings.xml $HOME/.m2/settings.xml
+    deploy:
+      provider: script
+      script: mvn deploy -DskipTests
+      skip_cleanup: true
+      on:
+        branch: master
 cache:
   directories:
   - ".autoconf"
   - "$HOME/.m2"
+env:
+  global:
+  - secure: ZT2/wVFQ9cvZ3o5153sI/qbTOJfx170gMIxmg5d62Miq4A1wg4kD9JJQeQOfo3Ovwol2GCxXbhGzTTGMmwyEmLWZ5L3pZ1cDstv+w88TDN7/5ygZL9Y0r/xOJKWtnj2Sb8ZpTyeliXfH2SgdUsfgYQ8tnoQN+zH4d9m7+ULvUIZ064HaZKM/e4znUx+Td28i8lBLzAh7tlxK2Sz/IwXTNDhZYwmkmFQPJr6Hdn2tq7nB1+hnlE1Mgcf2fmGonlPlyeH8PJPJnrWAOnpbTiT/yatQYSaEsiZbeECMFFKNH+28E9rRVOSM6cHm8jSeAJqGy9eF6VSOZJgJVGO2VdDYEpS0SeIBNkIJydpNzAjdrDyu7A7RyzpQsr90bKgMct2gMWE4VOMMerJzWyLZA81aTp8EsawfToTgaVhgattxsr6WTVSJBX9GF/xxpZHtv17bHFMv/jDZTcXw4g9kTUphpYM+AZz2xyMP4opAvdsFJeRC+LE+l8eR6Pekq+yAtcCYtB/lWwPrhRgybuaIh1fEyYMIBVV+lwvfZ4zcUR8+tS6qphjAnuhjX1g6CooGsCmgFHRzGRlHMT/1k8+a5Eb1yQq2JX4X7MCVjcFP5zJg4SNUatVAHGCCsycHidpsw0OHUimoEgDczBC+Qu6DFgM4Nfk26z0bqXj3FPaRX1Y39sQ=
+  - secure: SENvN8+w4Z3X17qW98RLvdNek7ONkndi5LA6kgqXYBC7tpMqALUkkc9agwEHqMiJOdRBaHGYyJFp2IX20XL9742RvBw/w3rq/TTjJ7XsB8/AZgN81VdLXalod4XmZ8Sad7XBw2IHV0T//j3woQ8f8D9dB7G3qWvfR7WQi8X5EeT2L3bVmGo7iwJcQ3AGUtJ0LEeY9oS2pJcaRwCFyaSbJVR1IvaBsczNQ8TwV8JPwyxnV0rBipfARenIKcXQZ5F1s4oSHmQYQu0PU1vD5FPjw3Bs66oXbR9u46hPZFZ/27zZ0nRBXF5RHeIRrudjQ4rFHggeluggIQRbwcJb5rMueBQ2YIO5h69rISqSND0zJcuGQTwOaDEh7W1eeoVnXNGAmH/AAuBNhyCntDuO5Akpdcn0kHYJ8KfPwOC391HC01xVynmLgWudv+YzBkcszHl//74emBhXwzZm/M8sEpOuZ46MWkU9lo7da0r6OqGjdcRdtwkS2aD6A0a0WBFEctxDAkJNC/9bdVUKFYHHd/eDoK7e4d8Wc/jU7FE0qckiUKQPc1sBwSjrfC1GjXP9OvDAqQ8IDiqCMje7OUBEqlPp6kXl5AnJVI+jTfWnSNyLXDKkwNgikmljls4cZXbSc4wppTmHCK53GHkoqifOLSPA+fY0ZyJiCw7/T2HAWd14TM0=
