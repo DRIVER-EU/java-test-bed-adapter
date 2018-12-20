@@ -142,7 +142,7 @@
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.12</version>
 				<configuration>
-					<message>Maven artifacts for ${project.name} ${project.version}</message>
+					<message>Deploying ${project.name} ${project.version} to Maven Repository</message>
 					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
 					<branch>refs/heads/master</branch>
 					<includes>
