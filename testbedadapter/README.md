@@ -10,6 +10,9 @@ In this, the check to the configured KAFKA is done. The Adapter is able to detec
 DEV_MODE, SEC_DEV_MODE, TRIAL_MODE
 NOTE: for SEC_DEV_MODE and for TRIAL mode a certificate located in the /config/cert directory has to be available
 
+## public getNewInstance for getting a new Adapter Singelton instance
+If you need to reset all consumer/producers you can request a complete clean new instance.
+
 ## send a message
 send an already into an AVRO Object structure converted message
 ### follwing methods are available
@@ -22,9 +25,13 @@ to get data (message) into you application you need to register a callback (whic
 public void addCallback(methodDelegate(senderID, topicName, specificType(exc.JS)), topicName);
 
 
-## get the trail time
-returns the trial time Info (does not need to be the real time)
+## getTrialTime
+Get the simulation time as Date
 public AVROTimeInfo getTimeInfo();
+
+## getTimeElapsed
+Get elapsed time in msec
+public long getTimeElapsed();
 
 
 ## add a Log entry in the Trial Event Log
@@ -66,6 +73,17 @@ public void addLogCallback(methodDelegate(avroLogRecord))
 * request.timeout.ms= retry.time
 * key.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
 * value.serializer=io.confluent.kafka.serializers.KafkaAvroSerializer
+
+## Authentication Configuration
+If the Testbed is running in seucred mode, the adapter needs to identify with a certificate. This certificate has to be stored and the needed information have to be provided in the ssl.properties file. The adapter will automatically detect if ssl is needed.
+* security.protocol=SSL
+* ssl.truststore.location=config/cert/truststore.jks
+* ssl.truststore.type=JKS
+* ssl.truststore.password=changeit
+* ssl.keystore.location=config/cert/test_new.p12
+* ssl.keystore.type=PKCS12
+* ssl.keystore.password=test
+* ssl.key.password=test
 
 ## Specific Configuration
 

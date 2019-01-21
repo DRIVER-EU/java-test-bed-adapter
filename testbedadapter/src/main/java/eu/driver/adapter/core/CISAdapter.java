@@ -1,6 +1,7 @@
 package eu.driver.adapter.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,6 @@ import eu.driver.adapter.core.consumer.TopicInviteConsumer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
 import eu.driver.adapter.core.producer.LogProducer;
-import eu.driver.adapter.core.time.TimeInterpolationTask;
 import eu.driver.adapter.excpetion.CommunicationException;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
@@ -33,7 +33,9 @@ import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
 import eu.driver.model.core.Log;
+import eu.driver.model.core.State;
 import eu.driver.model.core.Timing;
+import eu.driver.model.core.TimingControl;
 import eu.driver.model.core.TopicInvite;
 import eu.driver.model.edxl.EDXLDistribution;
 
@@ -43,10 +45,7 @@ public class CISAdapter {
 	private static CISAdapter aMe = null;
 	
 	private String clientID = null;
-	
-	private ScheduledExecutorService timingScheduler;
-	private ScheduledFuture<?> timetaskReference = null;
-	private long timeTaskIntervalMS = 200L;
+
 	/**
 	 * Kafka Producer shared by all specific Producers for sending Avro messages to
 	 * the CIS.
@@ -85,18 +84,21 @@ public class CISAdapter {
 	private CISLogger logger = new CISLogger(CISAdapter.class);
 	
 	private Timing timing = null;
+	private long updatedSimTimeAt = new Date().getTime();
+	private long pTrialTimeSpeed = 0;
+	private State pState = State.Idle;
+	private long pTrialTime = 0;
 	
 	private AdapterMode adpterMode = AdapterMode.DEV_MODE;
+	private Boolean handleTopicInvite = true;
 	private Boolean connectModeSec = false;
 	private Boolean adapterInitDone = false;
 
 	private CISAdapter(Boolean handleTopicInvite) {
+		this.handleTopicInvite = handleTopicInvite;
 		producerMap = new HashMap<>();
 		try {
-			initializeProducers(handleTopicInvite);
-			timingScheduler = Executors.newScheduledThreadPool(1);
-			TimeInterpolationTask task = new TimeInterpolationTask(this, timeTaskIntervalMS);
-			timetaskReference = timingScheduler.scheduleAtFixedRate(task, 0, timeTaskIntervalMS, TimeUnit.MILLISECONDS);
+			initializeProducers();
 		} catch (Exception e) {
 			
 		}
@@ -117,13 +119,25 @@ public class CISAdapter {
 		return CISAdapter.aMe;
 	}
 	
+	public static synchronized CISAdapter getNewInstance(Boolean handleTopicInvite) {
+		if (CISAdapter.aMe != null) {
+			CISAdapter.aMe.closeAdapter();
+		}
+		CISAdapter.aMe = new CISAdapter(handleTopicInvite);
+		return CISAdapter.aMe;
+	}
+	
+	public static synchronized CISAdapter getNewInstance() {
+		if (CISAdapter.aMe != null) {
+			CISAdapter.aMe.closeAdapter();
+		}
+		CISAdapter.aMe = new CISAdapter(true);
+		return CISAdapter.aMe;
+	}
+	
 	public void closeAdapter() {
 		// Stop Heartbeat
 		heartbeatProducer.stopHeartbeats();
-		if (timetaskReference != null) {
-			timetaskReference.cancel(false);
-			timetaskReference = null;
-		}
 		
 		// Stop/Close All Consumers
 		for (GenericCallbackConsumer consumer : this.consumers) {
@@ -139,7 +153,7 @@ public class CISAdapter {
 	/**
 	 * Initializes the core producers used by the CIS Adapter
 	 */
-	private void initializeProducers(Boolean handleTopicInvite) {
+	private void initializeProducers() {
 		logger.info("--> initializeProducers");
 		// actual Kafka producer used by all generic producers
 		try {
@@ -152,7 +166,7 @@ public class CISAdapter {
 			logger.info("Check Adpter DEV Mode");
 			heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);	
 			heartbeatProducer.sendInitialHeartbeat();
-			addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer());
+			addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer(null));
 			adpterMode = AdapterMode.DEV_MODE;
 		} catch (Exception cEx) {
 			logger.info("CISAdapter initialized failed with non secure connection!");
@@ -162,22 +176,32 @@ public class CISAdapter {
 			try {
 				heartbeatProducer = new HeartbeatProducer(sharedAvroProducer, TopicConstants.HEARTBEAT_TOPIC);	
 				heartbeatProducer.sendInitialHeartbeat();
-				addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer());
+				addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer(null));
 				adpterMode = AdapterMode.SEC_DEV_MODE;
 			} catch (Exception e) {
 				logger.info("Adapter running in TRIAL Mode, wait for AdminTool heartbeat for futur initalization!");
-				addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer());
+				addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer(CISAdapter.aMe));
 				adpterMode = AdapterMode.TRIAL_MODE;
 			}
 		}
 		if (adpterMode != AdapterMode.TRIAL_MODE) {
-			initCoreTopics(handleTopicInvite);
+			initCoreTopics();
 			adapterInitDone = true;	
 		} 
 		logger.info("initializeProducers -->");
 	}
 	
-	private void initCoreTopics(Boolean handleTopicInvite) {
+	public void reestablishAdminHeartbeatConsumer() {
+		logger.info("Wait for AdminTool to come up and send Heartbeats!");
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) { }
+		
+		addAvroReceiver(TopicConstants.ADMIN_HEARTBEAT_TOPIC, new AdminHeartbeatConsumer(CISAdapter.aMe));
+	}
+	
+	public void initCoreTopics() {
 		logger.info("--> initCoreTopics");
 		try {
 			if (adpterMode == AdapterMode.TRIAL_MODE) {
@@ -193,7 +217,7 @@ public class CISAdapter {
 			if (handleTopicInvite) {
 				addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
 			}
-			addAvroReceiver(TopicConstants.TIMING_TOPIC, new TimeConsumer());
+			addAvroReceiver(TopicConstants.TIMING_CONTROL_TOPIC, new TimeConsumer());
 			largeDataProducer = new GenericProducer(sharedAvroProducer, TopicConstants.LARGE_DATA_UPDTAE);
 			
 		} catch (Exception e) {
@@ -343,6 +367,13 @@ public class CISAdapter {
 	public void setCurrentTiming(Timing timing) {
 		synchronized(this.timing) {
 			this.timing = timing;
+			long latency = 0;
+			this.updatedSimTimeAt = new Date().getTime();
+		    this.pTrialTimeSpeed = timing.getTrialTimeSpeed().longValue();
+		    if (timing.getState() != null) {
+		      this.pState = timing.getState();
+		    }
+		    this.pTrialTime = timing.getTrialTime() + latency * timing.getTrialTimeSpeed().longValue();
 		}
 	}
 	
@@ -353,6 +384,38 @@ public class CISAdapter {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Get the simulation time as Date.
+	 */
+	public Date getTrialTime() {
+		long now = new Date().getTime();
+	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
+	    return this.pState == State.Idle
+	      ? new Date()
+	      : new Date(this.pTrialTime + timePassedSinceLastUpdate * this.pTrialTimeSpeed);
+	}
+	
+	/**
+	 * Get elapsed time in msec.
+	 */
+	public long getTimeElapsed() {
+	    long now = new Date().getTime();
+	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
+	    return this.pTrialTime + timePassedSinceLastUpdate;
+	}
+	
+	public State getState() {
+	    return this.pState;
+	}
+	
+	/**
+	 * Positive number, indicating how fast the simulation / trial time moves with respect
+	 * to the actual time. A value of 0 means a pause, 1 is as fast as real-time.
+	 */
+	public long getTrialSpeed() {
+	    return this.pTrialTimeSpeed;
 	}
 	
 	public LogProducer getLogProducer() {
@@ -378,6 +441,10 @@ public class CISAdapter {
 				consumerMap.put(topicName, callbackConsumer);
 			}
 		}
+	}
+	
+	public AdapterMode getAdapterMode() {
+		return this.adpterMode;
 	}
 
 }

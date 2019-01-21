@@ -1,11 +1,16 @@
 package eu.driver.adapter.core.producer;
 
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.avro.generic.IndexedRecord;
+import org.apache.commons.collections.functors.InstanceofPredicate;
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.errors.SerializationException;
+import org.apache.kafka.common.errors.TimeoutException;
 import org.slf4j.Logger;
 
 import eu.driver.adapter.core.consumer.AbstractConsumer;
@@ -48,13 +53,32 @@ public abstract class AbstractProducer<Key extends IndexedRecord, Value extends 
 		try {
 			Key key = createKey();
 			ProducerRecord<Key, Value> record = new ProducerRecord<>(topic, key, message);
-			producer.send(record);
+			Future<RecordMetadata> result = producer.send(record);
+			RecordMetadata resRecord = result.get();
 		} catch (SerializationException ex) {
-			// TODO: proper logging
-			ex.printStackTrace();
 			System.err.print("Error while serializing message: " + message);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void sendCheckConnection(Value message) throws Throwable {
+		if (producer == null) {
+			System.err.print("Producer is null, cannot send message: " + message);
+			return;
+		}
+		try {
+			Key key = createKey();
+			ProducerRecord<Key, Value> record = new ProducerRecord<>(topic, key, message);
+			Future<RecordMetadata> result = producer.send(record);
+			RecordMetadata resRecord = result.get();
+		} catch (SerializationException ex) {
+			System.err.print("Error while serializing message: " + message);
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (e.getCause() instanceof TimeoutException) {
+				throw e.getCause();
+			}
 		}
 	}
 	

@@ -34,8 +34,10 @@ public class AdminHeartbeatProducer extends AbstractEDXLDEProducer {
 		heartbeat.setId(this.getClientId());
 		heartbeat.setAlive(new Date().getTime());
 		try {
-			this.send(heartbeat);
+			this.sendCheckConnection(heartbeat);
 		} catch (Exception e) {
+			throw new CommunicationException();
+		} catch (Throwable th) {
 			throw new CommunicationException();
 		}
 	}

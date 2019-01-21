@@ -27,6 +27,8 @@ public class ProducerProperties extends KafkaProperties {
 	private static final Logger logger = LoggerFactory.getLogger(ProducerProperties.class);
 
 	private static ProducerProperties instance;
+	
+	private static Boolean secured = false;
 
 	/**
 	 * 
@@ -34,10 +36,10 @@ public class ProducerProperties extends KafkaProperties {
 	 *         related configuration.
 	 */
 	public static ProducerProperties getInstance(Boolean secured) {
-		if (instance == null) {
-			instance = new ProducerProperties(secured);
+		if (ProducerProperties.instance == null || ProducerProperties.secured != secured) {
+			ProducerProperties.instance = new ProducerProperties(secured);
 		}
-		return instance;
+		return ProducerProperties.instance;
 	}
 
 	private ProducerProperties(Boolean secured) {

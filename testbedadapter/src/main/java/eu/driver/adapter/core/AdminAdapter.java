@@ -1,6 +1,7 @@
 package eu.driver.adapter.core;
 
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,9 @@ import org.apache.kafka.clients.producer.Producer;
 import eu.driver.adapter.constants.AdapterMode;
 import eu.driver.adapter.constants.TopicConstants;
 import eu.driver.adapter.core.consumer.AdapterCallbackConsumer;
+import eu.driver.adapter.core.consumer.AdminTimeConsumer;
 import eu.driver.adapter.core.consumer.GenericCallbackConsumer;
+import eu.driver.adapter.core.consumer.TimeConsumer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
 import eu.driver.adapter.core.producer.LogProducer;
@@ -24,6 +27,8 @@ import eu.driver.adapter.properties.ConsumerProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
+import eu.driver.model.core.State;
+import eu.driver.model.core.Timing;
 import eu.driver.model.edxl.EDXLDistribution;
 
 public class AdminAdapter {
@@ -47,6 +52,12 @@ public class AdminAdapter {
 	
 	private CISLogger logger = new CISLogger(AdminAdapter.class);
 	private Boolean connectModeSec = false;
+	
+	private Timing timing = null;
+	private long updatedSimTimeAt = new Date().getTime();
+	private long pTrialTimeSpeed = 0;
+	private State pState = State.Idle;
+	private long pTrialTime = 0;
 	
 	private AdminAdapter() {
 		try {
@@ -81,6 +92,7 @@ public class AdminAdapter {
 			try {
 				heartbeatProducer = new AdminHeartbeatProducer(sharedAvroProducer, TopicConstants.ADMIN_HEARTBEAT_TOPIC);	
 				heartbeatProducer.sendInitialHeartbeat();
+				//addAvroReceiver(TopicConstants.TIMING_CONTROL_TOPIC, new AdminTimeConsumer());
 			} catch (Exception e) {
 				logger.info("Adapter cannot be initialized, something is wrong!");
 				throw new Exception("Adapter cannot be initialized, something is wrong!");
@@ -127,6 +139,60 @@ public class AdminAdapter {
 			topicInviteProducer = new GenericProducer(sharedAvroProducer, TopicConstants.TOPIC_INVITE_TOPIC);
 		}
 		topicInviteProducer.send(messge);
+	}
+	
+	public void setCurrentTiming(Timing timing) {
+		synchronized(this.timing) {
+			this.timing = timing;
+			long latency = 0;
+			this.updatedSimTimeAt = new Date().getTime();
+		    this.pTrialTimeSpeed = timing.getTrialTimeSpeed().longValue();
+		    if (timing.getState() != null) {
+		      this.pState = timing.getState();
+		    }
+		    this.pTrialTime = timing.getTrialTime() + latency * timing.getTrialTimeSpeed().longValue();
+		}
+	}
+	
+	public Timing getTimeInfo() {
+		if (this.timing != null) {
+			synchronized(this.timing) {
+				return this.timing;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Get the simulation time as Date.
+	 */
+	public Date getTrialTime() {
+		long now = new Date().getTime();
+	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
+	    return this.pState == State.Idle
+	      ? new Date()
+	      : new Date(this.pTrialTime + timePassedSinceLastUpdate * this.pTrialTimeSpeed);
+	}
+	
+	/**
+	 * Get elapsed time in msec.
+	 */
+	public long getTimeElapsed() {
+	    long now = new Date().getTime();
+	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
+	    return this.pTrialTime + timePassedSinceLastUpdate;
+	}
+	
+	public State getState() {
+	    return this.pState;
+	}
+	
+	/**
+	 * Positive number, indicating how fast the simulation / trial time moves with respect
+	 * to the actual time. A value of 0 means a pause, 1 is as fast as real-time.
+	 */
+	public long getTrialSpeed() {
+	    return this.pTrialTimeSpeed;
 	}
 	
 	

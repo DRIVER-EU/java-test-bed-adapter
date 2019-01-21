@@ -25,6 +25,7 @@ public class ConsumerProperties extends KafkaProperties {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ConsumerProperties.class);
 
+	private static Boolean secured = false;
 	private static ConsumerProperties instance;
 
 	/**
@@ -33,7 +34,7 @@ public class ConsumerProperties extends KafkaProperties {
 	 *         consumer related configuration.
 	 */
 	public static ConsumerProperties getInstance(Boolean secured) {
-		if (instance == null) {
+		if (ConsumerProperties.instance == null || ConsumerProperties.secured != secured) {
 			instance = new ConsumerProperties(secured);
 		}
 		
