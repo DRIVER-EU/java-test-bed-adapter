@@ -11,6 +11,8 @@ public class TopicConstants {
 	public static final String TIMING_TOPIC = "system_timing";
 	public static final String TIMING_CONTROL_TOPIC = "system_timing_control";
 	public static final String CONFIG_TOPIC = "system_config";
+	public static final String TRIAL_STATE_CHANGE_TOPIC = "system_request_change_of_trial_stage";
+	public static final String OST_ANSWER_TOPIC = "system_observer_tool_answer";
 	
 	public static final String LARGE_DATA_UPDTAE = "large_data_update";
 	public static final String MAP_LAYER_UPDTAE = "map_layer_update";
