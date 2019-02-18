@@ -51,6 +51,13 @@ public class ConsumerProperties extends KafkaProperties {
 		// the the GROUP_ID to the Client_ID as this has to be unique
 		setProperty(GROUP_ID, ClientProperties.getInstance().getProperty("client.id", "default_java_adapter_group"));
 		
+		if (System.getenv().get("KAFKA_BROKER_URL") != null) {
+			setProperty("bootstrap.servers", System.getenv().get("KAFKA_BROKER_URL"));
+		}
+		if (System.getenv().get("SCHEMA_REGISTRY_URL") != null) {
+			setProperty("schema.registry.url", System.getenv().get("SCHEMA_REGISTRY_URL"));
+		}
+		
 	}
 	
 	private void loadConfigFile() {

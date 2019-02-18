@@ -49,6 +49,13 @@ public class ProducerProperties extends KafkaProperties {
 		if(secured) {
 			loadSSLConfigFile();	
 		}
+		
+		if (System.getenv().get("KAFKA_BROKER_URL") != null) {
+			setProperty("bootstrap.servers", System.getenv().get("KAFKA_BROKER_URL"));
+		}
+		if (System.getenv().get("SCHEMA_REGISTRY_URL") != null) {
+			setProperty("schema.registry.url", System.getenv().get("SCHEMA_REGISTRY_URL"));
+		}
 	}
 	
 	private void loadConfigFile() {
