@@ -2,22 +2,21 @@
   "type": "record",
   "name": "RequestChangeOfTrialStage",
   "namespace": "eu.driver.model.core",
-  "doc": "With this message the observer toll gets informed about a new trial state.",
+  "doc": "With this message the observer tool gets informed about a new trial state.",
   "fields": [
     {
-      "name": "trialId",
-      "type": "int",
-      "doc":
-        "The unique identifier of the running Trial."
+      "name": "ostTrialId",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "The unique identifier of the running Trial."
     },
     {
-      "name": "trialSessionId",
+      "name": "ostTrialSessionId",
       "type": "int",
-      "doc":
-        "The sessionId for the running Trial."
+      "doc": "The sessionId for the running Trial."
     },
     {
-      "name": "trialStageId",
+      "name": "ostTrialStageId",
       "type": "int",
       "doc": "The stageId of the stage that should be activated."
     }

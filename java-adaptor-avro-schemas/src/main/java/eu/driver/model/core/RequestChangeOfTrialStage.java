@@ -11,11 +11,11 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
-/** With this message the observer toll gets informed about a new trial state. */
+/** With this message the observer tool gets informed about a new trial state. */
 @org.apache.avro.specific.AvroGenerated
 public class RequestChangeOfTrialStage extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7745848767922458494L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RequestChangeOfTrialStage\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"With this message the observer toll gets informed about a new trial state.\",\"fields\":[{\"name\":\"trialId\",\"type\":\"int\",\"doc\":\"The unique identifier of the running Trial.\"},{\"name\":\"trialSessionId\",\"type\":\"int\",\"doc\":\"The sessionId for the running Trial.\"},{\"name\":\"trialStageId\",\"type\":\"int\",\"doc\":\"The stageId of the stage that should be activated.\"}]}");
+  private static final long serialVersionUID = -8604299881183289596L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RequestChangeOfTrialStage\",\"namespace\":\"eu.driver.model.core\",\"doc\":\"With this message the observer tool gets informed about a new trial state.\",\"fields\":[{\"name\":\"ostTrialId\",\"type\":[\"null\",\"int\"],\"doc\":\"The unique identifier of the running Trial.\",\"default\":null},{\"name\":\"ostTrialSessionId\",\"type\":\"int\",\"doc\":\"The sessionId for the running Trial.\"},{\"name\":\"ostTrialStageId\",\"type\":\"int\",\"doc\":\"The stageId of the stage that should be activated.\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -53,11 +53,11 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
   }
 
   /** The unique identifier of the running Trial. */
-  @Deprecated public int trialId;
+  @Deprecated public java.lang.Integer ostTrialId;
   /** The sessionId for the running Trial. */
-  @Deprecated public int trialSessionId;
+  @Deprecated public int ostTrialSessionId;
   /** The stageId of the stage that should be activated. */
-  @Deprecated public int trialStageId;
+  @Deprecated public int ostTrialStageId;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,23 +68,23 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
 
   /**
    * All-args constructor.
-   * @param trialId The unique identifier of the running Trial.
-   * @param trialSessionId The sessionId for the running Trial.
-   * @param trialStageId The stageId of the stage that should be activated.
+   * @param ostTrialId The unique identifier of the running Trial.
+   * @param ostTrialSessionId The sessionId for the running Trial.
+   * @param ostTrialStageId The stageId of the stage that should be activated.
    */
-  public RequestChangeOfTrialStage(java.lang.Integer trialId, java.lang.Integer trialSessionId, java.lang.Integer trialStageId) {
-    this.trialId = trialId;
-    this.trialSessionId = trialSessionId;
-    this.trialStageId = trialStageId;
+  public RequestChangeOfTrialStage(java.lang.Integer ostTrialId, java.lang.Integer ostTrialSessionId, java.lang.Integer ostTrialStageId) {
+    this.ostTrialId = ostTrialId;
+    this.ostTrialSessionId = ostTrialSessionId;
+    this.ostTrialStageId = ostTrialStageId;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return trialId;
-    case 1: return trialSessionId;
-    case 2: return trialStageId;
+    case 0: return ostTrialId;
+    case 1: return ostTrialSessionId;
+    case 2: return ostTrialStageId;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -93,62 +93,62 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: trialId = (java.lang.Integer)value$; break;
-    case 1: trialSessionId = (java.lang.Integer)value$; break;
-    case 2: trialStageId = (java.lang.Integer)value$; break;
+    case 0: ostTrialId = (java.lang.Integer)value$; break;
+    case 1: ostTrialSessionId = (java.lang.Integer)value$; break;
+    case 2: ostTrialStageId = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'trialId' field.
+   * Gets the value of the 'ostTrialId' field.
    * @return The unique identifier of the running Trial.
    */
-  public java.lang.Integer getTrialId() {
-    return trialId;
+  public java.lang.Integer getOstTrialId() {
+    return ostTrialId;
   }
 
   /**
-   * Sets the value of the 'trialId' field.
+   * Sets the value of the 'ostTrialId' field.
    * The unique identifier of the running Trial.
    * @param value the value to set.
    */
-  public void setTrialId(java.lang.Integer value) {
-    this.trialId = value;
+  public void setOstTrialId(java.lang.Integer value) {
+    this.ostTrialId = value;
   }
 
   /**
-   * Gets the value of the 'trialSessionId' field.
+   * Gets the value of the 'ostTrialSessionId' field.
    * @return The sessionId for the running Trial.
    */
-  public java.lang.Integer getTrialSessionId() {
-    return trialSessionId;
+  public java.lang.Integer getOstTrialSessionId() {
+    return ostTrialSessionId;
   }
 
   /**
-   * Sets the value of the 'trialSessionId' field.
+   * Sets the value of the 'ostTrialSessionId' field.
    * The sessionId for the running Trial.
    * @param value the value to set.
    */
-  public void setTrialSessionId(java.lang.Integer value) {
-    this.trialSessionId = value;
+  public void setOstTrialSessionId(java.lang.Integer value) {
+    this.ostTrialSessionId = value;
   }
 
   /**
-   * Gets the value of the 'trialStageId' field.
+   * Gets the value of the 'ostTrialStageId' field.
    * @return The stageId of the stage that should be activated.
    */
-  public java.lang.Integer getTrialStageId() {
-    return trialStageId;
+  public java.lang.Integer getOstTrialStageId() {
+    return ostTrialStageId;
   }
 
   /**
-   * Sets the value of the 'trialStageId' field.
+   * Sets the value of the 'ostTrialStageId' field.
    * The stageId of the stage that should be activated.
    * @param value the value to set.
    */
-  public void setTrialStageId(java.lang.Integer value) {
-    this.trialStageId = value;
+  public void setOstTrialStageId(java.lang.Integer value) {
+    this.ostTrialStageId = value;
   }
 
   /**
@@ -184,11 +184,11 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
     implements org.apache.avro.data.RecordBuilder<RequestChangeOfTrialStage> {
 
     /** The unique identifier of the running Trial. */
-    private int trialId;
+    private java.lang.Integer ostTrialId;
     /** The sessionId for the running Trial. */
-    private int trialSessionId;
+    private int ostTrialSessionId;
     /** The stageId of the stage that should be activated. */
-    private int trialStageId;
+    private int ostTrialStageId;
 
     /** Creates a new Builder */
     private Builder() {
@@ -201,16 +201,16 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
      */
     private Builder(eu.driver.model.core.RequestChangeOfTrialStage.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.trialId)) {
-        this.trialId = data().deepCopy(fields()[0].schema(), other.trialId);
+      if (isValidValue(fields()[0], other.ostTrialId)) {
+        this.ostTrialId = data().deepCopy(fields()[0].schema(), other.ostTrialId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.trialSessionId)) {
-        this.trialSessionId = data().deepCopy(fields()[1].schema(), other.trialSessionId);
+      if (isValidValue(fields()[1], other.ostTrialSessionId)) {
+        this.ostTrialSessionId = data().deepCopy(fields()[1].schema(), other.ostTrialSessionId);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.trialStageId)) {
-        this.trialStageId = data().deepCopy(fields()[2].schema(), other.trialStageId);
+      if (isValidValue(fields()[2], other.ostTrialStageId)) {
+        this.ostTrialStageId = data().deepCopy(fields()[2].schema(), other.ostTrialStageId);
         fieldSetFlags()[2] = true;
       }
     }
@@ -221,142 +221,143 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
      */
     private Builder(eu.driver.model.core.RequestChangeOfTrialStage other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.trialId)) {
-        this.trialId = data().deepCopy(fields()[0].schema(), other.trialId);
+      if (isValidValue(fields()[0], other.ostTrialId)) {
+        this.ostTrialId = data().deepCopy(fields()[0].schema(), other.ostTrialId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.trialSessionId)) {
-        this.trialSessionId = data().deepCopy(fields()[1].schema(), other.trialSessionId);
+      if (isValidValue(fields()[1], other.ostTrialSessionId)) {
+        this.ostTrialSessionId = data().deepCopy(fields()[1].schema(), other.ostTrialSessionId);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.trialStageId)) {
-        this.trialStageId = data().deepCopy(fields()[2].schema(), other.trialStageId);
+      if (isValidValue(fields()[2], other.ostTrialStageId)) {
+        this.ostTrialStageId = data().deepCopy(fields()[2].schema(), other.ostTrialStageId);
         fieldSetFlags()[2] = true;
       }
     }
 
     /**
-      * Gets the value of the 'trialId' field.
+      * Gets the value of the 'ostTrialId' field.
       * The unique identifier of the running Trial.
       * @return The value.
       */
-    public java.lang.Integer getTrialId() {
-      return trialId;
+    public java.lang.Integer getOstTrialId() {
+      return ostTrialId;
     }
 
     /**
-      * Sets the value of the 'trialId' field.
+      * Sets the value of the 'ostTrialId' field.
       * The unique identifier of the running Trial.
-      * @param value The value of 'trialId'.
+      * @param value The value of 'ostTrialId'.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setTrialId(int value) {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setOstTrialId(java.lang.Integer value) {
       validate(fields()[0], value);
-      this.trialId = value;
+      this.ostTrialId = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'trialId' field has been set.
+      * Checks whether the 'ostTrialId' field has been set.
       * The unique identifier of the running Trial.
-      * @return True if the 'trialId' field has been set, false otherwise.
+      * @return True if the 'ostTrialId' field has been set, false otherwise.
       */
-    public boolean hasTrialId() {
+    public boolean hasOstTrialId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'trialId' field.
+      * Clears the value of the 'ostTrialId' field.
       * The unique identifier of the running Trial.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearTrialId() {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearOstTrialId() {
+      ostTrialId = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'trialSessionId' field.
+      * Gets the value of the 'ostTrialSessionId' field.
       * The sessionId for the running Trial.
       * @return The value.
       */
-    public java.lang.Integer getTrialSessionId() {
-      return trialSessionId;
+    public java.lang.Integer getOstTrialSessionId() {
+      return ostTrialSessionId;
     }
 
     /**
-      * Sets the value of the 'trialSessionId' field.
+      * Sets the value of the 'ostTrialSessionId' field.
       * The sessionId for the running Trial.
-      * @param value The value of 'trialSessionId'.
+      * @param value The value of 'ostTrialSessionId'.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setTrialSessionId(int value) {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setOstTrialSessionId(int value) {
       validate(fields()[1], value);
-      this.trialSessionId = value;
+      this.ostTrialSessionId = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'trialSessionId' field has been set.
+      * Checks whether the 'ostTrialSessionId' field has been set.
       * The sessionId for the running Trial.
-      * @return True if the 'trialSessionId' field has been set, false otherwise.
+      * @return True if the 'ostTrialSessionId' field has been set, false otherwise.
       */
-    public boolean hasTrialSessionId() {
+    public boolean hasOstTrialSessionId() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'trialSessionId' field.
+      * Clears the value of the 'ostTrialSessionId' field.
       * The sessionId for the running Trial.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearTrialSessionId() {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearOstTrialSessionId() {
       fieldSetFlags()[1] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'trialStageId' field.
+      * Gets the value of the 'ostTrialStageId' field.
       * The stageId of the stage that should be activated.
       * @return The value.
       */
-    public java.lang.Integer getTrialStageId() {
-      return trialStageId;
+    public java.lang.Integer getOstTrialStageId() {
+      return ostTrialStageId;
     }
 
     /**
-      * Sets the value of the 'trialStageId' field.
+      * Sets the value of the 'ostTrialStageId' field.
       * The stageId of the stage that should be activated.
-      * @param value The value of 'trialStageId'.
+      * @param value The value of 'ostTrialStageId'.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setTrialStageId(int value) {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder setOstTrialStageId(int value) {
       validate(fields()[2], value);
-      this.trialStageId = value;
+      this.ostTrialStageId = value;
       fieldSetFlags()[2] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'trialStageId' field has been set.
+      * Checks whether the 'ostTrialStageId' field has been set.
       * The stageId of the stage that should be activated.
-      * @return True if the 'trialStageId' field has been set, false otherwise.
+      * @return True if the 'ostTrialStageId' field has been set, false otherwise.
       */
-    public boolean hasTrialStageId() {
+    public boolean hasOstTrialStageId() {
       return fieldSetFlags()[2];
     }
 
 
     /**
-      * Clears the value of the 'trialStageId' field.
+      * Clears the value of the 'ostTrialStageId' field.
       * The stageId of the stage that should be activated.
       * @return This builder.
       */
-    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearTrialStageId() {
+    public eu.driver.model.core.RequestChangeOfTrialStage.Builder clearOstTrialStageId() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -366,9 +367,9 @@ public class RequestChangeOfTrialStage extends org.apache.avro.specific.Specific
     public RequestChangeOfTrialStage build() {
       try {
         RequestChangeOfTrialStage record = new RequestChangeOfTrialStage();
-        record.trialId = fieldSetFlags()[0] ? this.trialId : (java.lang.Integer) defaultValue(fields()[0]);
-        record.trialSessionId = fieldSetFlags()[1] ? this.trialSessionId : (java.lang.Integer) defaultValue(fields()[1]);
-        record.trialStageId = fieldSetFlags()[2] ? this.trialStageId : (java.lang.Integer) defaultValue(fields()[2]);
+        record.ostTrialId = fieldSetFlags()[0] ? this.ostTrialId : (java.lang.Integer) defaultValue(fields()[0]);
+        record.ostTrialSessionId = fieldSetFlags()[1] ? this.ostTrialSessionId : (java.lang.Integer) defaultValue(fields()[1]);
+        record.ostTrialStageId = fieldSetFlags()[2] ? this.ostTrialStageId : (java.lang.Integer) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

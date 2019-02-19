@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>driver.eu</groupId>
 	<artifactId>xml-json-to-avro-mapper</artifactId>
-	<version>1.0.4</version>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter mapping library</name>
@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testbed.avro.schema.version>1.1.1</testbed.avro.schema.version>
+		<testbed.avro.schema.version>1.2.2</testbed.avro.schema.version>
 		<github.global.server>github</github.global.server>
 	</properties>
 

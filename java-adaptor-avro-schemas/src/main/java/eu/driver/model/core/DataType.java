@@ -7,7 +7,7 @@ package eu.driver.model.core;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public enum DataType {
-  msword, ogg, pdf, excel, powerpoint, zip, audio_mpeg, audio_vorbis, image_bmp, image_gif, image_geotiff, image_jpeg, image_png, json, geojson, text_plain, video_mpeg, video_msvideo, video_avi, netcdf, other  ;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"DataType\",\"namespace\":\"eu.driver.model.core\",\"symbols\":[\"msword\",\"ogg\",\"pdf\",\"excel\",\"powerpoint\",\"zip\",\"audio_mpeg\",\"audio_vorbis\",\"image_bmp\",\"image_gif\",\"image_geotiff\",\"image_jpeg\",\"image_png\",\"json\",\"geojson\",\"text_plain\",\"video_mpeg\",\"video_msvideo\",\"video_avi\",\"netcdf\",\"other\"]}");
+  msword, ogg, pdf, excel, powerpoint, zip, audio_mpeg, audio_vorbis, image_bmp, image_gif, image_geotiff, image_jpeg, image_png, json, geojson, text_plain, video_mpeg, video_msvideo, video_avi, netcdf, wms, wfs, other  ;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"DataType\",\"namespace\":\"eu.driver.model.core\",\"symbols\":[\"msword\",\"ogg\",\"pdf\",\"excel\",\"powerpoint\",\"zip\",\"audio_mpeg\",\"audio_vorbis\",\"image_bmp\",\"image_gif\",\"image_geotiff\",\"image_jpeg\",\"image_png\",\"json\",\"geojson\",\"text_plain\",\"video_mpeg\",\"video_msvideo\",\"video_avi\",\"netcdf\",\"wms\",\"wfs\",\"other\"]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 }
