@@ -310,7 +310,7 @@ public class CISAdapter {
 			callbackConsumer.setCallbacks(callbacks);
 		} else {
 			if (adpterMode == AdapterMode.DEV_MODE || adpterMode == AdapterMode.SEC_DEV_MODE) {
-				callbackConsumer = new AdapterCallbackConsumer(callbacks);
+				callbackConsumer = new AdapterCallbackConsumer(topicName, callbacks);
 				addAvroReceiver(topicName, callbackConsumer);
 				consumerMap.put(topicName, callbackConsumer);
 			} else if (adapterInitDone) {
@@ -320,14 +320,14 @@ public class CISAdapter {
 					topicName.equalsIgnoreCase(TopicConstants.TIMING_TOPIC) ||
 					topicName.equalsIgnoreCase(TopicConstants.TOPIC_INVITE_TOPIC)||
 					topicName.equalsIgnoreCase(TopicConstants.LARGE_DATA_UPDTAE)) {
-						callbackConsumer = new AdapterCallbackConsumer(callbacks);
+						callbackConsumer = new AdapterCallbackConsumer(topicName, callbacks);
 						addAvroReceiver(topicName, callbackConsumer);
 						consumerMap.put(topicName, callbackConsumer);
 				} else {
 					// check if we have already an invite for this, is yes, create the consumer and bind the callback to that
 					if (this.topicInvitesConsumers.get(topicName) != null) {
 						logger.info("Invite for that topic as subscriber was received, add consumer!");
-						callbackConsumer = new AdapterCallbackConsumer(callbacks);
+						callbackConsumer = new AdapterCallbackConsumer(topicName, callbacks);
 						addAvroReceiver(topicName, callbackConsumer);
 						consumerMap.put(topicName, callbackConsumer);
 						logger.debug("Consumer Created, added to consumerMap.");
@@ -350,7 +350,7 @@ public class CISAdapter {
 	}
 	
 	public void addLogCallback(IAdaptorCallback callback) {
-		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
+		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(TopicConstants.LOGGING_TOPIC, callback);
 		addAvroReceiver(TopicConstants.LOGGING_TOPIC, callbackConsumer);
 		consumerMap.put(TopicConstants.LOGGING_TOPIC, callbackConsumer);
 	}
@@ -436,7 +436,7 @@ public class CISAdapter {
 			this.topicInvitesConsumers.put(topicName, inviteMsg);
 			List<IAdaptorCallback> callbacks = this.callbackMap.get(topicName);
 			if (callbacks != null && consumerMap.get(topicName) != null) {
-				AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callbacks);
+				AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(topicName, callbacks);
 				addAvroReceiver(topicName, callbackConsumer);
 				consumerMap.put(topicName, callbackConsumer);
 			}

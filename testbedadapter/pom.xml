@@ -4,7 +4,7 @@
 
 	<groupId>driver.eu</groupId>
 	<artifactId>testbed-adapter</artifactId>
-	<version>1.2.4</version>
+	<version>1.2.6</version>
 	<packaging>jar</packaging>
 
 	<name>DRIVER Java Testbed Adapter</name>
@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>ly.stealth</groupId>
 			<artifactId>xml-avro</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

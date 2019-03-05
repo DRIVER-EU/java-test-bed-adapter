@@ -105,7 +105,7 @@ public class AdminAdapter {
 	public void addCallback(IAdaptorCallback callback, String topicName) {
 		logger.info("addCallback: " + topicName);
 		
-		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(callback);
+		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(topicName, callback);
 		addAvroReceiver(topicName, callbackConsumer);
 	}
 	

@@ -14,9 +14,9 @@ public class TopicConstants {
 	public static final String TRIAL_STATE_CHANGE_TOPIC = "system_request_change_of_trial_stage";
 	public static final String OST_ANSWER_TOPIC = "system_observer_tool_answer";
 	
-	public static final String PHASE_MESSAGE_TOPIC = "system_phase_message";
-	public static final String ROLE_PLAYER_TOPIC = "system_role_player";
-	public static final String SESSION_MGMT_TOPIC = "system_session_mgmt";
+	public static final String PHASE_MESSAGE_TOPIC = "system_tm_phase_message";
+	public static final String ROLE_PLAYER_TOPIC = "system_tm_role_player";
+	public static final String SESSION_MGMT_TOPIC = "system_tm_session_mgmt";
 	
 	public static final String LARGE_DATA_UPDTAE = "large_data_update";
 	public static final String MAP_LAYER_UPDTAE = "map_layer_update";

@@ -11,19 +11,22 @@ import eu.driver.api.IAdaptorCallback;
 public class AdapterCallbackConsumer extends GenericAvroReceiver {
 
 	private List<IAdaptorCallback> callbacks = null;
+	private String topicName = null;
 	
 	
-	public AdapterCallbackConsumer(IAdaptorCallback callback) {
+	public AdapterCallbackConsumer(String topicName, IAdaptorCallback callback) {
 		super();
 		if (this.callbacks == null) {
 			this.callbacks = new ArrayList<IAdaptorCallback>();
 		}
 		this.callbacks.add(callback);
+		this.topicName = topicName;
 	}
 	
-	public AdapterCallbackConsumer(List<IAdaptorCallback> callbacks) {
+	public AdapterCallbackConsumer(String topicName, List<IAdaptorCallback> callbacks) {
 		super();
 		this.callbacks = callbacks;
+		this.topicName = topicName;
 	}
 	
 	public void setCallbacks(List<IAdaptorCallback> callbacks) {
@@ -34,7 +37,7 @@ public class AdapterCallbackConsumer extends GenericAvroReceiver {
 	public void receiveMessage(IndexedRecord key, IndexedRecord message) {
 		if (this.callbacks != null) {
 			for (IAdaptorCallback callback : callbacks) {
-				callback.messageReceived(key, message);	
+				callback.messageReceived(key, message, this.topicName);	
 			}
 		}
 	}
