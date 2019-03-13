@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/DRIVER-EU/java-test-bed-adapter.svg?branch=master)](https://travis-ci.org/DRIVER-EU/java-test-bed-adapter)
 
 # java-test-bed-adapter
-The JAVA test-bed adapter
+The JAVA test-bed adapter connects to the DRIVER+ Test-bed (based on Apache Kafka), and offers additional functionality to support AVRO-based messages, time management, and configuration management. You can read about it more [here](https://github.com/DRIVER-EU/java-test-bed-adapter/tree/master/testbedadapter).
 
 # Requirements for Development
 
