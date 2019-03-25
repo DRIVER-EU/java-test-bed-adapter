@@ -9,6 +9,8 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.driver.adapter.core.CISAdapter;
+
 /**
  * Properties object that contains test-bed specific properties that are not
  * Kafka consumer or producer properties. Sets default values upon creation.
@@ -66,7 +68,13 @@ public class ClientProperties extends Properties {
 	
 	private void loadConfigFile() {
 		try {
-			FileInputStream fis = new FileInputStream("config/client.properties");
+			FileInputStream fis = null;
+			if (CISAdapter.globalConfigPath != null) {
+				fis = new FileInputStream(CISAdapter.globalConfigPath + "/client.properties");
+			} else {
+				fis = new FileInputStream("config/client.properties");	
+			}
+			
 			load(fis);
 			fis.close();
 		} catch (IOException e) {

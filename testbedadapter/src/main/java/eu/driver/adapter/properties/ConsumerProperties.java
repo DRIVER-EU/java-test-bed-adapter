@@ -7,6 +7,8 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.driver.adapter.core.CISAdapter;
+
 /**
  * Properties object that contains extends the standard Kafka properties with
  * properties used specifically by the Consumers. Sets default values for the
@@ -62,7 +64,12 @@ public class ConsumerProperties extends KafkaProperties {
 	
 	private void loadConfigFile() {
 		try {
-			FileInputStream fis = new FileInputStream("config/consumer.properties");
+			FileInputStream fis = null;
+			if (CISAdapter.globalConfigPath != null) {
+				fis = new FileInputStream(CISAdapter.globalConfigPath + "/consumer.properties");
+			} else {
+				fis = new FileInputStream("config/consumer.properties");	
+			}
 			load(fis);
 			fis.close();
 		} catch (IOException e) {
@@ -72,7 +79,12 @@ public class ConsumerProperties extends KafkaProperties {
 	
 	private void loadSSLConfigFile() {
 		try {
-			FileInputStream fis = new FileInputStream("config/ssl.properties");
+			FileInputStream fis = null;
+			if (CISAdapter.globalConfigPath != null) {
+				fis = new FileInputStream(CISAdapter.globalConfigPath + "/ssl.properties");
+			} else {
+				fis = new FileInputStream("config/ssl.properties");	
+			}
 			load(fis);
 			fis.close();
 		} catch (IOException e) {

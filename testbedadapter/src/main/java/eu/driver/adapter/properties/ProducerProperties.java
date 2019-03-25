@@ -7,6 +7,8 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.driver.adapter.core.CISAdapter;
+
 /**
  * Properties object that contains extends the standard Kafka properties with
  * properties used specifically by the Producers. Sets default values for the
@@ -60,7 +62,12 @@ public class ProducerProperties extends KafkaProperties {
 	
 	private void loadConfigFile() {
 		try {
-			FileInputStream fis = new FileInputStream("config/producer.properties");
+			FileInputStream fis = null;
+			if (CISAdapter.globalConfigPath != null) {
+				fis = new FileInputStream(CISAdapter.globalConfigPath + "/producer.properties");
+			} else {
+				fis = new FileInputStream("config/producer.properties");	
+			}
 			load(fis);
 			fis.close();
 		} catch (IOException e) {
@@ -70,7 +77,12 @@ public class ProducerProperties extends KafkaProperties {
 	
 	private void loadSSLConfigFile() {
 		try {
-			FileInputStream fis = new FileInputStream("config/ssl.properties");
+			FileInputStream fis = null;
+			if (CISAdapter.globalConfigPath != null) {
+				fis = new FileInputStream(CISAdapter.globalConfigPath + "/ssl.properties");
+			} else {
+				fis = new FileInputStream("config/ssl.properties");	
+			}
 			load(fis);
 			fis.close();
 		} catch (IOException e) {

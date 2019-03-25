@@ -41,6 +41,7 @@ import eu.driver.model.edxl.EDXLDistribution;
 
 public class CISAdapter {
 
+	public static String globalConfigPath = null;
 	
 	private static CISAdapter aMe = null;
 	
