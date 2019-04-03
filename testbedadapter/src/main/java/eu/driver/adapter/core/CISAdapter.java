@@ -295,6 +295,8 @@ public class CISAdapter {
 		GenericProducer producer = producerMap.get(topicName);
 		if (producer != null) {
 			producer.send(message);
+		} else {
+			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
 		}
 	}
 	
@@ -340,12 +342,12 @@ public class CISAdapter {
 		logger.info("addCallback-->");
 	}
 	
-	public void addLogEntry(Log logEntry) {
+	public void addLogEntry(Log logEntry) throws CommunicationException {
 		logger.debug("--> addLogEntry");
-		try {
-			logProducer.send(logEntry);
-		} catch (Exception cEx) {
-			logger.error("Cannot send the log to the log topic!", cEx);
+		if (logProducer != null) {
+			logProducer.send(logEntry);	
+		} else {
+			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
 		}
 		logger.debug("addLogEntry -->");
 	}
