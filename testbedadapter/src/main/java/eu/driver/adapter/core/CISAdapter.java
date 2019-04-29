@@ -295,6 +295,10 @@ public class CISAdapter {
 		GenericProducer producer = producerMap.get(topicName);
 		if (producer != null) {
 			producer.send(message);
+		} else if (adpterMode.equals(AdapterMode.DEV_MODE)) {
+			producer = createProducer(topicName);
+			producerMap.put(topicName, producer);
+			producer.send(message);
 		} else {
 			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
 		}
