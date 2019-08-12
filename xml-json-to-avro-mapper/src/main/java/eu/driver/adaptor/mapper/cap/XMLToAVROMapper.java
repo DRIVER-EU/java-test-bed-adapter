@@ -3,11 +3,31 @@ package eu.driver.adaptor.mapper.cap;
 import java.io.File;
 import java.io.IOException;
 
+
+
+
+import java.io.StringReader;
+
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.*;
+
+import java.net.URL;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import ly.stealth.xmlavro.DatumBuilder;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
 
 import eu.driver.model.cap.Alert;
 import eu.driver.model.emsi.TSO_2_0;
@@ -101,6 +121,37 @@ public class XMLToAVROMapper {
 		
 		log.info("convertAvroToCap -->");
 		return xmlCap;
+	}
+	
+	public Boolean validateCAP(String capMessage) {
+		try {
+			// parse an XML document into a DOM tree
+		    DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		    InputSource is = new InputSource(new StringReader(capMessage));
+		    Document document = parser.parse(is);
+
+		    // create a SchemaFactory capable of understanding WXS schemas
+		    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+
+		    // load a WXS schema, represented by a Schema instance
+		    Source schemaFile = new StreamSource(new File("schema/xsd/cap1_2.xsd"));
+		    javax.xml.validation.Schema schema = factory.newSchema(schemaFile);
+
+		    // create a Validator instance, which can be used to validate an instance document
+		    Validator validator = schema.newValidator();
+
+		    // validate the DOM tree
+		    try {
+		        validator.validate(new DOMSource(document));
+		    } catch (SAXException e) {
+		        // instance document is invalid!
+		    	log.error("Error validating the XML File:" , e);
+		    }
+		} catch (Exception e) {
+			log.error("Error parsing the XML File!");
+			return false;
+		}
+		return true;
 	}
 
 }

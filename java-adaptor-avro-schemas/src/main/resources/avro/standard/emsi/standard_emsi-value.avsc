@@ -1,622 +1,897 @@
 {
-  "type" : "record",
-  "namespace": "eu.driver.model.emsi",
-  "name": "eu.driver.model.emsi.TSO_2_0",
-  "doc": "EMSI (TSO) Message (version 2.0)",
-  "fields" : [ {
-        "name" : "CONTEXT",
-        "type" : {
-          "type" : "record",
-          "name" : "CONTEXT",
-          "fields" : [ {
-            "name" : "ID",
-            "type" : "string",
-            "source" : "element ID"
-          }, {
-            "name" : "MODE",
-            "type" : "string",
-            "source" : "element MODE"
-          }, {
-            "name" : "MSGTYPE",
-            "type" : "string",
-            "source" : "element MSGTYPE"
-          }, {
-            "name" : "CREATION",
-            "type" : [ "null", "long" ],
-			"default": null,
-            "source" : "element CREATION"
-          }, {
-            "name" : "LINK",
-            "type" : ["null", {
-              "type" : "array",
-              "items" : {
-                "type" : "record",
-                "name" : "LINKCONTEXT",
-                "fields" : [ {
-                  "name" : "ID",
-                  "type" : "string",
-                  "source" : "element ID"
-                }, {
-                  "name" : "ROLE",
-                  "type" : [ "null", "string" ],
-                  "source" : "element ROLE"
-                } ]
-              }
-            }],
-			"default" : null,
-            "source" : "element LINK"
-          }, {
-            "name" : "LEVEL",
-            "type" : [ "null", "string" ],
-			"default": null,
-            "source" : "element LEVEL"
-          }, {
-            "name" : "SECLASS",
-            "type" : [ "null", "string" ],
-			"default": null,
-            "source" : "element SECLASS"
-          }, {
-            "name" : "FREETEXT",
-            "type" : [ "null", "string" ],
-			"default": null,
-            "source" : "element FREETEXT"
-          }, {
-            "name" : "URGENCY",
-            "type" : [ "null", "string" ],
-			"default": null,
-            "source" : "element URGENCY"
-          }, {
-            "name" : "ORIGIN",
-            "type" : [ "null", {
-              "type" : "record",
-              "name" : "ORIGINCONTEXT",
-              "fields" : [ {
-                "name" : "ORG_ID",
-                "type" : "string",
-                "source" : "element ORG_ID"
-              }, {
-                "name" : "USER_ID",
-                "type" : [ "null", "string" ],
-                "source" : "element USER_ID"
-              }, {
-                "name" : "NAME",
-                "type" : [ "null", "string" ],
-                "source" : "element NAME"
-              } ]
-            } ],
-			"default" : null,
-            "source" : "element ORIGIN"
-          }, {
-            "name" : "EXTERNAL_INFO",
-            "type" : [ "null", {
-              "type" : "array",
-              "items" : {
-                "type" : "record",
-                "name" : "EXTERNAL_INFOCONTEXT",
-                "fields" : [ {
-                  "name" : "FREETEXT",
-                  "type" : [ "null", "string" ],
-                  "source" : "element FREETEXT"
-                }, {
-                  "name" : "URI",
-                  "type" : "string",
-                  "source" : "element URI"
-                }, {
-                  "name" : "TYPE",
-                  "type" : [ "null", "string" ],
-                  "source" : "element TYPE"
-                } ]
-              }
-            }],
-			"default" : null,
-            "source" : "element EXTERNAL_INFO"
-          } ]
-        },
-        "source" : "element CONTEXT"
-      }, {
-    "name" : "EVENT",
-    "type" : [ "null", {
-      "type" : "record",
-      "name" : "EVENT",
-      "fields" : [ {
-        "name" : "ID",
-        "type" : "string",
-        "source" : "element ID"
-      }, {
-        "name" : "NAME",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element NAME"
-      }, {
-        "name" : "MAIN_EVENT_ID",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element MAIN_EVENT_ID"
-      }, {
-        "name" : "ETYPE",
-        "type" : [ "null", {
-          "type" : "record",
-          "name" : "ETYPEEVENT",
-          "fields" : [ {
-            "name" : "CATEGORY",
-            "type" : {
-              "type" : "array",
-              "items" : "string"
-            },
-            "source" : "element CATEGORY"
-          }, {
-            "name" : "ACTOR",
-            "type" : {
-              "type" : "array",
-              "items" : "string"
-            },
-            "source" : "element ACTOR"
-          }, {
-            "name" : "LOCTYPE",
-            "type" : {
-              "type" : "array",
-              "items" : "string"
-            },
-            "source" : "element LOCTYPE"
-          }, {
-            "name" : "ENV",
-            "type" : {
-              "type" : "array",
-              "items" : "string"
-            },
-            "source" : "element ENV"
-          } ]
-        } ],
-		"default": null,
-        "source" : "element ETYPE"
-      }, {
-        "name" : "SOURCE",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element SOURCE"
-      }, {
-        "name" : "SCALE",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element SCALE"
-      }, {
-        "name" : "CERTAINTY",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element CERTAINTY"
-      }, {
-        "name" : "DECL_DATIME",
-        "type" : [ "null", "long" ],
-		"default": null,
-        "source" : "element DECL_DATIME"
-      }, {
-        "name" : "OCC_DATIME",
-        "type" : [ "null", "long" ],
-		"default": null,
-        "source" : "element OCC_DATIME"
-      }, {
-        "name" : "OBS_DATIME",
-        "type" : [ "null", "long" ],
-		"default": null,
-        "source" : "element OBS_DATIME"
-      }, {
-        "name" : "STATUS",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element STATUS"
-      }, {
-        "name" : "RISK_ASSESSMNT",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element RISK_ASSESSMNT"
-      }, {
-        "name" : "REFERENCE",
-        "type" : ["null", {
-          "type" : "array",
-          "items" : {
-            "type" : "record",
-            "name" : "REFERENCEEVENT",
-            "fields" : [ {
-              "name" : "ORG_ID",
-              "type" : "string",
-              "source" : "element ORG_ID"
-            }, {
-              "name" : "OTHER_EVENT_ID",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element OTHER_EVENT_ID"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element REFERENCE"
-      }, {
-        "name" : "CASUALTIES",
-        "type" : ["null", {
-          "type" :  "array",
-          "items" : {
-            "type" : "record",
-            "name" : "CASUALTIESEVENT",
-            "fields" : [ {
-              "name" : "CONTEXT",
-              "type" : "string",
-              "source" : "element CONTEXT"
-            }, {
-              "name" : "DATIME",
-              "type" : [ "null", "long" ],
-			  "default": null,
-              "source" : "element DATIME"
-            }, {
-              "name" : "DECONT",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element DECONT"
-            }, {
-              "name" : "TRIAGERED",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element TRIAGERED"
-            }, {
-              "name" : "TRIAGEYELLOW",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element TRIAGEYELLOW"
-            }, {
-              "name" : "TRIAGEGREEN",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element TRIAGEGREEN"
-            }, {
-              "name" : "TRIAGEBLACK",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element TRIAGEBLACK"
-            }, {
-              "name" : "MISSING",
-              "type" : [ "null", "string" ],
-			  "default": null,
-              "source" : "element MISSING"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element CASUALTIES"
-      }, {
-        "name" : "EVAC",
-        "type" : ["null", {
-          "type" : "array",
-          "items" : {
-            "type" : "record",
-            "name" : "EVACEVENT",
-            "fields" : [ {
-              "name" : "DATIME",
-              "type" : [ "null", "long" ],
-              "source" : "element DATIME"
-            }, {
-              "name" : "DISPLACED",
-              "type" : [ "null", "string" ],
-              "source" : "element DISPLACED"
-            }, {
-              "name" : "EVACUATED",
-              "type" : [ "null", "string" ],
-              "source" : "element EVACUATED"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element EVAC"
-      }, {
-        "name" : "EGEO",
-        "type" : ["null",{
-          "type" : "array",
-          "items" : {
-            "type" : "record",
-            "name" : "EGEOEVENT",
-            "fields" : [ {
-              "name" : "DATIME",
-              "type" : [ "null", "long" ],
-              "source" : "element DATIME"
-            }, {
-              "name" : "TYPE",
-              "type" : "string",
-              "source" : "element TYPE"
-            }, {
-              "name" : "POSITION",
-              "type" : {
-                "type" : "record",
-                "name" : "POSITION",
-                "fields" : [ {
-                  "name" : "LOC_ID",
-                  "type" : [ "null", "string" ],
-                  "source" : "element LOC_ID"
-                }, {
-                  "name" : "NAME",
-                  "type" : [ "null", "string" ],
-                  "source" : "element NAME"
-                }, {
-                  "name" : "TYPE",
-                  "type" : [ "null", "string" ],
-                  "source" : "element TYPE"
-                }, {
-                  "name" : "COORDSYS",
-                  "type" : [ "null", "string" ],
-                  "source" : "element COORDSYS"
-                }, {
-                  "name" : "COORD",
-                  "type" : {
-                    "type" : "array",
-                    "items" : {
-                      "type" : "record",
-                      "name" : "COORDType",
-                      "fields" : [ {
-                        "name" : "LAT",
-                        "type" : "double",
-                        "source" : "element LAT"
-                      }, {
-                        "name" : "LON",
-                        "type" : "double",
-                        "source" : "element LON"
-                      }, {
-                        "name" : "HEIGHT",
-                        "type" : [ "null", "double" ],
-                        "source" : "element HEIGHT"
-                      } ]
-                    }
-                  },
-                  "source" : "element COORD"
-                }, {
-                  "name" : "HEIGHT_ROLE",
-                  "type" : [ "null", "string" ],
-                  "source" : "element HEIGHT_ROLE"
-                }, {
-                  "name" : "ADDRESS",
-                  "type" : {
-                    "type" : "array",
-                    "items" : "string"
-                  },
-                  "source" : "element ADDRESS"
-                } ]
-              },
-              "source" : "element POSITION"
-            }, {
-              "name" : "WEATHER",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element WEATHER"
-            }, {
-              "name" : "FREETEXT",
-              "type" : [ "null", "string" ],
-              "source" : "element FREETEXT"
-            }, {
-              "name" : "ID",
-              "type" : [ "null", "string" ],
-              "source" : "element ID"
-            }, {
-              "name" : "STATUS",
-              "type" : [ "null", "string" ],
-              "source" : "element STATUS"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element EGEO"
-      }, {
-        "name" : "CAUSE",
-        "type" : [ "null", "string" ],
-		"default" : null,
-        "source" : "element CAUSE"
-      }, {
-        "name" : "FREETEXT",
-        "type" : [ "null", "string" ],
-		"default": null,
-        "source" : "element FREETEXT"
-      } ]
-    } ],
-    "source" : "element EVENT"
-  }, {
-        "name" : "RESOURCE",
-        "type" : ["null", {
-          "type" : "array",
-          "items" : {
-            "type" : "record",
-            "name" : "RESOURCE",
-            "fields" : [ {
-              "name" : "RTYPE",
-              "type" : {
-                "type" : "record",
-                "name" : "RTYPERESOURCE",
-                "fields" : [ {
-                  "name" : "CLASS",
-                  "type" : "string",
-                  "source" : "element CLASS"
-                }, {
-                  "name" : "CAPABILITY",
-                  "type" : {
-                    "type" : "array",
-                    "items" : "string"
-                  },
-                  "source" : "element CAPABILITY"
-                }, {
-                  "name" : "CHARACTERISTICS",
-                  "type" : {
-                    "type" : "array",
-                    "items" : "string"
-                  },
-                  "source" : "element CHARACTERISTICS"
-                } ]
-              },
-              "source" : "element RTYPE"
-            }, {
-              "name" : "ID",
-              "type" : [ "null", "string" ],
-              "source" : "element ID"
-            }, {
-              "name" : "ORG_ID",
-              "type" : [ "null", "string" ],
-              "source" : "element ORG_ID"
-            }, {
-              "name" : "NAME",
-              "type" : [ "null", "string" ],
-              "source" : "element NAME"
-            }, {
-              "name" : "FREETEXT",
-              "type" : [ "null", "string" ],
-              "source" : "element FREETEXT"
-            }, {
-              "name" : "RGEO",
-              "type" : {
-                "type" : "array",
-                "items" : {
-                  "type" : "record",
-                  "name" : "RGEORESOURCE",
-                  "fields" : [ {
-                    "name" : "DATIME",
-                    "type" : [ "null", "long" ],
-                    "source" : "element DATIME"
-                  }, {
-                    "name" : "TYPE",
-                    "type" : "string",
-                    "source" : "element TYPE"
-                  }, {
-                    "name" : "POSITION",
-                    "type" : "POSITION",
-                    "source" : "element POSITION"
-                  }, {
-                    "name" : "FREETEXT",
-                    "type" : [ "null", "string" ],
-                    "source" : "element FREETEXT"
-                  }, {
-                    "name" : "ID",
-                    "type" : [ "null", "string" ],
-                    "source" : "element ID"
-                  } ]
-                }
-              },
-              "source" : "element RGEO"
-            }, {
-              "name" : "QUANTITY",
-              "type" : [ "null", "double" ],
-              "source" : "element QUANTITY"
-            }, {
-              "name" : "UM",
-              "type" : [ "null", "string" ],
-              "source" : "element UM"
-            }, {
-              "name" : "STATUS",
-              "type" : [ "null", "string" ],
-              "source" : "element STATUS"
-            }, {
-              "name" : "NATIONALITY",
-              "type" : [ "null", "string" ],
-              "source" : "element NATIONALITY"
-            }, {
-              "name" : "CONTACT",
-              "type" : {
-                "type" : "array",
-                "items" : {
-                  "type" : "record",
-                  "name" : "CONTACTRESOURCE",
-                  "fields" : [ {
-                    "name" : "TYPE",
-                    "type" : "string",
-                    "source" : "element TYPE"
-                  }, {
-                    "name" : "DETAIL",
-                    "type" : "string",
-                    "source" : "element DETAIL"
-                  } ]
-                }
-              },
-              "source" : "element CONTACT"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element RESOURCE"
-      }, {
-        "name" : "MISSION",
-        "type" : ["null", {
-          "type" : "array",
-          "items" : {
-            "type" : "record",
-            "name" : "MISSION",
-            "fields" : [ {
-              "name" : "TYPE",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element TYPE"
-            }, {
-              "name" : "FREETEXT",
-              "type" : [ "null", "string" ],
-              "source" : "element FREETEXT"
-            }, {
-              "name" : "ID",
-              "type" : [ "null", "string" ],
-              "source" : "element ID"
-            }, {
-              "name" : "MAIN_MISSION_ID",
-              "type" : [ "null", "string" ],
-              "source" : "element MAIN_MISSION_ID"
-            }, {
-              "name" : "ORG_ID",
-              "type" : [ "null", "string" ],
-              "source" : "element ORG_ID"
-            }, {
-              "name" : "NAME",
-              "type" : [ "null", "string" ],
-              "source" : "element NAME"
-            }, {
-              "name" : "STATUS",
-              "type" : [ "null", "string" ],
-              "source" : "element STATUS"
-            }, {
-              "name" : "START_TIME",
-              "type" : [ "null", "long" ],
-              "source" : "element START_TIME"
-            }, {
-              "name" : "END_TIME",
-              "type" : [ "null", "long" ],
-              "source" : "element END_TIME"
-            }, {
-              "name" : "RESOURCE_ID",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element RESOURCE_ID"
-            }, {
-              "name" : "PARENT_MISSION_ID",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element PARENT_MISSION_ID"
-            }, {
-              "name" : "CHILD_MISSION_ID",
-              "type" : {
-                "type" : "array",
-                "items" : "string"
-              },
-              "source" : "element CHILD_MISSION_ID"
-            }, {
-              "name" : "POSITION",
-              "type" : [ "null", "POSITION" ],
-              "source" : "element POSITION"
-            }, {
-              "name" : "PRIORITY",
-              "type" : [ "null", "string" ],
-              "source" : "element PRIORITY"
-            } ]
-          }
-        }],
-		"default" : null,
-        "source" : "element MISSION"
-      } ],
-  "source" : "document"
+	"type": "record",
+	"namespace": "eu.driver.model.emsi",
+	"name": "eu.driver.model.emsi.TSO_2_0",
+	"doc": "EMSI (TSO) Message (version 2.0)",
+	"fields": [
+		{
+			"name": "CONTEXT",
+			"type": {
+				"type": "record",
+				"name": "CONTEXT",
+				"fields": [
+					{
+						"name": "ID",
+						"type": "string"
+					},
+					{
+						"name": "MODE",
+						"type": "string"
+					},
+					{
+						"name": "MSGTYPE",
+						"type": "string"
+					},
+					{
+						"name": "CREATION",
+						"type": [
+							"null",
+							"long"
+						],
+						"default": null
+					},
+					{
+					"name": "LINK",
+						"type": [
+							"null",
+							{
+								"name": "LINK",
+								"namespace": "eu.driver.model.emsi",
+								"type": "record",
+								"fields": [
+										{
+											"name": "ID",
+											"type": "string"
+										},
+										{
+											"name": "ROLE",
+											"type": [
+												"null",
+												"string"
+											]
+										}
+									]
+							},
+							{
+								"type": "array",
+								"items": "eu.driver.model.emsi.LINK"
+							}
+						],
+						"default": null
+					},
+					{
+						"name": "LEVEL",
+						"type": [
+							"null",
+							"string"
+						],
+						"default": null
+					},
+					{
+						"name": "SECLASS",
+						"type": [
+							"null",
+							"string"
+						],
+						"default": null
+					},
+					{
+						"name": "FREETEXT",
+						"type": [
+							"null",
+							"string"
+						],
+						"default": null
+					},
+					{
+						"name": "URGENCY",
+						"type": [
+							"null",
+							"string"
+						],
+						"default": null
+					},
+					{
+						"name": "ORIGIN",
+						"type": [
+							"null",
+							{
+								"type": "record",
+								"name": "ORIGINCONTEXT",
+								"fields": [
+									{
+										"name": "ORG_ID",
+										"type": "string"
+									},
+									{
+										"name": "USER_ID",
+										"type": [
+											"null",
+											"string"
+										]
+									},
+									{
+										"name": "NAME",
+										"type": [
+											"null",
+											"string"
+										]
+									}
+								]
+							}
+						],
+						"default": null
+					},
+					{
+						"name": "EXTERNAL_INFO",
+						"type": [
+							"null",
+							{
+								"name": "EXTERNAL_INFO",
+								"namespace": "eu.driver.model.emsi",
+								"type": "record",
+								"fields": [
+									{
+										"name": "FREETEXT",
+										"type": [
+											"null",
+											"string"
+										]
+									},
+									{
+										"name": "URI",
+										"type": "string"
+									},
+									{
+										"name": "TYPE",
+										"type": [
+											"null",
+											"string"
+										]
+									}
+								]
+							},
+							{
+								"type": "array",
+								"items": "eu.driver.model.emsi.EXTERNAL_INFO"
+							}
+						],
+						"default": null
+					}
+				]
+			}
+		},
+		{
+			"name": "EVENT",
+			"type": [
+				"null",
+				{
+					"type": "record",
+					"name": "EVENT",
+					"fields": [
+						{
+							"name": "ID",
+							"type": "string"
+						},
+						{
+							"name": "NAME",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "MAIN_EVENT_ID",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "ETYPE",
+							"type": [
+								"null",
+								{
+									"type": "record",
+									"name": "ETYPEEVENT",
+									"fields": [
+										{
+											"name": "CATEGORY",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										},
+										{
+											"name": "ACTOR",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										},
+										{
+											"name": "LOCTYPE",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										},
+										{
+											"name": "ENV",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										}
+									]
+								}
+							],
+							"default": null
+						},
+						{
+							"name": "SOURCE",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "SCALE",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "CERTAINTY",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "DECL_DATIME",
+							"type": [
+								"null",
+								"long"
+							],
+							"default": null
+						},
+						{
+							"name": "OCC_DATIME",
+							"type": [
+								"null",
+								"long"
+							],
+							"default": null
+						},
+						{
+							"name": "OBS_DATIME",
+							"type": [
+								"null",
+								"long"
+							],
+							"default": null,
+							"source": "element OBS_DATIME"
+						},
+						{
+							"name": "STATUS",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "RISK_ASSESSMNT",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "REFERENCE",
+							"type": [
+								"null",
+								{
+									"name": "REFERENCE",
+									"namespace": "eu.driver.model.emsi",
+									"type": "record",
+									"fields": [
+										{
+											"name": "ORG_ID",
+											"type": "string"
+										},
+										{
+											"name": "OTHER_EVENT_ID",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										}
+									]
+								},
+								{
+									"type": "array",
+									"items": "eu.driver.model.emsi.REFERENCE"
+								}
+							],
+							"default": null
+						},
+						{
+							"name": "CASUALTIES",
+							"type": [
+								"null",
+								{
+									"name": "CASUALTIES",
+									"namespace": "eu.driver.model.emsi",
+									"type": "record",
+									"fields": [
+										{
+											"name": "CONTEXT",
+											"type": "string"
+										},
+										{
+											"name": "DATIME",
+											"type": [
+												"null",
+												"long"
+											],
+											"default": null
+										},
+										{
+											"name": "DECONT",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										},
+										{
+											"name": "TRIAGERED",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										},
+										{
+											"name": "TRIAGEYELLOW",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										},
+										{
+											"name": "TRIAGEGREEN",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										},
+										{
+											"name": "TRIAGEBLACK",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										},
+										{
+											"name": "MISSING",
+											"type": [
+												"null",
+												"string"
+											],
+											"default": null
+										}
+									]
+								},
+								{
+									"type": "array",
+									"items": "eu.driver.model.emsi.CASUALTIES"
+								}
+							],
+							"default": null
+						},
+						{
+						"name": "EVAC",
+							"type": [
+								"null",
+								{
+									"name": "EVAC",
+									"namespace": "eu.driver.model.emsi",
+									"type": "record",
+									"fields": [
+											{
+												"name": "DATIME",
+												"type": [
+													"null",
+													"long"
+												]
+											},
+											{
+												"name": "DISPLACED",
+												"type": [
+													"null",
+													"string"
+												]
+											},
+											{
+												"name": "EVACUATED",
+												"type": [
+													"null",
+													"string"
+												]
+											}
+										]
+								},
+								{
+									"type": "array",
+									"items": "eu.driver.model.emsi.EVAC"
+								}
+							],
+							"default": null
+						},
+						{
+						"name": "EGEO",
+							"type": [
+								"null",
+								{
+									"name": "EGEO",
+									"namespace": "eu.driver.model.emsi",
+									"type": "record",
+									"fields": [
+											{
+												"name": "DATIME",
+												"type": [
+													"null",
+													"long"
+												]
+											},
+											{
+												"name": "TYPE",
+												"type": "string"
+											},
+											{
+												"name": "POSITION",
+												"type": {
+													"type": "record",
+													"name": "POSITION",
+													"fields": [
+														{
+															"name": "LOC_ID",
+															"type": [
+																"null",
+																"string"
+															]
+														},
+														{
+															"name": "NAME",
+															"type": [
+																"null",
+																"string"
+															]
+														},
+														{
+															"name": "TYPE",
+															"type": [
+																"null",
+																"string"
+															]
+														},
+														{
+															"name": "COORDSYS",
+															"type": [
+																"null",
+																"string"
+															]
+														},
+														{
+														"name": "COORD",
+															"type": [
+																"null",
+																{
+																	"name": "COORD",
+																	"namespace": "eu.driver.model.emsi",
+																	"type": "record",
+																	"fields": [
+																		{
+																			"name": "LAT",
+																			"type": "double"
+																		},
+																		{
+																			"name": "LON",
+																			"type": "double"
+																		},
+																		{
+																			"name": "HEIGHT",
+																			"type": [
+																				"null",
+																				"double"
+																			]
+																		}
+																	]
+																},
+																{
+																	"type": "array",
+																	"items": "eu.driver.model.emsi.COORD"
+																}
+															],
+															"default": null
+														},
+														{
+															"name": "HEIGHT_ROLE",
+															"type": [
+																"null",
+																"string"
+															]
+														},
+														{
+															"name": "ADDRESS",
+															"type": {
+																"type": "array",
+																"items": "string"
+															}
+														}
+													]
+												}
+											},
+											{
+												"name": "WEATHER",
+												"type": {
+													"type": "array",
+													"items": "string"
+												}
+											},
+											{
+												"name": "FREETEXT",
+												"type": [
+													"null",
+													"string"
+												]
+											},
+											{
+												"name": "ID",
+												"type": [
+													"null",
+													"string"
+												]
+											},
+											{
+												"name": "STATUS",
+												"type": [
+													"null",
+													"string"
+												]
+											}
+										]
+								},
+								{
+									"type": "array",
+									"items": "eu.driver.model.emsi.EGEO"
+								}
+							],
+							"default": null
+						},
+						{
+							"name": "CAUSE",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						},
+						{
+							"name": "FREETEXT",
+							"type": [
+								"null",
+								"string"
+							],
+							"default": null
+						}
+					]
+				}
+			]
+		},
+		{
+		"name": "RESOURCE",
+			"type": [
+				"null",
+				{
+					"name": "RESOURCE",
+					"namespace": "eu.driver.model.emsi",
+					"type": "record",
+					"fields": [
+							{
+								"name": "RTYPE",
+								"type": {
+									"type": "record",
+									"name": "RTYPERESOURCE",
+									"fields": [
+										{
+											"name": "CLASS",
+											"type": "string"
+										},
+										{
+											"name": "CAPABILITY",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										},
+										{
+											"name": "CHARACTERISTICS",
+											"type": {
+												"type": "array",
+												"items": "string"
+											}
+										}
+									]
+								}
+							},
+							{
+								"name": "ID",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "ORG_ID",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "NAME",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "FREETEXT",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "RGEO",
+									"type": [
+										"null",
+										{
+											"name": "RGEO",
+											"namespace": "eu.driver.model.emsi",
+											"type": "record",
+											"fields": [
+												{
+													"name": "DATIME",
+													"type": [
+														"null",
+														"long"
+													]
+												},
+												{
+													"name": "TYPE",
+													"type": "string"
+												},
+												{
+													"name": "POSITION",
+													"type": "POSITION"
+												},
+												{
+													"name": "FREETEXT",
+													"type": [
+														"null",
+														"string"
+													]
+												},
+												{
+													"name": "ID",
+													"type": [
+														"null",
+														"string"
+													]
+												}
+											]
+										},
+										{
+											"type": "array",
+											"items": "eu.driver.model.emsi.RGEO"
+										}
+									],
+									"default": null
+							},
+							{
+								"name": "QUANTITY",
+								"type": [
+									"null",
+									"double"
+								]
+							},
+							{
+								"name": "UM",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "STATUS",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "NATIONALITY",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "CONTACT",
+									"type": [
+										"null",
+										{
+											"name": "CONTACT",
+											"namespace": "eu.driver.model.emsi",
+											"type": "record",
+											"fields": [
+												{
+													"name": "TYPE",
+													"type": "string"
+												},
+												{
+													"name": "DETAIL",
+													"type": "string"
+												}
+											]
+										},
+										{
+											"type": "array",
+											"items": "eu.driver.model.emsi.CONTACT"
+										}
+									],
+									"default": null
+								}
+						]
+				},
+				{
+					"type": "array",
+					"items": "eu.driver.model.emsi.RESOURCE"
+				}
+			],
+			"default": null
+		},
+		{
+		"name": "MISSION",
+			"type": [
+				"null",
+				{
+					"name": "MISSION",
+					"namespace": "eu.driver.model.emsi",
+					"type": "record",
+					"fields": [
+							{
+								"name": "TYPE",
+								"type": {
+									"type": "array",
+									"items": "string"
+								}
+							},
+							{
+								"name": "FREETEXT",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "ID",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "MAIN_MISSION_ID",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "ORG_ID",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "NAME",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "STATUS",
+								"type": [
+									"null",
+									"string"
+								]
+							},
+							{
+								"name": "START_TIME",
+								"type": [
+									"null",
+									"long"
+								]
+							},
+							{
+								"name": "END_TIME",
+								"type": [
+									"null",
+									"long"
+								]
+							},
+							{
+								"name": "RESOURCE_ID",
+								"type": {
+									"type": "array",
+									"items": "string"
+								}
+							},
+							{
+								"name": "PARENT_MISSION_ID",
+								"type": {
+									"type": "array",
+									"items": "string"
+								}
+							},
+							{
+								"name": "CHILD_MISSION_ID",
+								"type": {
+									"type": "array",
+									"items": "string"
+								}
+							},
+							{
+								"name": "POSITION",
+								"type": [
+									"null",
+									"POSITION"
+								]
+							},
+							{
+								"name": "PRIORITY",
+								"type": [
+									"null",
+									"string"
+								]
+							}
+						]
+				},
+				{
+					"type": "array",
+					"items": "eu.driver.model.emsi.MISSION"
+				}
+			],
+			"default": null
+		}
+	],
+	"source": "document"
 }

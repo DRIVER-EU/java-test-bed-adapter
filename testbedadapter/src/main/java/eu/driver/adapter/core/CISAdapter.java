@@ -295,7 +295,7 @@ public class CISAdapter {
 		GenericProducer producer = producerMap.get(topicName);
 		if (producer != null) {
 			producer.send(message);
-		} else if (adpterMode.equals(AdapterMode.DEV_MODE)) {
+		} else if (adpterMode.equals(AdapterMode.DEV_MODE) || adpterMode.equals(AdapterMode.SEC_DEV_MODE)) {
 			producer = createProducer(topicName);
 			producerMap.put(topicName, producer);
 			producer.send(message);
