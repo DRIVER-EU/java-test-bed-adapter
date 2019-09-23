@@ -22,6 +22,7 @@ import eu.driver.adapter.core.consumer.AdminHeartbeatConsumer;
 import eu.driver.adapter.core.consumer.GenericCallbackConsumer;
 import eu.driver.adapter.core.consumer.TimeConsumer;
 import eu.driver.adapter.core.consumer.TopicInviteConsumer;
+import eu.driver.adapter.core.producer.EvalLogProducer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
 import eu.driver.adapter.core.producer.LogProducer;
@@ -58,6 +59,7 @@ public class CISAdapter {
 	 */
 	private HeartbeatProducer heartbeatProducer;
 	private LogProducer logProducer;
+	private EvalLogProducer evalLogProducer;
 	private GenericProducer largeDataProducer;
 	
 	/*
@@ -211,6 +213,7 @@ public class CISAdapter {
 			}
 			this.startHeartbeats();
 			logProducer = new LogProducer(sharedAvroProducer);
+			evalLogProducer = new EvalLogProducer(sharedAvroProducer);
 			logger.setLogProducer(logProducer);
 			
 			
@@ -354,6 +357,16 @@ public class CISAdapter {
 			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
 		}
 		logger.debug("addLogEntry -->");
+	}
+	
+	public void addEvaluationLogEntry(Log logEntry) throws CommunicationException {
+		logger.debug("--> addEvaluationLogEntry");
+		if (evalLogProducer != null) {
+			evalLogProducer.send(logEntry);	
+		} else {
+			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
+		}
+		logger.debug("addEvaluationLogEntry -->");
 	}
 	
 	public void addLogCallback(IAdaptorCallback callback) {

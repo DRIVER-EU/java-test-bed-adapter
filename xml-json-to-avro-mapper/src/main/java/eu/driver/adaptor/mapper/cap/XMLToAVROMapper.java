@@ -134,7 +134,7 @@ public class XMLToAVROMapper {
 		    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
 		    // load a WXS schema, represented by a Schema instance
-		    Source schemaFile = new StreamSource(new File("schema/xsd/cap1_2.xsd"));
+		    Source schemaFile = new StreamSource(new File("./schema/xsd/cap1_2.xsd"));
 		    javax.xml.validation.Schema schema = factory.newSchema(schemaFile);
 
 		    // create a Validator instance, which can be used to validate an instance document
