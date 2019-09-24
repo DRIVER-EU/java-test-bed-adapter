@@ -16,7 +16,7 @@ import eu.driver.model.edxl.EDXLDistribution;
 public class LogProducer extends AbstractEDXLDEProducer {
 
 	public LogProducer(Producer<EDXLDistribution, IndexedRecord> producer) {
-		super(producer, TopicConstants.EVALUATION_LOGGING_TOPIC);
+		super(producer, TopicConstants.LOGGING_TOPIC);
 	}
 
 	@Override
