@@ -98,7 +98,8 @@ public class CISAdapter {
 	private Boolean adapterInitDone = false;
 
 	private CISAdapter(Boolean handleTopicInvite) {
-		logger.error("Running CISAdapter: 1.2.22");
+		logger.error("Running CISAdapter: 1.2.23");
+		logger.error("Prop: " + System.getProperties().toString());
 		this.handleTopicInvite = handleTopicInvite;
 		producerMap = new HashMap<>();
 		try {

@@ -69,14 +69,17 @@ public class ConsumerProperties extends KafkaProperties {
 		try {
 			FileInputStream fis = null;
 			if (CISAdapter.globalConfigPath != null) {
+				logger.error("Loading consumer.properties from: " + CISAdapter.globalConfigPath + "/consumer.properties");
 				fis = new FileInputStream(CISAdapter.globalConfigPath + "/consumer.properties");
 			} else {
+				logger.error("Loading consumer.properties from: config/consumer.properties");
 				fis = new FileInputStream("config/consumer.properties");	
 			}
 			load(fis);
 			fis.close();
-		} catch (IOException e) {
-			logger.error("Could not read Consumer Properties file consumer.properties in config folder", e);
+		} catch (Exception e) {
+			logger.error("Could not read Consumer Properties file consumer.properties in config folder");
+			logger.error(e.getStackTrace().toString());
 		}
 	}
 	

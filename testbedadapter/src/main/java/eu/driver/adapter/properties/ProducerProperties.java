@@ -72,14 +72,17 @@ public class ProducerProperties extends KafkaProperties {
 		try {
 			FileInputStream fis = null;
 			if (CISAdapter.globalConfigPath != null) {
+				logger.error("Loading producer.properties from: " + CISAdapter.globalConfigPath + "/producer.properties");
 				fis = new FileInputStream(CISAdapter.globalConfigPath + "/producer.properties");
 			} else {
+				logger.error("Loading producer.properties from: config/client.properties");
 				fis = new FileInputStream("config/producer.properties");	
 			}
 			load(fis);
 			fis.close();
-		} catch (IOException e) {
-			logger.error("Could not read Client Properties file client.properties in config folder", e);
+		} catch (Exception e) {
+			logger.error("Could not read producer Properties file producer.properties in config folder", e);
+			logger.error(e.getStackTrace().toString());
 		}
 	}
 	
