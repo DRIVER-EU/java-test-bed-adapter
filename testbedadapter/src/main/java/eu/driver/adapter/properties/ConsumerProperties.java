@@ -55,11 +55,14 @@ public class ConsumerProperties extends KafkaProperties {
 		
 		if (System.getenv().get("KAFKA_BROKER_URL") != null) {
 			setProperty("bootstrap.servers", System.getenv().get("KAFKA_BROKER_URL"));
+		} else if (System.getProperty("KAFKA_BROKER_URL") != null) {
+			setProperty("bootstrap.servers", System.getProperty("KAFKA_BROKER_URL"));
 		}
 		if (System.getenv().get("SCHEMA_REGISTRY_URL") != null) {
 			setProperty("schema.registry.url", System.getenv().get("SCHEMA_REGISTRY_URL"));
+		} else if (System.getProperty("SCHEMA_REGISTRY_URL") != null) {
+			setProperty("schema.registry.url", System.getProperty("SCHEMA_REGISTRY_URL"));
 		}
-		
 	}
 	
 	private void loadConfigFile() {

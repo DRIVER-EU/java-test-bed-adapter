@@ -54,9 +54,17 @@ public class ProducerProperties extends KafkaProperties {
 		
 		if (System.getenv().get("KAFKA_BROKER_URL") != null) {
 			setProperty("bootstrap.servers", System.getenv().get("KAFKA_BROKER_URL"));
+			logger.info("Using KAFKA_BROKER_URL from ENV!");
+		} else if (System.getProperty("KAFKA_BROKER_URL") != null) {
+			setProperty("bootstrap.servers", System.getProperty("KAFKA_BROKER_URL"));
+			logger.info("Using KAFKA_BROKER_URL from PROP!");
 		}
 		if (System.getenv().get("SCHEMA_REGISTRY_URL") != null) {
 			setProperty("schema.registry.url", System.getenv().get("SCHEMA_REGISTRY_URL"));
+			logger.info("Using SCHEMA_REGISTRY_URL from ENV!");
+		} else if (System.getProperty("SCHEMA_REGISTRY_URL") != null) {
+			setProperty("schema.registry.url", System.getProperty("SCHEMA_REGISTRY_URL"));
+			logger.info("Using SCHEMA_REGISTRY_URL from PROP!");
 		}
 	}
 	
