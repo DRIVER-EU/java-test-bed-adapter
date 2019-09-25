@@ -70,15 +70,18 @@ public class ClientProperties extends Properties {
 		try {
 			FileInputStream fis = null;
 			if (CISAdapter.globalConfigPath != null) {
+				logger.info("Loading client.properties from: " + CISAdapter.globalConfigPath + "/client.properties");
 				fis = new FileInputStream(CISAdapter.globalConfigPath + "/client.properties");
 			} else {
+				logger.info("Loading client.properties from: config/client.properties");
 				fis = new FileInputStream("config/client.properties");	
 			}
 			
 			load(fis);
 			fis.close();
 		} catch (IOException e) {
-			logger.error("Could not read Client Properties file client.properties in config folder", e);
+			logger.error("Could not read Client Properties file client.properties in config folder");
+			logger.error(e.getStackTrace().toString());
 		}
 	}
 
