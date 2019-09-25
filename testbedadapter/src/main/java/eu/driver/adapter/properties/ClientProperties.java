@@ -78,7 +78,7 @@ public class ClientProperties extends Properties {
 			load(fis);
 			fis.close();
 		} catch (IOException e) {
-			logger.error("Could not read Client Properties file client.properties in config folder");
+			logger.error("Could not read Client Properties file client.properties in config folder", e);
 		}
 	}
 

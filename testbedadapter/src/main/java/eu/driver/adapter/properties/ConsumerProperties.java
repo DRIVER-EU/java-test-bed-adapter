@@ -76,7 +76,7 @@ public class ConsumerProperties extends KafkaProperties {
 			load(fis);
 			fis.close();
 		} catch (IOException e) {
-			logger.error("Could not read Consumer Properties file consumer.properties in config folder");
+			logger.error("Could not read Consumer Properties file consumer.properties in config folder", e);
 		}
 	}
 	
