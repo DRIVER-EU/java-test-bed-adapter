@@ -2,6 +2,7 @@ package eu.driver.adapter.properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.slf4j.Logger;
@@ -66,6 +67,17 @@ public class ProducerProperties extends KafkaProperties {
 			setProperty("schema.registry.url", System.getProperty("SCHEMA_REGISTRY_URL"));
 			logger.info("Using SCHEMA_REGISTRY_URL from PROP!");
 		}
+		
+		Properties systemProp = System.getProperties();
+		if (systemProp != null) {
+			if (systemProp.get("KAFKA_BROKER_URL")!= null) {
+				setProperty("bootstrap.servers", systemProp.get("KAFKA_BROKER_URL").toString());
+			}
+			if (systemProp.get("SCHEMA_REGISTRY_URL")!= null) {
+				setProperty("schema.registry.url", systemProp.get("SCHEMA_REGISTRY_URL").toString());
+			}
+		}
+		
 	}
 	
 	private void loadConfigFile() {
