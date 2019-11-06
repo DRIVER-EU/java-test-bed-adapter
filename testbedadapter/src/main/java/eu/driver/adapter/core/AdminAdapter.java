@@ -27,6 +27,7 @@ import eu.driver.adapter.properties.ConsumerProperties;
 import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
+import eu.driver.model.core.Log;
 import eu.driver.model.core.State;
 import eu.driver.model.core.Timing;
 import eu.driver.model.edxl.EDXLDistribution;
@@ -49,6 +50,7 @@ public class AdminAdapter {
 	 * The Core Producers
 	 */
 	private AdminHeartbeatProducer heartbeatProducer;
+	private LogProducer logProducer;
 	
 	private CISLogger logger = new CISLogger(AdminAdapter.class);
 	private Boolean connectModeSec = false;
@@ -100,6 +102,7 @@ public class AdminAdapter {
 		}
 		
 		this.startHeartbeats();
+		logProducer = new LogProducer(sharedAvroProducer);
 	}
 	
 	public void addCallback(IAdaptorCallback callback, String topicName) {
@@ -107,6 +110,16 @@ public class AdminAdapter {
 		
 		AdapterCallbackConsumer callbackConsumer = new AdapterCallbackConsumer(topicName, callback);
 		addAvroReceiver(topicName, callbackConsumer);
+	}
+	
+	public void addLogEntry(Log logEntry) throws CommunicationException {
+		logger.debug("--> addLogEntry");
+		if (logProducer != null) {
+			logProducer.send(logEntry);	
+		} else {
+			throw new CommunicationException("There is no producer for that topic available! Message could not be sent.");
+		}
+		logger.debug("addLogEntry -->");
 	}
 	
 	private void addAvroReceiver(String topic, GenericAvroReceiver receiver) {
