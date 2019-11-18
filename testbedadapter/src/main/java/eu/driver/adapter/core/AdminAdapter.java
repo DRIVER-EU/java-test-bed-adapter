@@ -1,8 +1,10 @@
 package eu.driver.adapter.core;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.avro.generic.IndexedRecord;
@@ -46,6 +48,8 @@ public class AdminAdapter {
 	
 	private GenericProducer topicInviteProducer = null;
 	
+	private List<GenericCallbackConsumer> consumers = new ArrayList<GenericCallbackConsumer>();
+	
 	/*
 	 * The Core Producers
 	 */
@@ -74,6 +78,19 @@ public class AdminAdapter {
 			AdminAdapter.aMe = new AdminAdapter();
 		}
 		return AdminAdapter.aMe;
+	}
+	
+	public void closeAdapter() {
+		// Stop Heartbeat
+		heartbeatProducer.stopHeartbeats();
+		
+		// Stop/Close All Consumers
+		for (GenericCallbackConsumer consumer : this.consumers) {
+			consumer.stop();
+		}
+		consumers.clear();
+		
+		AdminAdapter.aMe = null;
 	}
 	
 	/**
@@ -129,6 +146,7 @@ public class AdminAdapter {
 		t.start();
 		logger.info("New Generic Callback Consumer created for topic: " + topic);
 		consumer.addReceiver(receiver);
+		this.consumers.add(consumer);
 	}
 	
 	/**
