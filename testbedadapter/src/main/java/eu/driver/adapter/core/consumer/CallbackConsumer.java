@@ -38,6 +38,7 @@ public abstract class CallbackConsumer<Key extends IndexedRecord, Value extends 
 					sendMessageToReceivers(key, message);
 				}
 			}
+			consumer.unsubscribe();
 		} catch (Exception e) {
 			logger.error("Error in the Callback Consumer for topic: " + getTopic() + ": " + e.getMessage());
 			if (getTopic().equalsIgnoreCase(TopicConstants.ADMIN_HEARTBEAT_TOPIC)) {
