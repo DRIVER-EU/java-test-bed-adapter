@@ -4,8 +4,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.avro.generic.IndexedRecord;
-import org.apache.commons.collections.functors.InstanceofPredicate;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -16,10 +14,7 @@ import org.slf4j.Logger;
 import eu.driver.adapter.core.consumer.AbstractConsumer;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
-import eu.driver.model.edxl.DistributionKind;
-import eu.driver.model.edxl.DistributionStatus;
 import eu.driver.model.edxl.EDXLDistribution;
-import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 
 public abstract class AbstractProducer<Key extends IndexedRecord, Value extends IndexedRecord> {
 	

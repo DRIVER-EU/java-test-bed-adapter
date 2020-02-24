@@ -22,7 +22,7 @@ public class TopicInviteConsumer extends GenericAvroReceiver {
 					CISAdapter.getInstance().topicInviteReceived(inviteMsg);
 				}
 			} catch (Exception e) {
-				logger.error("Error processing the Log message received!", e);
+				logger.error("Error processing the TopicInvite message received!", e);
 			}
 		}
 	}

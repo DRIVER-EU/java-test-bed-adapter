@@ -22,6 +22,7 @@ import eu.driver.adapter.core.consumer.AdminHeartbeatConsumer;
 import eu.driver.adapter.core.consumer.GenericCallbackConsumer;
 import eu.driver.adapter.core.consumer.TimeConsumer;
 import eu.driver.adapter.core.consumer.TopicInviteConsumer;
+import eu.driver.adapter.core.consumer.TopicRemoveConsumer;
 import eu.driver.adapter.core.producer.EvalLogProducer;
 import eu.driver.adapter.core.producer.GenericProducer;
 import eu.driver.adapter.core.producer.HeartbeatProducer;
@@ -38,6 +39,7 @@ import eu.driver.model.core.State;
 import eu.driver.model.core.Timing;
 import eu.driver.model.core.TimingControl;
 import eu.driver.model.core.TopicInvite;
+import eu.driver.model.core.TopicRemove;
 import eu.driver.model.edxl.EDXLDistribution;
 
 public class CISAdapter {
@@ -223,6 +225,7 @@ public class CISAdapter {
 			// create the consumers
 			if (handleTopicInvite) {
 				addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
+				addAvroReceiver(TopicConstants.TOPIC_REMOVE_TOPIC, new TopicRemoveConsumer());
 			}
 			addAvroReceiver(TopicConstants.TIMING_CONTROL_TOPIC, new TimeConsumer());
 			largeDataProducer = new GenericProducer(sharedAvroProducer, TopicConstants.LARGE_DATA_UPDTAE);
@@ -392,11 +395,11 @@ public class CISAdapter {
 			this.timing = timing;
 			long latency = 0;
 			this.updatedSimTimeAt = new Date().getTime();
-		    this.pTrialTimeSpeed = timing.getTrialTimeSpeed().longValue();
+		    this.pTrialTimeSpeed = (long)timing.getTrialTimeSpeed();
 		    if (timing.getState() != null) {
 		      this.pState = timing.getState();
 		    }
-		    this.pTrialTime = timing.getTrialTime() + latency * timing.getTrialTimeSpeed().longValue();
+		    this.pTrialTime = timing.getTrialTime() + latency * (long)timing.getTrialTimeSpeed();
 		}
 	}
 	
@@ -464,6 +467,27 @@ public class CISAdapter {
 				consumerMap.put(topicName, callbackConsumer);
 			}
 		}
+	}
+	
+	public void topicRemoveReceived(TopicRemove removeMsg) {
+		// check if the client ID is publisher and/or subscriber
+		String topicName = removeMsg.getTopicName().toString();
+		this.topicInvitesPublisher.remove(topicName);
+		this.producerMap.remove(topicName);
+		
+		this.topicInvitesConsumers.remove(topicName);
+		this.callbackMap.remove(topicName);
+		AdapterCallbackConsumer consumer = this.consumerMap.remove(topicName);
+		consumer.clearCallbacks();
+		int idxToRemove = -1;
+		for (int i = 0; i < this.consumers.size(); i++) {
+			GenericCallbackConsumer cConsumer = this.consumers.get(i);
+			if (cConsumer.getTopic().equalsIgnoreCase(topicName)) {
+				cConsumer.stop();
+				idxToRemove = i;
+			}
+		}
+		this.consumers.remove(idxToRemove);
 	}
 	
 	public AdapterMode getAdapterMode() {

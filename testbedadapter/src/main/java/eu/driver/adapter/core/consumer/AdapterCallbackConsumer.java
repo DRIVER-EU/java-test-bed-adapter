@@ -32,6 +32,10 @@ public class AdapterCallbackConsumer extends GenericAvroReceiver {
 	public void setCallbacks(List<IAdaptorCallback> callbacks) {
 		this.callbacks = callbacks;
 	}
+	
+	public void clearCallbacks() {
+		this.callbacks = new ArrayList<IAdaptorCallback>();
+	}
 
 	@Override
 	public void receiveMessage(IndexedRecord key, IndexedRecord message) {

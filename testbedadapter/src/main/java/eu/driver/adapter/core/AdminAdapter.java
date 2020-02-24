@@ -177,11 +177,11 @@ public class AdminAdapter {
 			this.timing = timing;
 			long latency = 0;
 			this.updatedSimTimeAt = new Date().getTime();
-		    this.pTrialTimeSpeed = timing.getTrialTimeSpeed().longValue();
+		    this.pTrialTimeSpeed = (long)timing.getTrialTimeSpeed();
 		    if (timing.getState() != null) {
 		      this.pState = timing.getState();
 		    }
-		    this.pTrialTime = timing.getTrialTime() + latency * timing.getTrialTimeSpeed().longValue();
+		    this.pTrialTime = timing.getTrialTime() + latency * (long)timing.getTrialTimeSpeed();
 		}
 	}
 	

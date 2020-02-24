@@ -1,5 +1,7 @@
 package eu.driver.adapter.core.producer;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,7 +13,9 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.common.errors.SerializationException;
 
 import eu.driver.adapter.constants.TopicConstants;
+import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.excpetion.CommunicationException;
+import eu.driver.adapter.logger.CISLogger;
 import eu.driver.adapter.properties.ClientProperties;
 import eu.driver.adapter.time.ISO8601TimestampProvider;
 import eu.driver.adapter.time.ITimestampProvider;
@@ -32,19 +36,40 @@ import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientExcept
  */
 public class HeartbeatProducer extends AbstractEDXLDEProducer {
 
+	private CISLogger logger = new CISLogger(HeartbeatProducer.class);
+	
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
+	
+	private String origin = "";
 	
 
 	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer, String topicName) throws Exception {
 		super(producer, topicName);
 		heartbeatScheduler = Executors.newScheduledThreadPool(1);
+		
+		InetAddress ip;
+        try {
+            ip = InetAddress.getLocalHost();
+            if (ip != null && ip.getHostName() != null) {
+            	origin += ip.getHostName();
+            }
+            if (ip != null) {
+            	if (origin.length() > 0) {
+            		origin += "/";
+            	}
+            	origin += ip.getHostAddress();
+            }
+        } catch (UnknownHostException e) {
+        	logger.error("Error optaining IP and Hostname!");
+        }
 	}
 	
 	public void sendInitialHeartbeat() throws CommunicationException {
 		Heartbeat heartbeat = new Heartbeat();
 		heartbeat.setId(this.getClientId());
 		heartbeat.setAlive(new Date().getTime());
+		heartbeat.setOrigin(this.origin);
 		try {
 			this.sendCheckConnection(heartbeat);
 		} catch (Exception e) {
@@ -61,7 +86,7 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
 	 * @param intervalInMilliseconds number of milliseconds between heartbeats
 	 */
 	public void startHeartbeats(int intervalInMilliseconds) {
-		HeartbeatTask task = new HeartbeatTask(this);
+		HeartbeatTask task = new HeartbeatTask(this, this.origin);
 		taskReference = heartbeatScheduler.scheduleAtFixedRate(task, 0, intervalInMilliseconds, TimeUnit.MILLISECONDS);
 		logger.info("Started periodic heartbeats every " + intervalInMilliseconds + " milliseconds");
 	}
