@@ -8,6 +8,7 @@ import eu.driver.adapter.core.AdminAdapter;
 import eu.driver.adapter.core.CISAdapter;
 import eu.driver.adapter.logger.CISLogger;
 import eu.driver.api.GenericAvroReceiver;
+import eu.driver.model.sim.config.TimeManagement;
 
 public class AdminTimeConsumer extends GenericAvroReceiver {
 
@@ -15,9 +16,9 @@ public class AdminTimeConsumer extends GenericAvroReceiver {
 	
 	@Override
 	public void receiveMessage(IndexedRecord key, IndexedRecord message) {
-		if (message.getSchema().getName().equalsIgnoreCase("Timing")) {
+		if (message.getSchema().getName().equalsIgnoreCase("TimeManagement")) {
 			try {
-				eu.driver.model.core.Timing timing = (eu.driver.model.core.Timing) SpecificData.get().deepCopy(eu.driver.model.core.Timing.SCHEMA$, message);
+			    TimeManagement timing = (TimeManagement) SpecificData.get().deepCopy(TimeManagement.SCHEMA$, message);
 				AdminAdapter.getInstance().setCurrentTiming(timing);
 			} catch (Exception e) {
 				

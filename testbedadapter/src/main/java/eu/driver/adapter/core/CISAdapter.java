@@ -35,12 +35,11 @@ import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
 import eu.driver.model.core.Log;
-import eu.driver.model.core.State;
-import eu.driver.model.core.Timing;
-import eu.driver.model.core.TimingControl;
 import eu.driver.model.core.TopicInvite;
 import eu.driver.model.core.TopicRemove;
 import eu.driver.model.edxl.EDXLDistribution;
+import eu.driver.model.sim.config.TimeManagement;
+import eu.driver.model.sim.config.TimeState;
 
 public class CISAdapter {
 
@@ -88,10 +87,10 @@ public class CISAdapter {
 
 	private CISLogger logger = new CISLogger(CISAdapter.class);
 	
-	private Timing timing = null;
+	private TimeManagement timing = null;
 	private long updatedSimTimeAt = new Date().getTime();
 	private long pTrialTimeSpeed = 0;
-	private State pState = State.Idle;
+	private TimeState pState = TimeState.Initialization;
 	private long pTrialTime = 0;
 	
 	private AdapterMode adpterMode = AdapterMode.DEV_MODE;
@@ -390,20 +389,20 @@ public class CISAdapter {
 	/*
 	 * GETTER/SETTERS
 	 */
-	public void setCurrentTiming(Timing timing) {
+	public void setCurrentTiming(TimeManagement timing) {
 		synchronized(this.timing) {
 			this.timing = timing;
 			long latency = 0;
 			this.updatedSimTimeAt = new Date().getTime();
-		    this.pTrialTimeSpeed = (long)timing.getTrialTimeSpeed();
+		    this.pTrialTimeSpeed = timing.getSimulationSpeed().longValue();
 		    if (timing.getState() != null) {
 		      this.pState = timing.getState();
 		    }
-		    this.pTrialTime = timing.getTrialTime() + latency * (long)timing.getTrialTimeSpeed();
+		    this.pTrialTime = timing.getSimulationTime() + latency * timing.getSimulationSpeed().longValue();
 		}
 	}
 	
-	public Timing getTimeInfo() {
+	public TimeManagement getTimeInfo() {
 		if (this.timing != null) {
 			synchronized(this.timing) {
 				return this.timing;
@@ -418,7 +417,7 @@ public class CISAdapter {
 	public Date getTrialTime() {
 		long now = new Date().getTime();
 	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
-	    return this.pState == State.Idle
+	    return this.pState == TimeState.Initialization
 	      ? new Date()
 	      : new Date(this.pTrialTime + timePassedSinceLastUpdate * this.pTrialTimeSpeed);
 	}
@@ -432,7 +431,7 @@ public class CISAdapter {
 	    return this.pTrialTime + timePassedSinceLastUpdate;
 	}
 	
-	public State getState() {
+	public TimeState getState() {
 	    return this.pState;
 	}
 	
@@ -443,7 +442,7 @@ public class CISAdapter {
 	public long getTrialSpeed() {
 	    return this.pTrialTimeSpeed;
 	}
-	
+		
 	public LogProducer getLogProducer() {
 		return this.logProducer;
 	}

@@ -30,9 +30,9 @@ import eu.driver.adapter.properties.ProducerProperties;
 import eu.driver.api.GenericAvroReceiver;
 import eu.driver.api.IAdaptorCallback;
 import eu.driver.model.core.Log;
-import eu.driver.model.core.State;
-import eu.driver.model.core.Timing;
 import eu.driver.model.edxl.EDXLDistribution;
+import eu.driver.model.sim.config.TimeManagement;
+import eu.driver.model.sim.config.TimeState;
 
 public class AdminAdapter {
 	
@@ -59,10 +59,10 @@ public class AdminAdapter {
 	private CISLogger logger = new CISLogger(AdminAdapter.class);
 	private Boolean connectModeSec = false;
 	
-	private Timing timing = null;
+	private TimeManagement timing = null;
 	private long updatedSimTimeAt = new Date().getTime();
 	private long pTrialTimeSpeed = 0;
-	private State pState = State.Idle;
+	private TimeState pState = TimeState.Initialization;
 	private long pTrialTime = 0;
 	
 	private AdminAdapter() {
@@ -172,20 +172,20 @@ public class AdminAdapter {
 		topicInviteProducer.send(messge);
 	}
 	
-	public void setCurrentTiming(Timing timing) {
+	public void setCurrentTiming(TimeManagement timing) {
 		synchronized(this.timing) {
 			this.timing = timing;
 			long latency = 0;
 			this.updatedSimTimeAt = new Date().getTime();
-		    this.pTrialTimeSpeed = (long)timing.getTrialTimeSpeed();
+		    this.pTrialTimeSpeed = timing.getSimulationSpeed().longValue();
 		    if (timing.getState() != null) {
 		      this.pState = timing.getState();
 		    }
-		    this.pTrialTime = timing.getTrialTime() + latency * (long)timing.getTrialTimeSpeed();
+		    this.pTrialTime = timing.getSimulationTime() + latency * timing.getSimulationSpeed().longValue();
 		}
 	}
 	
-	public Timing getTimeInfo() {
+	public TimeManagement getTimeInfo() {
 		if (this.timing != null) {
 			synchronized(this.timing) {
 				return this.timing;
@@ -200,7 +200,7 @@ public class AdminAdapter {
 	public Date getTrialTime() {
 		long now = new Date().getTime();
 	    long timePassedSinceLastUpdate = now - this.updatedSimTimeAt;
-	    return this.pState == State.Idle
+	    return this.pState == TimeState.Initialization
 	      ? new Date()
 	      : new Date(this.pTrialTime + timePassedSinceLastUpdate * this.pTrialTimeSpeed);
 	}
@@ -214,7 +214,7 @@ public class AdminAdapter {
 	    return this.pTrialTime + timePassedSinceLastUpdate;
 	}
 	
-	public State getState() {
+	public TimeState getState() {
 	    return this.pState;
 	}
 	
