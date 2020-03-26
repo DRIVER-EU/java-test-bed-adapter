@@ -1,6 +1,10 @@
 package eu.driver.adapter.core.producer;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.concurrent.Executors;
@@ -41,7 +45,7 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
 	private ScheduledExecutorService heartbeatScheduler;
 	private ScheduledFuture<?> taskReference = null;
 	
-	private String origin = "";
+	private String origin = "{\"local_IP\":<IPAddress>, \"remote_IP\":<RemoteIPAddress>, \"hostname\":<hostname>}";
 	
 
 	public HeartbeatProducer(Producer<EDXLDistribution, IndexedRecord> producer, String topicName) throws Exception {
@@ -52,13 +56,21 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
         try {
             ip = InetAddress.getLocalHost();
             if (ip != null && ip.getHostName() != null) {
-            	origin += ip.getHostName();
+            	origin.replace("<hostname>", "\"" + ip.getHostName() + "\"");
+            } else {
+            	origin.replace("<hostname>", null);
             }
             if (ip != null) {
-            	if (origin.length() > 0) {
-            		origin += "/";
-            	}
-            	origin += ip.getHostAddress();
+            	origin.replace("<IPAddress>", "\"" + ip.getHostAddress() + "\"");
+            } else {
+            	origin.replace("<IPAddress>", null);
+            }
+            
+            String remoteIP = this.getRemoteIP();
+            if (remoteIP != null) {
+            	origin.replace("<RemoteIPAddress>", "\"" + remoteIP + "\"");
+            } else {
+            	origin.replace("<RemoteIPAddress>", null);
             }
         } catch (UnknownHostException e) {
         	logger.error("Error optaining IP and Hostname!");
@@ -118,6 +130,43 @@ public class HeartbeatProducer extends AbstractEDXLDEProducer {
 		standardKey.setDistributionKind(DistributionKind.Report);
 		standardKey.setDistributionStatus(DistributionStatus.System);
 		return standardKey;
+	}
+	
+	private String getRemoteIP() {
+		String remoteIP = null;
+		
+		try {
+			remoteIP = getHTTPRequest("http://ipv4bot.whatismyipaddress.com", "text/html");
+		} catch (Exception e) {
+			remoteIP = null;
+		}
+		
+		return remoteIP;
+	}
+	
+	private String getHTTPRequest(String url, String contentType) throws Exception {
+		StringBuffer response = new StringBuffer();
+		try {
+			URL obj = new URL(url);
+			HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+	
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Content-Type", contentType);
+	
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String inputLine;
+			
+	
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+		} catch (Exception e) {
+			throw new Exception("Error executing the GET request!");
+		}
+		
+		return response.toString();
+
 	}
 
 }
