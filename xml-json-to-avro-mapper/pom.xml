@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<testbed.avro.schema.version>2.0.0</testbed.avro.schema.version>
+		<testbed.avro.schema.version>2.0.3</testbed.avro.schema.version>
 		<github.global.server>github</github.global.server>
 	</properties>
 
