@@ -226,7 +226,7 @@ public class CISAdapter {
 				addAvroReceiver(TopicConstants.TOPIC_INVITE_TOPIC, new TopicInviteConsumer());
 				addAvroReceiver(TopicConstants.TOPIC_REMOVE_TOPIC, new TopicRemoveConsumer());
 			}
-			addAvroReceiver(TopicConstants.TIMING_CONTROL_TOPIC, new TimeConsumer());
+			addAvroReceiver(TopicConstants.TIMING_TOPIC, new TimeConsumer());
 			largeDataProducer = new GenericProducer(sharedAvroProducer, TopicConstants.LARGE_DATA_UPDTAE);
 			
 		} catch (Exception e) {

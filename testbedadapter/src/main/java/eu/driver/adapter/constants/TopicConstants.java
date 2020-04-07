@@ -11,8 +11,8 @@ public class TopicConstants {
 	public static final String TOPIC_REMOVE_TOPIC = "system_topic_remove";
 	public static final String TOPIC_CREATE_REQUEST_TOPIC = "system_topic_create_request";
 	public static final String TOPIC_REMOVE_REQUEST_TOPIC = "system_topic_remove_request";
-	public static final String TIMING_TOPIC = "system_timing";
-	public static final String TIMING_CONTROL_TOPIC = "system_timing_control";
+	public static final String TIMING_TOPIC = "simulation_time_mgmt";
+	public static final String TIMING_CONTROL_TOPIC = "simulation_time_control";
 	public static final String CONFIG_TOPIC = "system_config";
 	public static final String TRIAL_STATE_CHANGE_TOPIC = "system_request_change_of_trial_stage";
 	public static final String OST_ANSWER_TOPIC = "system_observer_tool_answer";
